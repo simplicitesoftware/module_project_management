@@ -1,0 +1,2895 @@
+#  ___ _            _ _    _ _    __
+# / __(_)_ __  _ __| (_)__(_) |_ /_/
+# \__ \ | '  \| '_ \ | / _| |  _/ -_)
+# |___/_|_|_|_| .__/_|_\__|_|\__\___|
+#             |_| Module: ProjectManagement 0.1
+basePath: /api
+paths:
+  /rest/PmLabel:
+    get:
+      summary: Search PmLabel business object records or get contextualized metadata
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-pmlabel-search
+      responses:
+        '200':
+          schema:
+            $ref: '#/definitions/ArrayOfPmLabel'
+          description: Success in searching business object records (or in getting
+            contextualized business object metadata, documentation, ...)
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+      parameters:
+      - in: query
+        name: _metadata
+        description: Metadata?
+        type: boolean
+        required: false
+      - in: query
+        name: _count
+        description: Count?
+        type: boolean
+        required: false
+      - in: query
+        name: _doc
+        description: Documentation?
+        type: boolean
+        required: false
+      - in: query
+        name: pmLblName
+        description: Search filter for Name
+        type: string
+        required: false
+      - in: query
+        name: pmLblIcone
+        description: Search filter for Icone
+        type: string
+        required: false
+      tags:
+      - PmLabel
+  /login:
+    get:
+      summary: Login (obtain bearer token)
+      security:
+      - basicAuth: []
+      produces:
+      - text/plain
+      - application/json
+      operationId: login
+      responses:
+        '200':
+          description: Successful login
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+      parameters:
+      - in: query
+        name: _output
+        description: Optional output format
+        type: string
+        required: false
+        enum:
+        - json
+        - oauth2
+        - token
+      tags:
+      - session
+  /rest/PmProject:
+    get:
+      summary: Search PmProject business object records or get contextualized metadata
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-pmproject-search
+      responses:
+        '200':
+          schema:
+            $ref: '#/definitions/ArrayOfPmProject'
+          description: Success in searching business object records (or in getting
+            contextualized business object metadata, documentation, ...)
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+      parameters:
+      - in: query
+        name: _metadata
+        description: Metadata?
+        type: boolean
+        required: false
+      - in: query
+        name: _count
+        description: Count?
+        type: boolean
+        required: false
+      - in: query
+        name: _doc
+        description: Documentation?
+        type: boolean
+        required: false
+      - in: query
+        name: pmPrjName
+        description: Search filter for Name
+        type: string
+        required: false
+      - in: query
+        name: pmPrjService
+        description: Search filter for Service
+        type: string
+        required: false
+        enum:
+        - SERVICEA
+        - SERVICEB
+        - SERVICEC
+      - in: query
+        name: pmPrjDescription
+        description: Search filter for Description
+        type: string
+        required: false
+      - in: query
+        name: pmPrjBudget
+        description: Search filter for Budget
+        type: number
+        required: false
+      tags:
+      - PmProject
+  /rest/PmAssignment/{row_id}:
+    post:
+      summary: Create a new PmAssignmentbusiness object record
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-pmassignment-create
+      responses:
+        '200':
+          schema:
+            $ref: '#/definitions/PmAssignment'
+          description: Success in creating a new business object record
+        '400':
+          schema:
+            $ref: '#/definitions/Error400'
+          description: Bad request
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+      parameters:
+      - in: path
+        name: row_id
+        description: Row ID (or empty or _ for all row IDs)
+        type: string
+        required: true
+      - schema:
+          $ref: '#/definitions/PmAssignment'
+        in: body
+        name: body
+      tags:
+      - PmAssignment
+      consumes:
+      - application/json
+    get:
+      summary: Get a PmAssignment business object record
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-pmassignment-get
+      responses:
+        '200':
+          schema:
+            $ref: '#/definitions/PmAssignment'
+          description: Success in getting a single business object record
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+        '404':
+          schema:
+            $ref: '#/definitions/Error404'
+          description: Not found
+      parameters:
+      - in: path
+        name: row_id
+        description: Row ID (or empty or _ for all row IDs)
+        type: string
+        required: true
+      - in: query
+        name: _inline_documents
+        description: Inline documents?
+        type: boolean
+        required: false
+      - in: query
+        name: _inline_thumbnails
+        description: Inline documents' thumbnails?
+        type: boolean
+        required: false
+      - in: query
+        name: _inline_objects
+        description: Inline objects?
+        type: boolean
+        required: false
+      tags:
+      - PmAssignment
+    delete:
+      summary: Delete a PmAssignment business object record
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-pmassignment-delete
+      responses:
+        '200':
+          description: Success in deleting a business object record
+        '400':
+          schema:
+            $ref: '#/definitions/Error400'
+          description: Bad request
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+        '404':
+          schema:
+            $ref: '#/definitions/Error404'
+          description: Not found
+      parameters:
+      - in: path
+        name: row_id
+        description: Row ID (or empty or _ for all row IDs)
+        type: string
+        required: true
+      tags:
+      - PmAssignment
+    put:
+      summary: Update a PmAssignmentbusiness object record
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-pmassignment-update
+      responses:
+        '200':
+          schema:
+            $ref: '#/definitions/PmAssignment'
+          description: Success in updating a business object record
+        '400':
+          schema:
+            $ref: '#/definitions/Error400'
+          description: Bad request
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+        '404':
+          schema:
+            $ref: '#/definitions/Error404'
+          description: Not found
+      parameters:
+      - in: path
+        name: row_id
+        description: Row ID (or empty or _ for all row IDs)
+        type: string
+        required: true
+      - schema:
+          $ref: '#/definitions/PmAssignment'
+        in: body
+        name: body
+      tags:
+      - PmAssignment
+      consumes:
+      - application/json
+  /logout:
+    get:
+      summary: Logout (revoke bearer token)
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: logout
+      responses:
+        '200':
+          description: Successfull logout
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+      tags:
+      - session
+  /rest/PmDocument:
+    get:
+      summary: Search PmDocument business object records or get contextualized metadata
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-pmdocument-search
+      responses:
+        '200':
+          schema:
+            $ref: '#/definitions/ArrayOfPmDocument'
+          description: Success in searching business object records (or in getting
+            contextualized business object metadata, documentation, ...)
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+      parameters:
+      - in: query
+        name: _metadata
+        description: Metadata?
+        type: boolean
+        required: false
+      - in: query
+        name: _count
+        description: Count?
+        type: boolean
+        required: false
+      - in: query
+        name: _doc
+        description: Documentation?
+        type: boolean
+        required: false
+      - in: query
+        name: pmDocAttachment
+        description: Search filter for Attachment
+        type: string
+        required: false
+      - in: query
+        name: pmDocTitle
+        description: Search filter for Title
+        type: string
+        required: false
+      - in: query
+        name: pmDocTskId
+        description: Search filter for Task
+        type: string
+        required: false
+      - in: query
+        name: pmDocTskId__pmTskNumber
+        description: Search filter for Task Number
+        type: integer
+        required: false
+      - in: query
+        name: pmDocPrjId
+        description: Search filter for Project
+        type: string
+        required: false
+      - in: query
+        name: pmDocPrjId__pmPrjName
+        description: Search filter for Project Name
+        type: string
+        required: false
+      tags:
+      - PmDocument
+  /rest/PmTskLbl/{row_id}:
+    post:
+      summary: Create a new PmTskLblbusiness object record
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-pmtsklbl-create
+      responses:
+        '200':
+          schema:
+            $ref: '#/definitions/PmTskLbl'
+          description: Success in creating a new business object record
+        '400':
+          schema:
+            $ref: '#/definitions/Error400'
+          description: Bad request
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+      parameters:
+      - in: path
+        name: row_id
+        description: Row ID (or empty or _ for all row IDs)
+        type: string
+        required: true
+      - schema:
+          $ref: '#/definitions/PmTskLbl'
+        in: body
+        name: body
+      tags:
+      - PmTskLbl
+      consumes:
+      - application/json
+    get:
+      summary: Get a PmTskLbl business object record
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-pmtsklbl-get
+      responses:
+        '200':
+          schema:
+            $ref: '#/definitions/PmTskLbl'
+          description: Success in getting a single business object record
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+        '404':
+          schema:
+            $ref: '#/definitions/Error404'
+          description: Not found
+      parameters:
+      - in: path
+        name: row_id
+        description: Row ID (or empty or _ for all row IDs)
+        type: string
+        required: true
+      - in: query
+        name: _inline_documents
+        description: Inline documents?
+        type: boolean
+        required: false
+      - in: query
+        name: _inline_thumbnails
+        description: Inline documents' thumbnails?
+        type: boolean
+        required: false
+      - in: query
+        name: _inline_objects
+        description: Inline objects?
+        type: boolean
+        required: false
+      tags:
+      - PmTskLbl
+    delete:
+      summary: Delete a PmTskLbl business object record
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-pmtsklbl-delete
+      responses:
+        '200':
+          description: Success in deleting a business object record
+        '400':
+          schema:
+            $ref: '#/definitions/Error400'
+          description: Bad request
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+        '404':
+          schema:
+            $ref: '#/definitions/Error404'
+          description: Not found
+      parameters:
+      - in: path
+        name: row_id
+        description: Row ID (or empty or _ for all row IDs)
+        type: string
+        required: true
+      tags:
+      - PmTskLbl
+    put:
+      summary: Update a PmTskLblbusiness object record
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-pmtsklbl-update
+      responses:
+        '200':
+          schema:
+            $ref: '#/definitions/PmTskLbl'
+          description: Success in updating a business object record
+        '400':
+          schema:
+            $ref: '#/definitions/Error400'
+          description: Bad request
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+        '404':
+          schema:
+            $ref: '#/definitions/Error404'
+          description: Not found
+      parameters:
+      - in: path
+        name: row_id
+        description: Row ID (or empty or _ for all row IDs)
+        type: string
+        required: true
+      - schema:
+          $ref: '#/definitions/PmTskLbl'
+        in: body
+        name: body
+      tags:
+      - PmTskLbl
+      consumes:
+      - application/json
+  /rest/PmTask:
+    get:
+      summary: Search PmTask business object records or get contextualized metadata
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-pmtask-search
+      responses:
+        '200':
+          schema:
+            $ref: '#/definitions/ArrayOfPmTask'
+          description: Success in searching business object records (or in getting
+            contextualized business object metadata, documentation, ...)
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+      parameters:
+      - in: query
+        name: _metadata
+        description: Metadata?
+        type: boolean
+        required: false
+      - in: query
+        name: _count
+        description: Count?
+        type: boolean
+        required: false
+      - in: query
+        name: _doc
+        description: Documentation?
+        type: boolean
+        required: false
+      - in: query
+        name: _crosstab
+        description: Apply pivot table
+        type: string
+        required: false
+        enum:
+        - PmTcTask
+      - in: query
+        name: _crosstabcubes
+        description: Pivot table data as cubes?
+        type: boolean
+        required: false
+      - in: query
+        name: pmTskNumber
+        description: Search filter for Number
+        type: integer
+        required: false
+      - in: query
+        name: pmTskTitle
+        description: Search filter for Title
+        type: string
+        required: false
+      - in: query
+        name: pmTskDescription
+        description: Search filter for Description
+        type: string
+        required: false
+      - in: query
+        name: pmTskStatus
+        description: Search filter for Status
+        type: string
+        required: false
+        enum:
+        - DRAFT
+        - TODO
+        - DOING
+        - DONE
+        - CLOSED
+        - CANCEL
+        - REJECTED
+      - in: query
+        name: pmTskPriority
+        description: Search filter for Priority
+        type: string
+        required: false
+        enum:
+        - LOW
+        - NORMAL
+        - HIGH
+        - Urgent
+        - IMMEDIATE
+      - in: query
+        name: pmTskCreation
+        description: Search filter for Creation date
+        type: string
+        required: false
+      - in: query
+        name: pmTskClose
+        description: Search filter for Closing date
+        type: string
+        required: false
+      - in: query
+        name: pmTskExpectedDuration
+        description: Search filter for Expected duration
+        type: integer
+        required: false
+      - in: query
+        name: pmTskActualDuration
+        description: Search filter for Actual duration
+        type: integer
+        required: false
+      - in: query
+        name: pmTskVrsId
+        description: Search filter for Release
+        type: string
+        required: false
+      - in: query
+        name: pmTskVrsId__pmVrsVersion
+        description: Search filter for Release Version
+        type: number
+        required: false
+      - in: query
+        name: pmTskVrsId__pmVrsPrjId
+        description: Search filter for Release Project
+        type: string
+        required: false
+      - in: query
+        name: pmTskUsrId
+        description: Search filter for User
+        type: string
+        required: false
+      - in: query
+        name: pmTskUsrId__usr_login
+        description: Search filter for Login
+        type: string
+        required: false
+      tags:
+      - PmTask
+  /rest/PmDocument/{row_id}:
+    post:
+      summary: Create a new PmDocumentbusiness object record
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-pmdocument-create
+      responses:
+        '200':
+          schema:
+            $ref: '#/definitions/PmDocument'
+          description: Success in creating a new business object record
+        '400':
+          schema:
+            $ref: '#/definitions/Error400'
+          description: Bad request
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+      parameters:
+      - in: path
+        name: row_id
+        description: Row ID (or empty or _ for all row IDs)
+        type: string
+        required: true
+      - schema:
+          $ref: '#/definitions/PmDocument'
+        in: body
+        name: body
+      tags:
+      - PmDocument
+      consumes:
+      - application/json
+    get:
+      summary: Get a PmDocument business object record
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-pmdocument-get
+      responses:
+        '200':
+          schema:
+            $ref: '#/definitions/PmDocument'
+          description: Success in getting a single business object record
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+        '404':
+          schema:
+            $ref: '#/definitions/Error404'
+          description: Not found
+      parameters:
+      - in: path
+        name: row_id
+        description: Row ID (or empty or _ for all row IDs)
+        type: string
+        required: true
+      - in: query
+        name: _inline_documents
+        description: Inline documents?
+        type: boolean
+        required: false
+      - in: query
+        name: _inline_thumbnails
+        description: Inline documents' thumbnails?
+        type: boolean
+        required: false
+      - in: query
+        name: _inline_objects
+        description: Inline objects?
+        type: boolean
+        required: false
+      tags:
+      - PmDocument
+    delete:
+      summary: Delete a PmDocument business object record
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-pmdocument-delete
+      responses:
+        '200':
+          description: Success in deleting a business object record
+        '400':
+          schema:
+            $ref: '#/definitions/Error400'
+          description: Bad request
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+        '404':
+          schema:
+            $ref: '#/definitions/Error404'
+          description: Not found
+      parameters:
+      - in: path
+        name: row_id
+        description: Row ID (or empty or _ for all row IDs)
+        type: string
+        required: true
+      tags:
+      - PmDocument
+    put:
+      summary: Update a PmDocumentbusiness object record
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-pmdocument-update
+      responses:
+        '200':
+          schema:
+            $ref: '#/definitions/PmDocument'
+          description: Success in updating a business object record
+        '400':
+          schema:
+            $ref: '#/definitions/Error400'
+          description: Bad request
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+        '404':
+          schema:
+            $ref: '#/definitions/Error404'
+          description: Not found
+      parameters:
+      - in: path
+        name: row_id
+        description: Row ID (or empty or _ for all row IDs)
+        type: string
+        required: true
+      - schema:
+          $ref: '#/definitions/PmDocument'
+        in: body
+        name: body
+      tags:
+      - PmDocument
+      consumes:
+      - application/json
+  /rest/PmTask/{row_id}:
+    post:
+      summary: Create a new PmTaskbusiness object record
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-pmtask-create
+      responses:
+        '200':
+          schema:
+            $ref: '#/definitions/PmTask'
+          description: Success in creating a new business object record
+        '400':
+          schema:
+            $ref: '#/definitions/Error400'
+          description: Bad request
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+      parameters:
+      - in: path
+        name: row_id
+        description: Row ID (or empty or _ for all row IDs)
+        type: string
+        required: true
+      - schema:
+          $ref: '#/definitions/PmTask'
+        in: body
+        name: body
+      tags:
+      - PmTask
+      consumes:
+      - application/json
+    get:
+      summary: Get a PmTask business object record
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-pmtask-get
+      responses:
+        '200':
+          schema:
+            $ref: '#/definitions/PmTask'
+          description: Success in getting a single business object record
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+        '404':
+          schema:
+            $ref: '#/definitions/Error404'
+          description: Not found
+      parameters:
+      - in: path
+        name: row_id
+        description: Row ID (or empty or _ for all row IDs)
+        type: string
+        required: true
+      - in: query
+        name: _inline_documents
+        description: Inline documents?
+        type: boolean
+        required: false
+      - in: query
+        name: _inline_thumbnails
+        description: Inline documents' thumbnails?
+        type: boolean
+        required: false
+      - in: query
+        name: _inline_objects
+        description: Inline objects?
+        type: boolean
+        required: false
+      tags:
+      - PmTask
+    delete:
+      summary: Delete a PmTask business object record
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-pmtask-delete
+      responses:
+        '200':
+          description: Success in deleting a business object record
+        '400':
+          schema:
+            $ref: '#/definitions/Error400'
+          description: Bad request
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+        '404':
+          schema:
+            $ref: '#/definitions/Error404'
+          description: Not found
+      parameters:
+      - in: path
+        name: row_id
+        description: Row ID (or empty or _ for all row IDs)
+        type: string
+        required: true
+      tags:
+      - PmTask
+    put:
+      summary: Update a PmTaskbusiness object record
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-pmtask-update
+      responses:
+        '200':
+          schema:
+            $ref: '#/definitions/PmTask'
+          description: Success in updating a business object record
+        '400':
+          schema:
+            $ref: '#/definitions/Error400'
+          description: Bad request
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+        '404':
+          schema:
+            $ref: '#/definitions/Error404'
+          description: Not found
+      parameters:
+      - in: path
+        name: row_id
+        description: Row ID (or empty or _ for all row IDs)
+        type: string
+        required: true
+      - schema:
+          $ref: '#/definitions/PmTask'
+        in: body
+        name: body
+      tags:
+      - PmTask
+      consumes:
+      - application/json
+  /rest/PmProject/{row_id}:
+    post:
+      summary: Create a new PmProjectbusiness object record
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-pmproject-create
+      responses:
+        '200':
+          schema:
+            $ref: '#/definitions/PmProject'
+          description: Success in creating a new business object record
+        '400':
+          schema:
+            $ref: '#/definitions/Error400'
+          description: Bad request
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+      parameters:
+      - in: path
+        name: row_id
+        description: Row ID (or empty or _ for all row IDs)
+        type: string
+        required: true
+      - schema:
+          $ref: '#/definitions/PmProject'
+        in: body
+        name: body
+      tags:
+      - PmProject
+      consumes:
+      - application/json
+    get:
+      summary: Get a PmProject business object record
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-pmproject-get
+      responses:
+        '200':
+          schema:
+            $ref: '#/definitions/PmProject'
+          description: Success in getting a single business object record
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+        '404':
+          schema:
+            $ref: '#/definitions/Error404'
+          description: Not found
+      parameters:
+      - in: path
+        name: row_id
+        description: Row ID (or empty or _ for all row IDs)
+        type: string
+        required: true
+      - in: query
+        name: _inline_documents
+        description: Inline documents?
+        type: boolean
+        required: false
+      - in: query
+        name: _inline_thumbnails
+        description: Inline documents' thumbnails?
+        type: boolean
+        required: false
+      - in: query
+        name: _inline_objects
+        description: Inline objects?
+        type: boolean
+        required: false
+      tags:
+      - PmProject
+    delete:
+      summary: Delete a PmProject business object record
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-pmproject-delete
+      responses:
+        '200':
+          description: Success in deleting a business object record
+        '400':
+          schema:
+            $ref: '#/definitions/Error400'
+          description: Bad request
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+        '404':
+          schema:
+            $ref: '#/definitions/Error404'
+          description: Not found
+      parameters:
+      - in: path
+        name: row_id
+        description: Row ID (or empty or _ for all row IDs)
+        type: string
+        required: true
+      tags:
+      - PmProject
+    put:
+      summary: Update a PmProjectbusiness object record
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-pmproject-update
+      responses:
+        '200':
+          schema:
+            $ref: '#/definitions/PmProject'
+          description: Success in updating a business object record
+        '400':
+          schema:
+            $ref: '#/definitions/Error400'
+          description: Bad request
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+        '404':
+          schema:
+            $ref: '#/definitions/Error404'
+          description: Not found
+      parameters:
+      - in: path
+        name: row_id
+        description: Row ID (or empty or _ for all row IDs)
+        type: string
+        required: true
+      - schema:
+          $ref: '#/definitions/PmProject'
+        in: body
+        name: body
+      tags:
+      - PmProject
+      consumes:
+      - application/json
+  /rest/PmTskLbl:
+    get:
+      summary: Search PmTskLbl business object records or get contextualized metadata
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-pmtsklbl-search
+      responses:
+        '200':
+          schema:
+            $ref: '#/definitions/ArrayOfPmTskLbl'
+          description: Success in searching business object records (or in getting
+            contextualized business object metadata, documentation, ...)
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+      parameters:
+      - in: query
+        name: _metadata
+        description: Metadata?
+        type: boolean
+        required: false
+      - in: query
+        name: _count
+        description: Count?
+        type: boolean
+        required: false
+      - in: query
+        name: _doc
+        description: Documentation?
+        type: boolean
+        required: false
+      - in: query
+        name: pmTsklblTskId
+        description: Search filter for Pm tsklbl tsk id
+        type: string
+        required: false
+      - in: query
+        name: pmTsklblTskId__pmTskNumber
+        description: Search filter for Pm tsklbl tsk id Number
+        type: integer
+        required: false
+      - in: query
+        name: pmTsklblLblId
+        description: Search filter for Pm tsklbl lbl id
+        type: string
+        required: false
+      - in: query
+        name: pmTsklblLblId__pmLblName
+        description: Search filter for Pm tsklbl lbl id Name
+        type: string
+        required: false
+      tags:
+      - PmTskLbl
+  /:
+    get:
+      summary: Get user session information
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: info
+      responses:
+        '200':
+          description: Success in getting user session information
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+      parameters:
+      - in: query
+        name: texts
+        description: Texts?
+        type: boolean
+        required: false
+      tags:
+      - session
+  /rest/PmAssignment:
+    get:
+      summary: Search PmAssignment business object records or get contextualized metadata
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-pmassignment-search
+      responses:
+        '200':
+          schema:
+            $ref: '#/definitions/ArrayOfPmAssignment'
+          description: Success in searching business object records (or in getting
+            contextualized business object metadata, documentation, ...)
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+      parameters:
+      - in: query
+        name: _metadata
+        description: Metadata?
+        type: boolean
+        required: false
+      - in: query
+        name: _count
+        description: Count?
+        type: boolean
+        required: false
+      - in: query
+        name: _doc
+        description: Documentation?
+        type: boolean
+        required: false
+      - in: query
+        name: _crosstab
+        description: Apply pivot table
+        type: string
+        required: false
+        enum:
+        - PmUserTask
+      - in: query
+        name: _crosstabcubes
+        description: Pivot table data as cubes?
+        type: boolean
+        required: false
+      - in: query
+        name: pmAssRole
+        description: Search filter for Pm ass role
+        type: string
+        required: false
+      - in: query
+        name: pmAssPmUserid
+        description: Search filter for User
+        type: string
+        required: false
+      - in: query
+        name: pmAssPmUserid__usr_login
+        description: Search filter for Login
+        type: string
+        required: false
+      - in: query
+        name: pmAssPmTaskid
+        description: Search filter for Task
+        type: string
+        required: false
+      - in: query
+        name: pmAssPmTaskid__pmTskNumber
+        description: Search filter for Task Number
+        type: integer
+        required: false
+      - in: query
+        name: pmAssId
+        description: Search filter for Pm ass id
+        type: integer
+        required: false
+      - in: query
+        name: pmAssPmTaskid__pmTskTitle
+        description: Search filter for Task Title
+        type: string
+        required: false
+      tags:
+      - PmAssignment
+  /rest/PmMessage:
+    get:
+      summary: Search PmMessage business object records or get contextualized metadata
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-pmmessage-search
+      responses:
+        '200':
+          schema:
+            $ref: '#/definitions/ArrayOfPmMessage'
+          description: Success in searching business object records (or in getting
+            contextualized business object metadata, documentation, ...)
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+      parameters:
+      - in: query
+        name: _metadata
+        description: Metadata?
+        type: boolean
+        required: false
+      - in: query
+        name: _count
+        description: Count?
+        type: boolean
+        required: false
+      - in: query
+        name: _doc
+        description: Documentation?
+        type: boolean
+        required: false
+      - in: query
+        name: pmMsgTitle
+        description: Search filter for Title
+        type: string
+        required: false
+      - in: query
+        name: pmTskMsgId__pmTskNumber
+        description: Search filter for Message Number
+        type: integer
+        required: false
+      - in: query
+        name: pmMsgMessage
+        description: Search filter for Message
+        type: string
+        required: false
+      - in: query
+        name: pmMsgVisibility
+        description: Search filter for Visibility
+        type: string
+        required: false
+        enum:
+        - ADMIN
+        - ALL
+      - in: query
+        name: pmMsgPublicationDate
+        description: Search filter for Publication date
+        type: string
+        required: false
+      - in: query
+        name: pmTskMsgId
+        description: Search filter for Message
+        type: string
+        required: false
+      - in: query
+        name: pmMsgUsrId
+        description: Search filter for User
+        type: string
+        required: false
+      - in: query
+        name: pmMsgUsrId__usr_login
+        description: Search filter for Login
+        type: string
+        required: false
+      tags:
+      - PmMessage
+  /rest/PmVersion/{row_id}:
+    post:
+      summary: Create a new PmVersionbusiness object record
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-pmversion-create
+      responses:
+        '200':
+          schema:
+            $ref: '#/definitions/PmVersion'
+          description: Success in creating a new business object record
+        '400':
+          schema:
+            $ref: '#/definitions/Error400'
+          description: Bad request
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+      parameters:
+      - in: path
+        name: row_id
+        description: Row ID (or empty or _ for all row IDs)
+        type: string
+        required: true
+      - schema:
+          $ref: '#/definitions/PmVersion'
+        in: body
+        name: body
+      tags:
+      - PmVersion
+      consumes:
+      - application/json
+    get:
+      summary: Get a PmVersion business object record
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-pmversion-get
+      responses:
+        '200':
+          schema:
+            $ref: '#/definitions/PmVersion'
+          description: Success in getting a single business object record
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+        '404':
+          schema:
+            $ref: '#/definitions/Error404'
+          description: Not found
+      parameters:
+      - in: path
+        name: row_id
+        description: Row ID (or empty or _ for all row IDs)
+        type: string
+        required: true
+      - in: query
+        name: _inline_documents
+        description: Inline documents?
+        type: boolean
+        required: false
+      - in: query
+        name: _inline_thumbnails
+        description: Inline documents' thumbnails?
+        type: boolean
+        required: false
+      - in: query
+        name: _inline_objects
+        description: Inline objects?
+        type: boolean
+        required: false
+      tags:
+      - PmVersion
+    delete:
+      summary: Delete a PmVersion business object record
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-pmversion-delete
+      responses:
+        '200':
+          description: Success in deleting a business object record
+        '400':
+          schema:
+            $ref: '#/definitions/Error400'
+          description: Bad request
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+        '404':
+          schema:
+            $ref: '#/definitions/Error404'
+          description: Not found
+      parameters:
+      - in: path
+        name: row_id
+        description: Row ID (or empty or _ for all row IDs)
+        type: string
+        required: true
+      tags:
+      - PmVersion
+    put:
+      summary: Update a PmVersionbusiness object record
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-pmversion-update
+      responses:
+        '200':
+          schema:
+            $ref: '#/definitions/PmVersion'
+          description: Success in updating a business object record
+        '400':
+          schema:
+            $ref: '#/definitions/Error400'
+          description: Bad request
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+        '404':
+          schema:
+            $ref: '#/definitions/Error404'
+          description: Not found
+      parameters:
+      - in: path
+        name: row_id
+        description: Row ID (or empty or _ for all row IDs)
+        type: string
+        required: true
+      - schema:
+          $ref: '#/definitions/PmVersion'
+        in: body
+        name: body
+      tags:
+      - PmVersion
+      consumes:
+      - application/json
+  /rest/PmRole/{row_id}:
+    post:
+      summary: Create a new PmRolebusiness object record
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-pmrole-create
+      responses:
+        '200':
+          schema:
+            $ref: '#/definitions/PmRole'
+          description: Success in creating a new business object record
+        '400':
+          schema:
+            $ref: '#/definitions/Error400'
+          description: Bad request
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+      parameters:
+      - in: path
+        name: row_id
+        description: Row ID (or empty or _ for all row IDs)
+        type: string
+        required: true
+      - schema:
+          $ref: '#/definitions/PmRole'
+        in: body
+        name: body
+      tags:
+      - PmRole
+      consumes:
+      - application/json
+    get:
+      summary: Get a PmRole business object record
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-pmrole-get
+      responses:
+        '200':
+          schema:
+            $ref: '#/definitions/PmRole'
+          description: Success in getting a single business object record
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+        '404':
+          schema:
+            $ref: '#/definitions/Error404'
+          description: Not found
+      parameters:
+      - in: path
+        name: row_id
+        description: Row ID (or empty or _ for all row IDs)
+        type: string
+        required: true
+      - in: query
+        name: _inline_documents
+        description: Inline documents?
+        type: boolean
+        required: false
+      - in: query
+        name: _inline_thumbnails
+        description: Inline documents' thumbnails?
+        type: boolean
+        required: false
+      - in: query
+        name: _inline_objects
+        description: Inline objects?
+        type: boolean
+        required: false
+      tags:
+      - PmRole
+    delete:
+      summary: Delete a PmRole business object record
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-pmrole-delete
+      responses:
+        '200':
+          description: Success in deleting a business object record
+        '400':
+          schema:
+            $ref: '#/definitions/Error400'
+          description: Bad request
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+        '404':
+          schema:
+            $ref: '#/definitions/Error404'
+          description: Not found
+      parameters:
+      - in: path
+        name: row_id
+        description: Row ID (or empty or _ for all row IDs)
+        type: string
+        required: true
+      tags:
+      - PmRole
+    put:
+      summary: Update a PmRolebusiness object record
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-pmrole-update
+      responses:
+        '200':
+          schema:
+            $ref: '#/definitions/PmRole'
+          description: Success in updating a business object record
+        '400':
+          schema:
+            $ref: '#/definitions/Error400'
+          description: Bad request
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+        '404':
+          schema:
+            $ref: '#/definitions/Error404'
+          description: Not found
+      parameters:
+      - in: path
+        name: row_id
+        description: Row ID (or empty or _ for all row IDs)
+        type: string
+        required: true
+      - schema:
+          $ref: '#/definitions/PmRole'
+        in: body
+        name: body
+      tags:
+      - PmRole
+      consumes:
+      - application/json
+  /rest/PmArrayOfTask:
+    get:
+      summary: Search PmArrayOfTask business object records or get contextualized
+        metadata
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-pmarrayoftask-search
+      responses:
+        '200':
+          schema:
+            $ref: '#/definitions/ArrayOfPmArrayOfTask'
+          description: Success in searching business object records (or in getting
+            contextualized business object metadata, documentation, ...)
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+      parameters:
+      - in: query
+        name: _metadata
+        description: Metadata?
+        type: boolean
+        required: false
+      - in: query
+        name: _count
+        description: Count?
+        type: boolean
+        required: false
+      - in: query
+        name: _doc
+        description: Documentation?
+        type: boolean
+        required: false
+      - in: query
+        name: pmAotTskId
+        description: Search filter for Task
+        type: string
+        required: false
+      - in: query
+        name: pmAotTskId__pmTskNumber
+        description: Search filter for Task Number
+        type: integer
+        required: false
+      tags:
+      - PmArrayOfTask
+  /rest/PmMessage/{row_id}:
+    post:
+      summary: Create a new PmMessagebusiness object record
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-pmmessage-create
+      responses:
+        '200':
+          schema:
+            $ref: '#/definitions/PmMessage'
+          description: Success in creating a new business object record
+        '400':
+          schema:
+            $ref: '#/definitions/Error400'
+          description: Bad request
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+      parameters:
+      - in: path
+        name: row_id
+        description: Row ID (or empty or _ for all row IDs)
+        type: string
+        required: true
+      - schema:
+          $ref: '#/definitions/PmMessage'
+        in: body
+        name: body
+      tags:
+      - PmMessage
+      consumes:
+      - application/json
+    get:
+      summary: Get a PmMessage business object record
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-pmmessage-get
+      responses:
+        '200':
+          schema:
+            $ref: '#/definitions/PmMessage'
+          description: Success in getting a single business object record
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+        '404':
+          schema:
+            $ref: '#/definitions/Error404'
+          description: Not found
+      parameters:
+      - in: path
+        name: row_id
+        description: Row ID (or empty or _ for all row IDs)
+        type: string
+        required: true
+      - in: query
+        name: _inline_documents
+        description: Inline documents?
+        type: boolean
+        required: false
+      - in: query
+        name: _inline_thumbnails
+        description: Inline documents' thumbnails?
+        type: boolean
+        required: false
+      - in: query
+        name: _inline_objects
+        description: Inline objects?
+        type: boolean
+        required: false
+      tags:
+      - PmMessage
+    delete:
+      summary: Delete a PmMessage business object record
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-pmmessage-delete
+      responses:
+        '200':
+          description: Success in deleting a business object record
+        '400':
+          schema:
+            $ref: '#/definitions/Error400'
+          description: Bad request
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+        '404':
+          schema:
+            $ref: '#/definitions/Error404'
+          description: Not found
+      parameters:
+      - in: path
+        name: row_id
+        description: Row ID (or empty or _ for all row IDs)
+        type: string
+        required: true
+      tags:
+      - PmMessage
+    put:
+      summary: Update a PmMessagebusiness object record
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-pmmessage-update
+      responses:
+        '200':
+          schema:
+            $ref: '#/definitions/PmMessage'
+          description: Success in updating a business object record
+        '400':
+          schema:
+            $ref: '#/definitions/Error400'
+          description: Bad request
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+        '404':
+          schema:
+            $ref: '#/definitions/Error404'
+          description: Not found
+      parameters:
+      - in: path
+        name: row_id
+        description: Row ID (or empty or _ for all row IDs)
+        type: string
+        required: true
+      - schema:
+          $ref: '#/definitions/PmMessage'
+        in: body
+        name: body
+      tags:
+      - PmMessage
+      consumes:
+      - application/json
+  /rest/PmVersion:
+    get:
+      summary: Search PmVersion business object records or get contextualized metadata
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-pmversion-search
+      responses:
+        '200':
+          schema:
+            $ref: '#/definitions/ArrayOfPmVersion'
+          description: Success in searching business object records (or in getting
+            contextualized business object metadata, documentation, ...)
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+      parameters:
+      - in: query
+        name: _metadata
+        description: Metadata?
+        type: boolean
+        required: false
+      - in: query
+        name: _count
+        description: Count?
+        type: boolean
+        required: false
+      - in: query
+        name: _doc
+        description: Documentation?
+        type: boolean
+        required: false
+      - in: query
+        name: pmVrsVersion
+        description: Search filter for Version
+        type: number
+        required: false
+      - in: query
+        name: pmVrsPublicationDate
+        description: Search filter for Publication date
+        type: string
+        required: false
+      - in: query
+        name: pmVrsStatus
+        description: Search filter for Status
+        type: string
+        required: false
+        enum:
+        - ALPHA
+        - BETA
+        - PUBLISHED
+      - in: query
+        name: pmVrsName
+        description: Search filter for Concatenation of project name and version number
+        type: string
+        required: false
+      - in: query
+        name: pmVrsPrjId
+        description: Search filter for Project
+        type: string
+        required: false
+      - in: query
+        name: pmVrsPrjId__pmPrjName
+        description: Search filter for Project Name
+        type: string
+        required: false
+      tags:
+      - PmVersion
+  /rest/PmArrayOfTask/{row_id}:
+    post:
+      summary: Create a new PmArrayOfTaskbusiness object record
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-pmarrayoftask-create
+      responses:
+        '200':
+          schema:
+            $ref: '#/definitions/PmArrayOfTask'
+          description: Success in creating a new business object record
+        '400':
+          schema:
+            $ref: '#/definitions/Error400'
+          description: Bad request
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+      parameters:
+      - in: path
+        name: row_id
+        description: Row ID (or empty or _ for all row IDs)
+        type: string
+        required: true
+      - schema:
+          $ref: '#/definitions/PmArrayOfTask'
+        in: body
+        name: body
+      tags:
+      - PmArrayOfTask
+      consumes:
+      - application/json
+    get:
+      summary: Get a PmArrayOfTask business object record
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-pmarrayoftask-get
+      responses:
+        '200':
+          schema:
+            $ref: '#/definitions/PmArrayOfTask'
+          description: Success in getting a single business object record
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+        '404':
+          schema:
+            $ref: '#/definitions/Error404'
+          description: Not found
+      parameters:
+      - in: path
+        name: row_id
+        description: Row ID (or empty or _ for all row IDs)
+        type: string
+        required: true
+      - in: query
+        name: _inline_documents
+        description: Inline documents?
+        type: boolean
+        required: false
+      - in: query
+        name: _inline_thumbnails
+        description: Inline documents' thumbnails?
+        type: boolean
+        required: false
+      - in: query
+        name: _inline_objects
+        description: Inline objects?
+        type: boolean
+        required: false
+      tags:
+      - PmArrayOfTask
+    delete:
+      summary: Delete a PmArrayOfTask business object record
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-pmarrayoftask-delete
+      responses:
+        '200':
+          description: Success in deleting a business object record
+        '400':
+          schema:
+            $ref: '#/definitions/Error400'
+          description: Bad request
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+        '404':
+          schema:
+            $ref: '#/definitions/Error404'
+          description: Not found
+      parameters:
+      - in: path
+        name: row_id
+        description: Row ID (or empty or _ for all row IDs)
+        type: string
+        required: true
+      tags:
+      - PmArrayOfTask
+    put:
+      summary: Update a PmArrayOfTaskbusiness object record
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-pmarrayoftask-update
+      responses:
+        '200':
+          schema:
+            $ref: '#/definitions/PmArrayOfTask'
+          description: Success in updating a business object record
+        '400':
+          schema:
+            $ref: '#/definitions/Error400'
+          description: Bad request
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+        '404':
+          schema:
+            $ref: '#/definitions/Error404'
+          description: Not found
+      parameters:
+      - in: path
+        name: row_id
+        description: Row ID (or empty or _ for all row IDs)
+        type: string
+        required: true
+      - schema:
+          $ref: '#/definitions/PmArrayOfTask'
+        in: body
+        name: body
+      tags:
+      - PmArrayOfTask
+      consumes:
+      - application/json
+  /rest/PmRole:
+    get:
+      summary: Search PmRole business object records or get contextualized metadata
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-pmrole-search
+      responses:
+        '200':
+          schema:
+            $ref: '#/definitions/ArrayOfPmRole'
+          description: Success in searching business object records (or in getting
+            contextualized business object metadata, documentation, ...)
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+      parameters:
+      - in: query
+        name: _metadata
+        description: Metadata?
+        type: boolean
+        required: false
+      - in: query
+        name: _count
+        description: Count?
+        type: boolean
+        required: false
+      - in: query
+        name: _doc
+        description: Documentation?
+        type: boolean
+        required: false
+      - in: query
+        name: pmRolPrjId
+        description: Search filter for Pm prjusr prj id
+        type: string
+        required: false
+      - in: query
+        name: pmRolPrjId__pmPrjName
+        description: Search filter for Pm prjusr prj id Name
+        type: string
+        required: false
+      - in: query
+        name: pmRolUsrId
+        description: Search filter for Pm prjusr usr id
+        type: string
+        required: false
+      - in: query
+        name: pmRolUsrId__usr_login
+        description: Search filter for Login
+        type: string
+        required: false
+      - in: query
+        name: pmRolRole
+        description: Search filter for Pm rol role
+        type: string
+        required: false
+        enum:
+        - ADMIN
+        - USER
+        - MANAGER
+      tags:
+      - PmRole
+  /rest/PmLabel/{row_id}:
+    post:
+      summary: Create a new PmLabelbusiness object record
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-pmlabel-create
+      responses:
+        '200':
+          schema:
+            $ref: '#/definitions/PmLabel'
+          description: Success in creating a new business object record
+        '400':
+          schema:
+            $ref: '#/definitions/Error400'
+          description: Bad request
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+      parameters:
+      - in: path
+        name: row_id
+        description: Row ID (or empty or _ for all row IDs)
+        type: string
+        required: true
+      - schema:
+          $ref: '#/definitions/PmLabel'
+        in: body
+        name: body
+      tags:
+      - PmLabel
+      consumes:
+      - application/json
+    get:
+      summary: Get a PmLabel business object record
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-pmlabel-get
+      responses:
+        '200':
+          schema:
+            $ref: '#/definitions/PmLabel'
+          description: Success in getting a single business object record
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+        '404':
+          schema:
+            $ref: '#/definitions/Error404'
+          description: Not found
+      parameters:
+      - in: path
+        name: row_id
+        description: Row ID (or empty or _ for all row IDs)
+        type: string
+        required: true
+      - in: query
+        name: _inline_documents
+        description: Inline documents?
+        type: boolean
+        required: false
+      - in: query
+        name: _inline_thumbnails
+        description: Inline documents' thumbnails?
+        type: boolean
+        required: false
+      - in: query
+        name: _inline_objects
+        description: Inline objects?
+        type: boolean
+        required: false
+      tags:
+      - PmLabel
+    delete:
+      summary: Delete a PmLabel business object record
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-pmlabel-delete
+      responses:
+        '200':
+          description: Success in deleting a business object record
+        '400':
+          schema:
+            $ref: '#/definitions/Error400'
+          description: Bad request
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+        '404':
+          schema:
+            $ref: '#/definitions/Error404'
+          description: Not found
+      parameters:
+      - in: path
+        name: row_id
+        description: Row ID (or empty or _ for all row IDs)
+        type: string
+        required: true
+      tags:
+      - PmLabel
+    put:
+      summary: Update a PmLabelbusiness object record
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-pmlabel-update
+      responses:
+        '200':
+          schema:
+            $ref: '#/definitions/PmLabel'
+          description: Success in updating a business object record
+        '400':
+          schema:
+            $ref: '#/definitions/Error400'
+          description: Bad request
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+        '404':
+          schema:
+            $ref: '#/definitions/Error404'
+          description: Not found
+      parameters:
+      - in: path
+        name: row_id
+        description: Row ID (or empty or _ for all row IDs)
+        type: string
+        required: true
+      - schema:
+          $ref: '#/definitions/PmLabel'
+        in: body
+        name: body
+      tags:
+      - PmLabel
+      consumes:
+      - application/json
+securityDefinitions:
+  basicAuth:
+    type: basic
+  bearerAuth:
+    in: header
+    name: Authorization
+    type: apiKey
+definitions:
+  Error404:
+    type: object
+    properties:
+      error:
+        description: Error message
+        type: string
+      status:
+        description: Error status
+        type: integer
+        enum:
+        - 404
+  PmTskLbl:
+    type: object
+    properties:
+      pmTsklblTskId__pmTskNumber:
+        description: Pm tsklbl tsk id Number
+        type: integer
+      pmTsklblLblId:
+        description: Pm tsklbl lbl id
+        type: string
+      pmTsklblTskId:
+        description: Pm tsklbl tsk id
+        type: string
+      row_id:
+        description: Unique technical row ID
+        type: string
+      pmTsklblLblId__pmLblName:
+        description: Pm tsklbl lbl id Name
+        type: string
+  PublicationResult:
+    type: object
+    properties:
+      mime:
+        description: MIME type
+        type: string
+      content:
+        description: Content (plain text or base64 encoded)
+        type: string
+  ArrayOfPmDocument:
+    type: array
+    items:
+      $ref: '#/definitions/PmDocument'
+  PmVersion:
+    type: object
+    properties:
+      pmVrsPublicationDate:
+        description: Publication date
+        type: string
+        example: yyyy-MM-dd
+      pmVrsPrjId__pmPrjName:
+        description: Project Name
+        type: string
+      pmVrsPrjId:
+        description: Project
+        type: string
+      pmVrsStatus:
+        description: Status
+        type: string
+        enum:
+        - ALPHA
+        - BETA
+        - PUBLISHED
+      row_id:
+        description: Unique technical row ID
+        type: string
+      pmVrsVersion:
+        description: Version
+        type: number
+      pmVrsName:
+        description: Concatenation of project name and version number
+        type: string
+  PlaceData:
+    type: object
+    properties:
+      coord:
+        description: Geographical coordinates
+        type: string
+      address:
+        description: Address
+        type: string
+      row_id:
+        description: Row ID
+        type: string
+      label1:
+        description: 'Label #1'
+        type: string
+      label2:
+        description: 'Label #2'
+        type: string
+      label3:
+        description: 'Label #3'
+        type: string
+  PmMessage:
+    type: object
+    properties:
+      pmTskMsgId:
+        description: Message
+        type: string
+      pmMsgTitle:
+        description: Title
+        type: string
+      pmMsgPublicationDate:
+        description: Publication date
+        type: string
+        example: yyyy-MM-dd
+      pmMsgVisibility:
+        description: Visibility
+        type: string
+        enum:
+        - ADMIN
+        - ALL
+      pmMsgUsrId:
+        description: User
+        type: string
+      pmMsgMessage:
+        description: Message
+        type: string
+      row_id:
+        description: Unique technical row ID
+        type: string
+      pmMsgUsrId__usr_login:
+        description: Login
+        type: string
+      pmTskMsgId__pmTskNumber:
+        description: Message Number
+        type: integer
+  ArrayOfPmProject:
+    type: array
+    items:
+      $ref: '#/definitions/PmProject'
+  PlaceMapData:
+    type: object
+    properties:
+      places:
+        description: Places
+        type: array
+        items:
+          $ref: '#/definitions/PlaceData'
+      name:
+        description: Name
+        type: string
+  PmArrayOfTask:
+    type: object
+    properties:
+      pmAotTskId:
+        description: Task
+        type: string
+      row_id:
+        description: Unique technical row ID
+        type: string
+      pmAotTskId__pmTskNumber:
+        description: Task Number
+        type: integer
+  PmDocument:
+    type: object
+    properties:
+      pmDocPrjId__pmPrjName:
+        description: Project Name
+        type: string
+      pmDocTskId:
+        description: Task
+        type: string
+      pmDocAttachment:
+        description: Attachment
+        type: object
+      pmDocTitle:
+        description: Title
+        type: string
+      row_id:
+        description: Unique technical row ID
+        type: string
+      pmDocTskId__pmTskNumber:
+        description: Task Number
+        type: integer
+      pmDocPrjId:
+        description: Project
+        type: string
+  PmLabel:
+    type: object
+    properties:
+      pmLblName:
+        description: Name
+        type: string
+      row_id:
+        description: Unique technical row ID
+        type: string
+      pmLblIcone:
+        description: Icone
+        type: object
+  PmRole:
+    type: object
+    properties:
+      pmRolPrjId:
+        description: Pm prjusr prj id
+        type: string
+      pmRolUsrId:
+        description: Pm prjusr usr id
+        type: string
+      pmRolRole:
+        description: Pm rol role
+        type: string
+        enum:
+        - ADMIN
+        - USER
+        - MANAGER
+      row_id:
+        description: Unique technical row ID
+        type: string
+      pmRolPrjId__pmPrjName:
+        description: Pm prjusr prj id Name
+        type: string
+      pmRolUsrId__usr_login:
+        description: Login
+        type: string
+  Error400:
+    type: object
+    properties:
+      error:
+        description: Error message
+        type: string
+      status:
+        description: Error status
+        type: integer
+        enum:
+        - 400
+  ArrayOfPmTskLbl:
+    type: array
+    items:
+      $ref: '#/definitions/PmTskLbl'
+  Error401:
+    type: object
+    properties:
+      error:
+        description: Error message
+        type: string
+      status:
+        description: Error status
+        type: integer
+        enum:
+        - 401
+  Error500:
+    type: object
+    properties:
+      error:
+        description: Error message
+        type: string
+      status:
+        description: Error status
+        type: integer
+        enum:
+        - 500
+  Error403:
+    type: object
+    properties:
+      error:
+        description: Error message
+        type: string
+      status:
+        description: Error status
+        type: integer
+        enum:
+        - 403
+  ArrayOfPmMessage:
+    type: array
+    items:
+      $ref: '#/definitions/PmMessage'
+  ArrayOfPmRole:
+    type: array
+    items:
+      $ref: '#/definitions/PmRole'
+  ArrayOfPmAssignment:
+    type: array
+    items:
+      $ref: '#/definitions/PmAssignment'
+  PmTask:
+    type: object
+    properties:
+      pmTskUsrId__usr_login:
+        description: Login
+        type: string
+      pmTskActualDuration:
+        description: Actual duration
+        type: integer
+      pmTskClose:
+        description: Closing date
+        type: string
+        example: yyyy-MM-dd
+      pmTskPriority:
+        description: Priority
+        type: string
+        enum:
+        - LOW
+        - NORMAL
+        - HIGH
+        - Urgent
+        - IMMEDIATE
+      pmTskExpectedDuration:
+        description: Expected duration
+        type: integer
+      pmTskUsrId:
+        description: User
+        type: string
+      pmTskTitle:
+        description: Title
+        type: string
+      pmTskDescription:
+        description: Description
+        type: string
+      pmTskVrsId__pmVrsPrjId:
+        description: Release Project
+        type: string
+      pmTskVrsId__pmVrsVersion:
+        description: Release Version
+        type: number
+      pmTskCreation:
+        description: Creation date
+        type: string
+        example: yyyy-MM-dd
+      row_id:
+        description: Unique technical row ID
+        type: string
+      pmTskStatus:
+        description: Status
+        type: string
+        enum:
+        - DRAFT
+        - TODO
+        - DOING
+        - DONE
+        - CLOSED
+        - CANCEL
+        - REJECTED
+      pmTskNumber:
+        description: Number
+        type: integer
+      pmTskVrsId:
+        description: Release
+        type: string
+  PmAssignment:
+    type: object
+    properties:
+      pmAssRole:
+        description: Pm ass role
+        type: string
+      pmAssPmTaskid__pmTskNumber:
+        description: Task Number
+        type: integer
+      pmAssPmTaskid__pmTskTitle:
+        description: Task Title
+        type: string
+      pmAssPmUserid__usr_login:
+        description: Login
+        type: string
+      pmAssId:
+        description: Pm ass id
+        type: integer
+      row_id:
+        description: Unique technical row ID
+        type: string
+      pmAssPmTaskid:
+        description: Task
+        type: string
+      pmAssPmUserid:
+        description: User
+        type: string
+  ArrayOfPmVersion:
+    type: array
+    items:
+      $ref: '#/definitions/PmVersion'
+  ArrayOfPmLabel:
+    type: array
+    items:
+      $ref: '#/definitions/PmLabel'
+  ActionResult:
+    type: object
+    properties:
+      result:
+        description: Action result
+        type: string
+  ArrayOfPmArrayOfTask:
+    type: array
+    items:
+      $ref: '#/definitions/PmArrayOfTask'
+  TreeviewData:
+    type: object
+    properties:
+      item:
+        description: Object item with lists of linked objects' items
+        type: object
+  PmProject:
+    type: object
+    properties:
+      pmPrjName:
+        description: Name
+        type: string
+      pmPrjBudget:
+        description: Budget
+        type: number
+      pmPrjDescription:
+        description: Description
+        type: string
+      pmPrjService:
+        description: Service
+        type: string
+        enum:
+        - SERVICEA
+        - SERVICEB
+        - SERVICEC
+      row_id:
+        description: Unique technical row ID
+        type: string
+  ArrayOfPmTask:
+    type: array
+    items:
+      $ref: '#/definitions/PmTask'
+swagger: '2.0'
+info:
+  license:
+    name: Simplicite license
+    url: http://www.simplicitesoftware.com
+  contact:
+    name: Simplicite Software
+    url: http://www.simplicitesoftware.com
+    email: contact@simplicitesoftware.com
+  description: API for module ProjectManagement
+  title: ProjectManagement
+  version: '0.1'
+tags:
+- name: PmArrayOfTask
+  description: Task chain
+- name: PmAssignment
+  description: Assignment
+- name: PmDocument
+  description: Document
+- name: PmLabel
+  description: Label
+- name: PmMessage
+  description: Message
+- name: PmProject
+  description: Project
+- name: PmRole
+  description: PmRole
+- name: PmTask
+  description: Task
+- name: PmTskLbl
+  description: PmTskLbl
+- name: PmVersion
+  description: Release
