@@ -25,7 +25,7 @@ public class PmVersion extends ObjectDB {
 		//msgs.add(Message.formatError("ERROR_CODE", "Message", "fieldName"));
 		//AppLog.info(" DEBUG "+"now: "+now+" datePub: "+getFieldValue("pmVrsPublicationDate")+" diff: "+Tool.compareDate(getFieldValue("pmVrsPublicationDate"), now), getGrant());
 		if(Tool.compareDate(getFieldValue("pmVrsPublicationDate"), now)<0){
-			msgs.add(Message.formatError("PM_ERR_PUBLICATIONDATE", "Publication date must be in the futur", "pmVrsPublicationDate"));
+			msgs.add(Message.formatError("PM_ERR_PUBLICATIONDATE", null, "pmVrsPublicationDate"));
 		}
 		
 		
