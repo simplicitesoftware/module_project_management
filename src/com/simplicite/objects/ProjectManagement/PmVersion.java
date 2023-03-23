@@ -31,4 +31,12 @@ public class PmVersion extends ObjectDB {
 		
 		return msgs;
 	}
+	@Override
+	public String postUpdate() {
+		// TODO Auto-generated method stub
+		if(getFieldValue("pmTskStatus").equalsIgnoreCase("CLOSED") && getFieldValue("pmTskClose").equalsIgnoreCase("") ){
+			AppLog.info(" DEBUG "+"Update close", getGrant());
+		}
+		return super.postUpdate();
+	}
 }
