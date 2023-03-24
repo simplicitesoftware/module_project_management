@@ -5,7 +5,7 @@ import java.util.*;
 import com.simplicite.util.*;
 import com.simplicite.util.exceptions.*;
 import com.simplicite.util.tools.*;
-import com.simplicite.util.Tool;
+
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
@@ -30,6 +30,14 @@ public class PmVersion extends ObjectDB {
 		
 		
 		return msgs;
+	}
+	public int completionVersion(){
+		String sqlQuery = "select row_id from pm_task where pm_tsk_vrs_id="+getRowId(); //select all task of curent project version
+		AppLog.info("DEBUG "+"sqlQuery: "+sqlQuery, getGrant());
+		for(String[] row : getGrant().query(sqlQuery)){// for all assignment invoke increaseUserNbtask methode to update the nbTask of user assigned on task
+			AppLog.info("DEBUG "+"row: "+row[0], getGrant());
+		}
+		return 0;
 	}
 	
 }
