@@ -24,7 +24,9 @@ public class PmTask extends ObjectDB {
 			synchronized(prd){
 				String sqlQuery = "select pm_ass_id from pm_assignment where pm_ass_pm_taskid="+getRowId(); //select all assignement of curent task
 				for(String[] row : getGrant().query(sqlQuery)){// for all assignment invoke increaseUserNbtask methode to update the nbTask of user assigned on task
+					AppLog.info("DEBUG "+"id ass: " +row[0], getGrant());
 					prd.select(this.getFieldValue(row[0]));
+					AppLog.info("DEBUG "+"post select: " +prd.getFieldValue("pmAssRole"), getGrant());
 					try {
 						prd.invokeMethod("increaseUserNbTask",null, null);
 					} catch (Exception e) {
