@@ -1,5 +1,7 @@
 package com.simplicite.objects.ProjectManagement;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.*;
 
 import com.simplicite.util.*;
@@ -18,5 +20,15 @@ public class PmTask extends ObjectDB {
 			AppLog.info(" DEBUG "+"Update close", getGrant());
 		}
 		return super.postUpdate();
+	}
+	public int ActualDuration(){
+		var begin = this.getFieldValue("pmTskCreation");
+		var  end = this.getFieldValue("pmTskEffectiveClosingDate");
+		if(end.equals("") ){
+			LocalDate dateObj = LocalDate.now();
+			DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+			end = dateObj.format(formatter);
+		}
+		return Tool.diffDate(begin, end);
 	}
 }
