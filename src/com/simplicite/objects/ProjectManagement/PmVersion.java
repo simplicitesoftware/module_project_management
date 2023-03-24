@@ -35,7 +35,7 @@ public class PmVersion extends ObjectDB {
 		String msg="";
 		// release management
 		if(getStatus().equals("PUBLISHED") && !getOldStatus().equals("PUBLISHED")){
-			String sqlQuery = "pm_tsk_status from pm_task where pm_vrs_id="+getRowId();
+			String sqlQuery = "Select pm_tsk_status from pm_task where pm_vrs_id="+getRowId();
 			for(String[] row : getGrant().query(sqlQuery)){
 				if(row[0].equals("TODO") || row[0].equals("DOING") || row[0].equals("DONE") || row[0].equals("DRAFT")){
 					msg="All task must be closed, rejected or cancel";
