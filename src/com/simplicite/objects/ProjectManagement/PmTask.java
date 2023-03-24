@@ -22,7 +22,7 @@ public class PmTask extends ObjectDB {
 		if(getStatus().equals("TODO") && !getOldStatus().equals("DOING")){// If task is toDo status from other status expte Doing we have to inrease the number of task of user
 			ObjectDB prd = this.getGrant().getTmpObject("PmAssignment");
 			synchronized(prd){
-				String sqlQuery = "select pm_ass_is from pm_assignment where pm_ass_pm_taskid="+getRowId(); //select all assignement of curent task
+				String sqlQuery = "select pm_ass_id from pm_assignment where pm_ass_pm_taskid="+getRowId(); //select all assignement of curent task
 				for(String[] row : getGrant().query(sqlQuery)){// for all assignment invoke increaseUserNbtask methode to update the nbTask of user assigned on task
 					prd.select(this.getFieldValue(row[0]));
 					try {
@@ -38,7 +38,7 @@ public class PmTask extends ObjectDB {
 		}else if((getStatus().equals("DONE") || getStatus().equals("CANCEL") || getStatus().equals("REJECTED")) && (getOldStatus().equals("TODO") || getOldStatus().equals("DOING") )){// if task is done,cancel or rejected from to do or doing status we have to decrease the number of task of user
 			ObjectDB prd = this.getGrant().getTmpObject("PmAssignment");
 			synchronized(prd){
-				String sqlQuery = "select pm_ass_is from pm_assignment where pm_ass_pm_taskid="+getRowId(); //select all assignement of curent task
+				String sqlQuery = "select pm_ass_id from pm_assignment where pm_ass_pm_taskid="+getRowId(); //select all assignement of curent task
 				for(String[] row : getGrant().query(sqlQuery)){// for all assignment invoke decreaseUserNbtask methode to update the nbTask of user assigned on task
 					prd.select(this.getFieldValue(row[0]));
 					try {
@@ -60,7 +60,7 @@ public class PmTask extends ObjectDB {
 		if(getStatus().equals("TODO") || getStatus().equals("DOING")){// if task is to do or doing status at delete  we have to decrease the number of task of user
 			ObjectDB prd = this.getGrant().getTmpObject("PmAssignment");
 			synchronized(prd){
-				String sqlQuery = "select pm_ass_is from pm_assignment where pm_ass_pm_taskid="+getRowId(); //select all assignement of curent task
+				String sqlQuery = "select pm_ass_id from pm_assignment where pm_ass_pm_taskid="+getRowId(); //select all assignement of curent task
 				for(String[] row : getGrant().query(sqlQuery)){// for all assignment invoke decreaseUserNbtask methode to update the nbTask of user assigned on task
 					prd.select(this.getFieldValue(row[0]));
 					try {
