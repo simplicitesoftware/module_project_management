@@ -31,4 +31,13 @@ public class PmTask extends ObjectDB {
 		}
 		return Tool.diffDate(begin, end);
 	}
+	public boolean pmTskConstraint_method(){
+		if(this.getFieldValue("pmTskStatus").equals("CLOSED") && this.getFieldValue("pmTskEffectiveClosingDate").equals("")){
+			AppLog.info(" DEBUG "+"contraint True", getGrant());
+			return true;
+		}
+		AppLog.info(" DEBUG "+"contraint false", getGrant());
+		return false;
+	}
+
 }
