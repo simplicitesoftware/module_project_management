@@ -60,6 +60,7 @@ public class PmVersion extends ObjectDB {
 				finishedTaskCount+=1;
 			}
 		}
+		if (taskCount==0)return 0;
 		return (finishedTaskCount*100)/taskCount;
 	}
 	
