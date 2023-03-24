@@ -16,18 +16,12 @@ public class PmTask extends ObjectDB {
 	@Override
 	public String postUpdate() {
 		// TODO Auto-generated method stub
-		if(getStatus().equals("CLOSED") && getFieldValue("pmTskClose").equals("") ){
-			AppLog.info(" DEBUG "+"Update close", getGrant());
-		}
 		if(getStatus().equals("TODO") && !getOldStatus().equals("DOING")){// If task is toDo status from other status expte Doing we have to inrease the number of task of user
 			ObjectDB prd = this.getGrant().getTmpObject("PmAssignment");
 			synchronized(prd){
 				String sqlQuery = "select pm_ass_id from pm_assignment where pm_ass_pm_taskid="+getRowId(); //select all assignement of curent task
 				for(String[] row : getGrant().query(sqlQuery)){// for all assignment invoke increaseUserNbtask methode to update the nbTask of user assigned on task
-					AppLog.info("DEBUG "+"sqlQuery: " +sqlQuery, getGrant());
-					AppLog.info("DEBUG "+"id ass: " +row[0], getGrant());
 					prd.select(row[0]);
-					AppLog.info("DEBUG "+"post select: " +prd.getFieldValue("pmAssRole"), getGrant());
 					try {
 						prd.invokeMethod("increaseUserNbTask",null, null);
 					} catch (Exception e) {
