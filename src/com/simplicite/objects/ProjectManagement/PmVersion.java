@@ -32,12 +32,17 @@ public class PmVersion extends ObjectDB {
 		return msgs;
 	}
 	public int completionVersion(){
-		String sqlQuery = "select row_id from pm_task where pm_tsk_vrs_id="+getRowId(); //select all task of curent project version
+		String sqlQuery = "select pm_tsk_status from pm_task where pm_tsk_vrs_id="+getRowId(); //select all task of curent project version
 		AppLog.info("DEBUG "+"sqlQuery: "+sqlQuery, getGrant());
+		int taskCount=0;
+		int finishedTaskCount=0;
 		for(String[] row : getGrant().query(sqlQuery)){// for all assignment invoke increaseUserNbtask methode to update the nbTask of user assigned on task
-			AppLog.info("DEBUG "+"row: "+row[0], getGrant());
+			taskCount+=1;
+			if (row[0].equals("DRAFT") || row[0].equals("CLOSED") || row[0].equals("CANCEL") || row[0].equals("REJECTED")){
+				finishedTaskCount+=1;
+			}
 		}
-		return 0;
+		return (finishedTaskCount*100)/taskCount;
 	}
 	
 }
