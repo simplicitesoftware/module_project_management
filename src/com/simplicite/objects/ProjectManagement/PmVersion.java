@@ -34,27 +34,16 @@ public class PmVersion extends ObjectDB {
 	public String postUpdate() {
 		String msg="";
 		// release management
-		String sqlQuery = "select ROW_ID from pm_label where pm_lbl_name=Feature";	
-		// lblName is key so we have allmost 1 row
-		List<String[]> queryResult =getGrant().query(sqlQuery);
-		if (queryResult.size()>0){
-			String labelId=queryResult.get(0)[0];
-			sqlQuery = "select row_id,pm_tsk_status from pm_task where pm_vrs_prj_id="+getRowId();
+		if(getStatus().equals("PUBLISHED") && !getOldStatus().equals("PUBLISHED")){
+			String sqlQuery = "pm_tsk_status from pm_task where pm_vrs_prj_id="+getRowId();
 			for(String[] row : getGrant().query(sqlQuery)){
-				if(row[1].equals("TODO") || row[1].equals("DOING") || row[1].equals("DONE") || row[1].equals("DRAFT")){
-					String sqlQueryLabel = "select ROW_ID from pm_tsk_lbl where pm_tsklbl_tsk_id="+row[0]+" AND pm_tsklbl_lbl_id="+labelId;	// select labeling where label is feature and task is not do task of version.
-					if(getGrant().query(sqlQueryLabel).size()==0){
-						msg="All Feature task must be closed, rejected or cancel";
-						break;
-					}
+				if(row[0].equals("TODO") || row[0].equals("DOING") || row[0].equals("DONE") || row[0].equals("DRAFT")){
+					msg="All task must be closed, rejected or cancel";
+					break;
+					
 				}
-				
 			}
-
-		}else{
-			AppLog.info(getClass(),"postUpdate" ,"label Feature not found" , getGrant());
 		}
-		
 		if (msg.equals("")){
 			return super.postUpdate();
 		}
