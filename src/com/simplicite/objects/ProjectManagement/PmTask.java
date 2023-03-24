@@ -21,7 +21,7 @@ public class PmTask extends ObjectDB {
 		}
 		return super.postUpdate();
 	}
-	public int ActualDuration(){
+	public int ActualDuration(){//used by the calculated field pmTskActualDuraition
 		var begin = this.getFieldValue("pmTskCreation");
 		var  end = this.getFieldValue("pmTskEffectiveClosingDate");
 		if(end.equals("") ){
