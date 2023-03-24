@@ -36,7 +36,7 @@ public class PmVersion extends ObjectDB {
 		AppLog.info("DEBUG "+"sqlQuery: "+sqlQuery, getGrant());
 		int taskCount=0;
 		int finishedTaskCount=0;
-		for(String[] row : getGrant().query(sqlQuery)){// for all assignment invoke increaseUserNbtask methode to update the nbTask of user assigned on task
+		for(String[] row : getGrant().query(sqlQuery)){// for all task update counter
 			taskCount+=1;
 			if (row[0].equals("DRAFT") || row[0].equals("CLOSED") || row[0].equals("CANCEL") || row[0].equals("REJECTED")){
 				finishedTaskCount+=1;
