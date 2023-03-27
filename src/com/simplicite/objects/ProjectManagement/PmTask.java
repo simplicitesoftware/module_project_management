@@ -21,7 +21,7 @@ public class PmTask extends ObjectDB {
 			synchronized(tmpAssignment){
 				tmpAssignment.resetFilters();
 				tmpAssignment.setFieldFilter("pmAssPmTaskid", getRowId());
-				AppLog.info("DEBUG 2 postUpdate "+tmpAssignment.search().get(0)[0], getGrant());
+				AppLog.info("DEBUG 2 postUpdate "+tmpAssignment.search().toString(), getGrant());
 				String sqlQuery = "select pm_ass_id from pm_assignment where pm_ass_pm_taskid="+getRowId(); //select all assignement of curent task
 				for(String[] row : getGrant().query(sqlQuery)){// for all assignment invoke increaseUserNbtask methode to update the nbTask of user assigned on task
 					tmpAssignment.select(row[0]);
