@@ -11014,6 +11014,36 @@
    }]
   },
   {
+   "object": "Resource",
+   "label": "Resources",
+   "icon": "img/system/resource",
+   "field": "row_module_id",
+   "list": [{
+    "object": "Resource",
+    "userkey": "ObjectInternal(PmProject)~ANY~pmPrjPubHtmlStyle",
+    "item": {
+     "res_object": {
+      "item": {"obo_name": "PmProject"},
+      "icon": "img/system/business_object",
+      "label": "Business object",
+      "userkeylabel": "PmProject",
+      "object": "ObjectInternal"
+     },
+     "res_type": "CSS",
+     "res_lang": "ANY",
+     "res_code": "pmPrjPubHtmlStyle",
+     "res_cached": false,
+     "res_file": {
+      "path": "resources/ObjectInternal/PmProject/pmPrjPubHtmlStyle.css",
+      "mime": "text/css",
+      "name": "pmPrjPubHtmlStyle.css"
+     },
+     "res_image": null,
+     "row_module_id__mdl_name": "ProjectManagement"
+    }
+   }]
+  },
+  {
    "object": "TranslateAction",
    "label": "Action translation",
    "icon": "img/system/translation",
