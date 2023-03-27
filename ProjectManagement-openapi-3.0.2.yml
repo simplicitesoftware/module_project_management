@@ -284,6 +284,59 @@ components:
       type: array
       items:
         $ref: '#/components/schemas/PmRole'
+    PmUser:
+      type: object
+      properties:
+        row_module_id__mdl_name:
+          description: Module name
+          type: string
+        usr_image_id:
+          description: Picture
+          type: object
+        usr_email:
+          description: Email address
+          type: string
+        usr_active:
+          description: Active
+          type: string
+          enum:
+          - '0'
+          - '1'
+          - '2'
+          - '3'
+        row_module_id:
+          description: Module
+          type: string
+        usr_login:
+          description: Login
+          type: string
+        usr_home_id__viw_name:
+          description: Home page Name
+          type: string
+        usr_last_name:
+          description: Last name
+          type: string
+        usr_cell_num:
+          description: Mobile/cellular phone number
+          type: string
+        pmUsrNbTask:
+          description: Number of current task
+          type: integer
+        usr_lang:
+          description: Language
+          type: string
+          enum:
+          - ENU
+          - FRA
+        row_id:
+          description: Unique technical row ID
+          type: string
+        usr_home_id:
+          description: Home page
+          type: string
+        usr_first_name:
+          description: First name
+          type: string
     ArrayOfPmAssignment:
       type: array
       items:
@@ -311,7 +364,7 @@ components:
           - LOW
           - NORMAL
           - HIGH
-          - Urgent
+          - URGENT
           - IMMEDIATE
         pmTskUsrId__usr_first_name:
           description: First name
@@ -414,6 +467,10 @@ components:
       type: array
       items:
         $ref: '#/components/schemas/PmTaskHistoric'
+    ArrayOfPmUser:
+      type: array
+      items:
+        $ref: '#/components/schemas/PmUser'
     ActionResult:
       type: object
       properties:
@@ -476,7 +533,7 @@ components:
           - LOW
           - NORMAL
           - HIGH
-          - Urgent
+          - URGENT
           - IMMEDIATE
         pmTskUsrId__usr_first_name:
           description: First name
@@ -698,7 +755,7 @@ paths:
           - LOW
           - NORMAL
           - HIGH
-          - Urgent
+          - URGENT
           - IMMEDIATE
         in: query
         name: pmTskPriority
@@ -1345,6 +1402,201 @@ paths:
         required: true
       tags:
       - PmDocument
+  /rest/PmUser/{row_id}:
+    post:
+      summary: Create a new PmUserbusiness object record
+      security:
+      - bearerAuth: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PmUser'
+      operationId: obj-pmuser-create
+      responses:
+        '200':
+          description: Success in creating a new business object record
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PmUser'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error400'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error401'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error500'
+      parameters:
+      - schema:
+          type: string
+        in: path
+        name: row_id
+        description: Row ID (or empty or _ for all row IDs)
+        required: true
+      tags:
+      - PmUser
+    get:
+      summary: Get a PmUser business object record
+      security:
+      - bearerAuth: []
+      operationId: obj-pmuser-get
+      responses:
+        '200':
+          description: Success in getting a single business object record
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PmUser'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error401'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error500'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error404'
+      parameters:
+      - schema:
+          type: string
+        in: path
+        name: row_id
+        description: Row ID (or empty or _ for all row IDs)
+        required: true
+      - schema:
+          type: boolean
+        in: query
+        name: _inline_documents
+        description: Inline documents?
+        required: false
+      - schema:
+          type: boolean
+        in: query
+        name: _inline_thumbnails
+        description: Inline documents' thumbnails?
+        required: false
+      - schema:
+          type: boolean
+        in: query
+        name: _inline_objects
+        description: Inline objects?
+        required: false
+      tags:
+      - PmUser
+    delete:
+      summary: Delete a PmUser business object record
+      security:
+      - bearerAuth: []
+      operationId: obj-pmuser-delete
+      responses:
+        '200':
+          description: Success in deleting a business object record
+          content:
+            application/json: {}
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error400'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error401'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error500'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error404'
+      parameters:
+      - schema:
+          type: string
+        in: path
+        name: row_id
+        description: Row ID (or empty or _ for all row IDs)
+        required: true
+      tags:
+      - PmUser
+    put:
+      summary: Update a PmUserbusiness object record
+      security:
+      - bearerAuth: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PmUser'
+      operationId: obj-pmuser-update
+      responses:
+        '200':
+          description: Success in updating a business object record
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PmUser'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error400'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error401'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error500'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error404'
+      parameters:
+      - schema:
+          type: string
+        in: path
+        name: row_id
+        description: Row ID (or empty or _ for all row IDs)
+        required: true
+      tags:
+      - PmUser
   /rest/PmProject/{row_id}:
     post:
       summary: Create a new PmProjectbusiness object record
@@ -2420,7 +2672,7 @@ paths:
           - LOW
           - NORMAL
           - HIGH
-          - Urgent
+          - URGENT
           - IMMEDIATE
         in: query
         name: pmTskPriority
@@ -2960,6 +3212,139 @@ paths:
         required: false
       tags:
       - PmAssignment
+  /rest/PmUser:
+    get:
+      summary: Search PmUser business object records or get contextualized metadata
+      security:
+      - bearerAuth: []
+      operationId: obj-pmuser-search
+      responses:
+        '200':
+          description: Success in searching business object records (or in getting
+            contextualized business object metadata, documentation, ...)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ArrayOfPmUser'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error401'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error500'
+      parameters:
+      - schema:
+          type: boolean
+        in: query
+        name: _metadata
+        description: Metadata?
+        required: false
+      - schema:
+          type: boolean
+        in: query
+        name: _count
+        description: Count?
+        required: false
+      - schema:
+          type: boolean
+        in: query
+        name: _doc
+        description: Documentation?
+        required: false
+      - schema:
+          type: integer
+        in: query
+        name: pmUsrNbTask
+        description: Search filter for Number of current task
+        required: false
+      - schema:
+          type: string
+        in: query
+        name: usr_image_id
+        description: Search filter for Picture
+        required: false
+      - schema:
+          type: string
+        in: query
+        name: usr_login
+        description: Search filter for Login
+        required: false
+      - schema:
+          type: string
+        in: query
+        name: usr_first_name
+        description: Search filter for First name
+        required: false
+      - schema:
+          type: string
+        in: query
+        name: usr_last_name
+        description: Search filter for Last name
+        required: false
+      - schema:
+          type: string
+          enum:
+          - ENU
+          - FRA
+        in: query
+        name: usr_lang
+        description: Search filter for Language
+        required: false
+      - schema:
+          type: string
+        in: query
+        name: usr_email
+        description: Search filter for Email address
+        required: false
+      - schema:
+          type: string
+        in: query
+        name: usr_cell_num
+        description: Search filter for Mobile/cellular phone number
+        required: false
+      - schema:
+          type: string
+          enum:
+          - '0'
+          - '1'
+          - '2'
+          - '3'
+        in: query
+        name: usr_active
+        description: Search filter for Active
+        required: false
+      - schema:
+          type: string
+        in: query
+        name: usr_home_id
+        description: Search filter for Home page
+        required: false
+      - schema:
+          type: string
+        in: query
+        name: usr_home_id__viw_name
+        description: Search filter for Home page Name
+        required: false
+      - schema:
+          type: string
+        in: query
+        name: row_module_id
+        description: Search filter for Module
+        required: false
+      - schema:
+          type: string
+        in: query
+        name: row_module_id__mdl_name
+        description: Search filter for Module name
+        required: false
+      tags:
+      - PmUser
   /rest/PmVersion/{row_id}:
     post:
       summary: Create a new PmVersionbusiness object record
@@ -3937,5 +4322,7 @@ tags:
   description: Task historic
 - name: PmTskLbl
   description: Labeling
+- name: PmUser
+  description: User
 - name: PmVersion
   description: Release

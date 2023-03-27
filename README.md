@@ -181,11 +181,11 @@ Task of project
     - `CANCEL` Cancel
     - `REJECTED` Rejected
 * `PM_TSK_PRIORITE`
-    - `LOW` Low
+    - `LOW` Faible
     - `NORMAL` Normal
-    - `HIGH` Hight
-    - `Urgent` Urgent
-    - `IMMEDIATE` Immediate
+    - `HIGH` Haute
+    - `URGENT` Urgent
+    - `IMMEDIATE` Immédiat
 
 `PmTaskHistoric` business object definition
 -------------------------------------------
@@ -225,11 +225,11 @@ Task of project
     - `CANCEL` Cancel
     - `REJECTED` Rejected
 * `PM_TSK_PRIORITE`
-    - `LOW` Low
+    - `LOW` Faible
     - `NORMAL` Normal
-    - `HIGH` Hight
-    - `Urgent` Urgent
-    - `IMMEDIATE` Immediate
+    - `HIGH` Haute
+    - `URGENT` Urgent
+    - `IMMEDIATE` Immédiat
 
 `PmTskLbl` business object definition
 -------------------------------------
@@ -244,6 +244,17 @@ Task of project
 | _Ref. `pmTsklblTskId.pmTskNumber`_                           | _int(100)_                               |          |           |          | -                                                                                |
 | `pmTsklblLblId` link to **`PmLabel`**                        | id                                       | yes*     | yes       |          | -                                                                                |
 | _Ref. `pmTsklblLblId.pmLblName`_                             | _char(100)_                              |          |           |          | -                                                                                |
+
+`PmUser` business object definition
+-----------------------------------
+
+
+
+### Fields
+
+| Name                                                         | Type                                     | Required | Updatable | Personal | Description                                                                      |
+|--------------------------------------------------------------|------------------------------------------|----------|-----------|----------|----------------------------------------------------------------------------------|
+| `pmUsrNbTask`                                                | int(100)                                 |          |           |          | -                                                                                |
 
 `PmVersion` business object definition
 --------------------------------------

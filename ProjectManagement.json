@@ -401,7 +401,7 @@
       "lov_list_id__lov_name": "PM_TSK_PRIORITE",
       "lov_code": "LOW",
       "lov_order_by": 10,
-      "lov_label": "Low",
+      "lov_label": "Faible",
       "row_module_id__mdl_name": "ProjectManagement",
       "lov_color": null,
       "lov_color_bg": null,
@@ -431,7 +431,7 @@
       "lov_list_id__lov_name": "PM_TSK_PRIORITE",
       "lov_code": "HIGH",
       "lov_order_by": 30,
-      "lov_label": "Hight",
+      "lov_label": "Haute",
       "row_module_id__mdl_name": "ProjectManagement",
       "lov_color": null,
       "lov_color_bg": null,
@@ -441,10 +441,10 @@
     },
     {
      "object": "FieldListCode",
-     "userkey": "PM_TSK_PRIORITE~Urgent",
+     "userkey": "PM_TSK_PRIORITE~URGENT",
      "item": {
       "lov_list_id__lov_name": "PM_TSK_PRIORITE",
-      "lov_code": "Urgent",
+      "lov_code": "URGENT",
       "lov_order_by": 40,
       "lov_label": "Urgent",
       "row_module_id__mdl_name": "ProjectManagement",
@@ -461,7 +461,7 @@
       "lov_list_id__lov_name": "PM_TSK_PRIORITE",
       "lov_code": "IMMEDIATE",
       "lov_order_by": 50,
-      "lov_label": "Immediate",
+      "lov_label": "Immédiat",
       "row_module_id__mdl_name": "ProjectManagement",
       "lov_color": null,
       "lov_color_bg": null,
@@ -838,23 +838,23 @@
     },
     {
      "object": "FieldListValue",
-     "userkey": "PM_TSK_PRIORITE~Urgent~ENU",
-     "item": {
-      "lov_code_id__lov_list_id__lov_name": "PM_TSK_PRIORITE",
-      "lov_code_id__lov_code": "Urgent",
-      "lov_lang": "ENU",
-      "lov_value": "Urgent",
-      "row_module_id__mdl_name": "ProjectManagement"
-     }
-    },
-    {
-     "object": "FieldListValue",
      "userkey": "PM_TSK_PRIORITE~IMMEDIATE~ENU",
      "item": {
       "lov_code_id__lov_list_id__lov_name": "PM_TSK_PRIORITE",
       "lov_code_id__lov_code": "IMMEDIATE",
       "lov_lang": "ENU",
       "lov_value": "Immediate",
+      "row_module_id__mdl_name": "ProjectManagement"
+     }
+    },
+    {
+     "object": "FieldListValue",
+     "userkey": "PM_TSK_PRIORITE~URGENT~ENU",
+     "item": {
+      "lov_code_id__lov_list_id__lov_name": "PM_TSK_PRIORITE",
+      "lov_code_id__lov_code": "URGENT",
+      "lov_lang": "ENU",
+      "lov_value": "Urgent",
       "row_module_id__mdl_name": "ProjectManagement"
      }
     },
@@ -893,23 +893,23 @@
     },
     {
      "object": "FieldListValue",
-     "userkey": "PM_TSK_PRIORITE~Urgent~FRA",
-     "item": {
-      "lov_code_id__lov_list_id__lov_name": "PM_TSK_PRIORITE",
-      "lov_code_id__lov_code": "Urgent",
-      "lov_lang": "FRA",
-      "lov_value": "Urgent",
-      "row_module_id__mdl_name": "ProjectManagement"
-     }
-    },
-    {
-     "object": "FieldListValue",
      "userkey": "PM_TSK_PRIORITE~IMMEDIATE~FRA",
      "item": {
       "lov_code_id__lov_list_id__lov_name": "PM_TSK_PRIORITE",
       "lov_code_id__lov_code": "IMMEDIATE",
       "lov_lang": "FRA",
       "lov_value": "Immédiat",
+      "row_module_id__mdl_name": "ProjectManagement"
+     }
+    },
+    {
+     "object": "FieldListValue",
+     "userkey": "PM_TSK_PRIORITE~URGENT~FRA",
+     "item": {
+      "lov_code_id__lov_list_id__lov_name": "PM_TSK_PRIORITE",
+      "lov_code_id__lov_code": "URGENT",
+      "lov_lang": "FRA",
+      "lov_value": "Urgent",
       "row_module_id__mdl_name": "ProjectManagement"
      }
     },
@@ -3130,7 +3130,7 @@
       "fld_updall": true,
       "fld_case": null,
       "fld_righttoleft": false,
-      "fld_rendering": null,
+      "fld_rendering": "BAR",
       "fld_speech": null,
       "fld_calc": "(function() {\n\t\n\treturn obj.completionVersion();\n\t\n})();",
       "fld_objlist": null,
@@ -4459,7 +4459,7 @@
       "obo_exportorder": null,
       "obo_distinct": false,
       "obo_indexable": false,
-      "obo_groupby": false,
+      "obo_groupby": true,
       "obo_dfltref": null,
       "obo_template_id__tpl_name": "PmTache",
       "obo_cache": "D",
@@ -4662,6 +4662,91 @@
       "obo_tray": true,
       "obo_dashboard": true,
       "obo_prefix": "tsklbl",
+      "obo_search_ts": null,
+      "obo_minrows": null,
+      "obo_maxrows": null,
+      "obo_sortable": true,
+      "obo_list_areas": null
+     }
+    },
+    {
+     "object": "ObjectInternal",
+     "userkey": "PmUser",
+     "item": {
+      "obo_name": {
+       "value": "PmUser",
+       "oldvalue": "PmUser",
+       "oldvalue1": "GdpUser",
+       "oldvalue2": "GdpUtilisateur",
+       "oldvalue3": "GdpUtilisateur"
+      },
+      "obo_dbtable": "m_user",
+      "obo_role": "OBJ",
+      "obo_class": null,
+      "obo_script_id": {
+       "path": "src/com/simplicite/objects/ProjectManagement/PmUser.java",
+       "mime": "text/plain",
+       "name": "PmUser.java"
+      },
+      "obo_usets": "1",
+      "obo_nosearch": "1",
+      "obo_comment": null,
+      "obo_type": "O",
+      "obo_searchspec": null,
+      "obo_delspec": null,
+      "obo_exportorder": null,
+      "obo_distinct": false,
+      "obo_indexable": false,
+      "obo_groupby": false,
+      "obo_dfltref": null,
+      "obo_template_id__tpl_name": "PmUtilisateur",
+      "obo_cache": "D",
+      "obo_copy": true,
+      "obo_export": true,
+      "obo_pagine": true,
+      "obo_srh_predef": ["1"],
+      "obo_selrow": true,
+      "obo_updall": true,
+      "obo_delall": true,
+      "obo_listsearch": true,
+      "obo_list_edit": [
+       "N",
+       "L",
+       "E"
+      ],
+      "obo_useform": true,
+      "obo_title": null,
+      "obo_icon": "user",
+      "obo_refcount": false,
+      "obo_tree": false,
+      "obo_viewmode": "V",
+      "obo_historic": null,
+      "obo_printable": true,
+      "obo_followlink": true,
+      "obo_mergeable": false,
+      "obo_social": ["1"],
+      "obo_rowid_id__fld_name": null,
+      "obo_extend_id__obj_name": "SimpleUser",
+      "row_module_id__mdl_name": "ProjectManagement",
+      "obo_btn_reload": "P",
+      "obo_btn_prefs": "P",
+      "obo_btn_del": "P",
+      "obo_btn_copy": "P",
+      "obo_btn_export": "P",
+      "obo_btn_listadd": "1",
+      "obo_btn_listedit": "1",
+      "obo_btn_listupsert": "1",
+      "obo_btn_updall": "P",
+      "obo_btn_delall": "P",
+      "obo_btn_merge": "P",
+      "obo_btn_save": true,
+      "obo_btn_saveclose": true,
+      "obo_btn_savenew": true,
+      "obo_btn_savecopy": true,
+      "obo_btn_close": true,
+      "obo_tray": true,
+      "obo_dashboard": true,
+      "obo_prefix": "usr",
       "obo_search_ts": null,
       "obo_minrows": null,
       "obo_maxrows": null,
@@ -6655,7 +6740,7 @@
       "obf_ref_object_id__obo_name": "PmTask",
       "obf_cascad": "C",
       "obf_card": "0,n",
-      "obf_visible": true,
+      "obf_visible": false,
       "obf_ref_export": false,
       "obf_copy": false,
       "obf_ref_order": 99990,
@@ -7896,7 +7981,7 @@
       "obf_cascad": "C",
       "obf_card": "0,n",
       "obf_query": null,
-      "obf_visible": true,
+      "obf_visible": false,
       "obf_ref_export": false,
       "obf_copy": false,
       "obf_associate": null,
@@ -10846,12 +10931,15 @@
      "rch_user_id__usr_login": "designer",
      "rch_name": "PmUserTask",
      "rch_public": false,
-     "rch_request": {"pmTskStatus": [
-      "(DRAFT",
-      "TODO",
-      "DOING",
-      ")"
-     ]},
+     "rch_request": {
+      "order__pmTskPriority": "1",
+      "pmTskStatus": [
+       "(DRAFT",
+       "TODO",
+       "DOING",
+       ")"
+      ]
+     },
      "row_module_id__mdl_name": "ProjectManagement"
     }
    }]
