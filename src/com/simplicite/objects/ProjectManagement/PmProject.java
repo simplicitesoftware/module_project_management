@@ -36,6 +36,7 @@ public class PmProject extends ObjectDB {
 					labels += rowLabel[0]+=", ";
 				}
 				labels = labels.substring(0, labels.length()-2);
+				AppLog.info("DEBUG pubHtml: "+labels.length() , getGrant());
 				html += "<tr>"+"\n";
 				html += "<td>"+rowTask[number]+"</td>"+"\n";
 				html += "<td>"+rowTask[title]+"</td>"+"\n";
