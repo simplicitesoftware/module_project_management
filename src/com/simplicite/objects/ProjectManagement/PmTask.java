@@ -19,7 +19,9 @@ public class PmTask extends ObjectDB {
 		if(getStatus().equals("TODO") && !getOldStatus().equals("DOING")){// If task is toDo status from other status expte Doing we have to inrease the number of task of user
 			ObjectDB tmpAssignment = this.getGrant().getTmpObject("PmAssignment");
 			synchronized(tmpAssignment){
-				AppLog.info("DEBUG 2 postUpdate"+tmpAssignment.search().get(0)[0], getGrant());
+				tmpAssignment.resetFilters();
+				tmpAssignment.setFieldFilter("pmAssPmTaskid", getRowId());
+				AppLog.info("DEBUG 2 postUpdate "+tmpAssignment.search().get(1)[0], getGrant());
 				String sqlQuery = "select pm_ass_id from pm_assignment where pm_ass_pm_taskid="+getRowId(); //select all assignement of curent task
 				for(String[] row : getGrant().query(sqlQuery)){// for all assignment invoke increaseUserNbtask methode to update the nbTask of user assigned on task
 					tmpAssignment.select(row[0]);
