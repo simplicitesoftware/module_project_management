@@ -31,7 +31,7 @@ public class PmVersion extends ObjectDB {
 		return msgs;
 	}
 	@Override
-	public String postUpdate() {
+	public String preUpdate() {
 		String msg="";
 		// release management
 		if(getStatus().equals("PUBLISHED") && !getOldStatus().equals("PUBLISHED")){
@@ -45,10 +45,11 @@ public class PmVersion extends ObjectDB {
 			}
 		}
 		if (msg.equals("")){
-			return super.postUpdate();
+			return super.preUpdate();
 		}
 		return msg;
 	}
+
 	public int completionVersion(){
 		String sqlQuery = "select pm_tsk_status from pm_task where pm_tsk_vrs_id="+getRowId(); //select all task of curent project version
 		AppLog.info("DEBUG "+"sqlQuery: "+sqlQuery, getGrant());
