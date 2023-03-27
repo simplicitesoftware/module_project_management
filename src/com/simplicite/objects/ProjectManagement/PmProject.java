@@ -26,9 +26,7 @@ public class PmProject extends ObjectDB {
 			html += "Published on "+row[2]+"\n";
 			String sqlQueryTask = "select row_id, pm_tsk_number, pm_tsk_title,pm_tsk_description,pm_tsk_status,pm_tsk_priority,pm_tsk_effective_closing_date,pm_tsk_expected_duration,pm_tsk_creation  from pm_task where pm_tsk_vrs_id="+row[0]+"order by pm_tsk_creation DESC";
 			int id = 0; int number = 1; int title= 2; int description= 3; int status= 4; int priority= 5; int effectiveClosingDate= 6; int expectedDuration=7;int creation=8;
-			html += "<table>"+"\n";
-			html += "<thead><tr><th>Number</th><th>Title</th><th>Description</th><th>Status</th><th>Priority</th><th>Creation date</th><th>Effective closing date</th><th>Expeted Duration</th><th>labels</th></tr></thead>"+"\n";
-			html += "<tbody>"+"\n";
+			String table="";
 			for(String[] rowTask : getGrant().query(sqlQueryTask)){
 				String sqlQueryLabel = "select l.pm_lbl_name from pm_label l  left join pm_tsk_lbl tl on tl.pm_tsklbl_lbl_id=l.row_id left join pm_task t on t.row_id=tl.pm_tsklbl_tsk_id where t.row_id = "+rowTask[id];
 				String labels= "";
@@ -38,20 +36,27 @@ public class PmProject extends ObjectDB {
 				if (labels != ""){
 					labels = labels.substring(0, labels.length()-2);
 				}
-				html += "<tr>"+"\n";
-				html += "<td>"+rowTask[number]+"</td>"+"\n";
-				html += "<td>"+rowTask[title]+"</td>"+"\n";
-				html += "<td>"+rowTask[description]+"</td>"+"\n";
-				html += "<td>"+rowTask[status]+"</td>"+"\n";
-				html += "<td>"+rowTask[priority]+"</td>"+"\n";
-				html += "<td>"+rowTask[creation]+"</td>"+"\n";
-				html += "<td>"+rowTask[effectiveClosingDate]+"</td>"+"\n";
-				html += "<td>"+rowTask[expectedDuration]+"</td>"+"\n";
-				html += "<td>"+labels+"</td>"+"\n";
-				html += "</tr>"+"\n";
+				table += "<tr>"+"\n";
+				table += "<td>"+rowTask[number]+"</td>"+"\n";
+				table += "<td>"+rowTask[title]+"</td>"+"\n";
+				table += "<td>"+rowTask[description]+"</td>"+"\n";
+				table += "<td>"+rowTask[status]+"</td>"+"\n";
+				table += "<td>"+rowTask[priority]+"</td>"+"\n";
+				table += "<td>"+rowTask[creation]+"</td>"+"\n";
+				table += "<td>"+rowTask[effectiveClosingDate]+"</td>"+"\n";
+				table += "<td>"+rowTask[expectedDuration]+"</td>"+"\n";
+				table += "<td>"+labels+"</td>"+"\n";
+				table += "</tr>"+"\n";
 			}
-			html += "</tbody>"+"\n";
-			html += "</table>"+"\n";
+			if(table != ""){
+				html += "<table>"+"\n";
+				html += "<thead><tr><th>Number</th><th>Title</th><th>Description</th><th>Status</th><th>Priority</th><th>Creation date</th><th>Effective closing date</th><th>Expeted Duration</th><th>labels</th></tr></thead>"+"\n";
+				html += "<tbody>"+"\n";
+				html += table;
+				html += "</tbody>"+"\n";
+				html += "</table>"+"\n";
+			}
+			
 
 
 			
