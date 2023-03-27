@@ -35,30 +35,41 @@ public class PmVersion extends ObjectDB {
 		String msg="";
 		// release management
 		if(getStatus().equals("PUBLISHED") && !getOldStatus().equals("PUBLISHED")){
-			String sqlQuery = "Select pm_tsk_status from pm_task where pm_tsk_vrs_id="+getRowId();
-			for(String[] row : getGrant().query(sqlQuery)){
-				if(row[0].equals("TODO") || row[0].equals("DOING") || row[0].equals("DONE") || row[0].equals("DRAFT")){
-					msg="All task must be closed, rejected or cancel";
-					break;
-					
+			ObjectDB tmpTask= this.getGrant().getTmpObject("PmTask");
+			synchronized(tmpTask){
+				tmpTask.resetFilters();
+				tmpTask.setFieldFilter("pmAssPmTaskid", getRowId());
+				for(String[] row : tmpTask.search()){
+					tmpTask.select(row[0]);
+					String status=tmpTask.getStatus();
+					if(status.equals("TODO") || status.equals("DOING") || status.equals("DONE") || status.equals("DRAFT")){
+							msg=Message.formatError("PM_ERR_PUBLICATION_STATUS", null, "pmVrsStatus");
+							break;
+						}
 				}
 			}
 		}
-		if (msg.equals("")){
+		if (msg.length()==0){
 			return super.preUpdate();
 		}
+
 		return msg;
 	}
 
 	public int completionVersion(){
-		String sqlQuery = "select pm_tsk_status from pm_task where pm_tsk_vrs_id="+getRowId(); //select all task of curent project version
-		AppLog.info("DEBUG "+"sqlQuery: "+sqlQuery, getGrant());
 		int taskCount=0;
 		int finishedTaskCount=0;
-		for(String[] row : getGrant().query(sqlQuery)){// for all task update counter
-			taskCount+=1;
-			if (row[0].equals("DRAFT") || row[0].equals("CLOSED") || row[0].equals("CANCEL") || row[0].equals("REJECTED")){
-				finishedTaskCount+=1;
+		ObjectDB tmpTask= this.getGrant().getTmpObject("PmTask");
+		synchronized(tmpTask){
+			tmpTask.resetFilters();
+			tmpTask.setFieldFilter("pmAssPmTaskid", getRowId());
+			for(String[] row : tmpTask.search()){
+				taskCount+=1;
+				tmpTask.select(row[0]);
+				String status=tmpTask.getStatus();
+				if (status.equals("DRAFT") || status.equals("CLOSED") || status.equals("CANCEL") || status.equals("REJECTED")){
+					finishedTaskCount+=1;
+				}
 			}
 		}
 		if (taskCount==0)return 0;

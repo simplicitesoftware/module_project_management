@@ -20,8 +20,13 @@ public class PmProject extends ObjectDB {
 		String now = dateObj.format(formatter);
 		String html="<head><title>"+getFieldValue("pmPrjName")+": "+now+"</title><style type='text/css'>table{\nborder-collapse: collapse;\n}\nth, td{\nborder: 1px solid black;\npadding: 10px;\n}</style></head>"+"\n";
 		html+="<h1>"+getFieldValue("pmPrjName")+" "+now+"</h1>"+"\n";
+		/*ObjectDB tmpVrs = this.getGrant().getTmpObject("PmVersion");
+		synchronized(tmpVrs){
+			tmpVrs.resetFilters();
+			tmpVrs.setFieldFilter("pmAssPmTaskid", getRowId());
+			for(String[] row : tmpVrs.search()){}
+		}*/
 		String sqlQuery = "select row_id, pm_vrs_version, pm_vrs_date_publication from pm_version where pm_vrs_status='PUBLISHED' AND pm_vrs_prj_id="+getRowId()+"order by pm_vrs_date_publication DESC";
-		
 		for(String[] row : getGrant().query(sqlQuery)){
 			html += "<h1>"+row[1]+"</h1>\n";
 			html += "Published on "+row[2]+"\n";
@@ -34,7 +39,7 @@ public class PmProject extends ObjectDB {
 				for(String[] rowLabel : getGrant().query(sqlQueryLabel)){
 					labels += rowLabel[0]+=", ";
 				}
-				if (labels != ""){
+				if (labels.length()>0){
 					labels = labels.substring(0, labels.length()-2);
 				}
 				table += "<tr>"+"\n";
@@ -49,7 +54,7 @@ public class PmProject extends ObjectDB {
 				table += "<td>"+labels+"</td>"+"\n";
 				table += "</tr>"+"\n";
 			}
-			if(table != ""){
+			if(table.length()>0){
 				html += "<table>"+"\n";
 				html += "<thead><tr><th>Number</th><th>Title</th><th>Description</th><th>Status</th><th>Priority</th><th>Creation date</th><th>Effective closing date</th><th>Expeted Duration</th><th>labels</th></tr></thead>"+"\n";
 				html += "<tbody>"+"\n";
