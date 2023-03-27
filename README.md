@@ -159,8 +159,8 @@ Task of project
 | `pmTskEffectiveClosingDate`                                  | date                                     |          |           |          | -                                                                                |
 | `pmTskExpectedDuration`                                      | int(100)                                 | yes      |           |          | -                                                                                |
 | `pmTskActualDuration`                                        | int(100)                                 |          |           |          | -                                                                                |
-| `pmTskVrsId` link to **`PmVersion`**                         | id                                       |          | yes       |          | -                                                                                |
-| _Ref. `pmTskVrsId.pmVrsVersion`_                             | _float(100, 2)_                          |          |           |          | -                                                                                |
+| `pmTskVrsId` link to **`PmVersion`**                         | id                                       | yes      | yes       |          | -                                                                                |
+| _Ref. `pmTskVrsId.pmVrsVersion`_                             | _char(100)_                              |          |           |          | -                                                                                |
 | _Ref. `pmTskVrsId.pmVrsPrjId`_                               | _id_                                     |          |           |          | -                                                                                |
 | _Ref. `pmTskVrsId.pmVrsName`_                                | _char(200)_                              |          |           |          | _Concatenation of project name and version number_                               |
 | _Ref. `pmTskVrsId.pmVrsPublicationDate`_                     | _date_                                   |          |           |          | -                                                                                |
@@ -168,6 +168,7 @@ Task of project
 | _Ref. `pmTskUsrId.usr_login`_                                | _regexp(100)_                            |          |           | yes      | _Login_                                                                          |
 | _Ref. `pmTskUsrId.usr_first_name`_                           | _char(50)_                               |          |           | yes      | _First name_                                                                     |
 | _Ref. `pmTskUsrId.usr_last_name`_                            | _char(50)_                               |          |           | yes      | _Last name_                                                                      |
+| `pmTskPrjVirtualId` link to **`PmProject`**                  | id                                       |          | yes       |          | -                                                                                |
 
 ### Lists
 
@@ -204,8 +205,8 @@ Task of project
 | `pmTskPriority`                                              | enum(100) using `PM_TSK_PRIORITE` list   | yes      | yes       |          | -                                                                                |
 | `pmTskClose`                                                 | date                                     | yes      | yes       |          | -                                                                                |
 | `pmTskEffectiveClosingDate`                                  | date                                     |          |           |          | -                                                                                |
-| `pmTskVrsId` link to **`PmVersion`**                         | id                                       |          | yes       |          | -                                                                                |
-| _Ref. `pmTskVrsId.pmVrsVersion`_                             | _float(100, 2)_                          |          |           |          | -                                                                                |
+| `pmTskVrsId` link to **`PmVersion`**                         | id                                       | yes      | yes       |          | -                                                                                |
+| _Ref. `pmTskVrsId.pmVrsVersion`_                             | _char(100)_                              |          |           |          | -                                                                                |
 | _Ref. `pmTskVrsId.pmVrsName`_                                | _char(200)_                              |          |           |          | _Concatenation of project name and version number_                               |
 | _Ref. `pmTskVrsId.pmVrsPublicationDate`_                     | _date_                                   |          |           |          | -                                                                                |
 | `pmTskUsrId` link to **`PmUser`**                            | id                                       |          | yes       |          | -                                                                                |
@@ -253,12 +254,13 @@ Project version
 
 | Name                                                         | Type                                     | Required | Updatable | Personal | Description                                                                      |
 |--------------------------------------------------------------|------------------------------------------|----------|-----------|----------|----------------------------------------------------------------------------------|
-| `pmVrsVersion`                                               | float(100, 2)                            | yes*     | yes       |          | -                                                                                |
-| `pmVrsPublicationDate`                                       | date                                     |          | yes       |          | -                                                                                |
+| `pmVrsVersion`                                               | char(100)                                | yes*     | yes       |          | -                                                                                |
+| `pmVrsPublicationDate`                                       | date                                     | yes      | yes       |          | -                                                                                |
 | `pmVrsStatus`                                                | enum(100) using `PM_VRS_STATUS` list     | yes      | yes       |          | -                                                                                |
 | `pmVrsName`                                                  | char(200)                                |          |           |          | Concatenation of project name and version number                                 |
 | `pmVrsPrjId` link to **`PmProject`**                         | id                                       | yes      | yes       |          | -                                                                                |
 | _Ref. `pmVrsPrjId.pmPrjName`_                                | _char(100)_                              |          |           |          | -                                                                                |
+| `pmVrsCompletion`                                            | int(100)                                 |          |           |          | -                                                                                |
 
 ### Lists
 

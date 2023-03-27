@@ -72,10 +72,13 @@ components:
           type: string
         pmVrsVersion:
           description: Version
-          type: number
+          type: string
         pmVrsName:
           description: Concatenation of project name and version number
           type: string
+        pmVrsCompletion:
+          description: Completion
+          type: integer
     PlaceData:
       type: object
       properties:
@@ -313,6 +316,9 @@ components:
         pmTskUsrId__usr_first_name:
           description: First name
           type: string
+        pmTskPrjVirtualId:
+          description: Pm tsk prj virtual id
+          type: string
         pmTskExpectedDuration:
           description: Expected duration
           type: integer
@@ -341,7 +347,7 @@ components:
           type: string
         pmTskVrsId__pmVrsVersion:
           description: Release Version
-          type: number
+          type: string
         pmTskCreation:
           description: Creation date
           type: string
@@ -501,7 +507,7 @@ components:
           type: string
         pmTskVrsId__pmVrsVersion:
           description: Release Version
-          type: number
+          type: string
         row_id:
           description: Unique technical row ID
           type: string
@@ -717,7 +723,7 @@ paths:
         description: Search filter for Release
         required: false
       - schema:
-          type: number
+          type: string
         in: query
         name: pmTskVrsId__pmVrsVersion
         description: Search filter for Release Version
@@ -2457,7 +2463,7 @@ paths:
         description: Search filter for Release
         required: false
       - schema:
-          type: number
+          type: string
         in: query
         name: pmTskVrsId__pmVrsVersion
         description: Search filter for Release Version
@@ -2503,6 +2509,12 @@ paths:
         in: query
         name: pmTskUsrId__usr_last_name
         description: Search filter for Last name
+        required: false
+      - schema:
+          type: string
+        in: query
+        name: pmTskPrjVirtualId
+        description: Search filter for Pm tsk prj virtual id
         required: false
       tags:
       - PmTask
@@ -2701,6 +2713,47 @@ paths:
         required: true
       tags:
       - PmTask
+  /rest/PmProject/{row_id}/publication:PmPrjPublication:
+    get:
+      summary: Call a custom publication for a PmProject business object record or
+        for all records
+      security:
+      - bearerAuth: []
+      operationId: obj-pmproject-publication-pmprjpublication
+      responses:
+        '200':
+          description: Success in calling the custom publication
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PublicationResult'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error401'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error500'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error404'
+      parameters:
+      - schema:
+          type: string
+        in: path
+        name: row_id
+        description: Row ID (or empty or _ for all row IDs)
+        required: true
+      tags:
+      - PmProject
   /rest/PmTskLbl:
     get:
       summary: Search PmTskLbl business object records or get contextualized metadata
@@ -3415,7 +3468,7 @@ paths:
         description: Documentation?
         required: false
       - schema:
-          type: number
+          type: string
         in: query
         name: pmVrsVersion
         description: Search filter for Version
@@ -3453,6 +3506,12 @@ paths:
         in: query
         name: pmVrsPrjId__pmPrjName
         description: Search filter for Project Name
+        required: false
+      - schema:
+          type: integer
+        in: query
+        name: pmVrsCompletion
+        description: Search filter for Completion
         required: false
       tags:
       - PmVersion
