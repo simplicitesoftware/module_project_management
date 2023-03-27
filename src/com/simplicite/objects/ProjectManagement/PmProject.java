@@ -17,7 +17,8 @@ public class PmProject extends ObjectDB {
 		LocalDate dateObj = LocalDate.now();
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 		String now = dateObj.format(formatter);
-		String html="<head><title>"+getFieldValue("pmPrjName")+": "+now+"</title><style type='text/css'>table{\nborder-collapse: collapse;\n}\nth, td{\nborder: 1px solid black;\npadding: 10px;\n}</style></head>"+"\n";
+		AppLog.info(getResource("pmPrjPubHtmlStyle").getCode(), getGrant())
+		String html="<head><title>"+getFieldValue("pmPrjName")+": "+now+"</title><style type='text/css'></style></head>"+"\n";
 		html+="<h1>"+getFieldValue("pmPrjName")+" "+now+"</h1>"+"\n";
 		String sqlQuery = "select row_id, pm_vrs_version, pm_vrs_date_publication from pm_version where pm_vrs_status='PUBLISHED' AND pm_vrs_prj_id="+getRowId()+"order by pm_vrs_date_publication DESC";
 		
