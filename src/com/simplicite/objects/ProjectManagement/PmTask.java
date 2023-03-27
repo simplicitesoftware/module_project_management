@@ -21,9 +21,10 @@ public class PmTask extends ObjectDB {
 			synchronized(tmpAssignment){
 				tmpAssignment.resetFilters();
 				tmpAssignment.setFieldFilter("pmAssPmTaskid", getRowId());
-				AppLog.info("DEBUG postUpdate "+tmpAssignment.search().toString(), getGrant());
-				String sqlQuery = "select pm_ass_id from pm_assignment where pm_ass_pm_taskid="+getRowId(); //select all assignement of curent task
-				for(String[] row : getGrant().query(sqlQuery)){// for all assignment invoke increaseUserNbtask methode to update the nbTask of user assigned on task
+				
+				//String sqlQuery = "select pm_ass_id from pm_assignment where pm_ass_pm_taskid="+getRowId(); //select all assignement of curent task
+				
+				for(String[] row : tmpAssignment.search()){// for all assignment invoke increaseUserNbtask methode to update the nbTask of user assigned on task
 					tmpAssignment.select(row[0]);
 					try {
 						tmpAssignment.invokeMethod("increaseUserNbTask",null, null);
@@ -32,6 +33,15 @@ public class PmTask extends ObjectDB {
 					}
 					tmpAssignment.save();
 				}
+				/*for(String[] row : getGrant().query(sqlQuery)){// for all assignment invoke increaseUserNbtask methode to update the nbTask of user assigned on task
+					tmpAssignment.select(row[0]);
+					try {
+						tmpAssignment.invokeMethod("increaseUserNbTask",null, null);
+					} catch (Exception e) {
+						AppLog.error(getClass(),"postUpdate","invokeMethod exception",e, getGrant());
+					}
+					tmpAssignment.save();
+				}*/
 				
 			}
 		
