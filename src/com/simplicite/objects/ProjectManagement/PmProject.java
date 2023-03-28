@@ -63,7 +63,11 @@ public class PmProject extends ObjectDB {
 							}
 						}
 						String labelString=labelArray.toString();
-						if(labelString.length()>0){taskJson.put("PmLabel",labelString.substring(0,labelString.length()-2));}
+						if(labelString.length()>0){
+							taskJson.put("PmLabel",labelString.substring(0,labelString.length()-2));
+						}else{
+							taskJson.put("PmLabel","");
+						}
 						
 						taskArray.put(taskJson);
 
