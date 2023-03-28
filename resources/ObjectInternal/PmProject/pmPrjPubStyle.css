@@ -53,7 +53,7 @@ body {
 .table-row:nth-child(2n) {
 	background:var(--color-highlight-bis);
 }
-.label::after {
+.label:after {
 	content: ", "    
 }
 
