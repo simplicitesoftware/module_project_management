@@ -46,6 +46,9 @@ body {
 	padding:(var(--half-spacing-unit) * 1.5) 0;
 	background:var(--color-highlight);
 }
+table-row:nth-child(3n+2) {
+	background:var(--color-dark);
+}
 
 .table-data, .header__item {
 	flex: 1 1 20%;
