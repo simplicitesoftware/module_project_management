@@ -3,7 +3,7 @@
     --half-spacing-unit: var(--base-spacing-unit) / 2;
     --color-highlight: #f9f9f9;
 	--color-highlight-bis: #d3d3d3;
-	--color-dark:#1a1a1a;
+	--color-dark:#252330;
 
 }
 *, *:before, *:after {
@@ -18,7 +18,7 @@ body {
 }
 
 .container {
-	max-width: 1000px;
+	max-width: 90vw;
 	margin-right:auto;
 	margin-left:auto;
 	display:flex;
