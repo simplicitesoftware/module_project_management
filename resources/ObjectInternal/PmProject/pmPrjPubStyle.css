@@ -22,7 +22,7 @@ body {
 	display:flex;
 	justify-content:center;
 	align-items:center;
-	color: var(--color-form-highlight);
+	
 }
 
 .table {
@@ -35,6 +35,7 @@ body {
 	width:100%;
 	background:#000;
 	padding:(var(--half-spacing-unit) * 1.5) 0;
+	color: var(--color-form-highlight);
 
 }
 
