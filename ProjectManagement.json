@@ -11255,7 +11255,7 @@
     },
     {
      "object": "Resource",
-     "userkey": "ObjectInternal(PmProject)~ANY~pmPrjPubHtmlStyle",
+     "userkey": "ObjectInternal(PmProject)~ANY~pmPrjPubStyle",
      "item": {
       "res_object": {
        "item": {"obo_name": "PmProject"},
@@ -11266,10 +11266,10 @@
       },
       "res_type": "CSS",
       "res_lang": "ANY",
-      "res_code": "pmPrjPubHtmlStyle",
+      "res_code": "pmPrjPubStyle",
       "res_cached": false,
       "res_file": {
-       "path": "resources/ObjectInternal/PmProject/pmPrjPubHtmlStyle.css",
+       "path": "resources/ObjectInternal/PmProject/pmPrjPubStyle.css",
        "mime": "text/css",
        "name": "pmPrjPubStyle.css"
       },
@@ -11292,7 +11292,11 @@
       "res_lang": "ANY",
       "res_code": "pmPrjPubHtml",
       "res_cached": false,
-      "res_file": null,
+      "res_file": {
+       "path": "resources/ObjectInternal/PmProject/pmPrjPubHtml.html",
+       "mime": "text/html",
+       "name": "pmPrjPubHtml.html"
+      },
       "res_image": null,
       "row_module_id__mdl_name": "ProjectManagement"
      }
