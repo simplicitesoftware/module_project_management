@@ -63,9 +63,3 @@ body {
 .header__item {
 	text-transform:uppercase;
 }
-.table-data span:not(:last-child)::after {
-	content: ", ";
-}
-span::after {
-	content: ", ";
-}

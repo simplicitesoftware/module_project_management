@@ -52,17 +52,18 @@ public class PmProject extends ObjectDB {
 						taskJson.put("pmTskEffectiveClosingDate",tmpTsk.getFieldValue("pmTskEffectiveClosingDate"));
 						taskJson.put("pmTskExpectedDuration",tmpTsk.getFieldValue("pmTskExpectedDuration"));
 						taskJson.put("pmTskCreation",tmpTsk.getFieldValue("pmTskCreation"));
-						JSONArray labelArray = new JSONArray();
+						StringBuilder labelArray = new StringBuilder();
 						ObjectDB tmpLbl = this.getGrant().getTmpObject("PmTskLbl");
 						synchronized(tmpLbl){
 							tmpLbl.resetFilters();
 							tmpLbl.setFieldFilter("pmTsklblTskId", tmpTsk.getRowId());
 							for(String[] rowLbl : tmpLbl.search()){ //for all label of task
 								tmpLbl.select(rowLbl[0]);
-								labelArray.put(tmpLbl.getFieldValue("pmTsklblLblId.pmLblName"));
+								labelArray.append(tmpLbl.getFieldValue("pmTsklblLblId.pmLblName")+", ");
 							}
 						}
-						taskJson.put("PmLabel",labelArray);
+						String labelString=labelArray.toString();
+						taskJson.put("PmLabel",labelString.substring(0,labelString.length()-2));
 						taskArray.put(taskJson);
 
 					}
