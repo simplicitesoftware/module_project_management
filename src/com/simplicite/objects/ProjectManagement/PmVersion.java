@@ -38,7 +38,7 @@ public class PmVersion extends ObjectDB {
 			ObjectDB tmpTask= this.getGrant().getTmpObject("PmTask");
 			synchronized(tmpTask){
 				tmpTask.resetFilters();
-				tmpTask.setFieldFilter("pmAssPmTaskid", getRowId());
+				tmpTask.setFieldFilter("pmTskVrsId", getRowId());
 				for(String[] row : tmpTask.search()){
 					tmpTask.select(row[0]);
 					String status=tmpTask.getStatus();
@@ -62,7 +62,7 @@ public class PmVersion extends ObjectDB {
 		ObjectDB tmpTask= this.getGrant().getTmpObject("PmTask");
 		synchronized(tmpTask){
 			tmpTask.resetFilters();
-			tmpTask.setFieldFilter("pmAssPmTaskid", getRowId());
+			tmpTask.setFieldFilter("pmTskVrsId", getRowId());
 			for(String[] row : tmpTask.search()){
 				taskCount+=1;
 				tmpTask.select(row[0]);
