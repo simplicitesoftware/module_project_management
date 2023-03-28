@@ -2,7 +2,7 @@
     --base-spacing-unit: 24px;
     --half-spacing-unit: var(--base-spacing-unit) / 2;
     --color-highlight: #f9f9f9;
-	--color-dark:#000;
+	--color-dark:#1a1a1a;
 
 }
 *, *:before, *:after {
