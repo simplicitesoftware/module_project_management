@@ -66,3 +66,6 @@ body {
 .table-data span:not(:last-child):after {
 	content: ", ";
 }
+span {
+	content: ", ";
+}
