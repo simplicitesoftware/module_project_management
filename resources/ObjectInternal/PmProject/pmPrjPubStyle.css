@@ -53,6 +53,9 @@ body {
 .table-row:nth-child(2n) {
 	background:var(--color-highlight-bis);
 }
+.label span:not(:last-of-type)::after {
+	content: ", "    
+}
 
 .table-data, .header__item {
 	flex: 1 1 20%;
