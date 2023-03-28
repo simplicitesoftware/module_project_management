@@ -54,7 +54,7 @@ body {
 	background:var(--color-highlight-bis);
 }
 .label:after {
-	content: ", "    
+	content: ", ";
 }
 
 .table-data, .header__item {
