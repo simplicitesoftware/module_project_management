@@ -1,7 +1,8 @@
 :root{
     --base-spacing-unit: 24px;
     --half-spacing-unit: var(--base-spacing-unit) / 2;
-    --color-form-highlight: #ddd5d5;
+    --color-highlight: #f9f9f9;
+
 }
 *, *:before, *:after {
 	box-sizing:border-box;
@@ -26,7 +27,7 @@ body {
 
 .table {
 	width:100%;
-	border:1px solid var(--color-form-highlight);
+	border:1px solid var(--color-highlight);
 }
 
 .table-header {
@@ -34,7 +35,7 @@ body {
 	width:100%;
 	background:#000;
 	padding:(var(--half-spacing-unit) * 1.5) 0;
-	color: var(--color-form-highlight);
+	color: var(--color-highlight);
 
 }
 
@@ -42,7 +43,7 @@ body {
 	display:flex;
 	width:100%;
 	padding:(var(--half-spacing-unit) * 1.5) 0;
-	background:var(--color-form-highlight);
+	background:var(--color-highlight);
 }
 
 .table-data, .header__item {
