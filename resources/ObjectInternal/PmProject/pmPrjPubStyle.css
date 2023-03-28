@@ -2,6 +2,7 @@
     --base-spacing-unit: 24px;
     --half-spacing-unit: var(--base-spacing-unit) / 2;
     --color-highlight: #f9f9f9;
+	--color-dark:#000;
 
 }
 *, *:before, *:after {
@@ -33,7 +34,7 @@ body {
 .table-header {
 	display:flex;
 	width:100%;
-	background:#000;
+	background:var(--color-dark);
 	padding:(var(--half-spacing-unit) * 1.5) 0;
 	color: var(--color-highlight);
 
