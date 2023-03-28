@@ -2,6 +2,7 @@
     --base-spacing-unit: 24px;
     --half-spacing-unit: var(--base-spacing-unit) / 2;
     --color-highlight: #f9f9f9;
+	--color-highlight-bis: #d3d3d3;
 	--color-dark:#1a1a1a;
 
 }
@@ -50,7 +51,7 @@ body {
 	background:var(--color-highlight);
 }
 .table-row:nth-child(2n) {
-	background:var(--color-dark);
+	background:var(--color-highlight-bis);
 }
 
 .table-data, .header__item {
