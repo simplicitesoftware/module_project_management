@@ -4,6 +4,9 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
 
+import com.github.openjson.JSONArray;
+import com.github.openjson.JSONObject;
+import com.google.api.client.json.Json;
 import com.simplicite.objects.System.SimpleUser;
 import com.simplicite.util.*;
 import com.simplicite.util.exceptions.*;
@@ -18,14 +21,58 @@ public class PmProject extends ObjectDB {
 		LocalDate dateObj = LocalDate.now();
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 		String now = dateObj.format(formatter);
-		String html="<head><title>"+getFieldValue("pmPrjName")+": "+now+"</title><style type='text/css'>table{\nborder-collapse: collapse;\n}\nth, td{\nborder: 1px solid black;\npadding: 10px;\n}</style></head>"+"\n";
-		html+="<h1>"+getFieldValue("pmPrjName")+" "+now+"</h1>"+"\n";
-		/*ObjectDB tmpVrs = this.getGrant().getTmpObject("PmVersion");
+		JSONObject projectJson= new JSONObject();
+		projectJson.put("pmPrjName",getFieldValue("pmPrjName"));
+		projectJson.put("timeStamp",now);
+		ObjectDB tmpVrs = this.getGrant().getTmpObject("PmVersion");
 		synchronized(tmpVrs){
 			tmpVrs.resetFilters();
-			tmpVrs.setFieldFilter("pmAssPmTaskid", getRowId());
-			for(String[] row : tmpVrs.search()){}
-		}*/
+			tmpVrs.setFieldFilter("pmVrsPrjId", getRowId());
+			tmpVrs.setFieldFilter("pmVrsStatus", "PUBLISHED");
+			JSONArray versionArray = new JSONArray();
+			for(String[] rowVrs : tmpVrs.search()){
+				tmpVrs.select(rowVrs[0]);
+				JSONObject versionJson= new JSONObject();
+				versionJson.put("pmVrsVersion",tmpVrs.getFieldValue("pmVrsVersion"));
+				versionJson.put("pmVrsPublicationDate",tmpVrs.getFieldValue("pmVrsPublicationDate"));
+				JSONArray taskArray = new JSONArray();
+				ObjectDB tmpTsk = this.getGrant().getTmpObject("PmTask");
+				synchronized(tmpTsk){
+					tmpTsk.resetFilters();
+					tmpTsk.setFieldFilter("pmTskVrsId", tmpVrs.getRowId());
+					for(String[] rowTsk : tmpTsk.search()){
+						tmpTsk.select(rowTsk[0]);
+						JSONObject taskJson= new JSONObject();
+						taskJson.put("pmTskNumber",tmpTsk.getFieldValue("pmTskNumber"));
+						taskJson.put("pmTskTitle",tmpTsk.getFieldValue("pmTskTitle"));
+						taskJson.put("pmTskDescription",tmpTsk.getFieldValue("pmTskDescription"));
+						taskJson.put("pmTskStatus",tmpTsk.getFieldValue("pmTskStatus"));
+						taskJson.put("pmTskPriority",tmpTsk.getFieldValue("pmTskPriority"));
+						taskJson.put("pmTskEffectiveClosingDate",tmpTsk.getFieldValue("pmTskEffectiveClosingDate"));
+						taskJson.put("pmTskExpectedDuration",tmpTsk.getFieldValue("pmTskExpectedDuration"));
+						taskJson.put("pmTskCreation",tmpTsk.getFieldValue("pmTskCreation"));
+						JSONArray labelArray = new JSONArray();
+						ObjectDB tmpLbl = this.getGrant().getTmpObject("PmTskLbl");
+						synchronized(tmpLbl){
+							tmpLbl.resetFilters();
+							tmpLbl.setFieldFilter("pmTsklblTskId", tmpTsk.getRowId());
+							for(String[] rowLbl : tmpLbl.search()){
+								tmpLbl.select(rowLbl[0]);
+								labelArray.put(tmpLbl.getFieldValue("pmTsklblLblId.pmLblName"));
+							}
+						}
+						taskJson.put("PmLabel",labelArray);
+						taskArray.put(taskJson);
+					}
+				}
+				versionJson.put("PmTask",taskArray);
+				versionArray.put(versionJson);
+			}
+			projectJson.put("PmVersion", versionArray );
+		}
+		
+		/*String html="<head><title>"+getFieldValue("pmPrjName")+": "+now+"</title><style type='text/css'>table{\nborder-collapse: collapse;\n}\nth, td{\nborder: 1px solid black;\npadding: 10px;\n}</style></head>"+"\n";
+		html+="<h1>"+getFieldValue("pmPrjName")+" "+now+"</h1>"+"\n";
 		String sqlQuery = "select row_id, pm_vrs_version, pm_vrs_date_publication from pm_version where pm_vrs_status='PUBLISHED' AND pm_vrs_prj_id="+getRowId()+"order by pm_vrs_date_publication DESC";
 		for(String[] row : getGrant().query(sqlQuery)){
 			html += "<h1>"+row[1]+"</h1>\n";
@@ -67,8 +114,8 @@ public class PmProject extends ObjectDB {
 
 			
 		}
-		
-		return html;
+		return html;*/
+		return projectJson.toString();
 	}
 	
 }
