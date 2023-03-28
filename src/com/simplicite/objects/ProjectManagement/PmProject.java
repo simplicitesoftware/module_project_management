@@ -118,7 +118,7 @@ public class PmProject extends ObjectDB {
 		}
 		return html;*/
 		
-		return MustacheTool.apply(HTMLTool.getResourceHTMLContent(this, "pmPrjPubHtml"),projectJson);
+		return MustacheTool.apply(HTMLTool.getResourceHTMLContent(this, "pmPrjPubHtml"),projectJson.toString());
 	}
 	
 }
