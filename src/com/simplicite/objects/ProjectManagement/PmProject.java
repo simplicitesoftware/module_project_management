@@ -65,8 +65,11 @@ public class PmProject extends ObjectDB {
 						}
 						taskJson.put("PmLabel",labelArray);
 						taskArray.put(taskJson);
+
 					}
 				}
+				
+				versionJson.put("NotEmpty",taskArray.length()>0);
 				versionJson.put("PmTask",taskArray);
 				versionArray.put(versionJson);
 			}
