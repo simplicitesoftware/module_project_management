@@ -174,12 +174,38 @@
    "list": [
     {
      "object": "ListOfValue",
+     "userkey": "TEXT~PM_ERR_PUBLICATION_STATUS~ENU",
+     "item": {
+      "lov_name": "TEXT",
+      "lov_code": "PM_ERR_PUBLICATION_STATUS",
+      "lov_lang": "ENU",
+      "lov_value": "All task must be closed, rejected or cancel.",
+      "lov_order_by": 1,
+      "lov_event_id__lev_code": null,
+      "row_module_id__mdl_name": "ProjectManagement"
+     }
+    },
+    {
+     "object": "ListOfValue",
      "userkey": "TEXT~PM_ERR_PUBLICATIONDATE~ENU",
      "item": {
       "lov_name": "TEXT",
       "lov_code": "PM_ERR_PUBLICATIONDATE",
       "lov_lang": "ENU",
       "lov_value": "Publication date must be in the futur",
+      "lov_order_by": 1,
+      "lov_event_id__lev_code": null,
+      "row_module_id__mdl_name": "ProjectManagement"
+     }
+    },
+    {
+     "object": "ListOfValue",
+     "userkey": "TEXT~PM_ERR_PUBLICATION_STATUS~FRA",
+     "item": {
+      "lov_name": "TEXT",
+      "lov_code": "PM_ERR_PUBLICATION_STATUS",
+      "lov_lang": "FRA",
+      "lov_value": "Toutes les tâches doivent être fermées, rejetées, ou annulées.",
       "lov_order_by": 1,
       "lov_event_id__lev_code": null,
       "row_module_id__mdl_name": "ProjectManagement"
@@ -3557,7 +3583,7 @@
      "userkey": "PmTache",
      "item": {
       "tpl_name": "PmTache",
-      "tpl_ui": "<div>\n  <div class=\"area\" data-area=\"1\"><\/div>\n  <div class=\"area\" data-area=\"2\"><\/div>\n  <div class=\"row\">\n    <div class=\"col-sm-6\">\n      <div class=\"field\" data-field=\"pmTskPrevious\"><\/div>\n    <\/div>\n    <div class=\"col-sm-6\">\n      <div class=\"field\" data-field=\"pmTskNext\"><\/div>\n    <\/div>\n  <\/div>\n<\/div>",
+      "tpl_ui": "<div>\n  <div class=\"area\" data-area=\"1\"><\/div>\n  <div class=\"area\" data-area=\"2\"><\/div>\n<\/div>",
       "tpl_min": null,
       "tpl_image": null,
       "row_module_id__mdl_name": "ProjectManagement"
@@ -3660,7 +3686,7 @@
       "ofa_name": "PmAssignment-3",
       "ofa_position": 3,
       "ofa_title": true,
-      "ofa_ui": "<div>\n  <div class=\"field\" data-field=\"pmAssPmUserid\"><\/div>\n  <div class=\"field\" data-field=\"pmAssPmUserid__usr_login\"><\/div>\n<\/div>",
+      "ofa_ui": "<div>\n  <div class=\"field\" data-field=\"pmAssPmUserid\"><\/div>\n  <div class=\"field\" data-field=\"pmAssPmUserid__usr_login\"><\/div>\n  <div class=\"field\" data-field=\"pmAssPmUserid__pmUsrNbTask\"><\/div>\n<\/div>",
       "ofa_icon": "user",
       "row_module_id__mdl_name": "ProjectManagement"
      }
@@ -3876,6 +3902,27 @@
      "obd_icon": "ticket",
      "obd_order": 1000,
      "obd_domain_id__obd_name": null,
+     "row_module_id__mdl_name": "ProjectManagement"
+    }
+   }]
+  },
+  {
+   "object": "ObjectExternal",
+   "label": "External objects",
+   "icon": "img/system/external_object",
+   "field": "row_module_id",
+   "list": [{
+    "object": "ObjectExternal",
+    "userkey": "PmPublicationFront",
+    "item": {
+     "obe_name": "PmPublicationFront",
+     "obe_type": "E",
+     "obe_url": null,
+     "obe_comment": "Front of project publication with mustache",
+     "obe_help": null,
+     "obe_class": null,
+     "obe_script_id": null,
+     "obe_icon": "print",
      "row_module_id__mdl_name": "ProjectManagement"
     }
    }]
@@ -5070,6 +5117,39 @@
       "obf_fld_researchreq": null,
       "obf_fld_dfault": null,
       "obf_field_id__fld_dfault": null,
+      "obf_area_id__ofa_name": "PmAssignment-3",
+      "obf_area_id__ofa_position": 3,
+      "row_module_id__mdl_name": "ProjectManagement"
+     }
+    },
+    {
+     "object": "ObjectFieldSystem",
+     "userkey": "PmAssignment~pmUsrNbTask~120",
+     "item": {
+      "obf_object_id__obo_name": "PmAssignment",
+      "obf_field_id__fld_name": "pmUsrNbTask",
+      "obf_field_id__fld_type": "1",
+      "obf_order": 120,
+      "obf_group_by": null,
+      "obf_dfault_order": null,
+      "obf_input": null,
+      "obf_ref_field_id__fld_name": "pmAssPmUserid",
+      "obf_ref_object_id__obo_name": "PmUser",
+      "obf_cascad": null,
+      "obf_card": null,
+      "obf_visible": null,
+      "obf_ref_export": true,
+      "obf_copy": null,
+      "obf_ref_order": null,
+      "obf_fld_visible": null,
+      "obf_fld_required": null,
+      "obf_fld_updatable": null,
+      "obf_fld_research": null,
+      "obf_fld_more": null,
+      "obf_fld_listmore": null,
+      "obf_fld_researchreq": null,
+      "obf_fld_dfault": null,
+      "obf_field_id__fld_dfault": "0",
       "obf_area_id__ofa_name": "PmAssignment-3",
       "obf_area_id__ofa_position": 3,
       "row_module_id__mdl_name": "ProjectManagement"
@@ -8793,6 +8873,19 @@
     },
     {
      "object": "Function",
+     "userkey": "PM_PUBLICATION_FRONT_E",
+     "item": {
+      "fct_name": "PM_PUBLICATION_FRONT_E",
+      "fct_object_id__obj_type": "E",
+      "fct_object_id__obj_name": "PmPublicationFront",
+      "fct_function": "L",
+      "fct_action_id__act_name": null,
+      "fct_view_id__viw_name": null,
+      "row_module_id__mdl_name": "ProjectManagement"
+     }
+    },
+    {
+     "object": "Function",
      "userkey": "PM_TSK_CRUD",
      "item": {
       "fct_name": "PM_TSK_CRUD",
@@ -11106,30 +11199,80 @@
    "label": "Resources",
    "icon": "img/system/resource",
    "field": "row_module_id",
-   "list": [{
-    "object": "Resource",
-    "userkey": "ObjectInternal(PmProject)~ANY~pmPrjPubHtmlStyle",
-    "item": {
-     "res_object": {
-      "item": {"obo_name": "PmProject"},
-      "icon": "img/system/business_object",
-      "label": "Business object",
-      "userkeylabel": "PmProject",
-      "object": "ObjectInternal"
-     },
-     "res_type": "CSS",
-     "res_lang": "ANY",
-     "res_code": "pmPrjPubHtmlStyle",
-     "res_cached": false,
-     "res_file": {
-      "path": "resources/ObjectInternal/PmProject/pmPrjPubHtmlStyle.css",
-      "mime": "text/css",
-      "name": "pmPrjPubHtmlStyle.css"
-     },
-     "res_image": null,
-     "row_module_id__mdl_name": "ProjectManagement"
+   "list": [
+    {
+     "object": "Resource",
+     "userkey": "ObjectExternal(PmPublicationFront)~ANY~CSS",
+     "item": {
+      "res_object": {
+       "item": {"obe_name": "PmPublicationFront"},
+       "icon": "img/system/external_object",
+       "label": "External object",
+       "userkeylabel": "PmPublicationFront",
+       "object": "ObjectExternal"
+      },
+      "res_type": "CSS",
+      "res_lang": "ANY",
+      "res_code": "CSS",
+      "res_cached": false,
+      "res_file": {
+       "path": "resources/ObjectExternal/PmPublicationFront/CSS.css",
+       "mime": "text/css",
+       "name": "PmPublicationCSS.css"
+      },
+      "res_image": null,
+      "row_module_id__mdl_name": "ProjectManagement"
+     }
+    },
+    {
+     "object": "Resource",
+     "userkey": "ObjectExternal(PmPublicationFront)~ANY~HTML",
+     "item": {
+      "res_object": {
+       "item": {"obe_name": "PmPublicationFront"},
+       "icon": "img/system/external_object",
+       "label": "External object",
+       "userkeylabel": "PmPublicationFront",
+       "object": "ObjectExternal"
+      },
+      "res_type": "HTML",
+      "res_lang": "ANY",
+      "res_code": "HTML",
+      "res_cached": false,
+      "res_file": {
+       "path": "resources/ObjectExternal/PmPublicationFront/HTML.html",
+       "mime": "text/html",
+       "name": "PmPublicationHTLM.html"
+      },
+      "res_image": null,
+      "row_module_id__mdl_name": "ProjectManagement"
+     }
+    },
+    {
+     "object": "Resource",
+     "userkey": "ObjectInternal(PmProject)~ANY~pmPrjPubHtmlStyle",
+     "item": {
+      "res_object": {
+       "item": {"obo_name": "PmProject"},
+       "icon": "img/system/business_object",
+       "label": "Business object",
+       "userkeylabel": "PmProject",
+       "object": "ObjectInternal"
+      },
+      "res_type": "CSS",
+      "res_lang": "ANY",
+      "res_code": "pmPrjPubHtmlStyle",
+      "res_cached": false,
+      "res_file": {
+       "path": "resources/ObjectInternal/PmProject/pmPrjPubHtmlStyle.css",
+       "mime": "text/css",
+       "name": "pmPrjPubHtmlStyle.css"
+      },
+      "res_image": null,
+      "row_module_id__mdl_name": "ProjectManagement"
+     }
     }
-   }]
+   ]
   },
   {
    "object": "TranslateAction",
@@ -14029,6 +14172,38 @@
       "tsl_id__obo_name": "PmVersion",
       "tsl_lang": "FRA",
       "tsl_value": "Version",
+      "tsl_help": null,
+      "row_module_id__mdl_name": "ProjectManagement"
+     }
+    }
+   ]
+  },
+  {
+   "object": "TranslateExternal",
+   "label": "External object translate",
+   "icon": "img/system/translation",
+   "field": "row_module_id",
+   "list": [
+    {
+     "object": "TranslateExternal",
+     "userkey": "O~PmPublicationFront~ENU",
+     "item": {
+      "tsl_typeObject": "O",
+      "tsl_id__obe_name": "PmPublicationFront",
+      "tsl_lang": "ENU",
+      "tsl_value": "Publication front",
+      "tsl_help": null,
+      "row_module_id__mdl_name": "ProjectManagement"
+     }
+    },
+    {
+     "object": "TranslateExternal",
+     "userkey": "O~PmPublicationFront~FRA",
+     "item": {
+      "tsl_typeObject": "O",
+      "tsl_id__obe_name": "PmPublicationFront",
+      "tsl_lang": "FRA",
+      "tsl_value": "Publication front",
       "tsl_help": null,
       "row_module_id__mdl_name": "ProjectManagement"
      }

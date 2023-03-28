@@ -437,6 +437,9 @@ components:
         pmAssPmTaskid__pmTskNumber:
           description: Task Number
           type: integer
+        pmAssPmUserid__pmUsrNbTask:
+          description: User Number of current task
+          type: integer
         pmAssPmTaskid__pmTskTitle:
           description: Task Title
           type: string
@@ -3179,6 +3182,12 @@ paths:
         in: query
         name: pmAssPmUserid__usr_login
         description: Search filter for Login
+        required: false
+      - schema:
+          type: integer
+        in: query
+        name: pmAssPmUserid__pmUsrNbTask
+        description: Search filter for User Number of current task
         required: false
       - schema:
           type: string

@@ -2171,6 +2171,11 @@ paths:
         type: string
         required: false
       - in: query
+        name: pmAssPmUserid__pmUsrNbTask
+        description: Search filter for User Number of current task
+        type: integer
+        required: false
+      - in: query
         name: pmAssPmTaskid
         description: Search filter for Task
         type: string
@@ -3537,6 +3542,9 @@ definitions:
         type: string
       pmAssPmTaskid__pmTskNumber:
         description: Task Number
+        type: integer
+      pmAssPmUserid__pmUsrNbTask:
+        description: User Number of current task
         type: integer
       pmAssPmTaskid__pmTskTitle:
         description: Task Title

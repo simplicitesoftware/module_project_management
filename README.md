@@ -39,6 +39,7 @@ Module de gestion de projet et de gestion de tâche ou de tickets.
 | `pmAssRole`                                                  | text(100)                                | yes      | yes       |          | -                                                                                |
 | `pmAssPmUserid` link to **`PmUser`**                         | id                                       | yes*     | yes       |          | -                                                                                |
 | _Ref. `pmAssPmUserid.usr_login`_                             | _regexp(100)_                            |          |           | yes      | _Login_                                                                          |
+| _Ref. `pmAssPmUserid.pmUsrNbTask`_                           | _int(100)_                               |          |           |          | -                                                                                |
 | `pmAssPmTaskid` link to **`PmTask`**                         | id                                       | yes*     | yes       |          | -                                                                                |
 | _Ref. `pmAssPmTaskid.pmTskNumber`_                           | _int(100)_                               |          |           |          | -                                                                                |
 | _Ref. `pmAssPmTaskid.pmTskTitle`_                            | _char(100)_                              |          |           |          | -                                                                                |
@@ -279,4 +280,10 @@ Project version
     - `ALPHA` Alpha
     - `BETA` Beta
     - `PUBLISHED` Published version
+
+`PmPublicationFront` external object definition
+-----------------------------------------------
+
+Front of project publication with mustache
+
 
