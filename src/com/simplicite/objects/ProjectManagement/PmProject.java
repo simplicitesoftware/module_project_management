@@ -47,7 +47,7 @@ public class PmProject extends ObjectDB {
 						taskJson.put("pmTskNumber",tmpTsk.getFieldValue("pmTskNumber"));
 						taskJson.put("pmTskTitle",tmpTsk.getFieldValue("pmTskTitle"));
 						taskJson.put("pmTskDescription",tmpTsk.getFieldValue("pmTskDescription"));
-						taskJson.put("pmTskStatus",tmpTsk.getStatus());
+						taskJson.put("pmTskStatus",tmpTsk.getField("pmTskStatus").getDisplayValue());
 						taskJson.put("pmTskPriority",tmpTsk.getFieldValue("pmTskPriority"));
 						taskJson.put("pmTskEffectiveClosingDate",tmpTsk.getFieldValue("pmTskEffectiveClosingDate"));
 						taskJson.put("pmTskExpectedDuration",tmpTsk.getFieldValue("pmTskExpectedDuration"));
