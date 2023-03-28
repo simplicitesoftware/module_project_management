@@ -7117,7 +7117,7 @@
       "obf_ref_object_id__obo_name": "PmVersion",
       "obf_cascad": "C",
       "obf_card": "0,n",
-      "obf_visible": true,
+      "obf_visible": false,
       "obf_ref_export": true,
       "obf_copy": false,
       "obf_ref_order": null,
@@ -7249,7 +7249,7 @@
       "obf_ref_object_id__obo_name": "PmUser",
       "obf_cascad": "C",
       "obf_card": "0,n",
-      "obf_visible": true,
+      "obf_visible": false,
       "obf_ref_export": true,
       "obf_copy": false,
       "obf_ref_order": null,
@@ -8201,11 +8201,11 @@
       "obf_cascad": "C",
       "obf_card": "0,n",
       "obf_query": null,
-      "obf_visible": true,
+      "obf_visible": false,
       "obf_ref_export": true,
       "obf_copy": false,
       "obf_associate": null,
-      "obf_inline": null,
+      "obf_inline": false,
       "obf_rendering": null,
       "obf_treedepth": null,
       "obf_area_id__ofa_name": "PmTask-3",
@@ -8257,11 +8257,11 @@
       "obf_cascad": "C",
       "obf_card": "0,n",
       "obf_query": null,
-      "obf_visible": true,
+      "obf_visible": false,
       "obf_ref_export": true,
       "obf_copy": false,
       "obf_associate": null,
-      "obf_inline": null,
+      "obf_inline": false,
       "obf_rendering": null,
       "obf_treedepth": null,
       "obf_area_id__ofa_name": "PmTask-1",
@@ -9938,7 +9938,11 @@
      "prt_mimetype": "html",
      "prt_type": "METH",
      "prt_method": "pubHtml",
-     "prt_file": null,
+     "prt_file": {
+      "path": "files/PrintTemplate/PmPrjPublication.html",
+      "mime": "text/html",
+      "name": "HTML.html"
+     },
      "prt_template_id__tpl_name": null
     }
    }]
@@ -11031,7 +11035,8 @@
        "TODO",
        "DOING",
        ")"
-      ]
+      ],
+      "order__pmTskStatus": "2"
      },
      "row_module_id__mdl_name": "ProjectManagement"
     }
@@ -11266,8 +11271,28 @@
       "res_file": {
        "path": "resources/ObjectInternal/PmProject/pmPrjPubHtmlStyle.css",
        "mime": "text/css",
-       "name": "pmPrjPubHtmlStyle.css"
+       "name": "pmPrjPubStyle.css"
       },
+      "res_image": null,
+      "row_module_id__mdl_name": "ProjectManagement"
+     }
+    },
+    {
+     "object": "Resource",
+     "userkey": "ObjectInternal(PmProject)~ANY~pmPrjPubHtml",
+     "item": {
+      "res_object": {
+       "item": {"obo_name": "PmProject"},
+       "icon": "img/system/business_object",
+       "label": "Business object",
+       "userkeylabel": "PmProject",
+       "object": "ObjectInternal"
+      },
+      "res_type": "HTML",
+      "res_lang": "ANY",
+      "res_code": "pmPrjPubHtml",
+      "res_cached": false,
+      "res_file": null,
       "res_image": null,
       "row_module_id__mdl_name": "ProjectManagement"
      }
