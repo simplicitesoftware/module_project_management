@@ -44,9 +44,12 @@ body {
 	display:flex;
 	width:100%;
 	padding:(var(--half-spacing-unit) * 1.5) 0;
+	
+}
+.table-row:nth-child(2n+1){
 	background:var(--color-highlight);
 }
-table-row:nth-child(3n+2) {
+.table-row:nth-child(2n) {
 	background:var(--color-dark);
 }
 
