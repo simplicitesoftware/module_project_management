@@ -1,8 +1,7 @@
 :root{
     --base-spacing-unit: 24px;
     --half-spacing-unit: var(--base-spacing-unit) / 2;
-    --color-alpha: #1772FF;
-    --color-form-highlight: #EEEEEE;
+    --color-form-highlight: #ddd5d5;
 }
 *, *:before, *:after {
 	box-sizing:border-box;
