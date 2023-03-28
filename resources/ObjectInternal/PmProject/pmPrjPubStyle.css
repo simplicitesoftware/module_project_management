@@ -15,10 +15,6 @@ body {
 	margin:0;
 }
 
-h1,h2,h3,h4,h5,h6 {
-	margin:0;
-}
-
 .container {
 	max-width: 1000px;
 	margin-right:auto;
@@ -26,7 +22,7 @@ h1,h2,h3,h4,h5,h6 {
 	display:flex;
 	justify-content:center;
 	align-items:center;
-	min-height:100vh;
+	color: var(--color-form-highlight);
 }
 
 .table {
@@ -39,6 +35,7 @@ h1,h2,h3,h4,h5,h6 {
 	width:100%;
 	background:#000;
 	padding:(var(--half-spacing-unit) * 1.5) 0;
+
 }
 
 .table-row {
