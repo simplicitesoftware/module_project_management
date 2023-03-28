@@ -1,12 +1,8 @@
 :root{
     --base-spacing-unit: 24px;
     --half-spacing-unit: var(--base-spacing-unit) / 2;
-    --color-alpha: #1772FF;
-    --color-form-highlight: #EEEEEE;
-}
-*, *:before, *:after {
-	box-sizing:border-box;
-    
+    --color-light: #d2c5c5;
+	--color-dark: #262323;
 }
 
 body {
@@ -27,15 +23,15 @@ body {
 
 .table {
 	width:100%;
-	border:1px solid var(--color-form-highlight);
+	border:1px solid var(--color-light);
 }
 
 .table-header {
 	display:flex;
 	width:100%;
-	background:#000;
+	background:(--color-dark);
 	padding:(var(--half-spacing-unit) * 1.5) 0;
-	color: var(--color-form-highlight);
+	color: var(--color-light);
 
 }
 
@@ -43,7 +39,7 @@ body {
 	display:flex;
 	width:100%;
 	padding:(var(--half-spacing-unit) * 1.5) 0;
-	background:var(--color-form-highlight);
+	background:var(--color-light);
 }
 
 .table-data, .header__item {
