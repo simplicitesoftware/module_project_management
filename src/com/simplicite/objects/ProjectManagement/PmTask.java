@@ -94,6 +94,7 @@ public class PmTask extends ObjectDB {
 			tmpMsg.setFieldFilter("pmMsgTskId", getRowId());
 			for(String[] row : tmpMsg.search()){
 				try {
+					AppLog.info("DEBUG taskMsgDeletion "+row[0], getGrant())
 					ot.getForDelete(row[0]);
 				} catch (Exception e) {
 					msgs.add(Message.formatError(null,e.toString(),null));
