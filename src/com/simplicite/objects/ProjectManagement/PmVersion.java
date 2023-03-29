@@ -75,5 +75,8 @@ public class PmVersion extends ObjectDB {
 		if (taskCount==0)return 100;
 		return (finishedTaskCount*100)/taskCount;
 	}
+	public String deferTask(){
+		return "to be implemented...";
+	}
 	
 }

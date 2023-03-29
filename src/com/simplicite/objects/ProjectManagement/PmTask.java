@@ -85,5 +85,8 @@ public class PmTask extends ObjectDB {
 		}
 		return Tool.diffDate(begin, end);
 	}
+	public String taskDeletion(){
+		return "to be implemented...";
+	}
 
 }
