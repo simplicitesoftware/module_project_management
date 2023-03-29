@@ -64,6 +64,7 @@ body {
 	text-transform:uppercase;
 }
 .titlePrj{
+	font-size: 32pt;
 	color: var(--color-dark);
 	padding:16px;
 	font-weight:bold;
