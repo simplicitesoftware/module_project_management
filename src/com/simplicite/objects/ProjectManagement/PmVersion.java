@@ -75,8 +75,21 @@ public class PmVersion extends ObjectDB {
 		if (taskCount==0)return 100;
 		return (finishedTaskCount*100)/taskCount;
 	}
-	public String deferTask(){
-		return "to be implemented...";
+	public List<String> deferTask(){
+		//temporaire:
+		String versionSeleted="12";
+		List<String> msgs = new ArrayList<>();
+		ObjectDB tmpTask = getGrant().getTmpObject("PmTask");
+		synchronized(tmpTask){
+			tmpTask.resetFilters();
+			tmpTask.setFieldFilter("pmTskVrsId", getRowId());
+			for(String[] row : tmpTask.search()){
+				tmpTask.select(row[0]);
+				tmpTask.setFieldValue("pmTskVrsId", versionSeleted);
+				tmpTask.save();
+			}
+		}
+		return msgs;
 	}
 	
 }
