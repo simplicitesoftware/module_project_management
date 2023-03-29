@@ -5,12 +5,12 @@
         <style>{{css}}</style>
     </head>
     <body>
-        <h1>{{pmPrjName}} {{timeStamp}}</h1>
+        <div class="titlePrj">{{pmPrjName}} {{timeStamp}}</div>
     {{#bug}}
     {{/bug}}
     {{#PmVersion}}
-        <h2>{{pmVrsVersion}}</h2>
-        <p>Published on: {{pmVrsPublicationDate}}</p>
+        <div class="titleVrs">{{pmVrsVersion}}</div>
+        <div class="dateVrs">Published on: {{pmVrsPublicationDate}}</p>
         {{#NotEmpty}}
             <div class="container">
                 <div class="table">
