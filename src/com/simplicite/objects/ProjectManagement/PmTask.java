@@ -105,7 +105,7 @@ public class PmTask extends ObjectDB {
 				}
 				tmpMsg.select(row[0]);
 				String errDelete =tmpMsg.delete();
-				if (errDelete.length()>0){
+				if (errDelete != null){
 					msgs.add(Message.formatError(null,errDelete,null));
 				}
 			}
