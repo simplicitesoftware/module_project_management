@@ -1,9 +1,9 @@
 :root{
     --base-spacing-unit: 24px;
     --half-spacing-unit: var(--base-spacing-unit) / 2;
-    --color-highlight: #f9f9f9;
-	--color-highlight-bis: #d3d3d3;
-	--color-dark:#252330;
+    --color-highlight: #ffffff;
+	--color-highlight-bis: #e8e7ff;
+	--color-dark:#04001a;
 
 }
 *, *:before, *:after {
