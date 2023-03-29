@@ -1,5 +1,7 @@
 package com.simplicite.objects.ProjectManagement;
 
+import static org.mockito.Mockito.lenient;
+
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
@@ -99,6 +101,12 @@ public class PmTask extends ObjectDB {
 					ot.getForDelete(row[0]);
 				} catch (Exception e) {
 					msgs.add(Message.formatError(null,e.toString(),null));
+					continue;
+				}
+				tmpMsg.select(row[0]);
+				String errDelete =tmpMsg.delete();
+				if (errDelete.length()>0){
+					msgs.add(Message.formatError(null,errDelete,null));
 				}
 			}
 		}
