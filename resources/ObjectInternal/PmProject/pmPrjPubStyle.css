@@ -70,12 +70,13 @@ body {
 	font-weight:bold;
 }
 .box{
-  -moz-box-shadow: 2px 2px 6px #888;  
-  -webkit-box-shadow: 2px 2px 6px #888;  
-  box-shadow:2px 2px 6px #888;  
-  text-align:center;
-  display:block;
-  margin:16px;
+	padding:16px;
+	-moz-box-shadow: 2px 2px 6px #888;  
+	-webkit-box-shadow: 2px 2px 6px #888;  
+	box-shadow:2px 2px 6px #888;  
+	text-align:center;
+	display:block;
+	margin:16px;
 }
 .timeStamp{
 	font-weight:lighter;
