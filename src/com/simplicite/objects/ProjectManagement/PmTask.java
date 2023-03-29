@@ -85,8 +85,21 @@ public class PmTask extends ObjectDB {
 		}
 		return Tool.diffDate(begin, end);
 	}
-	public String taskDeletion(){
-		return "to be implemented...";
+	public List<String> taskMsgDeletion(){
+		List<String> msgs = new ArrayList<>();
+		ObjectDB tmpMsg = getGrant().getTmpObject("PmMessage");
+		BusinessObjectTool ot = tmpMsg.getTool();
+		synchronized(tmpMsg){
+			tmpMsg.resetFilters();
+			tmpMsg.setFieldFilter("pmMsgTskId", getRowId());
+			for(String[] row : tmpMsg.search()){
+				try {
+					ot.getForDelete(row[0]);
+				} catch (Exception e) {
+					msgs.add(Message.formatError(null,e.toString(),null));
+				}
+			}
+		}
+		return msgs;
 	}
-
 }
