@@ -85,8 +85,11 @@ public class PmVersion extends ObjectDB {
 			tmpTask.setFieldFilter("pmTskVrsId", getRowId());
 			for(String[] row : tmpTask.search()){
 				tmpTask.select(row[0]);
-				tmpTask.setFieldValue("pmTskVrsId", versionSeleted);
-				tmpTask.save();
+				if(tmpTask.getStatus().equals("DRAFT") || tmpTask.getStatus().equals("TODO") || tmpTask.getStatus().equals("DOING") ){
+					tmpTask.setFieldValue("pmTskVrsId", versionSeleted);
+					tmpTask.save();
+				}
+				
 			}
 		}
 		return msgs;
