@@ -84,3 +84,8 @@ body {
 	font-weight:lighter;
 	font-size: 18pt;
 }
+.titleVrs{
+	font-size: 20pt;
+	color: var(--color-dark);
+	font-weight:600;
+}
