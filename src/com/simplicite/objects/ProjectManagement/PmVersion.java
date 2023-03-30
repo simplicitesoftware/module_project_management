@@ -93,7 +93,7 @@ public class PmVersion extends ObjectDB {
 				}
 			}
 		}else{
-			msgs.add(Message.formatError("PM_VERSION_NEXT_NOT_FOUND",null,"pmNextVrsId.pmVrsVersion"));
+			msgs.add(Message.formatError("PM_ERR_VERSION_NEXT_NOT_FOUND",null,null));
 		}
 		
 		return msgs;
