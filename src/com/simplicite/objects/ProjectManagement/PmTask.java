@@ -57,7 +57,7 @@ public class PmTask extends ObjectDB {
 	}
 	@Override
 	public String postDelete() {
-		AppLog.info("DEBUG postDelete", getGrant());
+		AppLog.info("DEBUG postDelete rowid: "+getRowId(), getGrant());
 		if(getStatus().equals("TODO") || getStatus().equals("DOING")){// if task is to do or doing status at delete  we have to decrease the number of task of user
 			ObjectDB tmpAssignment = this.getGrant().getTmpObject("PmAssignment");
 			synchronized(tmpAssignment){
