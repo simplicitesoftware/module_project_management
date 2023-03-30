@@ -35,7 +35,7 @@ public class PmProject extends ObjectDB {
 		projectJson.put("labelCreationDate",getGrant().getTmpObject("PmTask").getField("pmTskCreation").getDisplay());
 		projectJson.put("labelEffectiveClosingDate",getGrant().getTmpObject("PmTask").getField("pmTskEffectiveClosingDate").getDisplay());
 		projectJson.put("labelExpetedDuration",getGrant().getTmpObject("PmTask").getField("pmTskExpectedDuration").getDisplay());
-		projectJson.put("labelLabels",getGrant().getTmpObject("PmLabel").getDisplay());
+		projectJson.put("labelLabels",getGrant().getTmpObject("PmLabel").getPluralDisplay());
 
 		ObjectDB tmpVrs = this.getGrant().getTmpObject("PmVersion");
 		synchronized(tmpVrs){
