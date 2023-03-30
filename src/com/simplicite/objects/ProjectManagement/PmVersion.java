@@ -76,22 +76,26 @@ public class PmVersion extends ObjectDB {
 		return (finishedTaskCount*100)/taskCount;
 	}
 	public List<String> deferTask(){
-		//temporaire:
-		String versionSeleted="12";
+		String versionSeleted=getFieldValue("pmNextVrsId");
 		List<String> msgs = new ArrayList<>();
-		ObjectDB tmpTask = getGrant().getTmpObject("PmTask");
-		synchronized(tmpTask){
-			tmpTask.resetFilters();
-			tmpTask.setFieldFilter("pmTskVrsId", getRowId());
-			for(String[] row : tmpTask.search()){
-				tmpTask.select(row[0]);
-				if(tmpTask.getStatus().equals("DRAFT") || tmpTask.getStatus().equals("TODO") || tmpTask.getStatus().equals("DOING") ){
-					tmpTask.setFieldValue("pmTskVrsId", versionSeleted);
-					tmpTask.save();
+		if(versionSeleted.length()>0){
+			ObjectDB tmpTask = getGrant().getTmpObject("PmTask");
+			synchronized(tmpTask){
+				tmpTask.resetFilters();
+				tmpTask.setFieldFilter("pmTskVrsId", getRowId());
+				for(String[] row : tmpTask.search()){
+					tmpTask.select(row[0]);
+					if(tmpTask.getStatus().equals("DRAFT") || tmpTask.getStatus().equals("TODO") || tmpTask.getStatus().equals("DOING") ){
+						tmpTask.setFieldValue("pmTskVrsId", versionSeleted);
+						tmpTask.save();
+					}
+					
 				}
-				
 			}
+		}else{
+			msgs.add(Message.formatError("PM_VERSION_NEXT_NOT_FOUND",null,"pmNextVrsId.pmVrsVersion"));
 		}
+		
 		return msgs;
 	}
 	
