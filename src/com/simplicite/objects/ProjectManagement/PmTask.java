@@ -22,7 +22,7 @@ public class PmTask extends ObjectDB {
 		if(getFieldValue("pmTskVrsId.pmVrsStatus").equals("PUBLISHED")){
 			msgs.add(Message.formatError("PM_ERR_TSK_VRS_STATUS",null,"pmTskVrsId.pmVrsStatus"));
 		}
-		msgs.addAll(super.postValidate());
+		super.postValidate();
 		return msgs;
 	}
 	@Override
