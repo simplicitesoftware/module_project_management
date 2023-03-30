@@ -16,6 +16,16 @@ import com.simplicite.util.tools.*;
 public class PmTask extends ObjectDB {
 	private static final long serialVersionUID = 1L;
 	@Override
+	public List<String> postValidate() {
+		// TODO Auto-generated method stub
+		List<String> msgs = new ArrayList<>();
+		if(getFieldValue("pmTskVrsId.pmVrsStatus").equals("PUBLISHED")){
+			msgs.add(Message.formatError("PM_ERR_TSK_VRS_STATUS",null,"pmTskVrsId.pmVrsStatus"));
+		}
+		msgs.addAll(super.postValidate());
+		return msgs;
+	}
+	@Override
 	public String postUpdate() {
 		// TODO Auto-generated method stub
 		if(getStatus().equals("TODO") && !getOldStatus().equals("DOING")){// If task is toDo status from other status expte Doing we have to inrease the number of task of user
