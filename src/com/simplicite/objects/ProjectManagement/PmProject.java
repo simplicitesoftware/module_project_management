@@ -19,6 +19,7 @@ public class PmProject extends ObjectDB {
 	private static final long serialVersionUID = 1L;
 	public String pubHtml(){
 		AppLog.info("DEBUG PUBHTML TEST", getGrant());
+		AppLog.info(getField("pmPrjName").getDisplay(), getGrant());
 		LocalDate dateObj = LocalDate.now();
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 		String now = dateObj.format(formatter);
