@@ -75,9 +75,9 @@ public class PmVersion extends ObjectDB {
 		if (taskCount==0)return 100;
 		return (finishedTaskCount*100)/taskCount;
 	}
-	public List<String> deferTask(){
+	public String deferTask(){
 		String versionSeleted=getFieldValue("pmNextVrsId");
-		List<String> msgs = new ArrayList<>();
+		String msg = new String();
 		if(versionSeleted.length()>0){
 			ObjectDB tmpTask = getGrant().getTmpObject("PmTask");
 			synchronized(tmpTask){
@@ -93,10 +93,10 @@ public class PmVersion extends ObjectDB {
 				}
 			}
 		}else{
-			msgs.add(Message.formatError("PM_ERR_VERSION_NEXT_NOT_FOUND",null,null));
+			msg=Message.formatError("PM_ERR_VERSION_NEXT_NOT_FOUND",null,null);
 		}
 		
-		return msgs;
+		return msg;
 	}
 	
 }
