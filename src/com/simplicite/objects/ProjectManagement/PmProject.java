@@ -26,6 +26,8 @@ public class PmProject extends ObjectDB {
 		JSONObject projectJson= new JSONObject();
 		projectJson.put("pmPrjName",getFieldValue("pmPrjName"));
 		projectJson.put("timeStamp",now);
+		projectJson.put("labelPublicationDate",getGrant().getTmpObject("PmVersion").getField("pmVrsPublicationDate").getDisplay());
+
 		ObjectDB tmpVrs = this.getGrant().getTmpObject("PmVersion");
 		synchronized(tmpVrs){
 			tmpVrs.resetFilters();
