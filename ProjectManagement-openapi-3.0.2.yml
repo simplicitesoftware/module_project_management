@@ -22,6 +22,12 @@ components:
         pmTsklblTskId__pmTskNumber:
           description: Pm tsklbl tsk id Number
           type: integer
+        pmTsklblTskId__pmTskVrsId:
+          description: Pm tsklbl tsk id Release
+          type: string
+        pmTsklblTskId__pmTskVrsId__pmVrsVersion:
+          description: Pm tsklbl tsk id Release Version
+          type: string
         pmTsklblLblId:
           description: Pm tsklbl lbl id
           type: string
@@ -33,6 +39,12 @@ components:
           type: string
         pmTsklblLblId__pmLblName:
           description: Pm tsklbl lbl id Name
+          type: string
+        pmTsklblTskId__pmTskVrsId__pmVrsPrjId:
+          description: Pm tsklbl tsk id Release Project
+          type: string
+        pmTsklblTskId__pmTskVrsId__pmVrsPrjId__pmPrjName:
+          description: Pm tsklbl tsk id Release Project Name
           type: string
     PublicationResult:
       type: object
@@ -57,8 +69,20 @@ components:
         pmVrsPrjId__pmPrjName:
           description: Project Name
           type: string
+        pmNextVrsId:
+          description: Next release id
+          type: string
         pmVrsPrjId:
           description: Project
+          type: string
+        pmNextVrsId__pmVrsVersion:
+          description: Next version
+          type: string
+        pmNextVrsId__pmVrsPrjId:
+          description: Next release id Project
+          type: string
+        pmNextVrsId__pmVrsPrjId__pmPrjName:
+          description: Next version project
           type: string
         pmVrsStatus:
           description: Status
@@ -103,16 +127,31 @@ components:
     PmMessage:
       type: object
       properties:
-        pmTskMsgId:
+        pmMsgTskId__pmTskNumber:
+          description: Task Number
+          type: integer
+        pmMsgPublicationDate:
+          description: Publication date
+          type: string
+          example: yyyy-MM-dd
+        pmMsgTskId__pmTskVrsId__pmVrsPrjId__pmPrjName:
+          description: Task Release Project Name
+          type: string
+        pmMsgTskId:
+          description: Task
+          type: string
+        pmMsgMessage:
           description: Message
           type: string
         pmMsgTitle:
           description: Title
           type: string
-        pmMsgPublicationDate:
-          description: Publication date
+        pmMsgTskId__pmTskTitle:
+          description: Task Title
           type: string
-          example: yyyy-MM-dd
+        pmMsgTskId__pmTskVrsId__pmVrsPrjId:
+          description: Task Release Project
+          type: string
         pmMsgVisibility:
           description: Visibility
           type: string
@@ -122,18 +161,18 @@ components:
         pmMsgUsrId:
           description: User
           type: string
-        pmMsgMessage:
-          description: Message
-          type: string
         row_id:
           description: Unique technical row ID
           type: string
         pmMsgUsrId__usr_login:
           description: Login
           type: string
-        pmTskMsgId__pmTskNumber:
-          description: Message Number
-          type: integer
+        pmMsgTskId__pmTskVrsId:
+          description: Task Release
+          type: string
+        pmMsgTskId__pmTskVrsId__pmVrsVersion:
+          description: Task Release Version
+          type: string
     ArrayOfPmProject:
       type: array
       items:
@@ -152,35 +191,71 @@ components:
     PmArrayOfTask:
       type: object
       properties:
-        pmAotTskPreviousId:
-          description: Previous Task
+        pmAotNextTskId__pmTskVrsId__pmVrsPrjId:
+          description: Next task Release Project
           type: string
-        pmAotTskNextId:
-          description: Next Task
+        pmAotPrvTskId__pmTskVrsId__pmVrsVersion:
+          description: Previous task version
           type: string
-        pmAotTskNextId__pmTskNumber:
-          description: Next Task Number
+        pmAotNextTskId__pmTskVrsId__pmVrsPrjId__pmPrjName:
+          description: Next task Release Project Name
+          type: string
+        pmAotNextTskId:
+          description: Next task
+          type: string
+        pmAotPrvTskId:
+          description: Previous task
+          type: string
+        pmAotPrvTskId__pmTskNumber:
+          description: Previous task Number
           type: integer
+        pmAotPrvTskId__pmTskVrsId__pmVrsPrjId:
+          description: Previous task Release Project
+          type: string
+        pmAotPrvTskId__pmTskVrsId__pmVrsPrjId__pmPrjName:
+          description: Previous task Release Project Name
+          type: string
+        pmAotNextTskId__pmTskVrsId__pmVrsVersion:
+          description: Next task version
+          type: string
+        pmAotPrvTskId__pmTskVrsId:
+          description: Previous task Release
+          type: string
+        pmAotNextTskId__pmTskNumber:
+          description: Next task Number
+          type: integer
+        pmAotNextTskId__pmTskVrsId:
+          description: Next task Release
+          type: string
         row_id:
           description: Unique technical row ID
           type: string
-        pmAotTskPreviousId__pmTskNumber:
-          description: Previous Task Number
-          type: integer
     PmDocument:
       type: object
       properties:
+        pmDocTskId__pmTskVrsId__pmVrsVersion:
+          description: Task Release Version
+          type: string
         pmDocPrjId__pmPrjName:
           description: Project Name
           type: string
         pmDocTskId:
           description: Task
           type: string
+        pmDocTskId__pmTskVrsId__pmVrsPrjId__pmPrjName:
+          description: Task Release Project Name
+          type: string
         pmDocAttachment:
           description: Attachment
           type: object
         pmDocTitle:
           description: Title
+          type: string
+        pmDocTskId__pmTskVrsId:
+          description: Task Release
+          type: string
+        pmDocTskId__pmTskVrsId__pmVrsPrjId:
+          description: Task Release Project
           type: string
         row_id:
           description: Unique technical row ID
@@ -369,6 +444,13 @@ components:
         pmTskUsrId__usr_first_name:
           description: First name
           type: string
+        pmTskVrsId__pmVrsStatus:
+          description: Release Status
+          type: string
+          enum:
+          - ALPHA
+          - BETA
+          - PUBLISHED
         pmTskPrjVirtualId:
           description: Pm tsk prj virtual id
           type: string
@@ -397,6 +479,9 @@ components:
           type: string
         pmTskVrsId__pmVrsPrjId:
           description: Release Project
+          type: string
+        pmTskVrsId__pmVrsPrjId__pmPrjName:
+          description: Release Project Name
           type: string
         pmTskVrsId__pmVrsVersion:
           description: Release Version
@@ -434,26 +519,55 @@ components:
         pmAssRole:
           description: Pm ass role
           type: string
+        pmAssPmTaskid__pmTskTitle:
+          description: Task Title
+          type: string
+        pmAssPmTaskid__pmTskVrsId__pmVrsPrjId:
+          description: Task Release Project
+          type: string
+        pmAssPmTaskid__pmTskVrsId:
+          description: Task Release
+          type: string
+        pmAssPmTaskid__pmTskPriority:
+          description: Task Priority
+          type: string
+          enum:
+          - LOW
+          - NORMAL
+          - HIGH
+          - URGENT
+          - IMMEDIATE
+        pmAssPmTaskid:
+          description: Task
+          type: string
+        pmAssPmTaskid__pmTskVrsId__pmVrsVersion:
+          description: Task Release Version
+          type: string
         pmAssPmTaskid__pmTskNumber:
           description: Task Number
           type: integer
         pmAssPmUserid__pmUsrNbTask:
           description: User Number of current task
           type: integer
-        pmAssPmTaskid__pmTskTitle:
-          description: Task Title
-          type: string
         pmAssPmUserid__usr_login:
           description: Login
           type: string
-        pmAssPmTaskid__pmTskVrsId:
-          description: Task Release
+        pmAssPmTaskid__pmTskStatus:
+          description: Task Status
           type: string
+          enum:
+          - DRAFT
+          - TODO
+          - DOING
+          - DONE
+          - CLOSED
+          - CANCEL
+          - REJECTED
         row_id:
           description: Unique technical row ID
           type: string
-        pmAssPmTaskid:
-          description: Task
+        pmAssPmTaskid__pmTskVrsId__pmVrsPrjId__pmPrjName:
+          description: Task Release Project Name
           type: string
         pmAssPmUserid:
           description: User
@@ -522,6 +636,45 @@ components:
         pmTskUsrId__usr_login:
           description: Login
           type: string
+        pmTskVrsId__pmVrsStatus:
+          description: Release Status
+          type: string
+          enum:
+          - ALPHA
+          - BETA
+          - PUBLISHED
+        created_dt_hist:
+          description: Created date
+          type: string
+          example: yyyy-MM-dd HH:mm:ss
+        pmTskExpectedDuration:
+          description: Expected duration
+          type: integer
+        pmTskUsrId:
+          description: User
+          type: string
+        row_ref_id:
+          description: Record row ID
+          type: string
+        pmTskEffectiveClosingDate:
+          description: Effective closing date
+          type: string
+          example: yyyy-MM-dd
+        pmTskDescription:
+          description: Description
+          type: string
+        pmTskVrsId__pmVrsPrjId:
+          description: Release Project
+          type: string
+        pmTskVrsId__pmVrsPrjId__pmPrjName:
+          description: Release Project Name
+          type: string
+        pmTskVrsId__pmVrsVersion:
+          description: Release Version
+          type: string
+        pmTskNumber:
+          description: Number
+          type: integer
         pmTskClose:
           description: Closing date
           type: string
@@ -541,33 +694,26 @@ components:
         pmTskUsrId__usr_first_name:
           description: First name
           type: string
-        created_dt_hist:
-          description: Created date
+        pmTskPrjVirtualId:
+          description: Pm tsk prj virtual id
           type: string
-          example: yyyy-MM-dd HH:mm:ss
         pmTskVrsId__pmVrsPublicationDate:
           description: Release Publication date
-          type: string
-          example: yyyy-MM-dd
-        pmTskUsrId:
-          description: User
-          type: string
-        row_ref_id:
-          description: Record row ID
-          type: string
-        pmTskEffectiveClosingDate:
-          description: Effective closing date
           type: string
           example: yyyy-MM-dd
         row_idx:
           description: History record index
           type: integer
+        pmTskTitle:
+          description: Title
+          type: string
         pmTskUsrId__usr_last_name:
           description: Last name
           type: string
-        pmTskVrsId__pmVrsVersion:
-          description: Release Version
+        pmTskCreation:
+          description: Creation date
           type: string
+          example: yyyy-MM-dd
         row_id:
           description: Unique technical row ID
           type: string
@@ -585,9 +731,6 @@ components:
         created_by_hist:
           description: Created by
           type: string
-        pmTskNumber:
-          description: Number
-          type: integer
         pmTskVrsId:
           description: Release
           type: string
@@ -740,6 +883,18 @@ paths:
         required: false
       - schema:
           type: string
+        in: query
+        name: pmTskTitle
+        description: Search filter for Title
+        required: false
+      - schema:
+          type: string
+        in: query
+        name: pmTskDescription
+        description: Search filter for Description
+        required: false
+      - schema:
+          type: string
           enum:
           - DRAFT
           - TODO
@@ -767,6 +922,12 @@ paths:
       - schema:
           type: string
         in: query
+        name: pmTskCreation
+        description: Search filter for Creation date
+        required: false
+      - schema:
+          type: string
+        in: query
         name: pmTskClose
         description: Search filter for Closing date
         required: false
@@ -777,28 +938,10 @@ paths:
         description: Search filter for Effective closing date
         required: false
       - schema:
-          type: string
+          type: integer
         in: query
-        name: pmTskVrsId
-        description: Search filter for Release
-        required: false
-      - schema:
-          type: string
-        in: query
-        name: pmTskVrsId__pmVrsVersion
-        description: Search filter for Release Version
-        required: false
-      - schema:
-          type: string
-        in: query
-        name: pmTskVrsId__pmVrsName
-        description: Search filter for Concatenation of project name and version number
-        required: false
-      - schema:
-          type: string
-        in: query
-        name: pmTskVrsId__pmVrsPublicationDate
-        description: Search filter for Release Publication date
+        name: pmTskExpectedDuration
+        description: Search filter for Expected duration
         required: false
       - schema:
           type: string
@@ -823,6 +966,58 @@ paths:
         in: query
         name: pmTskUsrId__usr_last_name
         description: Search filter for Last name
+        required: false
+      - schema:
+          type: string
+        in: query
+        name: pmTskPrjVirtualId
+        description: Search filter for Pm tsk prj virtual id
+        required: false
+      - schema:
+          type: string
+        in: query
+        name: pmTskVrsId
+        description: Search filter for Release
+        required: false
+      - schema:
+          type: string
+        in: query
+        name: pmTskVrsId__pmVrsVersion
+        description: Search filter for Release Version
+        required: false
+      - schema:
+          type: string
+        in: query
+        name: pmTskVrsId__pmVrsPrjId
+        description: Search filter for Release Project
+        required: false
+      - schema:
+          type: string
+        in: query
+        name: pmTskVrsId__pmVrsPrjId__pmPrjName
+        description: Search filter for Release Project Name
+        required: false
+      - schema:
+          type: string
+          enum:
+          - ALPHA
+          - BETA
+          - PUBLISHED
+        in: query
+        name: pmTskVrsId__pmVrsStatus
+        description: Search filter for Release Status
+        required: false
+      - schema:
+          type: string
+        in: query
+        name: pmTskVrsId__pmVrsName
+        description: Search filter for Concatenation of project name and version number
+        required: false
+      - schema:
+          type: string
+        in: query
+        name: pmTskVrsId__pmVrsPublicationDate
+        description: Search filter for Release Publication date
         required: false
       tags:
       - PmTaskHistoric
@@ -1000,6 +1195,30 @@ paths:
         in: query
         name: pmDocTskId__pmTskNumber
         description: Search filter for Task Number
+        required: false
+      - schema:
+          type: string
+        in: query
+        name: pmDocTskId__pmTskVrsId
+        description: Search filter for Task Release
+        required: false
+      - schema:
+          type: string
+        in: query
+        name: pmDocTskId__pmTskVrsId__pmVrsPrjId
+        description: Search filter for Task Release Project
+        required: false
+      - schema:
+          type: string
+        in: query
+        name: pmDocTskId__pmTskVrsId__pmVrsVersion
+        description: Search filter for Task Release Version
+        required: false
+      - schema:
+          type: string
+        in: query
+        name: pmDocTskId__pmTskVrsId__pmVrsPrjId__pmPrjName
+        description: Search filter for Task Release Project Name
         required: false
       - schema:
           type: string
@@ -1847,12 +2066,6 @@ paths:
         description: Search filter for Title
         required: false
       - schema:
-          type: integer
-        in: query
-        name: pmTskMsgId__pmTskNumber
-        description: Search filter for Message Number
-        required: false
-      - schema:
           type: string
         in: query
         name: pmMsgMessage
@@ -1876,12 +2089,6 @@ paths:
       - schema:
           type: string
         in: query
-        name: pmTskMsgId
-        description: Search filter for Message
-        required: false
-      - schema:
-          type: string
-        in: query
         name: pmMsgUsrId
         description: Search filter for User
         required: false
@@ -1890,6 +2097,48 @@ paths:
         in: query
         name: pmMsgUsrId__usr_login
         description: Search filter for Login
+        required: false
+      - schema:
+          type: string
+        in: query
+        name: pmMsgTskId
+        description: Search filter for Task
+        required: false
+      - schema:
+          type: integer
+        in: query
+        name: pmMsgTskId__pmTskNumber
+        description: Search filter for Task Number
+        required: false
+      - schema:
+          type: string
+        in: query
+        name: pmMsgTskId__pmTskVrsId
+        description: Search filter for Task Release
+        required: false
+      - schema:
+          type: string
+        in: query
+        name: pmMsgTskId__pmTskTitle
+        description: Search filter for Task Title
+        required: false
+      - schema:
+          type: string
+        in: query
+        name: pmMsgTskId__pmTskVrsId__pmVrsVersion
+        description: Search filter for Task Release Version
+        required: false
+      - schema:
+          type: string
+        in: query
+        name: pmMsgTskId__pmTskVrsId__pmVrsPrjId
+        description: Search filter for Task Release Project
+        required: false
+      - schema:
+          type: string
+        in: query
+        name: pmMsgTskId__pmTskVrsId__pmVrsPrjId__pmPrjName
+        description: Search filter for Task Release Project Name
         required: false
       tags:
       - PmMessage
@@ -2714,36 +2963,6 @@ paths:
       - schema:
           type: string
         in: query
-        name: pmTskVrsId
-        description: Search filter for Release
-        required: false
-      - schema:
-          type: string
-        in: query
-        name: pmTskVrsId__pmVrsVersion
-        description: Search filter for Release Version
-        required: false
-      - schema:
-          type: string
-        in: query
-        name: pmTskVrsId__pmVrsPrjId
-        description: Search filter for Release Project
-        required: false
-      - schema:
-          type: string
-        in: query
-        name: pmTskVrsId__pmVrsName
-        description: Search filter for Concatenation of project name and version number
-        required: false
-      - schema:
-          type: string
-        in: query
-        name: pmTskVrsId__pmVrsPublicationDate
-        description: Search filter for Release Publication date
-        required: false
-      - schema:
-          type: string
-        in: query
         name: pmTskUsrId
         description: Search filter for User
         required: false
@@ -2770,6 +2989,52 @@ paths:
         in: query
         name: pmTskPrjVirtualId
         description: Search filter for Pm tsk prj virtual id
+        required: false
+      - schema:
+          type: string
+        in: query
+        name: pmTskVrsId
+        description: Search filter for Release
+        required: false
+      - schema:
+          type: string
+        in: query
+        name: pmTskVrsId__pmVrsVersion
+        description: Search filter for Release Version
+        required: false
+      - schema:
+          type: string
+        in: query
+        name: pmTskVrsId__pmVrsPrjId
+        description: Search filter for Release Project
+        required: false
+      - schema:
+          type: string
+        in: query
+        name: pmTskVrsId__pmVrsPrjId__pmPrjName
+        description: Search filter for Release Project Name
+        required: false
+      - schema:
+          type: string
+          enum:
+          - ALPHA
+          - BETA
+          - PUBLISHED
+        in: query
+        name: pmTskVrsId__pmVrsStatus
+        description: Search filter for Release Status
+        required: false
+      - schema:
+          type: string
+        in: query
+        name: pmTskVrsId__pmVrsName
+        description: Search filter for Concatenation of project name and version number
+        required: false
+      - schema:
+          type: string
+        in: query
+        name: pmTskVrsId__pmVrsPublicationDate
+        description: Search filter for Release Publication date
         required: false
       tags:
       - PmTask
@@ -3069,6 +3334,30 @@ paths:
       - schema:
           type: string
         in: query
+        name: pmTsklblTskId__pmTskVrsId
+        description: Search filter for Pm tsklbl tsk id Release
+        required: false
+      - schema:
+          type: string
+        in: query
+        name: pmTsklblTskId__pmTskVrsId__pmVrsVersion
+        description: Search filter for Pm tsklbl tsk id Release Version
+        required: false
+      - schema:
+          type: string
+        in: query
+        name: pmTsklblTskId__pmTskVrsId__pmVrsPrjId
+        description: Search filter for Pm tsklbl tsk id Release Project
+        required: false
+      - schema:
+          type: string
+        in: query
+        name: pmTsklblTskId__pmTskVrsId__pmVrsPrjId__pmPrjName
+        description: Search filter for Pm tsklbl tsk id Release Project Name
+        required: false
+      - schema:
+          type: string
+        in: query
         name: pmTsklblLblId
         description: Search filter for Pm tsklbl lbl id
         required: false
@@ -3218,6 +3507,50 @@ paths:
         in: query
         name: pmAssPmTaskid__pmTskVrsId__pmVrsName
         description: Search filter for Concatenation of project name and version number
+        required: false
+      - schema:
+          type: string
+          enum:
+          - DRAFT
+          - TODO
+          - DOING
+          - DONE
+          - CLOSED
+          - CANCEL
+          - REJECTED
+        in: query
+        name: pmAssPmTaskid__pmTskStatus
+        description: Search filter for Task Status
+        required: false
+      - schema:
+          type: string
+        in: query
+        name: pmAssPmTaskid__pmTskVrsId__pmVrsPrjId
+        description: Search filter for Task Release Project
+        required: false
+      - schema:
+          type: string
+        in: query
+        name: pmAssPmTaskid__pmTskVrsId__pmVrsVersion
+        description: Search filter for Task Release Version
+        required: false
+      - schema:
+          type: string
+        in: query
+        name: pmAssPmTaskid__pmTskVrsId__pmVrsPrjId__pmPrjName
+        description: Search filter for Task Release Project Name
+        required: false
+      - schema:
+          type: string
+          enum:
+          - LOW
+          - NORMAL
+          - HIGH
+          - URGENT
+          - IMMEDIATE
+        in: query
+        name: pmAssPmTaskid__pmTskPriority
+        description: Search filter for Task Priority
         required: false
       tags:
       - PmAssignment
@@ -3598,26 +3931,74 @@ paths:
       - schema:
           type: string
         in: query
-        name: pmAotTskPreviousId
-        description: Search filter for Previous Task
+        name: pmAotPrvTskId
+        description: Search filter for Previous task
         required: false
       - schema:
           type: integer
         in: query
-        name: pmAotTskPreviousId__pmTskNumber
-        description: Search filter for Previous Task Number
+        name: pmAotPrvTskId__pmTskNumber
+        description: Search filter for Previous task Number
         required: false
       - schema:
           type: string
         in: query
-        name: pmAotTskNextId
-        description: Search filter for Next Task
+        name: pmAotPrvTskId__pmTskVrsId
+        description: Search filter for Previous task Release
+        required: false
+      - schema:
+          type: string
+        in: query
+        name: pmAotPrvTskId__pmTskVrsId__pmVrsVersion
+        description: Search filter for Previous task version
+        required: false
+      - schema:
+          type: string
+        in: query
+        name: pmAotPrvTskId__pmTskVrsId__pmVrsPrjId
+        description: Search filter for Previous task Release Project
+        required: false
+      - schema:
+          type: string
+        in: query
+        name: pmAotPrvTskId__pmTskVrsId__pmVrsPrjId__pmPrjName
+        description: Search filter for Previous task Release Project Name
+        required: false
+      - schema:
+          type: string
+        in: query
+        name: pmAotNextTskId
+        description: Search filter for Next task
         required: false
       - schema:
           type: integer
         in: query
-        name: pmAotTskNextId__pmTskNumber
-        description: Search filter for Next Task Number
+        name: pmAotNextTskId__pmTskNumber
+        description: Search filter for Next task Number
+        required: false
+      - schema:
+          type: string
+        in: query
+        name: pmAotNextTskId__pmTskVrsId
+        description: Search filter for Next task Release
+        required: false
+      - schema:
+          type: string
+        in: query
+        name: pmAotNextTskId__pmTskVrsId__pmVrsVersion
+        description: Search filter for Next task version
+        required: false
+      - schema:
+          type: string
+        in: query
+        name: pmAotNextTskId__pmTskVrsId__pmVrsPrjId
+        description: Search filter for Next task Release Project
+        required: false
+      - schema:
+          type: string
+        in: query
+        name: pmAotNextTskId__pmTskVrsId__pmVrsPrjId__pmPrjName
+        description: Search filter for Next task Release Project Name
         required: false
       tags:
       - PmArrayOfTask
@@ -3906,6 +4287,30 @@ paths:
         in: query
         name: pmVrsCompletion
         description: Search filter for Completion
+        required: false
+      - schema:
+          type: string
+        in: query
+        name: pmNextVrsId
+        description: Search filter for Next release id
+        required: false
+      - schema:
+          type: string
+        in: query
+        name: pmNextVrsId__pmVrsVersion
+        description: Search filter for Next version
+        required: false
+      - schema:
+          type: string
+        in: query
+        name: pmNextVrsId__pmVrsPrjId
+        description: Search filter for Next release id Project
+        required: false
+      - schema:
+          type: string
+        in: query
+        name: pmNextVrsId__pmVrsPrjId__pmPrjName
+        description: Search filter for Next version project
         required: false
       tags:
       - PmVersion
@@ -4324,11 +4729,11 @@ tags:
 - name: PmProject
   description: Project
 - name: PmRole
-  description: PmRole
+  description: Role
 - name: PmTask
   description: Task
 - name: PmTaskHistoric
-  description: Task historic
+  description: Pm task historic
 - name: PmTskLbl
   description: Labeling
 - name: PmUser
