@@ -23,7 +23,7 @@ public class PmTask extends ObjectDB {
 			msgs.add(Message.formatError("PM_ERR_TSK_VRS_STATUS",null,"pmTskVrsId.pmVrsStatus"));
 		}
 		List<String> msgsSuper =super.postValidate();
-		if (!msgsSuper.equals(null)) msgs.addAll(msgsSuper);
+		if (!Tool.isEmpty(msgsSuper)) msgs.addAll(msgsSuper);
 		return msgs;
 	}
 	@Override
