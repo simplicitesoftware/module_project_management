@@ -73,7 +73,7 @@ public class PmProject extends ObjectDB {
 							}
 						}
 						String labelString=labelArray.toString();
-						if(labelString.length()>0){
+						if(!Tool.isEmpty(labelString)){
 							taskJson.put("PmLabel",labelString.substring(0,labelString.length()-2));
 						}else{
 							taskJson.put("PmLabel","");
@@ -84,7 +84,7 @@ public class PmProject extends ObjectDB {
 					}
 				}
 				
-				versionJson.put("NotEmpty",taskArray.length()>0);
+				versionJson.put("NotEmpty",!Tool.isEmpty(taskArray));
 				versionJson.put("PmTask",taskArray);
 				versionArray.put(versionJson);
 			}

@@ -91,7 +91,7 @@ public class PmTask extends ObjectDB {
 	public int ActualDuration(){//used by the calculated field pmTskActualDuraition
 		String begin = getFieldValue("pmTskCreation");
 		String  end = getFieldValue("pmTskEffectiveClosingDate");
-		if(end != null && end.length() == 0 ){
+		if(Tool.isEmpty(end)){
 			LocalDate dateObj = LocalDate.now();
 			DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 			end = dateObj.format(formatter);

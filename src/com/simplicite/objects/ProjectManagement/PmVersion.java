@@ -45,7 +45,7 @@ public class PmVersion extends ObjectDB {
 				}
 			}
 		}
-		if (msg.length()==0){
+		if (!Tool.isEmpty(msg)){
 			return super.preUpdate();
 		}
 
@@ -74,7 +74,7 @@ public class PmVersion extends ObjectDB {
 	public String deferTask(){
 		String versionSeleted=getFieldValue("pmNextVrsId");
 		String msg = new String();
-		if(versionSeleted.length()>0){
+		if(Tool.isEmpty(versionSeleted)){
 			ObjectDB tmpTask = getGrant().getTmpObject("PmTask");
 			synchronized(tmpTask){
 				tmpTask.resetFilters();
