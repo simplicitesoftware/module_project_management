@@ -20,10 +20,6 @@ public class PmVersion extends ObjectDB {
 		LocalDate dateObj = LocalDate.now();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         String now = dateObj.format(formatter);
-		//msgs.add(Message.formatInfo("INFO_CODE", "Message", "fieldName"));
-		//msgs.add(Message.formatWarning("WARNING_CODE", "Message", "fieldName"));
-		//msgs.add(Message.formatError("ERROR_CODE", "Message", "fieldName"));
-		//AppLog.info(" DEBUG "+"now: "+now+" datePub: "+getFieldValue("pmVrsPublicationDate")+" diff: "+Tool.compareDate(getFieldValue("pmVrsPublicationDate"), now), getGrant());
 		if(!getStatus().equals("PUBLISHED") && Tool.compareDate(getFieldValue("pmVrsPublicationDate"), now)<0){
 			msgs.add(Message.formatError("PM_ERR_PUBLICATIONDATE", null, "pmVrsPublicationDate"));
 		}

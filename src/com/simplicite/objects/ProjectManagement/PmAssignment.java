@@ -40,7 +40,6 @@ public class PmAssignment extends ObjectDB {
         synchronized(tmpUser){
             // select = chargement dans l'instance des valeurs en base à partir d'une clef technique (id)
             tmpUser.select(this.getFieldValue("pmAssPmUserid"));
-            // lecture de la quantité commandée sur l'instance courante et du stock du produit sur l'instance chargée
 			try {
 				tmpUser.invokeMethod("increaseNbTask",null, null);
 			} catch (Exception e) {
@@ -55,7 +54,6 @@ public class PmAssignment extends ObjectDB {
         synchronized(tmpUser){
             // select = chargement dans l'instance des valeurs en base à partir d'une clef technique (id)
             tmpUser.select(this.getFieldValue("pmAssPmUserid"));
-            // lecture de la quantité commandée sur l'instance courante et du stock du produit sur l'instance chargée
 			try {
 				tmpUser.invokeMethod("decreaseNbTask",null, null);
 			} catch (Exception e) {
