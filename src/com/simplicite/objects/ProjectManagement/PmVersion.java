@@ -94,8 +94,11 @@ public class PmVersion extends ObjectDB {
 		
 		return msg;
 	}
-	public String deferTaskBis(ObjectDB attr ){
-		AppLog.info("DEBUG deferTask "+attr.getFieldValue("pmVrsVersion"), getGrant());
+	public String deferTaskBis(){
+		Action a = getAction("PM_DEFER_TASK");
+		ObjectField attr =a.getConfirmField(getGrant().getLang(), "pmDtVrsVersion");
+		
+		AppLog.info("DEBUG deferTask "+attr.getValue(), getGrant());
 		String msg = new String();
 		return msg;
 	}
