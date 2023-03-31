@@ -77,19 +77,27 @@ public class PmVersion extends ObjectDB {
 		if(!selected[0].equals("PmVersion")){
 			msg= Message.formatError("PM_ERR_DEFER_TASK_OBJECT_TYPE", null, "pmVrsStatus");
 		}else{
-			
-			ObjectDB tmpTask = getGrant().getTmpObject("PmTask");
-			synchronized(tmpTask){
-				tmpTask.resetFilters();
-				tmpTask.setFieldFilter("pmTskVrsId", getRowId());
-				for(String[] row : tmpTask.search()){
-					tmpTask.select(row[0]);
-					if(tmpTask.getStatus().equals("DRAFT") || tmpTask.getStatus().equals("TODO") || tmpTask.getStatus().equals("DOING") ){
-						tmpTask.setFieldValue("pmTskVrsId", selected[1]);
-						tmpTask.save();
+			ObjectDB tmpVrs = this.getGrant().getTmpObject("PmVersion");
+			synchronized(tmpVrs){
+				tmpVrs.select(selected[1]);
+				if (tmpVrs.getStatus().equals("PUBLISHED")){
+					msg= Message.formatError("PM_ERR_TSK_VRS_STATUS", null, null);
+				}else{
+					ObjectDB tmpTask = getGrant().getTmpObject("PmTask");
+					synchronized(tmpTask){
+						tmpTask.resetFilters();
+						tmpTask.setFieldFilter("pmTskVrsId", getRowId());
+						for(String[] row : tmpTask.search()){
+							tmpTask.select(row[0]);
+							if(tmpTask.getStatus().equals("DRAFT") || tmpTask.getStatus().equals("TODO") || tmpTask.getStatus().equals("DOING") ){
+								tmpTask.setFieldValue("pmTskVrsId", selected[1]);
+								tmpTask.save();
+							}
+							
+						}
 					}
-					
 				}
+				
 			}
 		}
 		
@@ -101,6 +109,9 @@ public class PmVersion extends ObjectDB {
 	public void initRefSelect(ObjectDB parent) {
 		if(parent!=null && (parent.getName().equals("PmTask") || parent.getName().equals("PmVersion"))){
 			setFieldFilter("pmVrsStatus","ALPHA;BETA");
-		}	
+		}
+		if(parent!=null && parent.getName().equals("PmVersion")){
+			setFieldFilter("pmVrsPrjId",parent.getFieldValue("pmVrsPrjId"));
+		}
 	}
 }
