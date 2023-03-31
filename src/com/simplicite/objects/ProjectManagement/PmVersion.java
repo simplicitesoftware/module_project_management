@@ -73,8 +73,12 @@ public class PmVersion extends ObjectDB {
 	}
 	public String deferTask(){
 		Action a = getAction("PM_DEFER_TASK");
-		String test= a.getConfirmField(getGrant().getLang(), "pmDtVrsVersion").toJSON();
-		
+		ObjectField selected= a.getConfirmField(getGrant().getLang(), "pmDtVrsVersion");
+		AppLog.info("DEBUG "+ selected.getType(), getGrant());
+		AppLog.info("DEBUG "+ selected.getObjectFieldId(), getGrant());
+		AppLog.info("DEBUG "+ selected.getRefObjectDBName(), getGrant());
+		String test=selected.getValue();
+		test =test.substring(test.length()-2);
 		AppLog.info("DEBUG "+ test, getGrant());
 		String msg = new String();
 		ObjectDB tmpTask = getGrant().getTmpObject("PmTask");
@@ -84,7 +88,7 @@ public class PmVersion extends ObjectDB {
 			for(String[] row : tmpTask.search()){
 				tmpTask.select(row[0]);
 				if(tmpTask.getStatus().equals("DRAFT") || tmpTask.getStatus().equals("TODO") || tmpTask.getStatus().equals("DOING") ){
-					tmpTask.setFieldValue("pmTskVrsId", "12");
+					tmpTask.setFieldValue("pmTskVrsId", test);
 					tmpTask.save();
 				}
 				
