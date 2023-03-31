@@ -73,7 +73,9 @@ public class PmVersion extends ObjectDB {
 	}
 	public String deferTask(){
 		Action a = getAction("PM_DEFER_TASK");
-		AppLog.info("DEBUG "+ a.getConfirmField(getGrant().getLang(), "pmDtVrsVersion").getId(), getGrant());
+		String test= a.getConfirmField(getGrant().getLang(), "pmDtVrsVersion").toJSON();
+		
+		AppLog.info("DEBUG "+ test, getGrant());
 		String msg = new String();
 		ObjectDB tmpTask = getGrant().getTmpObject("PmTask");
 		synchronized(tmpTask){
