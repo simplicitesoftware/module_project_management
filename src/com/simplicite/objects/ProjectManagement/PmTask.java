@@ -123,6 +123,7 @@ public class PmTask extends ObjectDB {
 	}
 	@Override
 	public void initRefSelect(ObjectDB parent) {
+		AppLog.info("DEBUG initRefSelect", getGrant());
 		if(parent!=null && parent.getName().equals("PmVersion")){
 			setFieldFilter("PUBLISHED", parent.getFieldValue("pmVrsStatus"));
 		}	
