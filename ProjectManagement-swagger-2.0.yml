@@ -1118,14 +1118,6 @@ paths:
         type: string
         required: false
       - in: query
-        name: pmMsgVisibility
-        description: Search filter for Visibility
-        type: string
-        required: false
-        enum:
-        - ADMIN
-        - ALL
-      - in: query
         name: pmMsgPublicationDate
         description: Search filter for Publication date
         type: string
@@ -1895,7 +1887,7 @@ paths:
         required: false
       - in: query
         name: pmTskVrsId__pmVrsVersion
-        description: Search filter for Release Version
+        description: Search filter for Version
         type: string
         required: false
       - in: query
@@ -2165,12 +2157,12 @@ paths:
         required: false
       - in: query
         name: pmTsklblTskId
-        description: Search filter for Pm tsklbl tsk id
+        description: Search filter for Task id
         type: string
         required: false
       - in: query
         name: pmTsklblTskId__pmTskNumber
-        description: Search filter for Pm tsklbl tsk id Number
+        description: Search filter for Task
         type: integer
         required: false
       - in: query
@@ -2195,12 +2187,12 @@ paths:
         required: false
       - in: query
         name: pmTsklblLblId
-        description: Search filter for Pm tsklbl lbl id
+        description: Search filter for Label id
         type: string
         required: false
       - in: query
         name: pmTsklblLblId__pmLblName
-        description: Search filter for Pm tsklbl lbl id Name
+        description: Search filter for Label
         type: string
         required: false
       tags:
@@ -3348,7 +3340,7 @@ definitions:
     type: object
     properties:
       pmTsklblTskId__pmTskNumber:
-        description: Pm tsklbl tsk id Number
+        description: Task
         type: integer
       pmTsklblTskId__pmTskVrsId:
         description: Pm tsklbl tsk id Release
@@ -3357,16 +3349,16 @@ definitions:
         description: Pm tsklbl tsk id Release Version
         type: string
       pmTsklblLblId:
-        description: Pm tsklbl lbl id
+        description: Label id
         type: string
       pmTsklblTskId:
-        description: Pm tsklbl tsk id
+        description: Task id
         type: string
       row_id:
         description: Unique technical row ID
         type: string
       pmTsklblLblId__pmLblName:
-        description: Pm tsklbl lbl id Name
+        description: Label
         type: string
       pmTsklblTskId__pmTskVrsId__pmVrsPrjId:
         description: Pm tsklbl tsk id Release Project
@@ -3480,12 +3472,6 @@ definitions:
       pmMsgTskId__pmTskVrsId__pmVrsPrjId:
         description: Task Release Project
         type: string
-      pmMsgVisibility:
-        description: Visibility
-        type: string
-        enum:
-        - ADMIN
-        - ALL
       pmMsgUsrId:
         description: User
         type: string
@@ -3812,7 +3798,7 @@ definitions:
         description: Release Project Name
         type: string
       pmTskVrsId__pmVrsVersion:
-        description: Release Version
+        description: Version
         type: string
       pmTskCreation:
         description: Creation date

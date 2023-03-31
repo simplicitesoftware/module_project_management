@@ -22,13 +22,13 @@ Module de gestion de projet et de gestion de tâche ou de tickets.
 
 | Name                                                         | Type                                     | Required | Updatable | Personal | Description                                                                      |
 |--------------------------------------------------------------|------------------------------------------|----------|-----------|----------|----------------------------------------------------------------------------------|
-| `pmAotPrvTskId` link to **`PmTask`**                         | id                                       | *        | yes       |          | -                                                                                |
+| `pmAotPrvTskId` link to **`PmTask`**                         | id                                       | yes*     | yes       |          | -                                                                                |
 | _Ref. `pmAotPrvTskId.pmTskNumber`_                           | _int(100)_                               |          |           |          | -                                                                                |
 | _Ref. `pmAotPrvTskId.pmTskVrsId`_                            | _id_                                     |          |           |          | -                                                                                |
 | _Ref. `pmTskVrsId.pmVrsVersion`_                             | _char(100)_                              |          |           |          | -                                                                                |
 | _Ref. `pmTskVrsId.pmVrsPrjId`_                               | _id_                                     |          |           |          | -                                                                                |
 | _Ref. `pmVrsPrjId.pmPrjName`_                                | _char(100)_                              |          |           |          | -                                                                                |
-| `pmAotNextTskId` link to **`PmTask`**                        | id                                       | *        | yes       |          | -                                                                                |
+| `pmAotNextTskId` link to **`PmTask`**                        | id                                       | yes*     | yes       |          | -                                                                                |
 | _Ref. `pmAotNextTskId.pmTskNumber`_                          | _int(100)_                               |          |           |          | -                                                                                |
 | _Ref. `pmAotNextTskId.pmTskVrsId`_                           | _id_                                     |          |           |          | -                                                                                |
 | _Ref. `pmTskVrsId.pmVrsVersion`_                             | _char(100)_                              |          |           |          | -                                                                                |
@@ -45,7 +45,7 @@ Module de gestion de projet et de gestion de tâche ou de tickets.
 | Name                                                         | Type                                     | Required | Updatable | Personal | Description                                                                      |
 |--------------------------------------------------------------|------------------------------------------|----------|-----------|----------|----------------------------------------------------------------------------------|
 | `pmAssRole`                                                  | text(100)                                | yes      | yes       |          | -                                                                                |
-| `pmAssPmUserid` link to **`PmUser`**                         | id                                       | yes*     |           |          | -                                                                                |
+| `pmAssPmUserid` link to **`PmUser`**                         | id                                       | yes*     | yes       |          | -                                                                                |
 | _Ref. `pmAssPmUserid.usr_login`_                             | _regexp(100)_                            |          |           | yes      | _Login_                                                                          |
 | _Ref. `pmAssPmUserid.pmUsrNbTask`_                           | _int(100)_                               |          |           |          | -                                                                                |
 | `pmAssPmTaskid` link to **`PmTask`**                         | id                                       | yes*     | yes       |          | -                                                                                |
@@ -119,9 +119,8 @@ Messaging
 |--------------------------------------------------------------|------------------------------------------|----------|-----------|----------|----------------------------------------------------------------------------------|
 | `pmMsgTitle`                                                 | char(100)                                | yes*     | yes       |          | -                                                                                |
 | `pmMsgMessage`                                               | text(100)                                |          | yes       |          | -                                                                                |
-| `pmMsgVisibility`                                            | enum(100) using `PM_MSG_VISIBILITY` list |          | yes       |          | -                                                                                |
 | `pmMsgPublicationDate`                                       | date                                     | yes      |           |          | -                                                                                |
-| `pmMsgUsrId` link to **`PmUser`**                            | id                                       | *        |           |          | -                                                                                |
+| `pmMsgUsrId` link to **`PmUser`**                            | id                                       | yes*     |           |          | -                                                                                |
 | _Ref. `pmMsgUsrId.usr_login`_                                | _regexp(100)_                            |          |           | yes      | _Login_                                                                          |
 | `pmMsgTskId` link to **`PmTask`**                            | id                                       | *        | yes       |          | -                                                                                |
 | _Ref. `pmMsgTskId.pmTskNumber`_                              | _int(100)_                               |          |           |          | -                                                                                |
@@ -130,12 +129,6 @@ Messaging
 | _Ref. `pmMsgTskId.pmTskTitle`_                               | _char(100)_                              |          |           |          | -                                                                                |
 | _Ref. `pmTskVrsId.pmVrsPrjId`_                               | _id_                                     |          |           |          | -                                                                                |
 | _Ref. `pmVrsPrjId.pmPrjName`_                                | _char(100)_                              |          |           |          | -                                                                                |
-
-### Lists
-
-* `PM_MSG_VISIBILITY`
-    - `ADMIN` Admin
-    - `ALL` All
 
 `PmProject` business object definition
 --------------------------------------
@@ -190,7 +183,7 @@ Task of project
 | Name                                                         | Type                                     | Required | Updatable | Personal | Description                                                                      |
 |--------------------------------------------------------------|------------------------------------------|----------|-----------|----------|----------------------------------------------------------------------------------|
 | `pmTskNumber`                                                | int(100)                                 | yes*     | yes       |          | -                                                                                |
-| `pmTskTitle`                                                 | char(100)                                |          | yes       |          | -                                                                                |
+| `pmTskTitle`                                                 | char(100)                                | yes      | yes       |          | -                                                                                |
 | `pmTskDescription`                                           | text(100)                                |          | yes       |          | -                                                                                |
 | `pmTskStatus`                                                | enum(100) using `PM_TSK_STATUT` list     | yes      | yes       |          | -                                                                                |
 | `pmTskPriority`                                              | enum(100) using `PM_TSK_PRIORITE` list   | yes      | yes       |          | -                                                                                |
@@ -251,7 +244,7 @@ Task of project
 | `created_by_hist`                                            | char(100)                                | yes*     |           |          | Created by                                                                       |
 | `created_dt_hist`                                            | datetime                                 | yes*     |           |          | Created date                                                                     |
 | `pmTskNumber`                                                | int(100)                                 | yes*     | yes       |          | -                                                                                |
-| `pmTskTitle`                                                 | char(100)                                |          | yes       |          | -                                                                                |
+| `pmTskTitle`                                                 | char(100)                                | yes      | yes       |          | -                                                                                |
 | `pmTskDescription`                                           | text(100)                                |          | yes       |          | -                                                                                |
 | `pmTskStatus`                                                | enum(100) using `PM_TSK_STATUT` list     | yes      | yes       |          | -                                                                                |
 | `pmTskPriority`                                              | enum(100) using `PM_TSK_PRIORITE` list   | yes      | yes       |          | -                                                                                |
@@ -354,4 +347,21 @@ Project version
 ### Custom actions
 
 * `PM_DEFER_TASK`: 
+
+`PmTaskCreate` business process definition
+------------------------------------------
+
+
+
+### Activities
+
+* `VersionSelect`: 
+* `TaskCreation`: 
+* `PreviousTask`: 
+* `NextTask`: 
+* `ProjectSelect`: 
+* `Labeling`: 
+* `Assignment`: 
+* `Begin`: 
+* `End`: 
 
