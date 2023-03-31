@@ -74,7 +74,7 @@ public class PmVersion extends ObjectDB {
 		return (finishedTaskCount*100)/taskCount;
 	}
 	public String deferTask(ObjectDB attr ){
-		AppLog.info("DEBUG deferTask "+attr.getFieldValue("pmVrsVersion"), getGrant())
+		AppLog.info("DEBUG deferTask "+attr.getFieldValue("pmVrsVersion"), getGrant());
 		String versionSeleted=getFieldValue("pmNextVrsId");
 		String msg = new String();
 		/* if(Tool.isEmpty(versionSeleted)){
