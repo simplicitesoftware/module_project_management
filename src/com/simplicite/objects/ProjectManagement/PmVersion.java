@@ -105,15 +105,15 @@ public class PmVersion extends ObjectDB {
 		
 		return msg;
 	}
-	@Override
+	/* @Override
 	public void initRefSelect(ObjectDB parent) {
 		if(parent!=null && (parent.getName().equals("PmTask") || parent.getName().equals("PmVersion"))){
 			setFieldFilter("pmVrsStatus","ALPHA;BETA");
 		}
 		if(parent!=null && parent.getName().equals("PmVersion")){
-			//setFieldFilter("pmVrsPrjId",parent.getFieldValue("pmVrsPrjId"));
+			setFieldFilter("pmVrsPrjId",parent.getFieldValue("pmVrsPrjId"));
 		}
-	}
+	} */
 	@Override
 	public void initUpdate(){			
 		HashMap<String, String> filters = new HashMap<>();
