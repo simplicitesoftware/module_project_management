@@ -2,8 +2,6 @@ package com.simplicite.objects.ProjectManagement;
 
 import java.util.*;
 
-import org.h2.engine.DbObject;
-
 import com.simplicite.util.*;
 import com.simplicite.util.exceptions.*;
 import com.simplicite.util.tools.*;
@@ -73,11 +71,10 @@ public class PmVersion extends ObjectDB {
 		if (taskCount==0)return 100;
 		return (finishedTaskCount*100)/taskCount;
 	}
-	public String deferTask(ObjectDB attr ){
-		AppLog.info("DEBUG deferTask "+attr.getFieldValue("pmVrsVersion"), getGrant());
+	public String deferTask(){
 		String versionSeleted=getFieldValue("pmNextVrsId");
 		String msg = new String();
-		/* if(Tool.isEmpty(versionSeleted)){
+		if(!Tool.isEmpty(versionSeleted)){
 			ObjectDB tmpTask = getGrant().getTmpObject("PmTask");
 			synchronized(tmpTask){
 				tmpTask.resetFilters();
@@ -93,7 +90,7 @@ public class PmVersion extends ObjectDB {
 			}
 		}else{
 			msg=Message.formatError("PM_ERR_VERSION_NEXT_NOT_FOUND",null,null);
-		} */
+		}
 		
 		return msg;
 	}
