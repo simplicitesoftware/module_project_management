@@ -72,34 +72,23 @@ public class PmVersion extends ObjectDB {
 		return (finishedTaskCount*100)/taskCount;
 	}
 	public String deferTask(){
-		String versionSeleted=getFieldValue("pmNextVrsId");
+		Action a = getAction("PM_DEFER_TASK");
 		String msg = new String();
-		if(!Tool.isEmpty(versionSeleted)){
-			ObjectDB tmpTask = getGrant().getTmpObject("PmTask");
-			synchronized(tmpTask){
-				tmpTask.resetFilters();
-				tmpTask.setFieldFilter("pmTskVrsId", getRowId());
-				for(String[] row : tmpTask.search()){
-					tmpTask.select(row[0]);
-					if(tmpTask.getStatus().equals("DRAFT") || tmpTask.getStatus().equals("TODO") || tmpTask.getStatus().equals("DOING") ){
-						tmpTask.setFieldValue("pmTskVrsId", versionSeleted);
-						tmpTask.save();
-					}
-					
+		ObjectDB tmpTask = getGrant().getTmpObject("PmTask");
+		synchronized(tmpTask){
+			tmpTask.resetFilters();
+			tmpTask.setFieldFilter("pmTskVrsId", getRowId());
+			for(String[] row : tmpTask.search()){
+				tmpTask.select(row[0]);
+				if(tmpTask.getStatus().equals("DRAFT") || tmpTask.getStatus().equals("TODO") || tmpTask.getStatus().equals("DOING") ){
+					tmpTask.setFieldValue("pmTskVrsId", a.getConfirmField(getGrant().getLang(), "pmDtVrsVersion").getValue());
+					tmpTask.save();
 				}
+				
 			}
-		}else{
-			msg=Message.formatError("PM_ERR_VERSION_NEXT_NOT_FOUND",null,null);
 		}
 		
-		return msg;
-	}
-	public String deferTaskBis(){
-		Action a = getAction("PM_DEFER_TASK");
-		ObjectField attr =a.getConfirmField(getGrant().getLang(), "pmDtVrsVersion");
 		
-		AppLog.info("DEBUG deferTask "+attr.getValue(), getGrant());
-		String msg = new String();
 		return msg;
 	}
 }
