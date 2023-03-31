@@ -99,8 +99,7 @@ public class PmVersion extends ObjectDB {
 	}
 	@Override
 	public void initRefSelect(ObjectDB parent) {
-		AppLog.info("DEBUG initRefSelect: "+parent.getName(), getGrant());
-		if(parent!=null && parent.getName().equals("PmTask")){
+		if(parent!=null && (parent.getName().equals("PmTask") || parent.getName().equals("PmVersion"))){
 			setFieldFilter("pmVrsStatus","ALPHA;BETA");
 		}	
 	}
