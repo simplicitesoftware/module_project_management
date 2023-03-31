@@ -111,7 +111,21 @@ public class PmVersion extends ObjectDB {
 			setFieldFilter("pmVrsStatus","ALPHA;BETA");
 		}
 		if(parent!=null && parent.getName().equals("PmVersion")){
-			setFieldFilter("pmVrsPrjId",parent.getFieldValue("pmVrsPrjId"));
+			//setFieldFilter("pmVrsPrjId",parent.getFieldValue("pmVrsPrjId"));
+		}
+	}
+	@Override
+	public void initUpdate(){			
+		HashMap<String, String> filters = new HashMap<>();
+		filters.put("pmVrsPrjId", getFieldValue("pmVrsPrjId"));
+		getGrant().setParameter("PARENT_FILTERS", filters);
+	}
+	@Override
+	public void preSearch(){		
+		if(getInstanceName().equals("ref_ajax_PmVersion") && getGrant().hasParameter("PARENT_FILTERS")){
+			HashMap<String, String> filters = (HashMap<String, String>) getGrant().getObjectParameter("PARENT_FILTERS");			
+			setFieldFilter("pmVrsPrjId", filters.get("pmVrsPrjId"));
+			getGrant().removeParameter("PARENT_FILTERS");
 		}
 	}
 }
