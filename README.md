@@ -58,6 +58,8 @@ Module de gestion de projet et de gestion de tâche ou de tickets.
 | _Ref. `pmTskVrsId.pmVrsPrjId`_                               | _id_                                     |          |           |          | -                                                                                |
 | _Ref. `pmAssPmTaskid.pmTskPriority`_                         | _enum(100) using `PM_TSK_PRIORITE` list_ |          |           |          | -                                                                                |
 | _Ref. `pmVrsPrjId.pmPrjName`_                                | _char(100)_                              |          |           |          | -                                                                                |
+| _Ref. `pmAssPmTaskid.pmTskCreation`_                         | _date_                                   |          |           |          | -                                                                                |
+| _Ref. `pmAssPmTaskid.pmTskClose`_                            | _date_                                   |          |           |          | -                                                                                |
 
 ### Lists
 
@@ -75,6 +77,29 @@ Module de gestion de projet et de gestion de tâche ou de tickets.
     - `HIGH` Haute
     - `URGENT` Urgent
     - `IMMEDIATE` Immédiat
+
+`PmAssignmentPmTimeSheetAssign` business object definition
+----------------------------------------------------------
+
+Timesheet of PmAssignmentPmTimeSheetAssign
+
+### Fields
+
+| Name                                                         | Type                                     | Required | Updatable | Personal | Description                                                                      |
+|--------------------------------------------------------------|------------------------------------------|----------|-----------|----------|----------------------------------------------------------------------------------|
+| `tsh_parent_id` link to **`PmAssignment`**                   | id                                       | yes*     | yes       |          | Assign reference                                                                 |
+| `tsh_year`                                                   | char(4)                                  | yes*     | yes       |          | Year                                                                             |
+| `tsh_month`                                                  | char(2)                                  | yes*     | yes       |          | Month                                                                            |
+| `tsh_input1`                                                 | char(255)                                |          | yes       |          | -                                                                                |
+| `tsh_total1`                                                 | float(11, 2)                             |          | yes       |          | -                                                                                |
+| _Ref. `tsh_parent_id.pmAssPmUserid`_                         | _id_                                     |          |           |          | -                                                                                |
+| _Ref. `pmAssPmUserid.usr_login`_                             | _regexp(100)_                            |          |           | yes      | _Login_                                                                          |
+| _Ref. `tsh_parent_id.pmAssPmTaskid`_                         | _id_                                     |          |           |          | -                                                                                |
+| _Ref. `pmAssPmTaskid.pmTskNumber`_                           | _int(100)_                               |          |           |          | -                                                                                |
+| _Ref. `pmAssPmTaskid.pmTskVrsId`_                            | _id_                                     |          |           |          | -                                                                                |
+| _Ref. `pmTskVrsId.pmVrsPrjId`_                               | _id_                                     |          |           |          | -                                                                                |
+| _Ref. `pmVrsPrjId.pmPrjName`_                                | _char(100)_                              |          |           |          | -                                                                                |
+| _Ref. `pmTskVrsId.pmVrsVersion`_                             | _char(100)_                              |          |           |          | -                                                                                |
 
 `PmDocument` business object definition
 ---------------------------------------
@@ -141,7 +166,7 @@ Messaging
 |--------------------------------------------------------------|------------------------------------------|----------|-----------|----------|----------------------------------------------------------------------------------|
 | `pmPrjName`                                                  | char(100)                                | yes*     | yes       |          | -                                                                                |
 | `pmPrjService`                                               | enum(100) using `PM_PRJ_SERVICE` list    | yes      | yes       |          | -                                                                                |
-| `pmPrjDescription`                                           | text(100)                                |          | yes       |          | -                                                                                |
+| `pmPrjDescription`                                           | text(1000)                               |          | yes       |          | -                                                                                |
 | `pmPrjBudget`                                                | float(100, 2)                            |          | yes       |          | -                                                                                |
 
 ### Lists
@@ -184,12 +209,12 @@ Task of project
 |--------------------------------------------------------------|------------------------------------------|----------|-----------|----------|----------------------------------------------------------------------------------|
 | `pmTskNumber`                                                | int(100)                                 | yes*     | yes       |          | -                                                                                |
 | `pmTskTitle`                                                 | char(100)                                | yes      | yes       |          | -                                                                                |
-| `pmTskDescription`                                           | text(100)                                |          | yes       |          | -                                                                                |
+| `pmTskDescription`                                           | text(4000)                               |          | yes       |          | -                                                                                |
 | `pmTskStatus`                                                | enum(100) using `PM_TSK_STATUT` list     | yes      | yes       |          | -                                                                                |
 | `pmTskPriority`                                              | enum(100) using `PM_TSK_PRIORITE` list   | yes      | yes       |          | -                                                                                |
 | `pmTskCreation`                                              | date                                     | yes      | yes       |          | -                                                                                |
 | `pmTskClose`                                                 | date                                     | yes      | yes       |          | -                                                                                |
-| `pmTskEffectiveClosingDate`                                  | date                                     |          |           |          | -                                                                                |
+| `pmTskEffectiveClosingDate`                                  | date                                     |          | yes       |          | -                                                                                |
 | `pmTskExpectedDuration`                                      | int(100)                                 | yes      |           |          | -                                                                                |
 | `pmTskActualDuration`                                        | int(100)                                 |          |           |          | -                                                                                |
 | `pmTskUsrId` link to **`PmUser`**                            | id                                       |          |           |          | -                                                                                |
@@ -245,12 +270,12 @@ Task of project
 | `created_dt_hist`                                            | datetime                                 | yes*     |           |          | Created date                                                                     |
 | `pmTskNumber`                                                | int(100)                                 | yes*     | yes       |          | -                                                                                |
 | `pmTskTitle`                                                 | char(100)                                | yes      | yes       |          | -                                                                                |
-| `pmTskDescription`                                           | text(100)                                |          | yes       |          | -                                                                                |
+| `pmTskDescription`                                           | text(4000)                               |          | yes       |          | -                                                                                |
 | `pmTskStatus`                                                | enum(100) using `PM_TSK_STATUT` list     | yes      | yes       |          | -                                                                                |
 | `pmTskPriority`                                              | enum(100) using `PM_TSK_PRIORITE` list   | yes      | yes       |          | -                                                                                |
 | `pmTskCreation`                                              | date                                     | yes      | yes       |          | -                                                                                |
 | `pmTskClose`                                                 | date                                     | yes      | yes       |          | -                                                                                |
-| `pmTskEffectiveClosingDate`                                  | date                                     |          |           |          | -                                                                                |
+| `pmTskEffectiveClosingDate`                                  | date                                     |          | yes       |          | -                                                                                |
 | `pmTskExpectedDuration`                                      | int(100)                                 | yes      |           |          | -                                                                                |
 | `pmTskUsrId` link to **`PmUser`**                            | id                                       |          |           |          | -                                                                                |
 | _Ref. `pmTskUsrId.usr_login`_                                | _regexp(100)_                            |          |           | yes      | _Login_                                                                          |
@@ -332,10 +357,6 @@ Project version
 | `pmVrsPrjId` link to **`PmProject`**                         | id                                       | yes*     | yes       |          | -                                                                                |
 | _Ref. `pmVrsPrjId.pmPrjName`_                                | _char(100)_                              |          |           |          | -                                                                                |
 | `pmVrsCompletion`                                            | int(100)                                 |          |           |          | -                                                                                |
-| `pmNextVrsId` link to **`PmVersion`**                        | id                                       |          | yes       |          | -                                                                                |
-| _Ref. `pmNextVrsId.pmVrsVersion`_                            | _char(100)_                              |          |           |          | -                                                                                |
-| _Ref. `pmNextVrsId.pmVrsPrjId`_                              | _id_                                     |          |           |          | -                                                                                |
-| _Ref. `pmVrsPrjId.pmPrjName`_                                | _char(100)_                              |          |           |          | -                                                                                |
 
 ### Lists
 
