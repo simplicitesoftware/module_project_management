@@ -17,7 +17,6 @@ public class PmTask extends ObjectDB {
 	private static final long serialVersionUID = 1L;
 	@Override
 	public List<String> postValidate() {
-		// TODO Auto-generated method stub
 		List<String> msgs = new ArrayList<>();
 		if(getFieldValue("pmTskVrsId.pmVrsStatus").equals("PUBLISHED")){
 			msgs.add(Message.formatError("PM_ERR_TSK_VRS_STATUS",null,"pmTskVrsId.pmVrsStatus"));
@@ -28,7 +27,6 @@ public class PmTask extends ObjectDB {
 	}
 	@Override
 	public String postUpdate() {
-		// TODO Auto-generated method stub
 		if(getStatus().equals("TODO") && !getOldStatus().equals("DOING")){// If task is toDo status from other status expte Doing we have to inrease the number of task of user
 			ObjectDB tmpAssignment = this.getGrant().getTmpObject("PmAssignment");
 			synchronized(tmpAssignment){
@@ -88,7 +86,7 @@ public class PmTask extends ObjectDB {
 		}
 		return super.preDelete();
 	}
-	public int ActualDuration(){//used by the calculated field pmTskActualDuraition
+	public int actualDuration(){//used by the calculated field pmTskActualDuraition
 		String begin = getFieldValue("pmTskCreation");
 		String  end = getFieldValue("pmTskEffectiveClosingDate");
 		if(Tool.isEmpty(end)){
