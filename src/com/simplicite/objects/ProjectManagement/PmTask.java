@@ -122,6 +122,13 @@ public class PmTask extends ObjectDB {
 		return msgs;
 	}
 	@Override
+	public void initCreate() {
+		HashMap<String, String> filters = new HashMap<>();
+		filters.put("pmVrsStatus", "ALPHA;BETA");
+		getGrant().setParameter("PARENT_FILTERS", filters);
+		super.initCreate();
+	}
+	@Override
 	public void initUpdate(){			
 		HashMap<String, String> filters = new HashMap<>();
 		filters.put("pmVrsStatus", "ALPHA;BETA");
