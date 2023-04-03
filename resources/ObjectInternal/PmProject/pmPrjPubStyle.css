@@ -64,7 +64,7 @@ body {
 	text-align:center;
 }
 .desc{
-	flex: 2 2 20%;
+	flex: 1 0.5 20%;
 }
 .header__item {
 	text-transform:uppercase;
