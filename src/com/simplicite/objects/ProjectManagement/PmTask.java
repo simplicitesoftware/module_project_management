@@ -125,6 +125,8 @@ public class PmTask extends ObjectDB {
 	public void initUpdate(){			
 		HashMap<String, String> filters = new HashMap<>();
 		filters.put("pmVrsStatus", "ALPHA;BETA");
+		filters.put("pmVrsPrjId", getFieldValue("pmVrsPrjId"));
 		getGrant().setParameter("PARENT_FILTERS", filters);
 	}
+
 }
