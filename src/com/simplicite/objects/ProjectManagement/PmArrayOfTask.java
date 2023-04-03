@@ -15,13 +15,8 @@ public class PmArrayOfTask extends ObjectDB {
 	public void initCreate() {
 		String prv=getFieldValue("pmAotPrvTskId");
 		String next=getFieldValue("pmAotNextTskId");
-		if(!Tool.isEmpty(prv)){
-			AppLog.info("DEBUG: previous: "+prv, getGrant());
-		}else if (Tool.isEmpty(next)){
-			AppLog.info("DEBUG: next: "+next, getGrant());
-		}else{
-			AppLog.info("DEBUG: nothing "+next, getGrant());
-		}
+		AppLog.info("DEBUG: previous: "+prv, getGrant());
+		AppLog.info("DEBUG: next: "+next, getGrant());
 		super.initUpdate();
 	}
 }
