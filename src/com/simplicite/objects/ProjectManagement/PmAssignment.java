@@ -63,6 +63,18 @@ public class PmAssignment extends ObjectDB {
             tmpUser.save();
         }
 	}
-
+	@Override
+	public void initUpdate() {
+		String prv=getFieldValue("pmAotPrvTskId");
+		String next=getFieldValue("pmAotNextTskId");
+		if(!Tool.isEmpty(prv)){
+			AppLog.info("DEBUG: previous: "+prv, getGrant());
+		}else if (Tool.isEmpty(next)){
+			AppLog.info("DEBUG: next: "+next, getGrant());
+		}else{
+			AppLog.info("DEBUG: nothing "+next, getGrant());
+		}
+		super.initUpdate();
+	}
 	
 }
