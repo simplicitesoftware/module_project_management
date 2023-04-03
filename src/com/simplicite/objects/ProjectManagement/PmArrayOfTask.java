@@ -11,12 +11,4 @@ import com.simplicite.util.tools.*;
  */
 public class PmArrayOfTask extends ObjectDB {
 	private static final long serialVersionUID = 1L;
-	@Override
-	public void initCreate() {
-		String prv=getFieldValue("pmAotPrvTskId");
-		String next=getFieldValue("pmAotNextTskId");
-		AppLog.info("DEBUG: previous: "+prv, getGrant());
-		AppLog.info("DEBUG: next: "+next, getGrant());
-		super.initUpdate();
-	}
 }
