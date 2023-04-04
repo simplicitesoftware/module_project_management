@@ -31,9 +31,7 @@ public class PmTask extends ObjectDB {
 	@Override
 	public List<String> postValidate() {
 		List<String> msgs = new ArrayList<>();
-		if(isExportInstance()){
-			AppLog.info("DEBUG import" + getInstanceName(), getGrant());
-		}
+		AppLog.info("DEBUG import" + getInstanceName(), getGrant());
 		if(getFieldValue("pmTskVrsId.pmVrsStatus").equals("PUBLISHED") && !isBatchInstance()){
 			msgs.add(Message.formatError("PM_ERR_TSK_VRS_STATUS",null,"pmTskVrsId.pmVrsStatus"));
 		}
