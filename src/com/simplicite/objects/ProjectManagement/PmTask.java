@@ -113,6 +113,13 @@ public class PmTask extends ObjectDB {
 		}
 		return Tool.diffDate(begin, end);
 	}
+	public float completionDuration(){//used by the calculated field pmTskActualDuraition
+		String  expeted = getFieldValue("pmTskExpectedDuration");
+		if(Tool.isEmpty(getFieldValue("pmTskEffectiveClosingDate"))){
+			return actualDuration() /Integer.parseInt(expeted);
+		}
+		return 1;
+	}
 	public List<String> taskMsgDeletion(){
 		List<String> msgs = new ArrayList<>();
 		ObjectDB tmpMsg = getGrant().getTmpObject("PmMessage");
