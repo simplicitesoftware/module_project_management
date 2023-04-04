@@ -38,10 +38,6 @@ public class PmTask extends ObjectDB {
 		if(getFieldValue("pmTskVrsId.pmVrsStatus").equals("PUBLISHED")){
 			msgs.add(Message.formatError("PM_ERR_TSK_VRS_STATUS",null,"pmTskVrsId.pmVrsStatus"));
 		}
-		if (getFieldValue("pmTskNumber").equals("0")){
-			setFieldValue("pmTskNumber", autoGenNumber());
-			save();
-		}
 		List<String> msgsSuper =super.postValidate();
 		if (!Tool.isEmpty(msgsSuper)) msgs.addAll(msgsSuper);
 		return msgs;
