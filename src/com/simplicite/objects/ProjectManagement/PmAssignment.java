@@ -16,6 +16,7 @@ public class PmAssignment extends ObjectDB {
 		if(isProcessInstance()){
 			for(ObjectField field :getFields()){
 				if (!field.getName().equals("pmAssPmTaskid")){
+					AppLog.info(field.getName(), getGrant());
 					field.setValue("");
 				}
 			}
