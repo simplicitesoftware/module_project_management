@@ -2510,7 +2510,7 @@
       "fld_righttoleft": false,
       "fld_rendering": null,
       "fld_speech": null,
-      "fld_calc": "(function() {\n\treturn obj.ActualDuration();\n})();",
+      "fld_calc": "(function() {\n\treturn obj.actualDuration();\n})();",
       "fld_objlist": null,
       "fld_comment": null,
       "fld_classification": null,
@@ -4161,11 +4161,7 @@
       "obo_dbtable": "pm_assignment",
       "obo_role": "OBJ",
       "obo_class": null,
-      "obo_script_id": {
-       "path": "src/com/simplicite/objects/ProjectManagement/PmAssignment.java",
-       "mime": "text/plain",
-       "name": "PmAssignment.java"
-      },
+      "obo_script_id": null,
       "obo_usets": "1",
       "obo_nosearch": "1",
       "obo_comment": null,
@@ -4737,7 +4733,7 @@
        "E"
       ],
       "obo_useform": true,
-      "obo_title": null,
+      "obo_title": "[VALUE:pmTskTitle]",
       "obo_icon": "task",
       "obo_refcount": false,
       "obo_tree": false,
@@ -10310,6 +10306,52 @@
     },
     {
      "object": "Action",
+     "userkey": "PM_TIMESHEET_NEW_ASS",
+     "item": {
+      "act_name": "PM_TIMESHEET_NEW_ASS",
+      "act_type": "O",
+      "act_async": "0",
+      "act_job_depth": null,
+      "act_method": null,
+      "act_script": null,
+      "act_url": null,
+      "act_image": null,
+      "act_confirm": true,
+      "act_confirm_expr": null,
+      "act_confirm_ui": null,
+      "act_plus": false,
+      "act_comment": null,
+      "row_module_id__mdl_name": "ProjectManagement",
+      "act_exec": "NUL",
+      "act_count": null,
+      "act_order": null
+     }
+    },
+    {
+     "object": "Action",
+     "userkey": "PM_TIMESHEET_NEW_LBL",
+     "item": {
+      "act_name": "PM_TIMESHEET_NEW_LBL",
+      "act_type": "O",
+      "act_async": "0",
+      "act_job_depth": null,
+      "act_method": null,
+      "act_script": null,
+      "act_url": null,
+      "act_image": null,
+      "act_confirm": true,
+      "act_confirm_expr": null,
+      "act_confirm_ui": null,
+      "act_plus": false,
+      "act_comment": null,
+      "row_module_id__mdl_name": "ProjectManagement",
+      "act_exec": "NUL",
+      "act_count": null,
+      "act_order": null
+     }
+    },
+    {
+     "object": "Action",
      "userkey": "PM_TSK_STATUT-CANCEL-DOING",
      "item": {
       "act_name": "PM_TSK_STATUT-CANCEL-DOING",
@@ -12931,6 +12973,25 @@
     },
     {
      "object": "BPMTransition",
+     "userkey": "PmTaskCreate~PmTaskCreate~PMTC-500~PmTaskCreate~PMTC-500",
+     "item": {
+      "trs_process_id__pcs_name": "PmTaskCreate",
+      "trs_from_id__acy_process_id__pcs_name": "PmTaskCreate",
+      "trs_from_id__acy_step": "PMTC-500",
+      "trs_from_id__acy_name": "Labeling",
+      "trs_to_id__acy_process_id__pcs_name": "PmTaskCreate",
+      "trs_to_id__acy_step": "PMTC-500",
+      "trs_to_id__acy_name": "Labeling",
+      "trs_name": null,
+      "trs_action_id__act_name": "PM_TIMESHEET_NEW_LBL",
+      "trs_condition": null,
+      "trs_callback": null,
+      "trs_alert_id__alt_name": null,
+      "row_module_id__mdl_name": "ProjectManagement"
+     }
+    },
+    {
+     "object": "BPMTransition",
      "userkey": "PmTaskCreate~PmTaskCreate~PMTC-500~PmTaskCreate~PMTC-600",
      "item": {
       "trs_process_id__pcs_name": "PmTaskCreate",
@@ -12942,6 +13003,25 @@
       "trs_to_id__acy_name": "Assignment",
       "trs_name": null,
       "trs_action_id__act_name": null,
+      "trs_condition": null,
+      "trs_callback": null,
+      "trs_alert_id__alt_name": null,
+      "row_module_id__mdl_name": "ProjectManagement"
+     }
+    },
+    {
+     "object": "BPMTransition",
+     "userkey": "PmTaskCreate~PmTaskCreate~PMTC-600~PmTaskCreate~PMTC-600",
+     "item": {
+      "trs_process_id__pcs_name": "PmTaskCreate",
+      "trs_from_id__acy_process_id__pcs_name": "PmTaskCreate",
+      "trs_from_id__acy_step": "PMTC-600",
+      "trs_from_id__acy_name": "Assignment",
+      "trs_to_id__acy_process_id__pcs_name": "PmTaskCreate",
+      "trs_to_id__acy_step": "PMTC-600",
+      "trs_to_id__acy_name": "Assignment",
+      "trs_name": null,
+      "trs_action_id__act_name": "PM_TIMESHEET_NEW_ASS",
       "trs_condition": null,
       "trs_callback": null,
       "trs_alert_id__alt_name": null,
@@ -15184,6 +15264,30 @@
     },
     {
      "object": "TranslateAction",
+     "userkey": "A~PM_TIMESHEET_NEW_ASS~ENU",
+     "item": {
+      "tsl_typeAction": "A",
+      "tsl_id__act_name": "PM_TIMESHEET_NEW_ASS",
+      "tsl_lang": "ENU",
+      "tsl_value": "New assignment",
+      "tsl_simplehelp": null,
+      "row_module_id__mdl_name": "ProjectManagement"
+     }
+    },
+    {
+     "object": "TranslateAction",
+     "userkey": "A~PM_TIMESHEET_NEW_LBL~ENU",
+     "item": {
+      "tsl_typeAction": "A",
+      "tsl_id__act_name": "PM_TIMESHEET_NEW_LBL",
+      "tsl_lang": "ENU",
+      "tsl_value": "New label",
+      "tsl_simplehelp": null,
+      "row_module_id__mdl_name": "ProjectManagement"
+     }
+    },
+    {
+     "object": "TranslateAction",
      "userkey": "A~PM_TSK_STATUT-CANCEL-DOING~ENU",
      "item": {
       "tsl_typeAction": "A",
@@ -15394,6 +15498,30 @@
       "tsl_id__act_name": "PM_TASK_MSG_DELETION",
       "tsl_lang": "FRA",
       "tsl_value": "Supprimer les messages",
+      "tsl_simplehelp": null,
+      "row_module_id__mdl_name": "ProjectManagement"
+     }
+    },
+    {
+     "object": "TranslateAction",
+     "userkey": "A~PM_TIMESHEET_NEW_ASS~FRA",
+     "item": {
+      "tsl_typeAction": "A",
+      "tsl_id__act_name": "PM_TIMESHEET_NEW_ASS",
+      "tsl_lang": "FRA",
+      "tsl_value": "Nouvelle affectation",
+      "tsl_simplehelp": null,
+      "row_module_id__mdl_name": "ProjectManagement"
+     }
+    },
+    {
+     "object": "TranslateAction",
+     "userkey": "A~PM_TIMESHEET_NEW_LBL~FRA",
+     "item": {
+      "tsl_typeAction": "A",
+      "tsl_id__act_name": "PM_TIMESHEET_NEW_LBL",
+      "tsl_lang": "FRA",
+      "tsl_value": "Nouveau Label",
       "tsl_simplehelp": null,
       "row_module_id__mdl_name": "ProjectManagement"
      }
