@@ -14,8 +14,10 @@ public class PmAssignment extends ObjectDB {
 	@Override
 	public void initCreate() {
 		if(isProcessInstance()){
-			for(ObjectField obj :getFields()){
-				obj.setValue("");
+			for(ObjectField field :getFields()){
+				if (!field.getName().equals("pmAssPmTaskid")){
+					field.setValue("");
+				}
 			}
 			save();
 			
