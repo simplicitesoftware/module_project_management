@@ -17,10 +17,11 @@ Business models
 ---------------
 
 ### `ModelProjectManagement` business model
+![Object]([MODEL:ModelProjectManagement])
 
-[MODEL:ModelProjectManagement]
 
 ### `PmWorkflow` business model
+![Object]([MODEL:PmWorkflow])
 
 [MODEL:PmWorkflow]
 
