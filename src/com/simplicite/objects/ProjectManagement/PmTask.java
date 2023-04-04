@@ -16,11 +16,7 @@ import com.simplicite.util.tools.*;
 public class PmTask extends ObjectDB {
 	private static final long serialVersionUID = 1L;
 	public int autoGenNumber(){
-		int number =Integer.parseInt(getFieldValue("pmTskNumber"));
-		if(number!=0){
-			return number;
-		}
-		number =1;
+		int number =1;
 		ObjectDB tmpTask = this.getGrant().getTmpObject("PmTask");
 		List<Integer> listExist= new ArrayList<>();
 		tmpTask.resetFilters();
@@ -41,6 +37,10 @@ public class PmTask extends ObjectDB {
 		List<String> msgs = new ArrayList<>();
 		if(getFieldValue("pmTskVrsId.pmVrsStatus").equals("PUBLISHED")){
 			msgs.add(Message.formatError("PM_ERR_TSK_VRS_STATUS",null,"pmTskVrsId.pmVrsStatus"));
+		}
+		if (getFieldValue("pmTskNumber").equals("0")){
+			setFieldValue("pmTskNumber", autoGenNumber());
+			save();
 		}
 		List<String> msgsSuper =super.postValidate();
 		if (!Tool.isEmpty(msgsSuper)) msgs.addAll(msgsSuper);
