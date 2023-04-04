@@ -113,14 +113,13 @@ public class PmTask extends ObjectDB {
 		}
 		return Tool.diffDate(begin, end);
 	}
-	public float completionDuration(){//used by the calculated field pmTskActualDuraition
+	public int completionDuration(){//used by the calculated field pmTskActualDuraition
 		String  expeted = getFieldValue("pmTskExpectedDuration");
 		if(Tool.isEmpty(getFieldValue("pmTskEffectiveClosingDate"))){
-			AppLog.info("DEBUG "+ actualDuration()+"/"+expeted +" "+String.valueOf(actualDuration()*100/Integer.parseInt(expeted)), getGrant());
 			return actualDuration()*100/Integer.parseInt(expeted);
 			
 		}
-		return 1;
+		return 100;
 	}
 	public List<String> taskMsgDeletion(){
 		List<String> msgs = new ArrayList<>();
