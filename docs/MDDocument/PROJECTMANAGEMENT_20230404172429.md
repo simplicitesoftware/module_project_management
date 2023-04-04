@@ -16,10 +16,6 @@ Module de gestion de projet et de gestion de tâche ou de tickets.
 Business models
 ---------------
 
-### `Model-PM_TSK_STATUT` business model
-
-[MODEL:Model-PM_TSK_STATUT]
-
 ### `ModelProjectManagement` business model
 
 [MODEL:ModelProjectManagement]
@@ -27,8 +23,6 @@ Business models
 ### `PmWorkflow` business model
 
 [MODEL:PmWorkflow]
-
-[OBJECTDOC:PmTaskHistoric]
 
 [OBJECTDOC:PmUser]
 
