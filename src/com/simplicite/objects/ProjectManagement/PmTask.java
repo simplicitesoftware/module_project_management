@@ -31,7 +31,7 @@ public class PmTask extends ObjectDB {
 	@Override
 	public List<String> postValidate() {
 		List<String> msgs = new ArrayList<>();
-		if(getFieldValue("pmTskVrsId.pmVrsStatus").equals("PUBLISHED")){
+		if(getFieldValue("pmTskVrsId.pmVrsStatus").equals("PUBLISHED") && !isExportInstance()){
 			msgs.add(Message.formatError("PM_ERR_TSK_VRS_STATUS",null,"pmTskVrsId.pmVrsStatus"));
 		}
 		if (getFieldValue("pmTskNumber").equals("0")){
