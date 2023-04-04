@@ -115,8 +115,9 @@ public class PmTask extends ObjectDB {
 	}
 	public float completionDuration(){//used by the calculated field pmTskActualDuraition
 		String  expeted = getFieldValue("pmTskExpectedDuration");
+		AppLog.info("DEBUG "+expeted, getGrant())
 		if(Tool.isEmpty(getFieldValue("pmTskEffectiveClosingDate"))){
-			return actualDuration() /Integer.parseInt(expeted);
+			return actualDuration()/Integer.parseInt(expeted);
 		}
 		return 1;
 	}
