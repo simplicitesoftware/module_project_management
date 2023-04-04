@@ -16,8 +16,11 @@ import com.simplicite.util.tools.*;
 public class PmTask extends ObjectDB {
 	private static final long serialVersionUID = 1L;
 	public int autoGenNumber(){
-		AppLog.info("DEBUG IN autogennumber", getGrant());
-		int number =1;
+		int number =Integer.parseInt(getFieldValue("pmTskNumber"));
+		if(number!=0){
+			return number;
+		}
+		number =1;
 		ObjectDB tmpTask = this.getGrant().getTmpObject("PmTask");
 		List<Integer> listExist= new ArrayList<>();
 		tmpTask.resetFilters();
