@@ -19,6 +19,9 @@ components:
     PmTskLbl:
       type: object
       properties:
+        pmTsklblTskId__pmTskTitle:
+          description: Title
+          type: string
         pmTsklblTskId__pmTskNumber:
           description: Task
           type: integer
@@ -184,7 +187,7 @@ components:
           description: Previous task version
           type: string
         pmAotNextTskId__pmTskVrsId__pmVrsPrjId__pmPrjName:
-          description: Next task Release Project Name
+          description: Next task Project Name
           type: string
         pmAotNextTskId:
           description: Next task
@@ -199,7 +202,7 @@ components:
           description: Previous task Release Project
           type: string
         pmAotPrvTskId__pmTskVrsId__pmVrsPrjId__pmPrjName:
-          description: Previous task Release Project Name
+          description: Previous task Project Name
           type: string
         pmAotNextTskId__pmTskVrsId__pmVrsVersion:
           description: Next task version
@@ -234,6 +237,9 @@ components:
         pmDocAttachment:
           description: Attachment
           type: object
+        pmDocTskId__pmTskTitle:
+          description: Task Title
+          type: string
         pmDocTitle:
           description: Title
           type: string
@@ -284,7 +290,7 @@ components:
           description: Unique technical row ID
           type: string
         pmRolPrjId__pmPrjName:
-          description: Project id Name
+          description: Project Name
           type: string
         pmRolUsrId__usr_login:
           description: Login
@@ -514,6 +520,9 @@ components:
         pmTskVrsId__pmVrsPrjId__pmPrjName:
           description: Release Project Name
           type: string
+        pmTskCompletion:
+          description: Completion
+          type: integer
         pmTskVrsId__pmVrsVersion:
           description: Version
           type: string
@@ -1240,6 +1249,12 @@ paths:
         in: query
         name: pmDocTskId__pmTskVrsId
         description: Search filter for Task Release
+        required: false
+      - schema:
+          type: string
+        in: query
+        name: pmDocTskId__pmTskTitle
+        description: Search filter for Task Title
         required: false
       - schema:
           type: string
@@ -2617,7 +2632,7 @@ paths:
           type: string
         in: query
         name: pmRolPrjId__pmPrjName
-        description: Search filter for Project id Name
+        description: Search filter for Project Name
         required: false
       - schema:
           type: string
@@ -3066,6 +3081,12 @@ paths:
         name: pmTskVrsId__pmVrsPublicationDate
         description: Search filter for Release Publication date
         required: false
+      - schema:
+          type: integer
+        in: query
+        name: pmTskCompletion
+        description: Search filter for Completion
+        required: false
       tags:
       - PmTask
   /rest/PmTask/{row_id}:
@@ -3492,6 +3513,12 @@ paths:
         in: query
         name: pmTsklblTskId__pmTskVrsId
         description: Search filter for Task id Release
+        required: false
+      - schema:
+          type: string
+        in: query
+        name: pmTsklblTskId__pmTskTitle
+        description: Search filter for Title
         required: false
       - schema:
           type: string
@@ -4325,7 +4352,7 @@ paths:
           type: string
         in: query
         name: pmAotPrvTskId__pmTskVrsId__pmVrsPrjId__pmPrjName
-        description: Search filter for Previous task Release Project Name
+        description: Search filter for Previous task Project Name
         required: false
       - schema:
           type: string
@@ -4361,7 +4388,7 @@ paths:
           type: string
         in: query
         name: pmAotNextTskId__pmTskVrsId__pmVrsPrjId__pmPrjName
-        description: Search filter for Next task Release Project Name
+        description: Search filter for Next task Project Name
         required: false
       tags:
       - PmArrayOfTask
@@ -5056,7 +5083,7 @@ info:
   version: '0.1'
 tags:
 - name: PmArrayOfTask
-  description: Array of task
+  description: Dependency
 - name: PmAssignment
   description: Assignment
 - name: PmAssignmentPmTimeSheetAssign
