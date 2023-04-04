@@ -1,12 +1,8 @@
 package com.simplicite.objects.ProjectManagement;
 
-import static org.mockito.Mockito.lenient;
-
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
-
-import com.drew.lang.Iterables;
 import com.simplicite.util.*;
 import com.simplicite.util.tools.*;
 
