@@ -15,8 +15,8 @@ public class PmAssignment extends ObjectDB {
 	public void initCreate() {
 		if(isProcessInstance()){
 			for(ObjectField field :getFields()){
-				if (!field.getName().equals("pmAssPmTaskid")){
-					AppLog.info("DEBUG: "+field.getRefObjectName() , getGrant());
+				AppLog.info("DEBUG: "+field.getName()+" "+field.getRefObjectName() , getGrant());
+				if (Tool.isEmpty(field.getRefObjectName()) && !field.getName().equals("pmAssPmTaskid")||!Tool.isEmpty(field.getRefObjectName()) && field.getRefObjectName().equals("PmUser")){
 					field.setValue("");
 				}
 			}
