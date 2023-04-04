@@ -15,6 +15,8 @@ public class PmAssignment extends ObjectDB {
 	public void initCreate() {
 		if(isProcessInstance()){
 			resetAllFieldsRequired();
+			save();
+			//setFields(null);
 		}
 		super.initCreate();
 	}
