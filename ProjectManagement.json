@@ -4858,7 +4858,11 @@
       "obo_dbtable": "pm_tsk_lbl",
       "obo_role": "OBJ",
       "obo_class": null,
-      "obo_script_id": null,
+      "obo_script_id": {
+       "path": "src/com/simplicite/objects/ProjectManagement/PmTskLbl.java",
+       "mime": "text/plain",
+       "name": "PmTskLbl.java"
+      },
       "obo_usets": "1",
       "obo_nosearch": "1",
       "obo_comment": null,
