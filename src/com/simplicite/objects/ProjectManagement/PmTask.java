@@ -6,6 +6,7 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
 
+import com.drew.lang.Iterables;
 import com.simplicite.util.*;
 import com.simplicite.util.tools.*;
 
@@ -14,11 +15,32 @@ import com.simplicite.util.tools.*;
  */
 public class PmTask extends ObjectDB {
 	private static final long serialVersionUID = 1L;
+	public int autoGenNumber(){
+		int number =1;
+		ObjectDB tmpTask = this.getGrant().getTmpObject("PmTask");
+		List<Integer> listExist= new ArrayList<>();
+		tmpTask.resetFilters();
+		tmpTask.setFieldFilter("pmTskVrsId", getFieldValue("pmTskVrsId"));// number is unique per version
+		synchronized(tmpTask){
+			for(String[] row : tmpTask.search()){// for all assignment invoke increaseUserNbtask methode to update the nbTask of user assigned on task
+				tmpTask.select(row[0]);
+				listExist.add(Integer.parseInt(tmpTask.getFieldValue("pmTskNumber")));
+			}
+		}
+		while(listExist.contains(number)){
+			number+=1;
+		}
+		return number;
+	}
 	@Override
 	public List<String> postValidate() {
 		List<String> msgs = new ArrayList<>();
 		if(getFieldValue("pmTskVrsId.pmVrsStatus").equals("PUBLISHED")){
 			msgs.add(Message.formatError("PM_ERR_TSK_VRS_STATUS",null,"pmTskVrsId.pmVrsStatus"));
+		}
+		if (getFieldValue("pmTskNumber").equals("0")){
+			setFieldValue("pmTskNumber", autoGenNumber());
+			save();
 		}
 		List<String> msgsSuper =super.postValidate();
 		if (!Tool.isEmpty(msgsSuper)) msgs.addAll(msgsSuper);

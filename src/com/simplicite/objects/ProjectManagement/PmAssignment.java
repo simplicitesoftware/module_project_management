@@ -12,7 +12,7 @@ import com.simplicite.util.tools.*;
 public class PmAssignment extends ObjectDB {
 	private static final long serialVersionUID = 1L;
 	@Override
-	public void initCreate() {
+	public void initUpdate() {
 		if(isProcessInstance()){
 			for(ObjectField field :getFields()){
 				AppLog.info("DEBUG: "+field.getName()+" "+field.getRefObjectName() , getGrant());
@@ -24,6 +24,7 @@ public class PmAssignment extends ObjectDB {
 		}
 		super.initCreate();
 	}
+	
 	@Override
 	public String preDelete() {// if we deleted assignment we have to update the number of task of user
 		ObjectDB tmpTask = this.getGrant().getTmpObject("PmTask");
