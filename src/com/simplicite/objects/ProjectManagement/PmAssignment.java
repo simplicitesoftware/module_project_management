@@ -21,7 +21,6 @@ public class PmAssignment extends ObjectDB {
 				}
 			}
 			save();
-			
 		}
 		super.initCreate();
 	}

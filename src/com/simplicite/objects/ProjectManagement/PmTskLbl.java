@@ -12,7 +12,7 @@ import com.simplicite.util.tools.*;
 public class PmTskLbl extends ObjectDB {
 	private static final long serialVersionUID = 1L;
 	@Override
-	public void initCreate() {
+	public void initUpdate() {
 		if(isProcessInstance()){
 			for(ObjectField field :getFields()){
 				AppLog.info("DEBUG: "+field.getName()+" "+field.getRefObjectName() , getGrant());
