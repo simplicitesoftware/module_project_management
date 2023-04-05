@@ -149,7 +149,7 @@ public class PmTask extends ObjectDB {
 		
 		List<String> msgs = new ArrayList<>();
 		if(Tool.isEmpty(selected)){
-			msgs.add(Message.formatError("PM_TASK_ERR_EMPTY_SELECT",null,null));
+			msgs.add(Message.formatError("PM_ERR_EMPTY_SELECT",null,null));
 			return msgs;
 		}
 		ObjectDB tmpTask= getGrant().getTmpObject("PmTask");
