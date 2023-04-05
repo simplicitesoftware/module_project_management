@@ -146,26 +146,37 @@ public class PmTask extends ObjectDB {
 	*/ 
 	public List<String> taskMsgDeletion(){
 		List<String> selected= getSelectedIds();
-		AppLog.info("DEBUG "+selected, getGrant());
+		
 		List<String> msgs = new ArrayList<>();
-		ObjectDB tmpMsg = getGrant().getTmpObject("PmMessage");
-		BusinessObjectTool ot = tmpMsg.getTool();
-		synchronized(tmpMsg){
-			tmpMsg.resetFilters();
-			tmpMsg.setFieldFilter("pmMsgTskId", getRowId());
-			for(String[] row : tmpMsg.search()){
-				try {
-					ot.getForDelete(row[0]);
-				} catch (Exception e) {
-					msgs.add(Message.formatError(null,e.toString(),null));
-					continue;
-				}
-				tmpMsg.select(row[0]);
-				String errDelete =tmpMsg.delete();
-				if (errDelete != null){
-					msgs.add(Message.formatError(null,errDelete,null));
+		if(Tool.isEmpty(selected)){
+			msgs.add(Message.formatError("PM_TASK_ERR_EMPTY_SELECT",null,null));
+			return msgs;
+		}
+		ObjectDB tmpTask= getGrant().getTmpObject("PmTask");
+		synchronized(tmpTask){
+			for(String id : selected){
+				tmpTask.select(id);
+				ObjectDB tmpMsg = getGrant().getTmpObject("PmMessage");
+				BusinessObjectTool ot = tmpMsg.getTool();
+				synchronized(tmpMsg){
+					tmpMsg.resetFilters();
+					tmpMsg.setFieldFilter("pmMsgTskId", tmpTask.getRowId());
+					for(String[] row : tmpMsg.search()){
+						try {
+							ot.getForDelete(row[0]);
+						} catch (Exception e) {
+							msgs.add(Message.formatError(null,e.toString(),null));
+							continue;
+						}
+						tmpMsg.select(row[0]);
+						String errDelete =tmpMsg.delete();
+						if (errDelete != null){
+							msgs.add(Message.formatError(null,errDelete,null));
+						}
+					}
 				}
 			}
+			
 		}
 		return msgs;
 	}
