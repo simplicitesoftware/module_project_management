@@ -29,6 +29,20 @@ public class PmTask extends ObjectDB {
 		return number;
 	}
 	@Override
+	public void initCreate() {
+		HashMap<String, String> filters = new HashMap<>();
+		filters.put("pmVrsStatus", "ALPHA;BETA");
+		getGrant().setParameter("PARENT_FILTERS", filters);
+		super.initCreate();
+	}
+	@Override
+	public void initUpdate(){			
+		HashMap<String, String> filters = new HashMap<>();
+		filters.put("pmVrsStatus", "ALPHA;BETA");
+		filters.put("pmVrsPrjId", getFieldValue("pmVrsPrjId"));
+		getGrant().setParameter("PARENT_FILTERS", filters);
+	}
+	@Override
 	public List<String> postValidate() {
 		List<String> msgs = new ArrayList<>();
 		if(getFieldValue("pmTskVrsId.pmVrsStatus").equals("PUBLISHED") && !isBatchInstance()){
@@ -103,6 +117,9 @@ public class PmTask extends ObjectDB {
 		}
 		return super.preDelete();
 	}
+	/*
+		Function for calculated expression of field pmTskActualDuration in PmTask
+	*/ 
 	public int actualDuration(){//used by the calculated field pmTskActualDuraition
 		String begin = getFieldValue("pmTskCreation");
 		String  end = getFieldValue("pmTskEffectiveClosingDate");
@@ -113,6 +130,9 @@ public class PmTask extends ObjectDB {
 		}
 		return Tool.diffDate(begin, end);
 	}
+	/*
+		Function for calculated expression of field pmTskCompletion in PmTask
+	*/ 
 	public int completionDuration(){//used by the calculated field pmTskActualDuraition
 		String  expeted = getFieldValue("pmTskExpectedDuration");
 		if(Tool.isEmpty(getFieldValue("pmTskEffectiveClosingDate"))){
@@ -121,6 +141,9 @@ public class PmTask extends ObjectDB {
 		}
 		return 100;
 	}
+	/*
+		Function of action PM_TASK_MSG_DELETION
+	*/ 
 	public List<String> taskMsgDeletion(){
 		List<String> msgs = new ArrayList<>();
 		ObjectDB tmpMsg = getGrant().getTmpObject("PmMessage");
@@ -143,20 +166,6 @@ public class PmTask extends ObjectDB {
 			}
 		}
 		return msgs;
-	}
-	@Override
-	public void initCreate() {
-		HashMap<String, String> filters = new HashMap<>();
-		filters.put("pmVrsStatus", "ALPHA;BETA");
-		getGrant().setParameter("PARENT_FILTERS", filters);
-		super.initCreate();
-	}
-	@Override
-	public void initUpdate(){			
-		HashMap<String, String> filters = new HashMap<>();
-		filters.put("pmVrsStatus", "ALPHA;BETA");
-		filters.put("pmVrsPrjId", getFieldValue("pmVrsPrjId"));
-		getGrant().setParameter("PARENT_FILTERS", filters);
 	}
 
 }

@@ -13,6 +13,9 @@ import com.simplicite.util.tools.*;
  */
 public class PmProject extends ObjectDB {
 	private static final long serialVersionUID = 1L;
+	/*
+		fonction for publication in PmProject
+	 */
 	public String pubHtml(){
 		LocalDate dateObj = LocalDate.now();
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");

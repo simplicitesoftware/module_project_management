@@ -18,19 +18,6 @@ public class PmAssignment extends ObjectDB {
 		}
 		super.initCreate();
 	}
-	
-	@Override
-	public String preDelete() {// if we deleted assignment we have to update the number of task of user
-		ObjectDB tmpTask = this.getGrant().getTmpObject("PmTask");
-		synchronized(tmpTask){
-			// select = chargement dans l'instance des valeurs en base à partir d'une clef technique (id)
-            tmpTask.select(this.getFieldValue("pmAssPmTaskid"));
-			if(tmpTask.getStatus().equals("TODO") ||tmpTask.getStatus().equals("DOING")){// if the task assigned is in to do or doing status we decrease the number of task
-				decreaseUserNbTask();
-			}
-		}
-		return super.preDelete();
-	}
 	@Override
 	public String postCreate() {// if we created assignment we have to update the number of task of user
 		ObjectDB tmpTask = this.getGrant().getTmpObject("PmTask");
@@ -43,6 +30,21 @@ public class PmAssignment extends ObjectDB {
 		}
 		return super.postCreate();
 	}
+	@Override
+	public String preDelete() {// if we deleted assignment we have to update the number of task of user
+		ObjectDB tmpTask = this.getGrant().getTmpObject("PmTask");
+		synchronized(tmpTask){
+			// select = chargement dans l'instance des valeurs en base à partir d'une clef technique (id)
+            tmpTask.select(this.getFieldValue("pmAssPmTaskid"));
+			if(tmpTask.getStatus().equals("TODO") ||tmpTask.getStatus().equals("DOING")){// if the task assigned is in to do or doing status we decrease the number of task
+				decreaseUserNbTask();
+			}
+		}
+		return super.preDelete();
+	}
+	/* 
+		Fonctions for update pmUsrNbTask of PmUser
+	 */
 	public void increaseUserNbTask(){// invoke the increase methode of object user
 		ObjectDB tmpUser = this.getGrant().getTmpObject("PmUser");
         synchronized(tmpUser){

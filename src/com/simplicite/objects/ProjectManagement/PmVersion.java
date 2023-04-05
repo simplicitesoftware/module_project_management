@@ -12,6 +12,22 @@ import java.time.format.DateTimeFormatter;
 public class PmVersion extends ObjectDB {
 	private static final long serialVersionUID = 1L;
 	@Override
+	public void initUpdate(){			
+		HashMap<String, String> filters = new HashMap<>();
+		filters.put("pmVrsPrjId", getFieldValue("pmVrsPrjId"));
+		filters.put("pmVrsStatus", "ALPHA;BETA");
+		getGrant().setParameter("PARENT_FILTERS", filters);
+	}
+	@Override
+	public void preSearch(){		
+		if(getInstanceName().equals("ref_ajax_PmVersion") && getGrant().hasParameter("PARENT_FILTERS")){
+			HashMap<String, String> filters = (HashMap<String, String>) getGrant().getObjectParameter("PARENT_FILTERS");			
+			setFieldFilter("pmVrsPrjId", filters.get("pmVrsPrjId"));
+			setFieldFilter("pmVrsStatus", filters.get("pmVrsStatus"));
+			getGrant().removeParameter("PARENT_FILTERS");
+		}
+	}
+	@Override
 	public List<String> postValidate() {
 		List<String> msgs = new ArrayList<>();
 		LocalDate dateObj = LocalDate.now();
@@ -48,7 +64,9 @@ public class PmVersion extends ObjectDB {
 
 		return msg;
 	}
-
+	/*
+		Function for calculated expression of field pmVrsCompletion
+	*/
 	public int completionVersion(){
 		int taskCount=0;
 		int finishedTaskCount=0;
@@ -68,6 +86,9 @@ public class PmVersion extends ObjectDB {
 		if (taskCount==0)return 100;
 		return (finishedTaskCount*100)/taskCount;
 	}
+	/*
+		Function of action PM_DEFER_TASK
+	*/ 
 	public String deferTask(){
 		String msg = new String();
 		String[] selected= getAction("PM_DEFER_TASK").getConfirmField(getGrant().getLang(), "pmDtVrsVersion").getValue().split(":");
@@ -102,29 +123,6 @@ public class PmVersion extends ObjectDB {
 		
 		return msg;
 	}
-	/* @Override
-	public void initRefSelect(ObjectDB parent) {
-		if(parent!=null && (parent.getName().equals("PmTask") || parent.getName().equals("PmVersion"))){
-			setFieldFilter("pmVrsStatus","ALPHA;BETA");
-		}
-		if(parent!=null && parent.getName().equals("PmVersion")){
-			setFieldFilter("pmVrsPrjId",parent.getFieldValue("pmVrsPrjId"));
-		}
-	} */
-	@Override
-	public void initUpdate(){			
-		HashMap<String, String> filters = new HashMap<>();
-		filters.put("pmVrsPrjId", getFieldValue("pmVrsPrjId"));
-		filters.put("pmVrsStatus", "ALPHA;BETA");
-		getGrant().setParameter("PARENT_FILTERS", filters);
-	}
-	@Override
-	public void preSearch(){		
-		if(getInstanceName().equals("ref_ajax_PmVersion") && getGrant().hasParameter("PARENT_FILTERS")){
-			HashMap<String, String> filters = (HashMap<String, String>) getGrant().getObjectParameter("PARENT_FILTERS");			
-			setFieldFilter("pmVrsPrjId", filters.get("pmVrsPrjId"));
-			setFieldFilter("pmVrsStatus", filters.get("pmVrsStatus"));
-			getGrant().removeParameter("PARENT_FILTERS");
-		}
-	}
+	
+	
 }

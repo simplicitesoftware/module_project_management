@@ -9,6 +9,9 @@ import com.simplicite.objects.System.*;
  */
 public class PmUser extends SimpleUser {
 	private static final long serialVersionUID = 1L;
+	/* 
+		Fonctions for update pmUsrNbTask
+	 */
 	public void increaseNbTask(){
 		ObjectField nbTask = this.getField("pmUsrNbTask");
     	nbTask.setValue(nbTask.getInt(0)+1);
