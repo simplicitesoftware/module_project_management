@@ -145,6 +145,8 @@ public class PmTask extends ObjectDB {
 		Function of action PM_TASK_MSG_DELETION
 	*/ 
 	public List<String> taskMsgDeletion(){
+		List<String> selected= getSelectedIds();
+		AppLog.info("DEBUG "+selected, getGrant());
 		List<String> msgs = new ArrayList<>();
 		ObjectDB tmpMsg = getGrant().getTmpObject("PmMessage");
 		BusinessObjectTool ot = tmpMsg.getTool();
