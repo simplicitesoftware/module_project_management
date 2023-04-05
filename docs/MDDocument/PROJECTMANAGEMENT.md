@@ -23,8 +23,6 @@ Business models
 ### `PmWorkflow` business model
 ![Object]([MODEL:PmWorkflow])
 
-[MODEL:PmWorkflow]
-
 [OBJECTDOC:PmUser]
 
 [OBJECTDOC:PmProject]

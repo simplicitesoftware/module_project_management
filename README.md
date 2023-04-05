@@ -379,13 +379,13 @@ Labeling of tasks
 
 ### Activities
 
-* `VersionSelect`: 
-* `TaskCreation`: 
-* `PreviousTask`: 
-* `NextTask`: 
-* `ProjectSelect`: 
-* `Labeling`: 
-* `Assignment`: 
-* `Begin`: 
-* `End`: 
+* `Begin`: Begin activity
+* `ProjectSelect`: Select the project to which the task belongs
+* `VersionSelect`: Select the version on which to add the task
+* `TaskCreation`: Creation of the task
+* `PreviousTask`: Selection of the task on which the task depends
+* `NextTask`: Selection of the task which will depend on the task
+* `Labeling`: Reflective creation of all labeling
+* `Assignment`: Reflective creation of all assignment
+* `End`: End activity
 
