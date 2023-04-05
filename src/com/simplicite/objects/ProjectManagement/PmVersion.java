@@ -58,7 +58,7 @@ public class PmVersion extends ObjectDB {
 				}
 			}
 		}
-		if (!Tool.isEmpty(msg)){
+		if (Tool.isEmpty(msg)){
 			return super.preUpdate();
 		}
 
