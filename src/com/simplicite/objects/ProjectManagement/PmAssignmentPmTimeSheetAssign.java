@@ -13,7 +13,7 @@ import com.simplicite.util.tools.*;
 /**
  * Business object PmImputation
  */
-public class PmImputation extends ObjectDB {
+public class PmAssignmentPmTimeSheetAssign extends ObjectDB {
 	private static final long serialVersionUID = 1L;
 	@Override
 	public List<String> postSaveTimesheet(Timesheet ts) {
@@ -27,9 +27,6 @@ public class PmImputation extends ObjectDB {
 					AppLog.info("Debug: "+tsLine.getAssignRowId(), g);
 				}
 			}
-		} catch (GetException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
 		} catch (JSONException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

@@ -322,8 +322,8 @@ Assignment of a user to a task, allows the establishment of a timesheet
     - `URGENT` Urgent
     - `IMMEDIATE` Immédiat
 
-`PmImputation` business object definition
------------------------------------------
+`PmAssignmentPmTimeSheetAssign` business object definition
+----------------------------------------------------------
 
 Timesheet of PmAssignmentPmTimeSheetAssign
 
