@@ -62,10 +62,6 @@ components:
       type: array
       items:
         $ref: '#/components/schemas/PmDocument'
-    ArrayOfPmAssignmentPmTimeSheetAssign:
-      type: array
-      items:
-        $ref: '#/components/schemas/PmAssignmentPmTimeSheetAssign'
     PmVersion:
       type: object
       properties:
@@ -176,6 +172,51 @@ components:
             $ref: '#/components/schemas/PlaceData'
         name:
           description: Name
+          type: string
+    PmImputation:
+      type: object
+      properties:
+        tsh_parent_id__pmAssPmTaskid:
+          description: Parent Task
+          type: string
+        tsh_parent_id__pmAssPmTaskid__pmTskVrsId__pmVrsPrjId__pmPrjName:
+          description: Parent Task Release Project Name
+          type: string
+        tsh_input1:
+          description: Input1
+          type: string
+        tsh_parent_id__pmAssPmTaskid__pmTskVrsId__pmVrsVersion:
+          description: Parent Task Release Release
+          type: string
+        tsh_parent_id__pmAssPmTaskid__pmTskVrsId__pmVrsPrjId:
+          description: Parent Task Release Project
+          type: string
+        tsh_parent_id:
+          description: Assign reference
+          type: string
+        tsh_month:
+          description: Month
+          type: string
+        tsh_parent_id__pmAssPmTaskid__pmTskVrsId:
+          description: Parent Task Release
+          type: string
+        tsh_total1:
+          description: Total1
+          type: number
+        tsh_year:
+          description: Year
+          type: string
+        tsh_parent_id__pmAssPmTaskid__pmTskNumber:
+          description: Parent Task Number
+          type: string
+        tsh_parent_id__pmAssPmUserid__usr_login:
+          description: Login
+          type: string
+        row_id:
+          description: Unique technical row ID
+          type: string
+        tsh_parent_id__pmAssPmUserid:
+          description: Parent User
           type: string
     PmArrayOfTask:
       type: object
@@ -343,51 +384,6 @@ components:
           type: integer
           enum:
           - 403
-    PmAssignmentPmTimeSheetAssign:
-      type: object
-      properties:
-        tsh_parent_id__pmAssPmTaskid:
-          description: Parent Task
-          type: string
-        tsh_parent_id__pmAssPmTaskid__pmTskVrsId__pmVrsPrjId__pmPrjName:
-          description: Parent Task Release Project Name
-          type: string
-        tsh_input1:
-          description: Input1
-          type: string
-        tsh_parent_id__pmAssPmTaskid__pmTskVrsId__pmVrsVersion:
-          description: Parent Task Release Release
-          type: string
-        tsh_parent_id__pmAssPmTaskid__pmTskVrsId__pmVrsPrjId:
-          description: Parent Task Release Project
-          type: string
-        tsh_parent_id:
-          description: Assign reference
-          type: string
-        tsh_month:
-          description: Month
-          type: string
-        tsh_parent_id__pmAssPmTaskid__pmTskVrsId:
-          description: Parent Task Release
-          type: string
-        tsh_total1:
-          description: Total1
-          type: number
-        tsh_year:
-          description: Year
-          type: string
-        tsh_parent_id__pmAssPmTaskid__pmTskNumber:
-          description: Parent Task Number
-          type: string
-        tsh_parent_id__pmAssPmUserid__usr_login:
-          description: Login
-          type: string
-        row_id:
-          description: Unique technical row ID
-          type: string
-        tsh_parent_id__pmAssPmUserid:
-          description: Parent User
-          type: string
     ArrayOfPmMessage:
       type: array
       items:
@@ -453,6 +449,10 @@ components:
       type: array
       items:
         $ref: '#/components/schemas/PmAssignment'
+    ArrayOfPmImputation:
+      type: array
+      items:
+        $ref: '#/components/schemas/PmImputation'
     PmTask:
       type: object
       properties:
@@ -567,6 +567,12 @@ components:
           type: string
         pmAssPmTaskid__pmTskVrsId__pmVrsPrjId:
           description: Task Release Project
+          type: string
+        pmAssQuantity:
+          description: Quantity
+          type: string
+        pmAssConsumed:
+          description: Consumed
           type: string
         pmAssPmTaskid__pmTskVrsId:
           description: Task Release
@@ -3287,132 +3293,6 @@ paths:
         required: true
       tags:
       - PmTask
-  /rest/PmAssignmentPmTimeSheetAssign:
-    get:
-      summary: Search PmAssignmentPmTimeSheetAssign business object records or get
-        contextualized metadata
-      security:
-      - bearerAuth: []
-      operationId: obj-pmassignmentpmtimesheetassign-search
-      responses:
-        '200':
-          description: Success in searching business object records (or in getting
-            contextualized business object metadata, documentation, ...)
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ArrayOfPmAssignmentPmTimeSheetAssign'
-        '401':
-          description: Unauthorized
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error401'
-        '500':
-          description: Internal server error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error500'
-      parameters:
-      - schema:
-          type: boolean
-        in: query
-        name: _metadata
-        description: Metadata?
-        required: false
-      - schema:
-          type: boolean
-        in: query
-        name: _count
-        description: Count?
-        required: false
-      - schema:
-          type: boolean
-        in: query
-        name: _doc
-        description: Documentation?
-        required: false
-      - schema:
-          type: string
-        in: query
-        name: tsh_parent_id
-        description: Search filter for Assign reference
-        required: false
-      - schema:
-          type: string
-        in: query
-        name: tsh_year
-        description: Search filter for Year
-        required: false
-      - schema:
-          type: string
-        in: query
-        name: tsh_month
-        description: Search filter for Month
-        required: false
-      - schema:
-          type: string
-        in: query
-        name: tsh_input1
-        description: Search filter for Input1
-        required: false
-      - schema:
-          type: number
-        in: query
-        name: tsh_total1
-        description: Search filter for Total1
-        required: false
-      - schema:
-          type: string
-        in: query
-        name: tsh_parent_id__pmAssPmUserid
-        description: Search filter for Parent User
-        required: false
-      - schema:
-          type: string
-        in: query
-        name: tsh_parent_id__pmAssPmUserid__usr_login
-        description: Search filter for Login
-        required: false
-      - schema:
-          type: string
-        in: query
-        name: tsh_parent_id__pmAssPmTaskid
-        description: Search filter for Parent Task
-        required: false
-      - schema:
-          type: string
-        in: query
-        name: tsh_parent_id__pmAssPmTaskid__pmTskNumber
-        description: Search filter for Parent Task Number
-        required: false
-      - schema:
-          type: string
-        in: query
-        name: tsh_parent_id__pmAssPmTaskid__pmTskVrsId
-        description: Search filter for Parent Task Release
-        required: false
-      - schema:
-          type: string
-        in: query
-        name: tsh_parent_id__pmAssPmTaskid__pmTskVrsId__pmVrsPrjId
-        description: Search filter for Parent Task Release Project
-        required: false
-      - schema:
-          type: string
-        in: query
-        name: tsh_parent_id__pmAssPmTaskid__pmTskVrsId__pmVrsPrjId__pmPrjName
-        description: Search filter for Parent Task Release Project Name
-        required: false
-      - schema:
-          type: string
-        in: query
-        name: tsh_parent_id__pmAssPmTaskid__pmTskVrsId__pmVrsVersion
-        description: Search filter for Parent Task Release Release
-        required: false
-      tags:
-      - PmAssignmentPmTimeSheetAssign
   /rest/PmProject/{row_id}/publication:PmPrjPublication:
     get:
       summary: Call a custom publication for a PmProject business object record or
@@ -3753,203 +3633,20 @@ paths:
         name: pmAssPmTaskid__pmTskClose
         description: Search filter for Task Closing date
         required: false
+      - schema:
+          type: string
+        in: query
+        name: pmAssQuantity
+        description: Search filter for Quantity
+        required: false
+      - schema:
+          type: string
+        in: query
+        name: pmAssConsumed
+        description: Search filter for Consumed
+        required: false
       tags:
       - PmAssignment
-  /rest/PmAssignmentPmTimeSheetAssign/{row_id}:
-    post:
-      summary: Create a new PmAssignmentPmTimeSheetAssignbusiness object record
-      security:
-      - bearerAuth: []
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/PmAssignmentPmTimeSheetAssign'
-      operationId: obj-pmassignmentpmtimesheetassign-create
-      responses:
-        '200':
-          description: Success in creating a new business object record
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/PmAssignmentPmTimeSheetAssign'
-        '400':
-          description: Bad request
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error400'
-        '401':
-          description: Unauthorized
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error401'
-        '500':
-          description: Internal server error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error500'
-      parameters:
-      - schema:
-          type: string
-        in: path
-        name: row_id
-        description: Row ID (or empty or _ for all row IDs)
-        required: true
-      tags:
-      - PmAssignmentPmTimeSheetAssign
-    get:
-      summary: Get a PmAssignmentPmTimeSheetAssign business object record
-      security:
-      - bearerAuth: []
-      operationId: obj-pmassignmentpmtimesheetassign-get
-      responses:
-        '200':
-          description: Success in getting a single business object record
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/PmAssignmentPmTimeSheetAssign'
-        '401':
-          description: Unauthorized
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error401'
-        '500':
-          description: Internal server error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error500'
-        '404':
-          description: Not found
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error404'
-      parameters:
-      - schema:
-          type: string
-        in: path
-        name: row_id
-        description: Row ID (or empty or _ for all row IDs)
-        required: true
-      - schema:
-          type: boolean
-        in: query
-        name: _inline_documents
-        description: Inline documents?
-        required: false
-      - schema:
-          type: boolean
-        in: query
-        name: _inline_thumbnails
-        description: Inline documents' thumbnails?
-        required: false
-      - schema:
-          type: boolean
-        in: query
-        name: _inline_objects
-        description: Inline objects?
-        required: false
-      tags:
-      - PmAssignmentPmTimeSheetAssign
-    delete:
-      summary: Delete a PmAssignmentPmTimeSheetAssign business object record
-      security:
-      - bearerAuth: []
-      operationId: obj-pmassignmentpmtimesheetassign-delete
-      responses:
-        '200':
-          description: Success in deleting a business object record
-          content:
-            application/json: {}
-        '400':
-          description: Bad request
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error400'
-        '401':
-          description: Unauthorized
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error401'
-        '500':
-          description: Internal server error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error500'
-        '404':
-          description: Not found
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error404'
-      parameters:
-      - schema:
-          type: string
-        in: path
-        name: row_id
-        description: Row ID (or empty or _ for all row IDs)
-        required: true
-      tags:
-      - PmAssignmentPmTimeSheetAssign
-    put:
-      summary: Update a PmAssignmentPmTimeSheetAssignbusiness object record
-      security:
-      - bearerAuth: []
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/PmAssignmentPmTimeSheetAssign'
-      operationId: obj-pmassignmentpmtimesheetassign-update
-      responses:
-        '200':
-          description: Success in updating a business object record
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/PmAssignmentPmTimeSheetAssign'
-        '400':
-          description: Bad request
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error400'
-        '401':
-          description: Unauthorized
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error401'
-        '500':
-          description: Internal server error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error500'
-        '404':
-          description: Not found
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error404'
-      parameters:
-      - schema:
-          type: string
-        in: path
-        name: row_id
-        description: Row ID (or empty or _ for all row IDs)
-        required: true
-      tags:
-      - PmAssignmentPmTimeSheetAssign
   /rest/PmUser:
     get:
       summary: Search PmUser business object records or get contextualized metadata
@@ -4398,6 +4095,201 @@ paths:
         required: false
       tags:
       - PmArrayOfTask
+  /rest/PmImputation/{row_id}:
+    post:
+      summary: Create a new PmImputationbusiness object record
+      security:
+      - bearerAuth: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PmImputation'
+      operationId: obj-pmimputation-create
+      responses:
+        '200':
+          description: Success in creating a new business object record
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PmImputation'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error400'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error401'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error500'
+      parameters:
+      - schema:
+          type: string
+        in: path
+        name: row_id
+        description: Row ID (or empty or _ for all row IDs)
+        required: true
+      tags:
+      - PmImputation
+    get:
+      summary: Get a PmImputation business object record
+      security:
+      - bearerAuth: []
+      operationId: obj-pmimputation-get
+      responses:
+        '200':
+          description: Success in getting a single business object record
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PmImputation'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error401'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error500'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error404'
+      parameters:
+      - schema:
+          type: string
+        in: path
+        name: row_id
+        description: Row ID (or empty or _ for all row IDs)
+        required: true
+      - schema:
+          type: boolean
+        in: query
+        name: _inline_documents
+        description: Inline documents?
+        required: false
+      - schema:
+          type: boolean
+        in: query
+        name: _inline_thumbnails
+        description: Inline documents' thumbnails?
+        required: false
+      - schema:
+          type: boolean
+        in: query
+        name: _inline_objects
+        description: Inline objects?
+        required: false
+      tags:
+      - PmImputation
+    delete:
+      summary: Delete a PmImputation business object record
+      security:
+      - bearerAuth: []
+      operationId: obj-pmimputation-delete
+      responses:
+        '200':
+          description: Success in deleting a business object record
+          content:
+            application/json: {}
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error400'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error401'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error500'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error404'
+      parameters:
+      - schema:
+          type: string
+        in: path
+        name: row_id
+        description: Row ID (or empty or _ for all row IDs)
+        required: true
+      tags:
+      - PmImputation
+    put:
+      summary: Update a PmImputationbusiness object record
+      security:
+      - bearerAuth: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PmImputation'
+      operationId: obj-pmimputation-update
+      responses:
+        '200':
+          description: Success in updating a business object record
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PmImputation'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error400'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error401'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error500'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error404'
+      parameters:
+      - schema:
+          type: string
+        in: path
+        name: row_id
+        description: Row ID (or empty or _ for all row IDs)
+        required: true
+      tags:
+      - PmImputation
   /rest/PmTaskHistoric/{row_id}:
     post:
       summary: Create a new PmTaskHistoricbusiness object record
@@ -4881,6 +4773,131 @@ paths:
         required: true
       tags:
       - PmArrayOfTask
+  /rest/PmImputation:
+    get:
+      summary: Search PmImputation business object records or get contextualized metadata
+      security:
+      - bearerAuth: []
+      operationId: obj-pmimputation-search
+      responses:
+        '200':
+          description: Success in searching business object records (or in getting
+            contextualized business object metadata, documentation, ...)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ArrayOfPmImputation'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error401'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error500'
+      parameters:
+      - schema:
+          type: boolean
+        in: query
+        name: _metadata
+        description: Metadata?
+        required: false
+      - schema:
+          type: boolean
+        in: query
+        name: _count
+        description: Count?
+        required: false
+      - schema:
+          type: boolean
+        in: query
+        name: _doc
+        description: Documentation?
+        required: false
+      - schema:
+          type: string
+        in: query
+        name: tsh_parent_id
+        description: Search filter for Assign reference
+        required: false
+      - schema:
+          type: string
+        in: query
+        name: tsh_year
+        description: Search filter for Year
+        required: false
+      - schema:
+          type: string
+        in: query
+        name: tsh_month
+        description: Search filter for Month
+        required: false
+      - schema:
+          type: string
+        in: query
+        name: tsh_input1
+        description: Search filter for Input1
+        required: false
+      - schema:
+          type: number
+        in: query
+        name: tsh_total1
+        description: Search filter for Total1
+        required: false
+      - schema:
+          type: string
+        in: query
+        name: tsh_parent_id__pmAssPmUserid
+        description: Search filter for Parent User
+        required: false
+      - schema:
+          type: string
+        in: query
+        name: tsh_parent_id__pmAssPmUserid__usr_login
+        description: Search filter for Login
+        required: false
+      - schema:
+          type: string
+        in: query
+        name: tsh_parent_id__pmAssPmTaskid
+        description: Search filter for Parent Task
+        required: false
+      - schema:
+          type: string
+        in: query
+        name: tsh_parent_id__pmAssPmTaskid__pmTskNumber
+        description: Search filter for Parent Task Number
+        required: false
+      - schema:
+          type: string
+        in: query
+        name: tsh_parent_id__pmAssPmTaskid__pmTskVrsId
+        description: Search filter for Parent Task Release
+        required: false
+      - schema:
+          type: string
+        in: query
+        name: tsh_parent_id__pmAssPmTaskid__pmTskVrsId__pmVrsPrjId
+        description: Search filter for Parent Task Release Project
+        required: false
+      - schema:
+          type: string
+        in: query
+        name: tsh_parent_id__pmAssPmTaskid__pmTskVrsId__pmVrsPrjId__pmPrjName
+        description: Search filter for Parent Task Release Project Name
+        required: false
+      - schema:
+          type: string
+        in: query
+        name: tsh_parent_id__pmAssPmTaskid__pmTskVrsId__pmVrsVersion
+        description: Search filter for Parent Task Release Release
+        required: false
+      tags:
+      - PmImputation
   /rest/PmLabel/{row_id}:
     post:
       summary: Create a new PmLabelbusiness object record
@@ -5092,10 +5109,10 @@ tags:
   description: Dependency
 - name: PmAssignment
   description: Assignment
-- name: PmAssignmentPmTimeSheetAssign
-  description: Assignment pm time sheet assign
 - name: PmDocument
   description: Document
+- name: PmImputation
+  description: Assignment pm time sheet assign
 - name: PmLabel
   description: Label
 - name: PmMessage
