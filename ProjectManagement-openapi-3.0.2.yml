@@ -24,7 +24,7 @@ components:
           type: string
         pmTsklblTskId__pmTskNumber:
           description: Task
-          type: integer
+          type: string
         pmTsklblTskId__pmTskVrsId:
           description: Task id Release
           type: string
@@ -124,7 +124,7 @@ components:
       properties:
         pmMsgTskId__pmTskNumber:
           description: Task Number
-          type: integer
+          type: string
         pmMsgPublicationDate:
           description: Publication date
           type: string
@@ -197,7 +197,7 @@ components:
           type: string
         pmAotPrvTskId__pmTskNumber:
           description: Previous task Number
-          type: integer
+          type: string
         pmAotPrvTskId__pmTskVrsId__pmVrsPrjId:
           description: Previous task Release Project
           type: string
@@ -212,7 +212,7 @@ components:
           type: string
         pmAotNextTskId__pmTskNumber:
           description: Next task Number
-          type: integer
+          type: string
         pmAotNextTskId__pmTskVrsId:
           description: Next task Release
           type: string
@@ -254,7 +254,7 @@ components:
           type: string
         pmDocTskId__pmTskNumber:
           description: Task Number
-          type: integer
+          type: string
         pmDocPrjId:
           description: Project
           type: string
@@ -378,7 +378,7 @@ components:
           type: string
         tsh_parent_id__pmAssPmTaskid__pmTskNumber:
           description: Parent Task Number
-          type: integer
+          type: string
         tsh_parent_id__pmAssPmUserid__usr_login:
           description: Login
           type: string
@@ -546,7 +546,7 @@ components:
           - REJECTED
         pmTskNumber:
           description: Number
-          type: integer
+          type: string
         pmTskVrsId:
           description: Release
           type: string
@@ -559,6 +559,9 @@ components:
         pmAssRole:
           description: Role
           type: string
+          enum:
+          - DEVELOPER
+          - MANAGER
         pmAssPmTaskid__pmTskTitle:
           description: Task Title
           type: string
@@ -589,7 +592,7 @@ components:
           type: string
         pmAssPmTaskid__pmTskNumber:
           description: Task Number
-          type: integer
+          type: string
         pmAssPmUserid__pmUsrNbTask:
           description: User Number of current task
           type: integer
@@ -722,7 +725,7 @@ components:
           type: string
         pmTskNumber:
           description: Number
-          type: integer
+          type: string
         pmTskClose:
           description: Closing date
           type: string
@@ -924,7 +927,7 @@ paths:
         description: Search filter for Created date
         required: false
       - schema:
-          type: integer
+          type: string
         in: query
         name: pmTskNumber
         description: Search filter for Number
@@ -1239,7 +1242,7 @@ paths:
         description: Search filter for Task
         required: false
       - schema:
-          type: integer
+          type: string
         in: query
         name: pmDocTskId__pmTskNumber
         description: Search filter for Task Number
@@ -2150,7 +2153,7 @@ paths:
         description: Search filter for Task
         required: false
       - schema:
-          type: integer
+          type: string
         in: query
         name: pmMsgTskId__pmTskNumber
         description: Search filter for Task Number
@@ -2932,7 +2935,7 @@ paths:
         description: Pivot table data as cubes?
         required: false
       - schema:
-          type: integer
+          type: string
         in: query
         name: pmTskNumber
         description: Search filter for Number
@@ -3379,7 +3382,7 @@ paths:
         description: Search filter for Parent Task
         required: false
       - schema:
-          type: integer
+          type: string
         in: query
         name: tsh_parent_id__pmAssPmTaskid__pmTskNumber
         description: Search filter for Parent Task Number
@@ -3503,7 +3506,7 @@ paths:
         description: Search filter for Task id
         required: false
       - schema:
-          type: integer
+          type: string
         in: query
         name: pmTsklblTskId__pmTskNumber
         description: Search filter for Task
@@ -3639,6 +3642,9 @@ paths:
         required: false
       - schema:
           type: string
+          enum:
+          - DEVELOPER
+          - MANAGER
         in: query
         name: pmAssRole
         description: Search filter for Role
@@ -3668,7 +3674,7 @@ paths:
         description: Search filter for Task
         required: false
       - schema:
-          type: integer
+          type: string
         in: query
         name: pmAssPmTaskid__pmTskNumber
         description: Search filter for Task Number
@@ -4325,7 +4331,7 @@ paths:
         description: Search filter for Previous task
         required: false
       - schema:
-          type: integer
+          type: string
         in: query
         name: pmAotPrvTskId__pmTskNumber
         description: Search filter for Previous task Number
@@ -4361,7 +4367,7 @@ paths:
         description: Search filter for Next task
         required: false
       - schema:
-          type: integer
+          type: string
         in: query
         name: pmAotNextTskId__pmTskNumber
         description: Search filter for Next task Number

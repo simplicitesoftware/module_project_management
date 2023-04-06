@@ -26,7 +26,7 @@ Module de gestion de projet et de gestion de tâche ou de tickets.
 | `row_idx`                                                    | int(11)                                  | yes*     | yes       |          | History record index                                                             |
 | `created_by_hist`                                            | char(100)                                | yes*     |           |          | Created by                                                                       |
 | `created_dt_hist`                                            | datetime                                 | yes*     |           |          | Created date                                                                     |
-| `pmTskNumber`                                                | int(100)                                 | yes*     | yes       |          | -                                                                                |
+| `pmTskNumber`                                                | char(100)                                | yes*     | yes       |          | -                                                                                |
 | `pmTskTitle`                                                 | char(100)                                | yes      | yes       |          | -                                                                                |
 | `pmTskDescription`                                           | text(4000)                               |          | yes       |          | -                                                                                |
 | `pmTskStatus`                                                | enum(100) using `PM_TSK_STATUT` list     | yes      | yes       |          | -                                                                                |
@@ -138,7 +138,7 @@ Tasks of project
 
 | Name                                                         | Type                                     | Required | Updatable | Personal | Description                                                                      |
 |--------------------------------------------------------------|------------------------------------------|----------|-----------|----------|----------------------------------------------------------------------------------|
-| `pmTskNumber`                                                | int(100)                                 | yes*     | yes       |          | -                                                                                |
+| `pmTskNumber`                                                | char(100)                                | yes*     | yes       |          | -                                                                                |
 | `pmTskTitle`                                                 | char(100)                                | yes      | yes       |          | -                                                                                |
 | `pmTskDescription`                                           | text(4000)                               |          | yes       |          | -                                                                                |
 | `pmTskStatus`                                                | enum(100) using `PM_TSK_STATUT` list     | yes      | yes       |          | -                                                                                |
@@ -197,13 +197,13 @@ dependency between tasks
 | Name                                                         | Type                                     | Required | Updatable | Personal | Description                                                                      |
 |--------------------------------------------------------------|------------------------------------------|----------|-----------|----------|----------------------------------------------------------------------------------|
 | `pmAotPrvTskId` link to **`PmTask`**                         | id                                       | yes*     | yes       |          | -                                                                                |
-| _Ref. `pmAotPrvTskId.pmTskNumber`_                           | _int(100)_                               |          |           |          | -                                                                                |
+| _Ref. `pmAotPrvTskId.pmTskNumber`_                           | _char(100)_                              |          |           |          | -                                                                                |
 | _Ref. `pmAotPrvTskId.pmTskVrsId`_                            | _id_                                     |          |           |          | -                                                                                |
 | _Ref. `pmTskVrsId.pmVrsVersion`_                             | _char(100)_                              |          |           |          | -                                                                                |
 | _Ref. `pmTskVrsId.pmVrsPrjId`_                               | _id_                                     |          |           |          | -                                                                                |
 | _Ref. `pmVrsPrjId.pmPrjName`_                                | _char(100)_                              |          |           |          | -                                                                                |
 | `pmAotNextTskId` link to **`PmTask`**                        | id                                       | yes*     | yes       |          | -                                                                                |
-| _Ref. `pmAotNextTskId.pmTskNumber`_                          | _int(100)_                               |          |           |          | -                                                                                |
+| _Ref. `pmAotNextTskId.pmTskNumber`_                          | _char(100)_                              |          |           |          | -                                                                                |
 | _Ref. `pmAotNextTskId.pmTskVrsId`_                           | _id_                                     |          |           |          | -                                                                                |
 | _Ref. `pmTskVrsId.pmVrsVersion`_                             | _char(100)_                              |          |           |          | -                                                                                |
 | _Ref. `pmTskVrsId.pmVrsPrjId`_                               | _id_                                     |          |           |          | -                                                                                |
@@ -221,7 +221,7 @@ Useful documents for a task or a project
 | `pmDocAttachment`                                            | document                                 |          | yes       |          | -                                                                                |
 | `pmDocTitle`                                                 | char(100)                                | yes*     | yes       |          | -                                                                                |
 | `pmDocTskId` link to **`PmTask`**                            | id                                       |          | yes       |          | -                                                                                |
-| _Ref. `pmDocTskId.pmTskNumber`_                              | _int(100)_                               |          |           |          | -                                                                                |
+| _Ref. `pmDocTskId.pmTskNumber`_                              | _char(100)_                              |          |           |          | -                                                                                |
 | _Ref. `pmDocTskId.pmTskVrsId`_                               | _id_                                     |          |           |          | -                                                                                |
 | _Ref. `pmTskVrsId.pmVrsVersion`_                             | _char(100)_                              |          |           |          | -                                                                                |
 | _Ref. `pmTskVrsId.pmVrsPrjId`_                               | _id_                                     |          |           |          | -                                                                                |
@@ -267,7 +267,7 @@ Messaging on a task
 | `pmMsgUsrId` link to **`PmUser`**                            | id                                       | yes*     |           |          | -                                                                                |
 | _Ref. `pmMsgUsrId.usr_login`_                                | _regexp(100)_                            |          |           | yes      | _Login_                                                                          |
 | `pmMsgTskId` link to **`PmTask`**                            | id                                       | *        | yes       |          | -                                                                                |
-| _Ref. `pmMsgTskId.pmTskNumber`_                              | _int(100)_                               |          |           |          | -                                                                                |
+| _Ref. `pmMsgTskId.pmTskNumber`_                              | _char(100)_                              |          |           |          | -                                                                                |
 | _Ref. `pmMsgTskId.pmTskVrsId`_                               | _id_                                     |          |           |          | -                                                                                |
 | _Ref. `pmTskVrsId.pmVrsVersion`_                             | _char(100)_                              |          |           |          | -                                                                                |
 | _Ref. `pmMsgTskId.pmTskTitle`_                               | _char(100)_                              |          |           |          | -                                                                                |
@@ -283,12 +283,12 @@ Assignment of a user to a task, allows the establishment of a timesheet
 
 | Name                                                         | Type                                     | Required | Updatable | Personal | Description                                                                      |
 |--------------------------------------------------------------|------------------------------------------|----------|-----------|----------|----------------------------------------------------------------------------------|
-| `pmAssRole`                                                  | text(100)                                | yes      | yes       |          | -                                                                                |
+| `pmAssRole`                                                  | enum(100) using `PM_ASS_ROLE` list       | yes      | yes       |          | -                                                                                |
 | `pmAssPmUserid` link to **`PmUser`**                         | id                                       | yes*     | yes       |          | -                                                                                |
 | _Ref. `pmAssPmUserid.usr_login`_                             | _regexp(100)_                            |          |           | yes      | _Login_                                                                          |
 | _Ref. `pmAssPmUserid.pmUsrNbTask`_                           | _int(100)_                               |          |           |          | -                                                                                |
 | `pmAssPmTaskid` link to **`PmTask`**                         | id                                       | yes*     | yes       |          | -                                                                                |
-| _Ref. `pmAssPmTaskid.pmTskNumber`_                           | _int(100)_                               |          |           |          | -                                                                                |
+| _Ref. `pmAssPmTaskid.pmTskNumber`_                           | _char(100)_                              |          |           |          | -                                                                                |
 | _Ref. `pmAssPmTaskid.pmTskTitle`_                            | _char(100)_                              |          |           |          | -                                                                                |
 | _Ref. `pmAssPmTaskid.pmTskVrsId`_                            | _id_                                     |          |           |          | -                                                                                |
 | _Ref. `pmTskVrsId.pmVrsName`_                                | _char(200)_                              |          |           |          | _Concatenation of project name and version number_                               |
@@ -302,6 +302,9 @@ Assignment of a user to a task, allows the establishment of a timesheet
 
 ### Lists
 
+* `PM_ASS_ROLE`
+    - `DEVELOPER` Developpeur
+    - `MANAGER` Manager
 * `PM_TSK_STATUT`
     - `DRAFT` Draft
     - `TODO` To do
@@ -334,7 +337,7 @@ Timesheet of PmAssignmentPmTimeSheetAssign
 | _Ref. `tsh_parent_id.pmAssPmUserid`_                         | _id_                                     |          |           |          | -                                                                                |
 | _Ref. `pmAssPmUserid.usr_login`_                             | _regexp(100)_                            |          |           | yes      | _Login_                                                                          |
 | _Ref. `tsh_parent_id.pmAssPmTaskid`_                         | _id_                                     |          |           |          | -                                                                                |
-| _Ref. `pmAssPmTaskid.pmTskNumber`_                           | _int(100)_                               |          |           |          | -                                                                                |
+| _Ref. `pmAssPmTaskid.pmTskNumber`_                           | _char(100)_                              |          |           |          | -                                                                                |
 | _Ref. `pmAssPmTaskid.pmTskVrsId`_                            | _id_                                     |          |           |          | -                                                                                |
 | _Ref. `pmTskVrsId.pmVrsPrjId`_                               | _id_                                     |          |           |          | -                                                                                |
 | _Ref. `pmVrsPrjId.pmPrjName`_                                | _char(100)_                              |          |           |          | -                                                                                |
@@ -362,7 +365,7 @@ Labeling of tasks
 | Name                                                         | Type                                     | Required | Updatable | Personal | Description                                                                      |
 |--------------------------------------------------------------|------------------------------------------|----------|-----------|----------|----------------------------------------------------------------------------------|
 | `pmTsklblTskId` link to **`PmTask`**                         | id                                       | yes*     | yes       |          | -                                                                                |
-| _Ref. `pmTsklblTskId.pmTskNumber`_                           | _int(100)_                               |          |           |          | -                                                                                |
+| _Ref. `pmTsklblTskId.pmTskNumber`_                           | _char(100)_                              |          |           |          | -                                                                                |
 | _Ref. `pmTsklblTskId.pmTskVrsId`_                            | _id_                                     |          |           |          | -                                                                                |
 | _Ref. `pmTskVrsId.pmVrsVersion`_                             | _char(100)_                              |          |           |          | -                                                                                |
 | _Ref. `pmTsklblTskId.pmTskTitle`_                            | _char(100)_                              |          |           |          | -                                                                                |
@@ -388,4 +391,10 @@ Labeling of tasks
 * `Labeling`: Reflective creation of all labeling
 * `Assignment`: Reflective creation of all assignment
 * `End`: End activity
+
+`PmTimesheetExt` external object definition
+-------------------------------------------
+
+
+
 

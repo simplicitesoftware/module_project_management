@@ -117,7 +117,7 @@ paths:
       - in: query
         name: pmTskNumber
         description: Search filter for Number
-        type: integer
+        type: string
         required: false
       - in: query
         name: pmTskTitle
@@ -387,7 +387,7 @@ paths:
       - in: query
         name: pmDocTskId__pmTskNumber
         description: Search filter for Task Number
-        type: integer
+        type: string
         required: false
       - in: query
         name: pmDocTskId__pmTskVrsId
@@ -1145,7 +1145,7 @@ paths:
       - in: query
         name: pmMsgTskId__pmTskNumber
         description: Search filter for Task Number
-        type: integer
+        type: string
         required: false
       - in: query
         name: pmMsgTskId__pmTskVrsId
@@ -1799,7 +1799,7 @@ paths:
       - in: query
         name: pmTskNumber
         description: Search filter for Number
-        type: integer
+        type: string
         required: false
       - in: query
         name: pmTskTitle
@@ -2175,7 +2175,7 @@ paths:
       - in: query
         name: tsh_parent_id__pmAssPmTaskid__pmTskNumber
         description: Search filter for Parent Task Number
-        type: integer
+        type: string
         required: false
       - in: query
         name: tsh_parent_id__pmAssPmTaskid__pmTskVrsId
@@ -2279,7 +2279,7 @@ paths:
       - in: query
         name: pmTsklblTskId__pmTskNumber
         description: Search filter for Task
-        type: integer
+        type: string
         required: false
       - in: query
         name: pmTsklblTskId__pmTskVrsId
@@ -2396,6 +2396,9 @@ paths:
         description: Search filter for Role
         type: string
         required: false
+        enum:
+        - DEVELOPER
+        - MANAGER
       - in: query
         name: pmAssPmUserid
         description: Search filter for User
@@ -2419,7 +2422,7 @@ paths:
       - in: query
         name: pmAssPmTaskid__pmTskNumber
         description: Search filter for Task Number
-        type: integer
+        type: string
         required: false
       - in: query
         name: pmAssPmTaskid__pmTskTitle
@@ -2971,7 +2974,7 @@ paths:
       - in: query
         name: pmAotPrvTskId__pmTskNumber
         description: Search filter for Previous task Number
-        type: integer
+        type: string
         required: false
       - in: query
         name: pmAotPrvTskId__pmTskVrsId
@@ -3001,7 +3004,7 @@ paths:
       - in: query
         name: pmAotNextTskId__pmTskNumber
         description: Search filter for Next task Number
-        type: integer
+        type: string
         required: false
       - in: query
         name: pmAotNextTskId__pmTskVrsId
@@ -3617,7 +3620,7 @@ definitions:
         type: string
       pmTsklblTskId__pmTskNumber:
         description: Task
-        type: integer
+        type: string
       pmTsklblTskId__pmTskVrsId:
         description: Task id Release
         type: string
@@ -3717,7 +3720,7 @@ definitions:
     properties:
       pmMsgTskId__pmTskNumber:
         description: Task Number
-        type: integer
+        type: string
       pmMsgPublicationDate:
         description: Publication date
         type: string
@@ -3790,7 +3793,7 @@ definitions:
         type: string
       pmAotPrvTskId__pmTskNumber:
         description: Previous task Number
-        type: integer
+        type: string
       pmAotPrvTskId__pmTskVrsId__pmVrsPrjId:
         description: Previous task Release Project
         type: string
@@ -3805,7 +3808,7 @@ definitions:
         type: string
       pmAotNextTskId__pmTskNumber:
         description: Next task Number
-        type: integer
+        type: string
       pmAotNextTskId__pmTskVrsId:
         description: Next task Release
         type: string
@@ -3847,7 +3850,7 @@ definitions:
         type: string
       pmDocTskId__pmTskNumber:
         description: Task Number
-        type: integer
+        type: string
       pmDocPrjId:
         description: Project
         type: string
@@ -3971,7 +3974,7 @@ definitions:
         type: string
       tsh_parent_id__pmAssPmTaskid__pmTskNumber:
         description: Parent Task Number
-        type: integer
+        type: string
       tsh_parent_id__pmAssPmUserid__usr_login:
         description: Login
         type: string
@@ -4139,7 +4142,7 @@ definitions:
         - REJECTED
       pmTskNumber:
         description: Number
-        type: integer
+        type: string
       pmTskVrsId:
         description: Release
         type: string
@@ -4152,6 +4155,9 @@ definitions:
       pmAssRole:
         description: Role
         type: string
+        enum:
+        - DEVELOPER
+        - MANAGER
       pmAssPmTaskid__pmTskTitle:
         description: Task Title
         type: string
@@ -4182,7 +4188,7 @@ definitions:
         type: string
       pmAssPmTaskid__pmTskNumber:
         description: Task Number
-        type: integer
+        type: string
       pmAssPmUserid__pmUsrNbTask:
         description: User Number of current task
         type: integer
@@ -4315,7 +4321,7 @@ definitions:
         type: string
       pmTskNumber:
         description: Number
-        type: integer
+        type: string
       pmTskClose:
         description: Closing date
         type: string
