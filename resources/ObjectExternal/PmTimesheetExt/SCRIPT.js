@@ -1,7 +1,7 @@
-var CraTimesheetObjExt = (function() {
+var PmTimesheetExt = (function() {
 	//CRA
     function render(params) {
-    	$ui.displayTimesheet(null, "CraEmploye", $ui.grant.getUserID(), "Imputation");
+        $ui.displayTimesheet(null, "PmUser", $ui.grant.getUserID(), "PmImputation");
     }
     return { render: render };
 })();
