@@ -5,7 +5,7 @@ var PmTimesheetExt = (function() {
         $ui.displayTimesheet($('#ts'), "PmUser",userid , "PmTimeSheetAssign");
 		$('#recap').html('testb');
 		app = $ui.getAjax();
-		app.getBusinessObject('PmAssignment').search(function() {
+		app.getBusinessObject('PmAssignment').search(function(rows) {
 			$('#recap').html(rows);
 		}, {pmAssPmUserid: userid});
         /* try {
