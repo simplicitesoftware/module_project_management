@@ -3,15 +3,17 @@ var PmTimesheetExt = (function() {
     function render(params) {
         var userid =$ui.grant.getUserID();
         $ui.displayTimesheet($('#ts'), "PmUser",userid , "PmTimeSheetAssign");
-		console.log("test log");
+		$ui.log("testlog")
         try {
 			if (typeof Mustache === 'undefined') throw 'Mustache not available';
 			var div = $('#recap');
 			app = $ui.getAjax();
 			
 			var affect = app.getBusinessObject('PmAssignment');
+			app.getBusinessObject('PmAssignment').search(function() {
+				div.html(rows)
+			}, {pmAssPmUserid: userid});
 			
-			div.html(affect.search(null, {'pmAssPmUserid':userid}, null));
 
 	
 			
