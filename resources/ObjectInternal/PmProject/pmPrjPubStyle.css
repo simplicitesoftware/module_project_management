@@ -39,9 +39,9 @@ body {
 	display:flex;
 	width:100%;
 	background:var(--color-dark);
-	padding:(var(--half-spacing-unit) * 3) 0;
+	padding:8px;
 	color: var(--color-highlight);
-	
+
 
 }
 
