@@ -8,7 +8,7 @@ var PmTimesheetExt = (function() {
 		var affect = app.getBusinessObject('PmAssignment');
 		var tmp ="";
 		affect.search(function(rows) {
-			tmp+="1 "
+			tmp+="1 ";
 		}, {pmAssPmUserid: userid});
 		$('#recap').html(tmp);
         /* try {
