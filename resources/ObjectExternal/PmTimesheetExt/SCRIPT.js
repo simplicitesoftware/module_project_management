@@ -3,17 +3,19 @@ var PmTimesheetExt = (function() {
     function render(params) {
         var userid =$ui.grant.getUserID();
         $ui.displayTimesheet($('#ts'), "PmUser",userid , "PmTimeSheetAssign");
-		$('#recap').html('testb');
+		var div=$('#recap')
 		
 		
 		if (userid) {
             // Search the client
 			app = $ui.getAjax();
 			var affect = app.getBusinessObject('PmAssignment');
+			
+			div.text(affect.pmAssRole.getDisplay);
             affect.search(function(list) {
                 if (list && list.length) {
                     ass =  list[0];
-                    $('#recap').text(ass.pmAssRole);
+                    div.text(ass.pmAssRole);
                     
                 }
             }, {
