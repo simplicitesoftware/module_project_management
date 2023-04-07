@@ -9,7 +9,7 @@ var PmTimesheetExt = (function() {
 		var tmp ="test: ";
 		affect.search(function(rows) {
 			tmp+="1 ";
-		}, {pmAssPmUserid: userid});
+		});
 		$('#recap').html(tmp);
         /* try {
 			if (typeof Mustache === 'undefined') throw 'Mustache not available';
