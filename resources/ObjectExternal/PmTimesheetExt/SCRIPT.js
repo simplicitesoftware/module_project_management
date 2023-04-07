@@ -13,7 +13,7 @@ var PmTimesheetExt = (function() {
             affect.search(function(list) {
                 if (list && list.length) {
                     ass =  list[0];
-                    div.text(ass.pmAssRole);
+                    div.text(div.text()+ass.pmAssRole);
                 }
             }, {
                 pmAssPmUserid: userid
