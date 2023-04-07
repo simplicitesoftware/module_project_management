@@ -3,10 +3,7 @@ var PmTimesheetExt = (function() {
     function render(params) {
         var userid =$ui.grant.getUserID();
         $ui.displayTimesheet($('#ts'), "PmUser",userid , "PmTimeSheetAssign");
-		var div=$('#recap')	
-		var mustacheTemplate=div.text();
-		var Mustache=$ui.loadMustache();
-		div.text("");
+		var div=$('#recap')
 		if (userid) {
             // Search the client
 			app = $ui.getAjax();
@@ -14,7 +11,7 @@ var PmTimesheetExt = (function() {
             affect.search(function(list) {
                 if (list && list.length) {
                     ass =  list[0];
-                    div.text(Mustache.render('mustacheTemplate',{Role:ass.pmAssRole}));
+                    div.text(div.text()+'<br>'+ass.pmAssRole);
                 }
             }, {
                 pmAssPmUserid: userid
