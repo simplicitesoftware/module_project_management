@@ -1,12 +1,12 @@
 var PmTimesheetExt = (function() {
 	//CRA
 	app.getBusinessObject('PmAssignment').search(function() {
-		div.html(rows[0]);
+		$('#recap').html(rows[0]);
 	}, {pmAssPmUserid: userid});
     function render(params) {
         var userid =$ui.grant.getUserID();
         $ui.displayTimesheet($('#ts'), "PmUser",userid , "PmTimeSheetAssign");
-        try {
+        /* try {
 			if (typeof Mustache === 'undefined') throw 'Mustache not available';
 			var div = $('#recap');
 			app = $ui.getAjax();
@@ -19,7 +19,7 @@ var PmTimesheetExt = (function() {
 			
 		} catch(e) {
 			console.error('Render error: ' + e.message);
-		}
+		} */
     }
     return { render: render };
 })();
