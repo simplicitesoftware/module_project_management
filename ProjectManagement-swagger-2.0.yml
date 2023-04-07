@@ -2491,12 +2491,12 @@ paths:
       - in: query
         name: pmAssQuantity
         description: Search filter for Quantity
-        type: string
+        type: number
         required: false
       - in: query
         name: pmAssConsumed
         description: Search filter for Consumed
-        type: string
+        type: number
         required: false
       tags:
       - PmAssignment
@@ -4176,10 +4176,10 @@ definitions:
         type: string
       pmAssQuantity:
         description: Quantity
-        type: string
+        type: number
       pmAssConsumed:
         description: Consumed
-        type: string
+        type: number
       pmAssPmTaskid__pmTskVrsId:
         description: Task Release
         type: string
