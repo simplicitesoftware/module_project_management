@@ -6,9 +6,11 @@ var PmTimesheetExt = (function() {
 		$('#recap').html('testb');
 		app = $ui.getAjax();
 		var affect = app.getBusinessObject('PmAssignment');
+		var tmp ="";
 		affect.search(function(rows) {
-			$('#recap').html(affect);
+			tmp+="1 "
 		}, {pmAssPmUserid: userid});
+		$('#recap').html(tmp);
         /* try {
 			if (typeof Mustache === 'undefined') throw 'Mustache not available';
 			var div = $('#recap');
