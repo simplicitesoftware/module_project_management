@@ -4,13 +4,23 @@ var PmTimesheetExt = (function() {
         var userid =$ui.grant.getUserID();
         $ui.displayTimesheet($('#ts'), "PmUser",userid , "PmTimeSheetAssign");
 		$('#recap').html('testb');
-		app = $ui.getAjax();
-		var affect = app.getBusinessObject('PmAssignment');
-		var tmp ="test: ";
-		affect.search(function(rows) {
-			tmp+="1 ";
-		},null,null);
-		$('#recap').html(tmp);
+		
+		
+		if (userid) {
+            // Search the client
+			app = $ui.getAjax();
+			var affect = app.getBusinessObject('PmAssignment');
+            affect.search(function(list) {
+                if (list && list.length) {
+                    ass =  list[0];
+                    $('#recap').text(client.demoCliFirstname + " " + client.demoCliLastname);
+                    
+                }
+            }, {
+                pmAssPmUserid: userid
+            });
+        }
+        else $ui.alert("No client id");
     }
     return { render: render };
 })();
