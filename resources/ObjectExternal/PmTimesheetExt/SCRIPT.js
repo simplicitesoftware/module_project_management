@@ -5,8 +5,9 @@ var PmTimesheetExt = (function() {
         $ui.displayTimesheet($('#ts'), "PmUser",userid , "PmTimeSheetAssign");
 		$('#recap').html('testb');
 		app = $ui.getAjax();
-		app.getBusinessObject('PmAssignment').search(function(rows) {
-			$('#recap').html(rows);
+		var affect = app.getBusinessObject('PmAssignment');
+		affect.search(function(rows) {
+			$('#recap').html(affect);
 		}, {pmAssPmUserid: userid});
         /* try {
 			if (typeof Mustache === 'undefined') throw 'Mustache not available';
