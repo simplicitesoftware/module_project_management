@@ -6,7 +6,7 @@ var PmTimesheetExt = (function() {
 		$('#recap').html('testb');
 		app = $ui.getAjax();
 		var affect = app.getBusinessObject('PmAssignment');
-		var tmp ="";
+		var tmp ="test: ";
 		affect.search(function(rows) {
 			tmp+="1 ";
 		}, {pmAssPmUserid: userid});
