@@ -39,7 +39,7 @@ body {
 	display:flex;
 	width:100%;
 	background:var(--color-dark);
-	padding:(var(--half-spacing-unit) * 1.5) 0;
+	padding:(var(--half-spacing-unit) * 3) 0;
 	color: var(--color-highlight);
 	
 
