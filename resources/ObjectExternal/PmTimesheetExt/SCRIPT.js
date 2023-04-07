@@ -1,7 +1,7 @@
 var PmTimesheetExt = (function() {
 	//CRA
     function render(params) {
-        $ui.displayTimesheet(null, "PmUser", $ui.grant.getUserID(), "PmTimeSheetAssign");
+        $ui.displayTimesheet("ts", "PmUser", $ui.grant.getUserID(), "PmTimeSheetAssign");
     }
     return { render: render };
 })();
