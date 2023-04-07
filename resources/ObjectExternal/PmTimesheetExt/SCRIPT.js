@@ -4,7 +4,7 @@ var PmTimesheetExt = (function() {
         var userid =$ui.grant.getUserID();
         $ui.displayTimesheet($('#ts'), "PmUser",userid , "PmTimeSheetAssign");
 		var div=$('#recap')
-		
+		div.text("recap: ")
 		
 		if (userid) {
             // Search the client
@@ -13,7 +13,7 @@ var PmTimesheetExt = (function() {
             affect.search(function(list) {
                 if (list && list.length) {
                     ass =  list[0];
-                    div.innerHTML += ass.pmAssRole;
+                    div.text(ass.pmAssRole);
                 }
             }, {
                 pmAssPmUserid: userid
