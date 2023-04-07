@@ -3,9 +3,7 @@ var PmTimesheetExt = (function() {
     function render(params) {
         var userid =$ui.grant.getUserID();
         $ui.displayTimesheet($('#ts'), "PmUser",userid , "PmTimeSheetAssign");
-		var div=$('#recap')
-		div.text("recap: ")
-		
+		var div=$('#recap')	
 		if (userid) {
             // Search the client
 			app = $ui.getAjax();
