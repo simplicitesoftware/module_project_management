@@ -8,15 +8,11 @@ var PmTimesheetExt = (function() {
 			var div = $('#recap');
 			app = $ui.getAjax();
 	
-			var affect = app.getBusinessObject('PmAssignment'),
-                pmAssPmUserid = userid;
-				affect.search(function(rows) {
-					div.html(affect);
-				}, {
-					pmAssPmUserid: pmAssPmUserid
-				}, {error: function(err) {console.error(err);}}
-					
-			);
+			var affect = app.getBusinessObject('PmAssignment');
+
+			div.html(affect.search(null, {'pmAssPmUserid':userid}, null));
+
+	
 			
 		} catch(e) {
 			console.error('Render error: ' + e.message);
