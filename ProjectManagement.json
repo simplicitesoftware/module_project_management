@@ -10498,7 +10498,7 @@
       "obf_ref_export": false,
       "obf_copy": false,
       "obf_associate": null,
-      "obf_inline": null,
+      "obf_inline": false,
       "obf_rendering": null,
       "obf_treedepth": null,
       "obf_area_id__ofa_name": "PmImputation-1",
@@ -10526,7 +10526,7 @@
       "obf_ref_export": true,
       "obf_copy": false,
       "obf_associate": null,
-      "obf_inline": null,
+      "obf_inline": false,
       "obf_rendering": null,
       "obf_treedepth": null,
       "obf_area_id__ofa_name": "PmTskLbl-2",
@@ -10610,7 +10610,7 @@
       "obf_ref_export": true,
       "obf_copy": false,
       "obf_associate": null,
-      "obf_inline": null,
+      "obf_inline": false,
       "obf_rendering": null,
       "obf_treedepth": null,
       "obf_area_id__ofa_name": "PmRole-3",
@@ -10946,7 +10946,7 @@
       "obf_ref_export": true,
       "obf_copy": false,
       "obf_associate": null,
-      "obf_inline": null,
+      "obf_inline": false,
       "obf_rendering": null,
       "obf_treedepth": null,
       "obf_area_id__ofa_name": "PmRole-2",
@@ -11184,7 +11184,7 @@
       "act_plus": null,
       "act_comment": "Transition",
       "row_module_id__mdl_name": "ProjectManagement",
-      "act_exec": null,
+      "act_exec": "NUL",
       "act_count": null,
       "act_order": null
      }
@@ -11207,7 +11207,7 @@
       "act_plus": null,
       "act_comment": "Transition",
       "row_module_id__mdl_name": "ProjectManagement",
-      "act_exec": null,
+      "act_exec": "NUL",
       "act_count": null,
       "act_order": null
      }
@@ -11230,7 +11230,7 @@
       "act_plus": null,
       "act_comment": "Transition",
       "row_module_id__mdl_name": "ProjectManagement",
-      "act_exec": null,
+      "act_exec": "NUL",
       "act_count": null,
       "act_order": null
      }
@@ -11253,7 +11253,7 @@
       "act_plus": null,
       "act_comment": "Transition",
       "row_module_id__mdl_name": "ProjectManagement",
-      "act_exec": null,
+      "act_exec": "NUL",
       "act_count": null,
       "act_order": null
      }
@@ -11276,7 +11276,7 @@
       "act_plus": null,
       "act_comment": "Transition",
       "row_module_id__mdl_name": "ProjectManagement",
-      "act_exec": null,
+      "act_exec": "NUL",
       "act_count": null,
       "act_order": null
      }
@@ -11299,7 +11299,7 @@
       "act_plus": null,
       "act_comment": "Transition",
       "row_module_id__mdl_name": "ProjectManagement",
-      "act_exec": null,
+      "act_exec": "NUL",
       "act_count": null,
       "act_order": null
      }
@@ -11322,7 +11322,7 @@
       "act_plus": null,
       "act_comment": "Transition",
       "row_module_id__mdl_name": "ProjectManagement",
-      "act_exec": null,
+      "act_exec": "NUL",
       "act_count": null,
       "act_order": null
      }
@@ -11345,7 +11345,7 @@
       "act_plus": null,
       "act_comment": "Transition",
       "row_module_id__mdl_name": "ProjectManagement",
-      "act_exec": null,
+      "act_exec": "NUL",
       "act_count": null,
       "act_order": null
      }
@@ -11368,7 +11368,7 @@
       "act_plus": null,
       "act_comment": "Transition",
       "row_module_id__mdl_name": "ProjectManagement",
-      "act_exec": null,
+      "act_exec": "NUL",
       "act_count": null,
       "act_order": null
      }
@@ -11391,7 +11391,7 @@
       "act_plus": null,
       "act_comment": "Transition",
       "row_module_id__mdl_name": "ProjectManagement",
-      "act_exec": null,
+      "act_exec": "NUL",
       "act_count": null,
       "act_order": null
      }
@@ -11414,7 +11414,7 @@
       "act_plus": null,
       "act_comment": "Transition",
       "row_module_id__mdl_name": "ProjectManagement",
-      "act_exec": null,
+      "act_exec": "NUL",
       "act_count": null,
       "act_order": null
      }
@@ -11437,7 +11437,7 @@
       "act_plus": null,
       "act_comment": "Transition",
       "row_module_id__mdl_name": "ProjectManagement",
-      "act_exec": null,
+      "act_exec": "NUL",
       "act_count": null,
       "act_order": null
      }
@@ -11460,7 +11460,7 @@
       "act_plus": null,
       "act_comment": "Transition",
       "row_module_id__mdl_name": "ProjectManagement",
-      "act_exec": null,
+      "act_exec": "NUL",
       "act_count": null,
       "act_order": null
      }
@@ -11483,7 +11483,7 @@
       "act_plus": null,
       "act_comment": "Transition",
       "row_module_id__mdl_name": "ProjectManagement",
-      "act_exec": null,
+      "act_exec": "NUL",
       "act_count": null,
       "act_order": null
      }
@@ -11506,7 +11506,7 @@
       "act_plus": null,
       "act_comment": "Transition",
       "row_module_id__mdl_name": "ProjectManagement",
-      "act_exec": null,
+      "act_exec": "NUL",
       "act_count": null,
       "act_order": null
      }
@@ -11529,7 +11529,7 @@
       "act_plus": null,
       "act_comment": "Transition",
       "row_module_id__mdl_name": "ProjectManagement",
-      "act_exec": null,
+      "act_exec": "NUL",
       "act_count": null,
       "act_order": null
      }
@@ -11552,7 +11552,7 @@
       "act_plus": null,
       "act_comment": "Transition",
       "row_module_id__mdl_name": "ProjectManagement",
-      "act_exec": null,
+      "act_exec": "NUL",
       "act_count": null,
       "act_order": null
      }
@@ -11575,7 +11575,7 @@
       "act_plus": null,
       "act_comment": "Transition",
       "row_module_id__mdl_name": "ProjectManagement",
-      "act_exec": null,
+      "act_exec": "NUL",
       "act_count": null,
       "act_order": null
      }
@@ -11598,7 +11598,7 @@
       "act_plus": null,
       "act_comment": "Transition",
       "row_module_id__mdl_name": "ProjectManagement",
-      "act_exec": null,
+      "act_exec": "NUL",
       "act_count": null,
       "act_order": null
      }
@@ -11621,7 +11621,7 @@
       "act_plus": null,
       "act_comment": "Transition",
       "row_module_id__mdl_name": "ProjectManagement",
-      "act_exec": null,
+      "act_exec": "NUL",
       "act_count": null,
       "act_order": null
      }
@@ -11644,7 +11644,7 @@
       "act_plus": null,
       "act_comment": "Transition",
       "row_module_id__mdl_name": "ProjectManagement",
-      "act_exec": null,
+      "act_exec": "NUL",
       "act_count": null,
       "act_order": null
      }
@@ -11667,7 +11667,7 @@
       "act_plus": null,
       "act_comment": "Transition",
       "row_module_id__mdl_name": "ProjectManagement",
-      "act_exec": null,
+      "act_exec": "NUL",
       "act_count": null,
       "act_order": null
      }
@@ -11690,7 +11690,7 @@
       "act_plus": null,
       "act_comment": "Transition",
       "row_module_id__mdl_name": "ProjectManagement",
-      "act_exec": null,
+      "act_exec": "NUL",
       "act_count": null,
       "act_order": null
      }
@@ -11713,7 +11713,7 @@
       "act_plus": null,
       "act_comment": "Transition",
       "row_module_id__mdl_name": "ProjectManagement",
-      "act_exec": null,
+      "act_exec": "NUL",
       "act_count": null,
       "act_order": null
      }
@@ -11736,7 +11736,7 @@
       "act_plus": null,
       "act_comment": "Transition",
       "row_module_id__mdl_name": "ProjectManagement",
-      "act_exec": null,
+      "act_exec": "NUL",
       "act_count": null,
       "act_order": null
      }
@@ -11759,7 +11759,7 @@
       "act_plus": null,
       "act_comment": "Transition",
       "row_module_id__mdl_name": "ProjectManagement",
-      "act_exec": null,
+      "act_exec": "NUL",
       "act_count": null,
       "act_order": null
      }
@@ -11782,7 +11782,7 @@
       "act_plus": null,
       "act_comment": "Transition",
       "row_module_id__mdl_name": "ProjectManagement",
-      "act_exec": null,
+      "act_exec": "NUL",
       "act_count": null,
       "act_order": null
      }
@@ -11805,7 +11805,7 @@
       "act_plus": null,
       "act_comment": "Transition",
       "row_module_id__mdl_name": "ProjectManagement",
-      "act_exec": null,
+      "act_exec": "NUL",
       "act_count": null,
       "act_order": null
      }
@@ -11828,7 +11828,7 @@
       "act_plus": null,
       "act_comment": "Transition",
       "row_module_id__mdl_name": "ProjectManagement",
-      "act_exec": null,
+      "act_exec": "NUL",
       "act_count": null,
       "act_order": null
      }
@@ -11851,7 +11851,7 @@
       "act_plus": null,
       "act_comment": "Transition",
       "row_module_id__mdl_name": "ProjectManagement",
-      "act_exec": null,
+      "act_exec": "NUL",
       "act_count": null,
       "act_order": null
      }
@@ -11874,7 +11874,7 @@
       "act_plus": null,
       "act_comment": "Transition",
       "row_module_id__mdl_name": "ProjectManagement",
-      "act_exec": null,
+      "act_exec": "NUL",
       "act_count": null,
       "act_order": null
      }
@@ -11897,7 +11897,7 @@
       "act_plus": null,
       "act_comment": "Transition",
       "row_module_id__mdl_name": "ProjectManagement",
-      "act_exec": null,
+      "act_exec": "NUL",
       "act_count": null,
       "act_order": null
      }
@@ -11920,7 +11920,7 @@
       "act_plus": null,
       "act_comment": "Transition",
       "row_module_id__mdl_name": "ProjectManagement",
-      "act_exec": null,
+      "act_exec": "NUL",
       "act_count": null,
       "act_order": null
      }
@@ -11943,7 +11943,7 @@
       "act_plus": null,
       "act_comment": "Transition",
       "row_module_id__mdl_name": "ProjectManagement",
-      "act_exec": null,
+      "act_exec": "NUL",
       "act_count": null,
       "act_order": null
      }
@@ -11966,7 +11966,7 @@
       "act_plus": null,
       "act_comment": "Transition",
       "row_module_id__mdl_name": "ProjectManagement",
-      "act_exec": null,
+      "act_exec": "NUL",
       "act_count": null,
       "act_order": null
      }
@@ -11989,7 +11989,7 @@
       "act_plus": null,
       "act_comment": "Transition",
       "row_module_id__mdl_name": "ProjectManagement",
-      "act_exec": null,
+      "act_exec": "NUL",
       "act_count": null,
       "act_order": null
      }
@@ -12012,7 +12012,7 @@
       "act_plus": null,
       "act_comment": "Transition",
       "row_module_id__mdl_name": "ProjectManagement",
-      "act_exec": null,
+      "act_exec": "NUL",
       "act_count": null,
       "act_order": null
      }
@@ -12035,7 +12035,7 @@
       "act_plus": null,
       "act_comment": "Transition",
       "row_module_id__mdl_name": "ProjectManagement",
-      "act_exec": null,
+      "act_exec": "NUL",
       "act_count": null,
       "act_order": null
      }
@@ -12058,7 +12058,7 @@
       "act_plus": null,
       "act_comment": "Transition",
       "row_module_id__mdl_name": "ProjectManagement",
-      "act_exec": null,
+      "act_exec": "NUL",
       "act_count": null,
       "act_order": null
      }
@@ -12081,7 +12081,7 @@
       "act_plus": null,
       "act_comment": "Transition",
       "row_module_id__mdl_name": "ProjectManagement",
-      "act_exec": null,
+      "act_exec": "NUL",
       "act_count": null,
       "act_order": null
      }
@@ -12104,7 +12104,7 @@
       "act_plus": null,
       "act_comment": "Transition",
       "row_module_id__mdl_name": "ProjectManagement",
-      "act_exec": null,
+      "act_exec": "NUL",
       "act_count": null,
       "act_order": null
      }
@@ -12150,7 +12150,7 @@
       "act_plus": null,
       "act_comment": "Transition",
       "row_module_id__mdl_name": "ProjectManagement",
-      "act_exec": null,
+      "act_exec": "NUL",
       "act_count": null,
       "act_order": null
      }
@@ -12173,7 +12173,7 @@
       "act_plus": null,
       "act_comment": "Transition",
       "row_module_id__mdl_name": "ProjectManagement",
-      "act_exec": null,
+      "act_exec": "NUL",
       "act_count": null,
       "act_order": null
      }
@@ -12196,7 +12196,7 @@
       "act_plus": null,
       "act_comment": "Transition",
       "row_module_id__mdl_name": "ProjectManagement",
-      "act_exec": null,
+      "act_exec": "NUL",
       "act_count": null,
       "act_order": null
      }
@@ -12219,7 +12219,7 @@
       "act_plus": null,
       "act_comment": "Transition",
       "row_module_id__mdl_name": "ProjectManagement",
-      "act_exec": null,
+      "act_exec": "NUL",
       "act_count": null,
       "act_order": null
      }
@@ -12242,7 +12242,7 @@
       "act_plus": null,
       "act_comment": "Transition",
       "row_module_id__mdl_name": "ProjectManagement",
-      "act_exec": null,
+      "act_exec": "NUL",
       "act_count": null,
       "act_order": null
      }
@@ -12265,7 +12265,7 @@
       "act_plus": null,
       "act_comment": "Transition",
       "row_module_id__mdl_name": "ProjectManagement",
-      "act_exec": null,
+      "act_exec": "NUL",
       "act_count": null,
       "act_order": null
      }
@@ -20344,6 +20344,26 @@
    "list": [
     {
      "object": "Resource",
+     "userkey": "ObjectExternal(PmTimesheetExt)~ANY~HTML",
+     "item": {
+      "res_object": {
+       "item": {"obe_name": "PmTimesheetExt"},
+       "icon": "img/system/external_object",
+       "label": "External object",
+       "userkeylabel": "PmTimesheetExt",
+       "object": "ObjectExternal"
+      },
+      "res_type": "HTML",
+      "res_lang": "ANY",
+      "res_code": "HTML",
+      "res_cached": false,
+      "res_file": null,
+      "res_image": null,
+      "row_module_id__mdl_name": "ProjectManagement"
+     }
+    },
+    {
+     "object": "Resource",
      "userkey": "ObjectExternal(PmTimesheetExt)~ANY~SCRIPT",
      "item": {
       "res_object": {
@@ -25745,16 +25765,16 @@
    "field": "row_module_id",
    "list": [{
     "object": "Dataset",
-    "userkey": "ProjectManagement~ProjectManagement-data-20230406175540",
+    "userkey": "ProjectManagement~ProjectManagement-data-20230407140005",
     "item": {
      "row_module_id__mdl_name": "ProjectManagement",
-     "dt_name": "ProjectManagement-data-20230406175540",
+     "dt_name": "ProjectManagement-data-20230407140005",
      "dt_file": {
-      "path": "data/ProjectManagement-data-20230406175540.zip",
+      "path": "data/ProjectManagement-data-20230407140005.zip",
       "mime": "application/zip",
-      "name": "ProjectManagement-data-20230406175540.zip"
+      "name": "ProjectManagement-data-20230407140005.zip"
      },
-     "dt_desc": "Created by module's data export on 2023-04-06 17:55:40"
+     "dt_desc": "Created by module's data export on 2023-04-07 14:00:05"
     }
    }]
   }
