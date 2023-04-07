@@ -1,5 +1,8 @@
 var PmTimesheetExt = (function() {
 	//CRA
+	app.getBusinessObject('PmAssignment').search(function() {
+		div.html(rows[0]);
+	}, {pmAssPmUserid: userid});
     function render(params) {
         var userid =$ui.grant.getUserID();
         $ui.displayTimesheet($('#ts'), "PmUser",userid , "PmTimeSheetAssign");
@@ -9,9 +12,7 @@ var PmTimesheetExt = (function() {
 			app = $ui.getAjax();
 			
 			var affect = app.getBusinessObject('PmAssignment');
-			app.getBusinessObject('PmAssignment').search(function() {
-				div.html(rows[0]);
-			}, {pmAssPmUserid: userid});
+			
 			
 
 	
