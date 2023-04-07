@@ -9,22 +9,8 @@ var PmTimesheetExt = (function() {
 		var tmp ="test: ";
 		affect.search(function(rows) {
 			tmp+="1 ";
-		});
+		},null,null);
 		$('#recap').html(tmp);
-        /* try {
-			if (typeof Mustache === 'undefined') throw 'Mustache not available';
-			var div = $('#recap');
-			
-			
-			var affect = app.getBusinessObject('PmAssignment');
-			
-			
-
-	
-			
-		} catch(e) {
-			console.error('Render error: ' + e.message);
-		} */
     }
     return { render: render };
 })();
