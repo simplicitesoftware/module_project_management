@@ -6,7 +6,7 @@ var PmTimesheetExt = (function() {
 		$('#recap').html('testb');
 		app = $ui.getAjax();
 		app.getBusinessObject('PmAssignment').search(function() {
-			$('#recap').html('test');
+			$('#recap').html(rows);
 		}, {pmAssPmUserid: userid});
         /* try {
 			if (typeof Mustache === 'undefined') throw 'Mustache not available';
