@@ -299,8 +299,8 @@ Assignment of a user to a task, allows the establishment of a timesheet
 | _Ref. `pmVrsPrjId.pmPrjName`_                                | _char(100)_                              |          |           |          | -                                                                                |
 | _Ref. `pmAssPmTaskid.pmTskCreation`_                         | _date_                                   |          |           |          | -                                                                                |
 | _Ref. `pmAssPmTaskid.pmTskClose`_                            | _date_                                   |          |           |          | -                                                                                |
-| `pmAssQuantity`                                              | bigdec(100, 0)                           |          | yes       |          | -                                                                                |
-| `pmAssConsumed`                                              | bigdec(100, 0)                           | yes      |           |          | -                                                                                |
+| `pmAssQuantity`                                              | float(100, 0)                            |          | yes       |          | -                                                                                |
+| `pmAssConsumed`                                              | float(100, 0)                            | yes      |           |          | -                                                                                |
 
 ### Lists
 

@@ -570,10 +570,10 @@ components:
           type: string
         pmAssQuantity:
           description: Quantity
-          type: string
+          type: number
         pmAssConsumed:
           description: Consumed
-          type: string
+          type: number
         pmAssPmTaskid__pmTskVrsId:
           description: Task Release
           type: string
@@ -3760,13 +3760,13 @@ paths:
         description: Search filter for Task Closing date
         required: false
       - schema:
-          type: string
+          type: number
         in: query
         name: pmAssQuantity
         description: Search filter for Quantity
         required: false
       - schema:
-          type: string
+          type: number
         in: query
         name: pmAssConsumed
         description: Search filter for Consumed
