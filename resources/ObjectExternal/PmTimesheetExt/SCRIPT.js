@@ -10,17 +10,18 @@ var PmTimesheetExt = (function() {
             // Search the client
 			app = $ui.getAjax();
 			var affect = app.getBusinessObject('PmAssignment');
+			tmp=affect.getDisplay();
 			
-			div.text(affect.getDisplay());
             affect.search(function(list) {
                 if (list && list.length) {
                     ass =  list[0];
-                    div.text(ass.pmAssRole);
+                    tmp+=" "+ass.pmAssRole;
                     
                 }
             }, {
                 pmAssPmUserid: userid
             });
+			div.html(tmp);
         }
         else $ui.alert("No client id");
     }
