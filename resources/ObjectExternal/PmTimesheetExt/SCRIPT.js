@@ -11,7 +11,7 @@ var PmTimesheetExt = (function() {
 			app = $ui.getAjax();
 			var affect = app.getBusinessObject('PmAssignment');
 			
-			div.text(affect.pmAssRole.getDisplay);
+			div.text(affect.pmAssRole.getDisplay());
             affect.search(function(list) {
                 if (list && list.length) {
                     ass =  list[0];
