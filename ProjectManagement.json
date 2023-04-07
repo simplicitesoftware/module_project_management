@@ -20357,7 +20357,11 @@
       "res_lang": "ANY",
       "res_code": "HTML",
       "res_cached": false,
-      "res_file": null,
+      "res_file": {
+       "path": "resources/ObjectExternal/PmTimesheetExt/HTML.html",
+       "mime": "text/html",
+       "name": "PmTimesheetExt_HTML.html"
+      },
       "res_image": null,
       "row_module_id__mdl_name": "ProjectManagement"
      }
