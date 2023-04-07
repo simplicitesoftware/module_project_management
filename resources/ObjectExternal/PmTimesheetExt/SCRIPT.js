@@ -1,11 +1,11 @@
 var PmTimesheetExt = (function() {
 	//CRA
-	app.getBusinessObject('PmAssignment').search(function() {
-		$('#recap').html(rows[0]);
-	}, {pmAssPmUserid: userid});
     function render(params) {
         var userid =$ui.grant.getUserID();
         $ui.displayTimesheet($('#ts'), "PmUser",userid , "PmTimeSheetAssign");
+		app.getBusinessObject('PmAssignment').search(function() {
+			$('#recap').html(rows[0]);
+		}, {pmAssPmUserid: userid});
         /* try {
 			if (typeof Mustache === 'undefined') throw 'Mustache not available';
 			var div = $('#recap');
