@@ -10,7 +10,7 @@ var PmTimesheetExt = (function() {
             // Search the client
 			app = $ui.getAjax();
 			var affect = app.getBusinessObject('PmAssignment');
-			tmp=affect.getDisplay();
+			var tmp=affect.getDisplay();
 			
             affect.search(function(list) {
                 if (list && list.length) {
