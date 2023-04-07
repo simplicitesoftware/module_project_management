@@ -32,7 +32,6 @@ public class PmAssignmentPmTimeSheetAssign extends ObjectDB {
 		                            .put("row_id", tsLine.getAssignRowId())
 		                            )) {
 										String conso = g.simpleQuery("select sum(tsh_total1) from pm_assignment_pm_time_sheet_assign where tsh_parent_id="+tsLine.getAssignRowId());
-										AppLog.info("DEBUG "+ conso, g);
 										tmpAss.setFieldValue("pmAssConsumed",conso);
 			            				ot.validateAndSave();
 									}
