@@ -14,8 +14,7 @@ var PmTimesheetExt = (function($) {
                 var affect = app.getBusinessObject('PmAssignment');
                 
                 affect.search(function(list) {
-                    div.html("test: "+app.getGrant().getLang()+"<br>");
-                    div.html(div.html()+"<br>"+Mustache.render(template,toDict(list)));
+                    div.html(Mustache.render(template,toDict(list)));
                 }, {
                     pmAssPmUserid: userid
                 });
