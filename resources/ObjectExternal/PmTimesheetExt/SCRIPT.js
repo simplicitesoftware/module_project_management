@@ -10,7 +10,7 @@ var PmTimesheetExt = (function($) {
 			app = $ui.getAjax();
 			var affect = app.getBusinessObject('PmAssignment');
             affect.search(function(list) {
-                div.html(Mustache.render(template,list))
+                //div.html(Mustache.render(template,list))
                 if (list && list.length) {
                     list.forEach(ass => div.html(div.html()+'<br>'+formatLineAss(ass)));
                 }
