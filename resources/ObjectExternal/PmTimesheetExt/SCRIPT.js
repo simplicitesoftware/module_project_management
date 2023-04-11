@@ -14,7 +14,6 @@ var PmTimesheetExt = (function($) {
                 affect.search(function(list) {
                     //div.html(Mustache.render(template,list))
                     if (list && list.length) {
-                        div.html(formatLineHeader(list[0].row_id));
                         list.forEach(ass => div.html(div.html()+formatLineAss(ass)));
                     }
                 }, {
@@ -36,11 +35,3 @@ function formatLineAss(ass) {
     }
     return '<div class="table-row"><div class="table-data small">'+ass.pmAssRole+'</div><div class="table-data">'+quantity+'</div><div class="table-data big">'+ass.pmAssConsumed+'</div><div class="table-data big">'+progress+'</div></div>';
   }
-
-function formatLineHeader(id) {
-    app = $ui.getAjax();
-    var affect = app.getBusinessObject('PmAssignment');
-    var ass = affect.get(id);
-    return '<div class="table-header"><div class="header__item">'+ass.getField('pmAssRole').getDisplay()+'</div><div class="header__item small">'+ass.getField('labelQuantity').getDisplay()+'</div><div class="header__item small">'+ass.getField('labelConsumed').getDisplay()+'</div><div class="header__item big"></div></div>'
-    ;
-}
