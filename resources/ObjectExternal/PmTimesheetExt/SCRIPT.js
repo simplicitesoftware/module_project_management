@@ -38,6 +38,6 @@ function formatLineAss(ass) {
   }
 
 function formatLineHeader(ass) {
-    return '<div class="table-header"><div class="header__item">'+ass.pmAssRole.display+'</div><div class="header__item small">'+ass.labelQuantity.display+'</div><div class="header__item small">'+ass.labelConsumed.display+'</div><div class="header__item big"></div></div>'
+    return '<div class="table-header"><div class="header__item">'+ass.pmAssRole.label+'</div><div class="header__item small">'+ass.labelQuantity.label+'</div><div class="header__item small">'+ass.labelConsumed.label+'</div><div class="header__item big"></div></div>'
     ;
 }
