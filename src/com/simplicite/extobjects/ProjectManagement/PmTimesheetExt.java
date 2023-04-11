@@ -16,12 +16,14 @@ public class PmTimesheetExt extends ExternalObject {
 	@Override
 	public Object display(Parameters params) {
 		try {
+			String render = getName() + ".render();";
 			BootstrapWebPage wp = new BootstrapWebPage(params.getRoot(), getDisplay());
 			wp.appendAjax(true);
 			wp.appendMustache();
 			wp.appendJSInclude(HTMLTool.getResourceJSURL(this, "SCRIPT"));
 			wp.appendCSSInclude(HTMLTool.getResourceCSSURL(this, "STYLES"));
 			wp.append(HTMLTool.getResourceHTMLContent(this, "HTML"));
+			wp.setReady(render);
 			return wp.toString();
 			
 		} catch (Exception e) {
