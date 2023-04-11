@@ -13,7 +13,7 @@ var PmTimesheetExt = (function($) {
                 var affect = app.getBusinessObject('PmAssignment');
                 
                 affect.search(function(list) {
-                    div.html("test"+list[0].getField('pmAssRole').getDisplay()+"<br>");
+                    div.html("test: "+typeof list[0].pmAssRole+"<br>");
                     div.html(div.html()+"<br>"+Mustache.render(template,toDict(list)));
                     /* if (list && list.length) {
                         list.forEach(ass => div.html(div.html()+formatLineAss(ass)));
