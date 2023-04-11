@@ -209,8 +209,8 @@
       "usr_active": "1",
       "usr_title": null,
       "usr_last_name": null,
-      "usr_first_name": null,
-      "usr_email": null,
+      "usr_first_name": "Robert",
+      "usr_email": "demo@simplicite.fr",
       "usr_home_id__viw_name": "PmUserHome",
       "usr_work_num": null,
       "usr_home_num": null,
@@ -225,7 +225,7 @@
       "usr_menu": true,
       "usr_menu_defcollapsed": false,
       "usr_menu_defdomain_id__obd_name": "PmDomain",
-      "usr_last_logon": "2023-04-07 17:18:36",
+      "usr_last_logon": "2023-04-11 13:48:42",
       "usr_dateformat": null,
       "usr_lang_pref": "FRA",
       "usr_mfa_method": null,
@@ -237,7 +237,7 @@
      "userkey": "PmManager",
      "item": {
       "usr_login": "PmManager",
-      "usr_lang": "FRA",
+      "usr_lang": "ENU",
       "usr_image_id": null,
       "usr_timezone": null,
       "usr_minrows": 20,
@@ -245,8 +245,8 @@
       "usr_active": "1",
       "usr_title": null,
       "usr_last_name": null,
-      "usr_first_name": null,
-      "usr_email": null,
+      "usr_first_name": "Robert",
+      "usr_email": "demo@simplicite.fr",
       "usr_home_id__viw_name": "PmManagerHome",
       "usr_work_num": null,
       "usr_home_num": null,
@@ -261,7 +261,7 @@
       "usr_menu": true,
       "usr_menu_defcollapsed": null,
       "usr_menu_defdomain_id__obd_name": null,
-      "usr_last_logon": "2023-04-11 11:54:19",
+      "usr_last_logon": "2023-04-11 16:18:05",
       "usr_dateformat": null,
       "usr_lang_pref": "FRA",
       "usr_mfa_method": null,
@@ -281,8 +281,8 @@
       "usr_active": "1",
       "usr_title": null,
       "usr_last_name": null,
-      "usr_first_name": null,
-      "usr_email": null,
+      "usr_first_name": "Robert",
+      "usr_email": "demo@simplicite.fr",
       "usr_home_id__viw_name": "PmUserHome",
       "usr_work_num": null,
       "usr_home_num": null,
@@ -297,7 +297,7 @@
       "usr_menu": true,
       "usr_menu_defcollapsed": null,
       "usr_menu_defdomain_id__obd_name": "PmDomain",
-      "usr_last_logon": "2023-04-05 15:15:49",
+      "usr_last_logon": "2023-04-11 14:30:05",
       "usr_dateformat": null,
       "usr_lang_pref": "FRA",
       "usr_mfa_method": null,
@@ -312,6 +312,20 @@
    "icon": "img/system/system_param",
    "field": "row_module_id",
    "list": [
+    {
+     "object": "UserSysParam",
+     "userkey": "PmManager~DISPOSITION",
+     "item": {
+      "usp_user_id__usr_login": "PmManager",
+      "usp_param_id__sys_code": "DISPOSITION",
+      "usp_value": null,
+      "usp_param_id__sys_type": "LFL",
+      "usp_param_id__sys_value": "default",
+      "usp_param_id__sys_value2": null,
+      "usp_param_id__sys_desc": "Webapp disposition, ex: default, myapp, ...",
+      "row_module_id__mdl_name": "ProjectManagement"
+     }
+    },
     {
      "object": "UserSysParam",
      "userkey": "PmManager~HISTORY ProjectManagementScope",
@@ -332,11 +346,25 @@
      "item": {
       "usp_user_id__usr_login": "PmReader",
       "usp_param_id__sys_code": "CLIENT_ID",
-      "usp_value": "[{\n \"dt\": \"2023-04-05 15:15:49\",\n \"ag\": \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36\",\n \"id\": \"ogovknccmgkya3zxay9see6s39be4hzt7wmz70z8slyoxqh0hx4umr2w33irl1vz1680618811018\"\n}]",
+      "usp_value": "[{\n \"dt\": \"2023-04-11 14:30:05\",\n \"ag\": \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36\",\n \"id\": \"ogovknccmgkya3zxay9see6s39be4hzt7wmz70z8slyoxqh0hx4umr2w33irl1vz1680618811018\"\n}]",
       "usp_param_id__sys_type": null,
       "usp_param_id__sys_value": "empty",
       "usp_param_id__sys_value2": null,
       "usp_param_id__sys_desc": null,
+      "row_module_id__mdl_name": "ProjectManagement"
+     }
+    },
+    {
+     "object": "UserSysParam",
+     "userkey": "PmReader~DISPOSITION",
+     "item": {
+      "usp_user_id__usr_login": "PmReader",
+      "usp_param_id__sys_code": "DISPOSITION",
+      "usp_value": null,
+      "usp_param_id__sys_type": "LFL",
+      "usp_param_id__sys_value": "default",
+      "usp_param_id__sys_value2": null,
+      "usp_param_id__sys_desc": "Webapp disposition, ex: default, myapp, ...",
       "row_module_id__mdl_name": "ProjectManagement"
      }
     },
@@ -1908,7 +1936,7 @@
       "fld_copy": true,
       "fld_size": 100,
       "fld_minsize": null,
-      "fld_precision": "0",
+      "fld_precision": "2",
       "fld_fromdate_id__fld_name": null,
       "fld_dfault": "0",
       "fld_indexable": false,
@@ -2038,9 +2066,9 @@
       "fld_type_id__flt_code": null,
       "fld_list_id__lov_name": null,
       "fld_copy": true,
-      "fld_size": 100,
+      "fld_size": 6,
       "fld_minsize": null,
-      "fld_precision": "0",
+      "fld_precision": "2",
       "fld_fromdate_id__fld_name": null,
       "fld_dfault": null,
       "fld_indexable": false,
@@ -4140,7 +4168,7 @@
      "userkey": "PmImputation",
      "item": {
       "tpl_name": "PmImputation",
-      "tpl_ui": "<div class=\"area\" data-area=\"1:=\"><\/div>",
+      "tpl_ui": "<div class=\"area\" data-area=\"1\"><\/div>",
       "tpl_min": null,
       "tpl_image": null,
       "row_module_id__mdl_name": "ProjectManagement"
@@ -4365,6 +4393,18 @@
     },
     {
      "object": "ObjectFieldArea",
+     "userkey": "PmAssignmentPmTimeSheetAssign-1",
+     "item": {
+      "ofa_name": "PmAssignmentPmTimeSheetAssign-1",
+      "ofa_position": 1,
+      "ofa_title": false,
+      "ofa_ui": "<div>\n  <div class=\"field\" data-field=\"tsh_parent_id\"><\/div>\n  <div class=\"field\" data-field=\"tsh_year\"><\/div>\n  <div class=\"field\" data-field=\"tsh_month\"><\/div>\n  <div class=\"field\" data-field=\"tsh_input1\"><\/div>\n  <div class=\"field\" data-field=\"tsh_total1\"><\/div>\n  <div class=\"field\" data-field=\"tsh_parent_id__pmAssPmUserid\"><\/div>\n  <div class=\"field\" data-field=\"tsh_parent_id__pmAssPmUserid__usr_login\"><\/div>\n  <div class=\"field\" data-field=\"tsh_parent_id__pmAssPmTaskid\"><\/div>\n  <div class=\"field\" data-field=\"tsh_parent_id__pmAssPmTaskid__pmTskNumber\"><\/div>\n  <div class=\"field\" data-field=\"tsh_parent_id__pmAssPmTaskid__pmTskVrsId\"><\/div>\n  <div class=\"field\" data-field=\"tsh_parent_id__pmAssPmTaskid__pmTskVrsId__pmVrsPrjId\"><\/div>\n  <div class=\"field\" data-field=\"tsh_parent_id__pmAssPmTaskid__pmTskVrsId__pmVrsPrjId__pmPrjName\"><\/div>\n  <div class=\"field\" data-field=\"tsh_parent_id__pmAssPmTaskid__pmTskVrsId__pmVrsVersion\"><\/div>\n<\/div>",
+      "ofa_icon": "star",
+      "row_module_id__mdl_name": "ProjectManagement"
+     }
+    },
+    {
+     "object": "ObjectFieldArea",
      "userkey": "PmDocument-1",
      "item": {
       "ofa_name": "PmDocument-1",
@@ -4396,18 +4436,6 @@
       "ofa_title": true,
       "ofa_ui": "<div>\n  <div class=\"field\" data-field=\"pmDocTskId\"><\/div>\n  <div class=\"field\" data-field=\"pmDocTskId__pmTskNumber\"><\/div>\n  <div class=\"field\" data-field=\"pmDocTskId__pmTskTitle\"><\/div>\n  <div class=\"field\" data-field=\"pmDocTskId__pmTskVrsId\"><\/div>\n  <div class=\"field\" data-field=\"pmDocTskId__pmTskVrsId__pmVrsVersion\"><\/div>\n  <div class=\"field\" data-field=\"pmDocTskId__pmTskVrsId__pmVrsPrjId\"><\/div>\n  <div class=\"field\" data-field=\"pmDocTskId__pmTskVrsId__pmVrsPrjId__pmPrjName\"><\/div>\n<\/div>",
       "ofa_icon": "[EXPR:[OBJECTICON:PmTask]]",
-      "row_module_id__mdl_name": "ProjectManagement"
-     }
-    },
-    {
-     "object": "ObjectFieldArea",
-     "userkey": "PmImputation-1",
-     "item": {
-      "ofa_name": "PmImputation-1",
-      "ofa_position": 1,
-      "ofa_title": true,
-      "ofa_ui": "<div>\n  <div class=\"field\" data-field=\"tsh_parent_id\"><\/div>\n  <div class=\"field\" data-field=\"tsh_year\"><\/div>\n  <div class=\"field\" data-field=\"tsh_month\"><\/div>\n  <div class=\"field\" data-field=\"tsh_input1\"><\/div>\n  <div class=\"field\" data-field=\"tsh_total1\"><\/div>\n  <div class=\"field\" data-field=\"tsh_parent_id__pmAssPmUserid\"><\/div>\n  <div class=\"field\" data-field=\"tsh_parent_id__pmAssPmUserid__usr_login\"><\/div>\n  <div class=\"field\" data-field=\"tsh_parent_id__pmAssPmTaskid\"><\/div>\n  <div class=\"field\" data-field=\"tsh_parent_id__pmAssPmTaskid__pmTskNumber\"><\/div>\n  <div class=\"field\" data-field=\"tsh_parent_id__pmAssPmTaskid__pmTskVrsId\"><\/div>\n  <div class=\"field\" data-field=\"tsh_parent_id__pmAssPmTaskid__pmTskVrsId__pmVrsPrjId\"><\/div>\n  <div class=\"field\" data-field=\"tsh_parent_id__pmAssPmTaskid__pmTskVrsId__pmVrsPrjId__pmPrjName\"><\/div>\n  <div class=\"field\" data-field=\"tsh_parent_id__pmAssPmTaskid__pmTskVrsId__pmVrsVersion\"><\/div>\n<\/div>",
-      "ofa_icon": "star",
       "row_module_id__mdl_name": "ProjectManagement"
      }
     },
@@ -4667,25 +4695,42 @@
    "label": "External objects",
    "icon": "img/system/external_object",
    "field": "row_module_id",
-   "list": [{
-    "object": "ObjectExternal",
-    "userkey": "PmTimesheetExt",
-    "item": {
-     "obe_name": "PmTimesheetExt",
-     "obe_type": "E",
-     "obe_url": null,
-     "obe_comment": null,
-     "obe_help": null,
-     "obe_class": null,
-     "obe_script_id": {
-      "path": "src/com/simplicite/extobjects/ProjectManagement/PmTimesheetExt.java",
-      "mime": "text/plain",
-      "name": "PmTimesheetExt.java"
-     },
-     "obe_icon": "timesheet",
-     "row_module_id__mdl_name": "ProjectManagement"
+   "list": [
+    {
+     "object": "ObjectExternal",
+     "userkey": "PmTimesheetExt",
+     "item": {
+      "obe_name": "PmTimesheetExt",
+      "obe_type": "E",
+      "obe_url": null,
+      "obe_comment": null,
+      "obe_help": null,
+      "obe_class": null,
+      "obe_script_id": {
+       "path": "src/com/simplicite/extobjects/ProjectManagement/PmTimesheetExt.java",
+       "mime": "text/plain",
+       "name": "PmTimesheetExt.java"
+      },
+      "obe_icon": "timesheet",
+      "row_module_id__mdl_name": "ProjectManagement"
+     }
+    },
+    {
+     "object": "ObjectExternal",
+     "userkey": "PmTimesheetRecapExt",
+     "item": {
+      "obe_name": "PmTimesheetRecapExt",
+      "obe_type": "E",
+      "obe_url": null,
+      "obe_comment": null,
+      "obe_help": null,
+      "obe_class": null,
+      "obe_script_id": null,
+      "obe_icon": "timesheet",
+      "row_module_id__mdl_name": "ProjectManagement"
+     }
     }
-   }]
+   ]
   },
   {
    "object": "ObjectInternal",
@@ -5672,7 +5717,7 @@
       "obo_exportorder": 3,
       "obo_distinct": false,
       "obo_indexable": false,
-      "obo_groupby": false,
+      "obo_groupby": true,
       "obo_dfltref": null,
       "obo_template_id__tpl_name": "PmVersion",
       "obo_cache": "D",
@@ -6755,7 +6800,7 @@
       "obf_fld_researchreq": null,
       "obf_fld_dfault": null,
       "obf_field_id__fld_dfault": null,
-      "obf_area_id__ofa_name": "PmImputation-1",
+      "obf_area_id__ofa_name": "PmAssignmentPmTimeSheetAssign-1",
       "obf_area_id__ofa_position": 1,
       "row_module_id__mdl_name": "ProjectManagement"
      }
@@ -6788,7 +6833,7 @@
       "obf_fld_researchreq": null,
       "obf_fld_dfault": null,
       "obf_field_id__fld_dfault": null,
-      "obf_area_id__ofa_name": "PmImputation-1",
+      "obf_area_id__ofa_name": "PmAssignmentPmTimeSheetAssign-1",
       "obf_area_id__ofa_position": 1,
       "row_module_id__mdl_name": "ProjectManagement"
      }
@@ -6821,7 +6866,7 @@
       "obf_fld_researchreq": null,
       "obf_fld_dfault": null,
       "obf_field_id__fld_dfault": null,
-      "obf_area_id__ofa_name": "PmImputation-1",
+      "obf_area_id__ofa_name": "PmAssignmentPmTimeSheetAssign-1",
       "obf_area_id__ofa_position": 1,
       "row_module_id__mdl_name": "ProjectManagement"
      }
@@ -6854,7 +6899,7 @@
       "obf_fld_researchreq": null,
       "obf_fld_dfault": null,
       "obf_field_id__fld_dfault": null,
-      "obf_area_id__ofa_name": "PmImputation-1",
+      "obf_area_id__ofa_name": "PmAssignmentPmTimeSheetAssign-1",
       "obf_area_id__ofa_position": 1,
       "row_module_id__mdl_name": "ProjectManagement"
      }
@@ -6887,7 +6932,7 @@
       "obf_fld_researchreq": null,
       "obf_fld_dfault": null,
       "obf_field_id__fld_dfault": null,
-      "obf_area_id__ofa_name": "PmImputation-1",
+      "obf_area_id__ofa_name": "PmAssignmentPmTimeSheetAssign-1",
       "obf_area_id__ofa_position": 1,
       "row_module_id__mdl_name": "ProjectManagement"
      }
@@ -6920,7 +6965,7 @@
       "obf_fld_researchreq": null,
       "obf_fld_dfault": null,
       "obf_field_id__fld_dfault": "[USERID]",
-      "obf_area_id__ofa_name": "PmImputation-1",
+      "obf_area_id__ofa_name": "PmAssignmentPmTimeSheetAssign-1",
       "obf_area_id__ofa_position": 1,
       "row_module_id__mdl_name": "ProjectManagement"
      }
@@ -6953,7 +6998,7 @@
       "obf_fld_researchreq": null,
       "obf_fld_dfault": null,
       "obf_field_id__fld_dfault": null,
-      "obf_area_id__ofa_name": "PmImputation-1",
+      "obf_area_id__ofa_name": "PmAssignmentPmTimeSheetAssign-1",
       "obf_area_id__ofa_position": 1,
       "row_module_id__mdl_name": "ProjectManagement"
      }
@@ -6986,7 +7031,7 @@
       "obf_fld_researchreq": null,
       "obf_fld_dfault": null,
       "obf_field_id__fld_dfault": null,
-      "obf_area_id__ofa_name": "PmImputation-1",
+      "obf_area_id__ofa_name": "PmAssignmentPmTimeSheetAssign-1",
       "obf_area_id__ofa_position": 1,
       "row_module_id__mdl_name": "ProjectManagement"
      }
@@ -7019,7 +7064,7 @@
       "obf_fld_researchreq": null,
       "obf_fld_dfault": null,
       "obf_field_id__fld_dfault": "0",
-      "obf_area_id__ofa_name": "PmImputation-1",
+      "obf_area_id__ofa_name": "PmAssignmentPmTimeSheetAssign-1",
       "obf_area_id__ofa_position": 1,
       "row_module_id__mdl_name": "ProjectManagement"
      }
@@ -7052,7 +7097,7 @@
       "obf_fld_researchreq": null,
       "obf_fld_dfault": null,
       "obf_field_id__fld_dfault": null,
-      "obf_area_id__ofa_name": "PmImputation-1",
+      "obf_area_id__ofa_name": "PmAssignmentPmTimeSheetAssign-1",
       "obf_area_id__ofa_position": 1,
       "row_module_id__mdl_name": "ProjectManagement"
      }
@@ -7085,7 +7130,7 @@
       "obf_fld_researchreq": null,
       "obf_fld_dfault": null,
       "obf_field_id__fld_dfault": null,
-      "obf_area_id__ofa_name": "PmImputation-1",
+      "obf_area_id__ofa_name": "PmAssignmentPmTimeSheetAssign-1",
       "obf_area_id__ofa_position": 1,
       "row_module_id__mdl_name": "ProjectManagement"
      }
@@ -7118,7 +7163,7 @@
       "obf_fld_researchreq": null,
       "obf_fld_dfault": null,
       "obf_field_id__fld_dfault": null,
-      "obf_area_id__ofa_name": "PmImputation-1",
+      "obf_area_id__ofa_name": "PmAssignmentPmTimeSheetAssign-1",
       "obf_area_id__ofa_position": 1,
       "row_module_id__mdl_name": "ProjectManagement"
      }
@@ -7151,7 +7196,7 @@
       "obf_fld_researchreq": null,
       "obf_fld_dfault": null,
       "obf_field_id__fld_dfault": null,
-      "obf_area_id__ofa_name": "PmImputation-1",
+      "obf_area_id__ofa_name": "PmAssignmentPmTimeSheetAssign-1",
       "obf_area_id__ofa_position": 1,
       "row_module_id__mdl_name": "ProjectManagement"
      }
@@ -10234,7 +10279,7 @@
       "obf_field_id__fld_type": "3",
       "obf_order": 10,
       "obf_group_by": null,
-      "obf_dfault_order": 1,
+      "obf_dfault_order": -1,
       "obf_input": null,
       "obf_ref_field_id__fld_name": null,
       "obf_ref_object_id__obo_name": null,
@@ -10398,7 +10443,7 @@
       "obf_field_id__fld_name": "pmPrjName",
       "obf_field_id__fld_type": "3",
       "obf_order": 110,
-      "obf_group_by": null,
+      "obf_group_by": 1,
       "obf_dfault_order": null,
       "obf_input": null,
       "obf_ref_field_id__fld_name": "pmVrsPrjId",
@@ -10487,7 +10532,7 @@
       "obf_inline": false,
       "obf_rendering": null,
       "obf_treedepth": null,
-      "obf_area_id__ofa_name": "PmImputation-1",
+      "obf_area_id__ofa_name": "PmAssignmentPmTimeSheetAssign-1",
       "obf_area_id__ofa_position": 1,
       "row_module_id__mdl_name": "ProjectManagement"
      }
@@ -12537,6 +12582,19 @@
       "fct_object_id__obj_type": "E",
       "fct_object_id__obj_name": "PmTimesheetExt",
       "fct_function": "CMS",
+      "fct_action_id__act_name": null,
+      "fct_view_id__viw_name": null,
+      "row_module_id__mdl_name": "ProjectManagement"
+     }
+    },
+    {
+     "object": "Function",
+     "userkey": "PM_TIMESHEET_RECAP_EXT_E",
+     "item": {
+      "fct_name": "PM_TIMESHEET_RECAP_EXT_E",
+      "fct_object_id__obj_type": "E",
+      "fct_object_id__obj_name": "PmTimesheetRecapExt",
+      "fct_function": "L",
       "fct_action_id__act_name": null,
       "fct_view_id__viw_name": null,
       "row_module_id__mdl_name": "ProjectManagement"
@@ -19896,7 +19954,7 @@
       "rch_user_id__usr_login": "designer",
       "rch_name": "PmVersionView",
       "rch_public": false,
-      "rch_request": {"group__pmVrsPrjId__pmPrjName": "1"},
+      "rch_request": {},
       "row_module_id__mdl_name": "ProjectManagement"
      }
     }
@@ -20304,7 +20362,7 @@
      "tsh_gantt_x": true,
      "tsh_gantt_y": true,
      "tsh_gantt_r": true,
-     "tsh_chart_gantt": true,
+     "tsh_chart_gantt": false,
      "tsh_chart_res": true,
      "tsh_res1_id__fld_name": "pmAssPmUserid",
      "tsh_res2_id__fld_name": "pmAssPmTaskid",
@@ -20395,6 +20453,78 @@
        "path": "resources/ObjectExternal/PmTimesheetExt/SCRIPT.js",
        "mime": "text/javascript",
        "name": "PmTimesheetExt_SCRIPT.js"
+      },
+      "res_image": null,
+      "row_module_id__mdl_name": "ProjectManagement"
+     }
+    },
+    {
+     "object": "Resource",
+     "userkey": "ObjectExternal(PmTimesheetRecapExt)~ANY~STYLES",
+     "item": {
+      "res_object": {
+       "item": {"obe_name": "PmTimesheetRecapExt"},
+       "icon": "img/system/external_object",
+       "label": "External object",
+       "userkeylabel": "PmTimesheetRecapExt",
+       "object": "ObjectExternal"
+      },
+      "res_type": "CSS",
+      "res_lang": "ANY",
+      "res_code": "STYLES",
+      "res_cached": false,
+      "res_file": {
+       "path": "resources/ObjectExternal/PmTimesheetRecapExt/STYLES.css",
+       "mime": "text/css",
+       "name": "PmTimesheetRecapExt.css.css"
+      },
+      "res_image": null,
+      "row_module_id__mdl_name": "ProjectManagement"
+     }
+    },
+    {
+     "object": "Resource",
+     "userkey": "ObjectExternal(PmTimesheetRecapExt)~ANY~HTML",
+     "item": {
+      "res_object": {
+       "item": {"obe_name": "PmTimesheetRecapExt"},
+       "icon": "img/system/external_object",
+       "label": "External object",
+       "userkeylabel": "PmTimesheetRecapExt",
+       "object": "ObjectExternal"
+      },
+      "res_type": "HTML",
+      "res_lang": "ANY",
+      "res_code": "HTML",
+      "res_cached": false,
+      "res_file": {
+       "path": "resources/ObjectExternal/PmTimesheetRecapExt/HTML.html",
+       "mime": "text/html",
+       "name": "PmTimesheetRecapExt.html"
+      },
+      "res_image": null,
+      "row_module_id__mdl_name": "ProjectManagement"
+     }
+    },
+    {
+     "object": "Resource",
+     "userkey": "ObjectExternal(PmTimesheetRecapExt)~ANY~SCRIPT",
+     "item": {
+      "res_object": {
+       "item": {"obe_name": "PmTimesheetRecapExt"},
+       "icon": "img/system/external_object",
+       "label": "External object",
+       "userkeylabel": "PmTimesheetRecapExt",
+       "object": "ObjectExternal"
+      },
+      "res_type": "JS",
+      "res_lang": "ANY",
+      "res_code": "SCRIPT",
+      "res_cached": false,
+      "res_file": {
+       "path": "resources/ObjectExternal/PmTimesheetRecapExt/SCRIPT.js",
+       "mime": "text/javascript",
+       "name": "PmTimesheetRecapExt.js"
       },
       "res_image": null,
       "row_module_id__mdl_name": "ProjectManagement"
@@ -22563,7 +22693,7 @@
       "tsl_typeField": "F",
       "tsl_id__fld_name": "pmAssConsumed",
       "tsl_lang": "FRA",
-      "tsl_value": "Pm ass consumed",
+      "tsl_value": "Consommée",
       "tsl_simplehelp": null,
       "tsl_short_value": null,
       "tsl_placeholder": null,
@@ -22611,7 +22741,7 @@
       "tsl_typeField": "F",
       "tsl_id__fld_name": "pmAssQuantity",
       "tsl_lang": "FRA",
-      "tsl_value": "Pm ass quantity",
+      "tsl_value": "Quantité",
       "tsl_simplehelp": null,
       "tsl_short_value": null,
       "tsl_placeholder": null,
@@ -23439,6 +23569,17 @@
     },
     {
      "object": "TranslateFieldArea",
+     "userkey": "Z~PmAssignmentPmTimeSheetAssign-1~ENU",
+     "item": {
+      "tsl_typeFieldArea": "Z",
+      "tsl_id__ofa_name": "PmAssignmentPmTimeSheetAssign-1",
+      "tsl_lang": "ENU",
+      "tsl_value": "PmImputation-1",
+      "row_module_id__mdl_name": "ProjectManagement"
+     }
+    },
+    {
+     "object": "TranslateFieldArea",
      "userkey": "Z~PmDocument-1~ENU",
      "item": {
       "tsl_typeFieldArea": "Z",
@@ -23467,17 +23608,6 @@
       "tsl_id__ofa_name": "PmDocument-3",
       "tsl_lang": "ENU",
       "tsl_value": "Task",
-      "row_module_id__mdl_name": "ProjectManagement"
-     }
-    },
-    {
-     "object": "TranslateFieldArea",
-     "userkey": "Z~PmImputation-1~ENU",
-     "item": {
-      "tsl_typeFieldArea": "Z",
-      "tsl_id__ofa_name": "PmImputation-1",
-      "tsl_lang": "ENU",
-      "tsl_value": "PmImputation-1",
       "row_module_id__mdl_name": "ProjectManagement"
      }
     },
@@ -23802,6 +23932,17 @@
     },
     {
      "object": "TranslateFieldArea",
+     "userkey": "Z~PmAssignmentPmTimeSheetAssign-1~FRA",
+     "item": {
+      "tsl_typeFieldArea": "Z",
+      "tsl_id__ofa_name": "PmAssignmentPmTimeSheetAssign-1",
+      "tsl_lang": "FRA",
+      "tsl_value": "Imputation -1",
+      "row_module_id__mdl_name": "ProjectManagement"
+     }
+    },
+    {
+     "object": "TranslateFieldArea",
      "userkey": "Z~PmDocument-1~FRA",
      "item": {
       "tsl_typeFieldArea": "Z",
@@ -23830,17 +23971,6 @@
       "tsl_id__ofa_name": "PmDocument-3",
       "tsl_lang": "FRA",
       "tsl_value": "Tâche",
-      "row_module_id__mdl_name": "ProjectManagement"
-     }
-    },
-    {
-     "object": "TranslateFieldArea",
-     "userkey": "Z~PmImputation-1~FRA",
-     "item": {
-      "tsl_typeFieldArea": "Z",
-      "tsl_id__ofa_name": "PmImputation-1",
-      "tsl_lang": "FRA",
-      "tsl_value": "Imputation -1",
       "row_module_id__mdl_name": "ProjectManagement"
      }
     },
@@ -24416,12 +24546,36 @@
     },
     {
      "object": "TranslateExternal",
+     "userkey": "O~PmTimesheetRecapExt~ENU",
+     "item": {
+      "tsl_typeObject": "O",
+      "tsl_id__obe_name": "PmTimesheetRecapExt",
+      "tsl_lang": "ENU",
+      "tsl_value": "Timesheet recap ext",
+      "tsl_help": null,
+      "row_module_id__mdl_name": "ProjectManagement"
+     }
+    },
+    {
+     "object": "TranslateExternal",
      "userkey": "O~PmTimesheetExt~FRA",
      "item": {
       "tsl_typeObject": "O",
       "tsl_id__obe_name": "PmTimesheetExt",
       "tsl_lang": "FRA",
       "tsl_value": "CRA",
+      "tsl_help": null,
+      "row_module_id__mdl_name": "ProjectManagement"
+     }
+    },
+    {
+     "object": "TranslateExternal",
+     "userkey": "O~PmTimesheetRecapExt~FRA",
+     "item": {
+      "tsl_typeObject": "O",
+      "tsl_id__obe_name": "PmTimesheetRecapExt",
+      "tsl_lang": "FRA",
+      "tsl_value": "Timesheet recap ext",
       "tsl_help": null,
       "row_module_id__mdl_name": "ProjectManagement"
      }
