@@ -17,7 +17,7 @@
 					var param = null; 
 					var url = app.getExternalObjectURL(extobj, param, embedded);
 					console.log("url = " + url);
-					ctn = "$('#recap')"; 
+					ctn = $('#recap'); 
 					$ui.loadURL(ctn, url, { showNav:false });
 				};
 			}
