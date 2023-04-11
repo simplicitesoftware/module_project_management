@@ -24,7 +24,7 @@ var PmTimesheetExt = (function($) {
 })(jQuery);
 function formatLineAss(ass) {
     var quantity = ass.pmAssQuantity || ' ';
-    var progress = ' ':
+    var progress = ' ';
     if(ass.pmAssQuantity){
         progress = '<progress value='+ass.pmAssConsumed+' max='+ass.pmAssQuantity+'></progress>'
     }
