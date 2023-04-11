@@ -4,6 +4,7 @@
 	var app = ui.getAjax();
 	// Hook called by each object instance
 	Simplicite.UI.hooks.PmAssignmentPmTimeSheetAssign = function(o, cbk) {
+		window.alert("test alert");
 		try {
 			console.log("PmAssignmentPmTimeSheetAssign hooks loading...");
 			var p = o.locals.ui;
@@ -12,7 +13,6 @@
 					var app = $ui.getAjax(); 
 					var extobj = "PmTimesheetRecapExt"; 
 					var embedded = true; 
-					
 					var param = null; 
 					var url = app.getExternalObjectURL(extobj, param, embedded);
 					window.alert("url = " + url);
