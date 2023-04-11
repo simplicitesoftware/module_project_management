@@ -20,6 +20,7 @@ public class PmTimesheetRecapExt extends ExternalObject { // or com.simplicite.w
 	 */
 	@Override
 	public Object display(Parameters params) {
+		AppLog.info("DEBUG in dysplay PmTimesheetRecapExt", getGrant());
 		try {
 			// ctn is the "div.extern-content" to fill on UI
 			addMustache();
