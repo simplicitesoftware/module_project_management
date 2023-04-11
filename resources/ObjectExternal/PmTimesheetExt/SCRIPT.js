@@ -23,7 +23,8 @@ var PmTimesheetExt = (function($) {
     return { render: render };
 })(jQuery);
 function formatLineAss(ass) {
-    return '<div class="table-row"><div class="table-data small">'+ass.pmAssRole+'</div><div class="table-data">'+ass.pmAssQuantity || ' '+'</div><div class="table-data big">'+ass.pmAssConsumed+'</div></div>';
+    var quantity = ass.pmAssQuantity || ' ';
+    return '<div class="table-row"><div class="table-data small">'+ass.pmAssRole+'</div><div class="table-data">'+quantity+'</div><div class="table-data big">'+ass.pmAssConsumed+'</div></div>';
   }
   
 
