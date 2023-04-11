@@ -225,7 +225,7 @@
       "usr_menu": true,
       "usr_menu_defcollapsed": false,
       "usr_menu_defdomain_id__obd_name": "PmDomain",
-      "usr_last_logon": "2023-04-11 16:45:30",
+      "usr_last_logon": "2023-04-11 16:46:41",
       "usr_dateformat": null,
       "usr_lang_pref": "FRA",
       "usr_mfa_method": null,
@@ -312,20 +312,6 @@
    "icon": "img/system/system_param",
    "field": "row_module_id",
    "list": [
-    {
-     "object": "UserSysParam",
-     "userkey": "PmDevelopeur~DISPOSITION",
-     "item": {
-      "usp_user_id__usr_login": "PmDevelopeur",
-      "usp_param_id__sys_code": "DISPOSITION",
-      "usp_value": null,
-      "usp_param_id__sys_type": "LFL",
-      "usp_param_id__sys_value": "default",
-      "usp_param_id__sys_value2": null,
-      "usp_param_id__sys_desc": "Webapp disposition, ex: default, myapp, ...",
-      "row_module_id__mdl_name": "ProjectManagement"
-     }
-    },
     {
      "object": "UserSysParam",
      "userkey": "PmManager~DISPOSITION",
@@ -20591,6 +20577,30 @@
        "path": "resources/ObjectInternal/PmProject/pmPrjPubHtml.html",
        "mime": "text/html",
        "name": "pmPrjPubHtml.html"
+      },
+      "res_image": null,
+      "row_module_id__mdl_name": "ProjectManagement"
+     }
+    },
+    {
+     "object": "Resource",
+     "userkey": "ObjectInternal(PmAssignmentPmTimeSheetAssign)~ANY~SCRIPT",
+     "item": {
+      "res_object": {
+       "item": {"obo_name": "PmAssignmentPmTimeSheetAssign"},
+       "icon": "img/system/business_object",
+       "label": "Business object",
+       "userkeylabel": "PmAssignmentPmTimeSheetAssign",
+       "object": "ObjectInternal"
+      },
+      "res_type": "JS",
+      "res_lang": "ANY",
+      "res_code": "SCRIPT",
+      "res_cached": false,
+      "res_file": {
+       "path": "resources/ObjectInternal/PmAssignmentPmTimeSheetAssign/SCRIPT.js",
+       "mime": "text/javascript",
+       "name": "script.js"
       },
       "res_image": null,
       "row_module_id__mdl_name": "ProjectManagement"
