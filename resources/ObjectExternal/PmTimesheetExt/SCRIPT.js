@@ -3,6 +3,12 @@ var PmTimesheetExt = (function() {
     function render(params) {
         var userid =$ui.grant.getUserID();
         $ui.displayTimesheet($('#ts'), "PmUser",userid , "PmTimeSheetAssign");
+        try {
+           
+			if (typeof Mustache === 'undefined') throw 'Mustache not available';
+		} catch(e) {
+			console.error('Render error: ' + e.message);
+		}
 		var div=$('#recap')
         var template =div.html();
 		if (userid) {
