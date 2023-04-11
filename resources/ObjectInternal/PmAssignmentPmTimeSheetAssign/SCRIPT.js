@@ -1,10 +1,11 @@
 // PmAssignmentPmTimeSheetAssign front side hook
 (function(ui) {
+	console.log("DEBUG fonction(ui) PmAssignmentPmTimeSheetAssign ------------------------------------");
 	if (!ui) return;
 	var app = ui.getAjax();
 	// Hook called by each object instance
 	Simplicite.UI.hooks.PmAssignmentPmTimeSheetAssign = function(o, cbk) {
-		window.alert("test alert");
+		console.log("DEBUG Simplicite.UI.hooks.PmAssignmentPmTimeSheetAssign ------------------------------------");
 		try {
 			console.log("PmAssignmentPmTimeSheetAssign hooks loading...");
 			var p = o.locals.ui;
