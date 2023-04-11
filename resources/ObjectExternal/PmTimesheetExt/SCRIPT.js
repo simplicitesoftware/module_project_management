@@ -6,7 +6,7 @@ var PmTimesheetExt = (function($) {
         $ui.displayTimesheet($('#ts'), "PmUser",userid , "PmTimeSheetAssign");
         try {
 			//if (typeof Mustache === 'undefined') throw 'Mustache not available';
-            var div=$('#recap')
+            var div=$('.card-body')
             var template =$('#pm-ass-template').html();
             if (userid) {
                 // Search the client
@@ -14,7 +14,7 @@ var PmTimesheetExt = (function($) {
                 var affect = app.getBusinessObject('PmAssignment');
                 
                 affect.search(function(list) {
-                    div.html(Mustache.render(template,toDict(list)));
+                    div.html(div.html()+Mustache.render(template,toDict(list)));
                 }, {
                     pmAssPmUserid: userid
                 });
