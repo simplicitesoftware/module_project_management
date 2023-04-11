@@ -20358,9 +20358,9 @@
       "res_code": "STYLE",
       "res_cached": false,
       "res_file": {
-       "path": "resources/ObjectExternal/PmTimesheetExt/STYLE.less",
-       "mime": "text/less",
-       "name": "PmTimesheetExt_STYLE.less"
+       "path": "resources/ObjectExternal/PmTimesheetExt/STYLE.css",
+       "mime": "text/css",
+       "name": "STYLE.css"
       },
       "res_image": null,
       "row_module_id__mdl_name": "ProjectManagement"
