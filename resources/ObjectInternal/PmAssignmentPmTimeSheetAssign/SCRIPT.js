@@ -1,5 +1,4 @@
 // PmAssignmentPmTimeSheetAssign front side hook
-console.log("DEBUG befor func PmAssignmentPmTimeSheetAssign ------------------------------------");
 (function(ui) {
 	console.log("DEBUG fonction(ui) PmAssignmentPmTimeSheetAssign ------------------------------------");
 	if (!ui) return;
