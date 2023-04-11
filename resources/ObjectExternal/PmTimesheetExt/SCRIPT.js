@@ -31,9 +31,10 @@ var PmTimesheetExt = (function($) {
             labelRole:'Role',
             labelQuantity:'Quantity',
             labelConsumed:'Consumed',
-            listNotEmpty:false,
+            listNotEmpty: false,
             ass: []
         };
+        data.listNotEmpty = false;
         if (lang == "FRA"){
             data.labelRole = "Rôle";
             data.labelQuantity = "Droit";
