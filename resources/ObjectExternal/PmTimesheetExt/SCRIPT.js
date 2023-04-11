@@ -37,17 +37,17 @@ function formatLineAss(ass) {
   }
 function toDict(list) {
     var data ={
-        'labelRole':' ',
-        'labelQuantity':' ',
-        'labelConsumed':' ',
-        'ass': []
+        /* labelRole:' ',
+        labelQuantity:' ',
+        labelConsumed:' ', */
+        ass: []
     }
     list.forEach(ass => data.ass.push(function(ass){
         var objAss = {
-            'pmAssRole': ass.pmAssRole,
-            'pmAssConsumed': ass.pmAssConsumed,
-            'pmAssQuantity':' ',
-            'setProgress':false
+            pmAssRole: ass.pmAssRole,
+            pmAssConsumed: ass.pmAssConsumed,
+            pmAssQuantity:' ',
+            setProgress:false
         };
         
         if(ass.pmAssQuantity){
