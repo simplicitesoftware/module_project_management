@@ -4,7 +4,7 @@ var PmTimesheetExt = PmTimesheetExt || (function($) {
     function render(params) {
         var userid =$ui.grant.getUserID();
         $ui.displayTimesheet($('#ts'), "PmUser",userid , "PmTimeSheetAssign");
-        try {
+        //try {
             if (typeof Mustache === 'undefined') throw 'Mustache not available';
             const div=$('#recap')
             const template =$('#pm-ass-template').html();
@@ -22,9 +22,9 @@ var PmTimesheetExt = PmTimesheetExt || (function($) {
                 });
             }
             else throw 'No user id';
-		} catch(e) {
+		/* } catch(e) {
 			console.error('Render error: ' + e.message);
-		}
+		} */
 		
     }
     return { render: render };
