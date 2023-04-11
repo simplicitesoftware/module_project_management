@@ -24,7 +24,7 @@ var PmTimesheetExt = (function($) {
 			console.error('Render error: ' + e.message);
 		}
     }        
-    return { render: render };
+    
     function toDict(list) {
         var lang = app.getGrant().getLang();
         var data ={
@@ -60,4 +60,5 @@ var PmTimesheetExt = (function($) {
         };
         
     }
+    return { render: render };
 })(jQuery);
