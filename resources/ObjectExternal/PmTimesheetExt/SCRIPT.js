@@ -14,6 +14,7 @@ var PmTimesheetExt = (function($) {
                 affect.search(function(list) {
                     //div.html(Mustache.render(template,list))
                     if (list && list.length) {
+                        div.html(formatLineHeader(list[0]));
                         list.forEach(ass => div.html(div.html()+formatLineAss(ass)));
                     }
                 }, {
