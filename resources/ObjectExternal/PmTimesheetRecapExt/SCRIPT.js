@@ -2,6 +2,7 @@ var PmTimesheetRecapExt = (function($) {
     let app;
 	//CRA
     function render(params) {
+        console.log("DEBUG render PmTimesheetRecapExt ---------------------------------------------------------");
         var userid =$ui.grant.getUserID();
         try {
 			//if (typeof Mustache === 'undefined') throw 'Mustache not available';
