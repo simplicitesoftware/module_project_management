@@ -1,4 +1,4 @@
-var PmTimesheetRecapExt = (function($) {
+var PmTimesheetRecapExt = PmTimesheetRecapExt || (function($) {
     let app;
 	//CRA
     function render(params) {
