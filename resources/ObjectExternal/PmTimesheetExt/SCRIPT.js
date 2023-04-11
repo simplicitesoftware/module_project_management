@@ -39,7 +39,7 @@ var PmTimesheetExt = (function($) {
             data.labelQuantity = "Droit";
             data.labelConsumed = "Consommée";
         };
-        if(list && length(list)){
+        if (list && list.length){
             data.listNotEmpty = true;
             list.forEach(ass => data.ass.push(function(ass){
                 var objAss = {
@@ -56,7 +56,7 @@ var PmTimesheetExt = (function($) {
                 return objAss;
             }(ass)));
             return data;
-        }
+        };
         
     }
 })(jQuery);
