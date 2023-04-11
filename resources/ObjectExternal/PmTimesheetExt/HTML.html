@@ -4,17 +4,19 @@
         <div class="table">
             <div class="table-content">	
                 <div class="table-header">
-                    <div class="header__item">{{labelRole}}</div>
-                    <div class="header__item small">{{labelQuantity}}</div>
-                    <div class="header__item small">{{labelConsumed}}</div>
-                    <div class="header__item big"></div>
+                    <div class="header__item"> </div>
+                    <div class="header__item small"> </div>
+                    <div class="header__item small"> </div>
+                    <div class="header__item big"> </div>
                 </div>
                 {{#ass}}
                     <div class="table-row">		
                         <div class="table-data ">{{pmAssRole}}</div>
                         <div class="table-data small">{{pmAssQuantity}}</div>
                         <div class="table-data small">{{pmAssConsumed}}</div>
-                        <div class="table-data big"><progress value="{{pmAssConsumed}}" max="{{pmAssQuantity}}"></progress> </div>
+                        
+                        <div class="table-data big">{{#setProgress}}<progress value="{{pmAssConsumed}}" max="{{pmAssQuantity}}"></progress>{{/setProgress}}</div>
+                        
                     </div>
                 {{/ass}}
             </div>	
