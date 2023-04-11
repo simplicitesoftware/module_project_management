@@ -1,4 +1,18 @@
 <!DOCTYPE html>
 <div id="ts"></div>
 
-<div id="recap"></div>
+<div id="recap">
+    <div class="container">
+        <div class="table">
+            <div class="table-content">	
+                {{#NotEmpty}}
+                    <div class="table-row">		
+                        <div class="table-data small">{{pmAssRole}}</div>
+                        <div class="table-data">{{pmAssQuantity}}</div>
+                        <div class="table-data big">{{pmAssConsumed}}</div>
+                    </div>
+                {{/NotEmpty}}
+            </div>	
+        </div>
+    </div>
+</div>
