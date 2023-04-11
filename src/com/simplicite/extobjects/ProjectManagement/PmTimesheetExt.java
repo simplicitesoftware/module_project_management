@@ -15,10 +15,10 @@ public class PmTimesheetExt extends ExternalObject {
 	private static final long serialVersionUID = 1L;
 	@Override
 	public Object display(Parameters params) {
-		AppLog.info("DEBUG in display", getGrant());
 		try {
+			String render = getName() + ".render();";
 			addMustache();
-			return super.display(params);
+			return javascript(render);
 			
 		} catch (Exception e) {
 			AppLog.error(getClass(), "display", null, e, getGrant());
