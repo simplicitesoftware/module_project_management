@@ -35,5 +35,8 @@ function formatLineAss(ass) {
     }
     return '<div class="table-row"><div class="table-data small">'+ass.pmAssRole+'</div><div class="table-data">'+quantity+'</div><div class="table-data big">'+ass.pmAssConsumed+'</div><div class="table-data big">'+progress+'</div></div>';
   }
-  
 
+function formatLineHeader(ass) {
+    return '<div class="table-header"><div class="header__item">'+ass.pmAssRole.display+'</div><div class="header__item small">'+ass.labelQuantity.getDisplay()+'</div><div class="header__item small">'+ass.labelConsumed.getDisplay()+'</div><div class="header__item big"></div></div>'
+    ;
+}
