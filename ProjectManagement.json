@@ -92,7 +92,7 @@
      "userkey": "PmUserHome",
      "item": {
       "viw_name": "PmUserHome",
-      "viw_ui": "<div class=\"area\" data-area=\"1:=\"><\/div>",
+      "viw_ui": "<div><div class=\"area\" data-area=\"2\"><\/div><div class=\"area\" data-area=\"1:=\"><\/div><\/div>",
       "viw_order": 1,
       "viw_icon": "img/color/projectitem",
       "viw_disp_id__dis_code": null,
@@ -225,7 +225,7 @@
       "usr_menu": true,
       "usr_menu_defcollapsed": false,
       "usr_menu_defdomain_id__obd_name": "PmDomain",
-      "usr_last_logon": "2023-04-06 16:47:02",
+      "usr_last_logon": "2023-04-07 17:18:36",
       "usr_dateformat": null,
       "usr_lang_pref": "FRA",
       "usr_mfa_method": null,
@@ -261,7 +261,7 @@
       "usr_menu": true,
       "usr_menu_defcollapsed": null,
       "usr_menu_defdomain_id__obd_name": null,
-      "usr_last_logon": "2023-04-06 16:53:10",
+      "usr_last_logon": "2023-04-11 09:25:31",
       "usr_dateformat": null,
       "usr_lang_pref": "FRA",
       "usr_mfa_method": null,
@@ -314,9 +314,9 @@
    "list": [
     {
      "object": "UserSysParam",
-     "userkey": "PmDevelopeur~DISPOSITION",
+     "userkey": "PmManager~DISPOSITION",
      "item": {
-      "usp_user_id__usr_login": "PmDevelopeur",
+      "usp_user_id__usr_login": "PmManager",
       "usp_param_id__sys_code": "DISPOSITION",
       "usp_value": null,
       "usp_param_id__sys_type": "LFL",
@@ -20184,15 +20184,15 @@
      "item": {
       "vwi_view_id__viw_name": "PmUserHome",
       "vwi_position": 2,
-      "vwi_type": "U",
-      "vwi_title": true,
+      "vwi_type": "E",
+      "vwi_title": false,
       "vwi_research_id__rch_name": null,
       "vwi_research_id__rch_object_id__obo_name": null,
       "vwi_research_id__rch_user_id__usr_login": null,
       "vwi_search_spec": null,
       "vwi_lov_code": null,
       "vwi_show": null,
-      "vwi_url": null,
+      "vwi_url": "[EXPR:HTMLTool.getExternalObjectURL(\"PmTimesheetExt\")]",
       "vwi_image": null,
       "vwi_treeview_id__trv_name": null,
       "vwi_crosstab_id__ctb_name": null,
@@ -20342,6 +20342,30 @@
    "icon": "img/system/resource",
    "field": "row_module_id",
    "list": [
+    {
+     "object": "Resource",
+     "userkey": "ObjectExternal(PmTimesheetExt)~ANY~STYLE",
+     "item": {
+      "res_object": {
+       "item": {"obe_name": "PmTimesheetExt"},
+       "icon": "img/system/external_object",
+       "label": "External object",
+       "userkeylabel": "PmTimesheetExt",
+       "object": "ObjectExternal"
+      },
+      "res_type": "CSS",
+      "res_lang": "ANY",
+      "res_code": "STYLE",
+      "res_cached": false,
+      "res_file": {
+       "path": "resources/ObjectExternal/PmTimesheetExt/STYLE.less",
+       "mime": "text/less",
+       "name": "PmTimesheetExt_STYLE.less"
+      },
+      "res_image": null,
+      "row_module_id__mdl_name": "ProjectManagement"
+     }
+    },
     {
      "object": "Resource",
      "userkey": "ObjectExternal(PmTimesheetExt)~ANY~HTML",
