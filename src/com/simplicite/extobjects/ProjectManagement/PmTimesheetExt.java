@@ -16,16 +16,24 @@ public class PmTimesheetExt extends ExternalObject {
 	@Override
 	public Object display(Parameters params) {
 		try {
+			boolean pub = isPublic();
+			setDecoration(!pub);
 			String render = getName() + ".render();";
-			BootstrapWebPage wp = new BootstrapWebPage(params.getRoot(), getDisplay());
-			wp.appendAjax(true);
-			wp.appendMustache();
-			wp.appendJSInclude(HTMLTool.getResourceJSURL(this, "SCRIPT"));
-			wp.appendCSSInclude(HTMLTool.getResourceCSSURL(this, "STYLES"));
-			wp.append(HTMLTool.getResourceHTMLContent(this, "HTML"));
-			wp.setReady(render);
-			return wp.toString();
-			
+			if (pub) { // Public page version (standalone Bootstrap page)
+				AppLog.info("in If", getGrant());
+				BootstrapWebPage wp = new BootstrapWebPage(params.getRoot(), getDisplay());
+				wp.appendAjax(true);
+				wp.appendMustache();
+				wp.appendJSInclude(HTMLTool.getResourceJSURL(this, "SCRIPT"));
+				wp.appendCSSInclude(HTMLTool.getResourceCSSURL(this, "STYLES"));
+				wp.append(HTMLTool.getResourceHTMLContent(this, "HTML"));
+				wp.setReady(render);
+				return wp.toString();
+			} else { // Private page version
+				AppLog.info("in Else", getGrant());
+				addMustache();
+				return javascript(render);
+			}
 		} catch (Exception e) {
 			AppLog.error(getClass(), "display", null, e, getGrant());
 			return e.getMessage();
