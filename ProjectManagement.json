@@ -225,7 +225,7 @@
       "usr_menu": true,
       "usr_menu_defcollapsed": false,
       "usr_menu_defdomain_id__obd_name": "PmDomain",
-      "usr_last_logon": "2023-04-11 13:48:42",
+      "usr_last_logon": "2023-04-11 16:45:30",
       "usr_dateformat": null,
       "usr_lang_pref": "FRA",
       "usr_mfa_method": null,
@@ -312,6 +312,20 @@
    "icon": "img/system/system_param",
    "field": "row_module_id",
    "list": [
+    {
+     "object": "UserSysParam",
+     "userkey": "PmDevelopeur~DISPOSITION",
+     "item": {
+      "usp_user_id__usr_login": "PmDevelopeur",
+      "usp_param_id__sys_code": "DISPOSITION",
+      "usp_value": null,
+      "usp_param_id__sys_type": "LFL",
+      "usp_param_id__sys_value": "default",
+      "usp_param_id__sys_value2": null,
+      "usp_param_id__sys_desc": "Webapp disposition, ex: default, myapp, ...",
+      "row_module_id__mdl_name": "ProjectManagement"
+     }
+    },
     {
      "object": "UserSysParam",
      "userkey": "PmManager~DISPOSITION",
@@ -4725,7 +4739,11 @@
       "obe_comment": null,
       "obe_help": null,
       "obe_class": null,
-      "obe_script_id": null,
+      "obe_script_id": {
+       "path": "src/com/simplicite/extobjects/ProjectManagement/PmTimesheetRecapExt.java",
+       "mime": "text/plain",
+       "name": "PmTimesheetRecapExt.java"
+      },
       "obe_icon": "timesheet",
       "row_module_id__mdl_name": "ProjectManagement"
      }
