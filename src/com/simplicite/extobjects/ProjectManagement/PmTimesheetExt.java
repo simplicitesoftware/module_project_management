@@ -11,12 +11,8 @@ import com.simplicite.webapp.web.BootstrapWebPage;
 /**
  * External object PmTimesheetExt
  */
-public class PmTimesheetExt extends com.simplicite.webapp.web.ResponsiveExternalObject  {
+public class PmTimesheetExt extends ExternalObject {
 	private static final long serialVersionUID = 1L;
-		/**
-	 * Display method
-	 * @param params Request parameters
-	 */
 	@Override
 	public Object display(Parameters params) {
 		try {

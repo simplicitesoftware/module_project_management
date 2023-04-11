@@ -261,7 +261,7 @@
       "usr_menu": true,
       "usr_menu_defcollapsed": null,
       "usr_menu_defdomain_id__obd_name": null,
-      "usr_last_logon": "2023-04-11 11:30:54",
+      "usr_last_logon": "2023-04-11 11:54:19",
       "usr_dateformat": null,
       "usr_lang_pref": "FRA",
       "usr_mfa_method": null,
@@ -312,20 +312,6 @@
    "icon": "img/system/system_param",
    "field": "row_module_id",
    "list": [
-    {
-     "object": "UserSysParam",
-     "userkey": "PmManager~DISPOSITION",
-     "item": {
-      "usp_user_id__usr_login": "PmManager",
-      "usp_param_id__sys_code": "DISPOSITION",
-      "usp_value": null,
-      "usp_param_id__sys_type": "LFL",
-      "usp_param_id__sys_value": "default",
-      "usp_param_id__sys_value2": null,
-      "usp_param_id__sys_desc": "Webapp disposition, ex: default, myapp, ...",
-      "row_module_id__mdl_name": "ProjectManagement"
-     }
-    },
     {
      "object": "UserSysParam",
      "userkey": "PmManager~HISTORY ProjectManagementScope",
@@ -20344,7 +20330,7 @@
    "list": [
     {
      "object": "Resource",
-     "userkey": "ObjectExternal(PmTimesheetExt)~ANY~STYLE",
+     "userkey": "ObjectExternal(PmTimesheetExt)~ANY~STYLES",
      "item": {
       "res_object": {
        "item": {"obe_name": "PmTimesheetExt"},
@@ -20355,10 +20341,10 @@
       },
       "res_type": "CSS",
       "res_lang": "ANY",
-      "res_code": "STYLE",
+      "res_code": "STYLES",
       "res_cached": false,
       "res_file": {
-       "path": "resources/ObjectExternal/PmTimesheetExt/STYLE.css",
+       "path": "resources/ObjectExternal/PmTimesheetExt/STYLES.css",
        "mime": "text/css",
        "name": "STYLE.css"
       },
