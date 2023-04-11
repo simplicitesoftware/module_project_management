@@ -2,7 +2,6 @@ var PmTimesheetExt = (function($) {
     let app;
 	//CRA
     function render(params) {
-        $('.btn-save').on('submit',window.alert("submit") );
         var userid =$ui.grant.getUserID();
         $ui.displayTimesheet($('#ts'), "PmUser",userid , "PmTimeSheetAssign");
         try {
