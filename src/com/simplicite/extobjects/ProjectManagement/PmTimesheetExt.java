@@ -15,12 +15,13 @@ public class PmTimesheetExt extends ExternalObject {
 	private static final long serialVersionUID = 1L;
 	@Override
 	public Object display(Parameters params) {
+		AppLog.info("DEBUG in display", getGrant());
 		try {
 			boolean pub = isPublic();
 			setDecoration(!pub);
 			String render = getName() + ".render();";
 			if (pub) { // Public page version (standalone Bootstrap page)
-				AppLog.info("in If", getGrant());
+				AppLog.info("DEBUG in If", getGrant());
 				BootstrapWebPage wp = new BootstrapWebPage(params.getRoot(), getDisplay());
 				wp.appendAjax(true);
 				wp.appendMustache();
@@ -30,7 +31,7 @@ public class PmTimesheetExt extends ExternalObject {
 				wp.setReady(render);
 				return wp.toString();
 			} else { // Private page version
-				AppLog.info("in Else", getGrant());
+				AppLog.info("DEBUG in Else", getGrant());
 				addMustache();
 				return javascript(render);
 			}
