@@ -1,4 +1,5 @@
 var PmTimesheetExt = (function($) {
+    let app;
 	//CRA
     function render(params) {
         var userid =$ui.grant.getUserID();
@@ -15,9 +16,6 @@ var PmTimesheetExt = (function($) {
                 affect.search(function(list) {
                     div.html("test: "+app.getGrant().getLang()+"<br>");
                     div.html(div.html()+"<br>"+Mustache.render(template,toDict(list)));
-                    /* if (list && list.length) {
-                        list.forEach(ass => div.html(div.html()+formatLineAss(ass)));
-                    } */
                 }, {
                     pmAssPmUserid: userid
                 });
@@ -28,35 +26,34 @@ var PmTimesheetExt = (function($) {
 		}
     }        
     return { render: render };
-})(jQuery);
-function formatLineAss(ass) {
-    var quantity = ass.pmAssQuantity || ' ';
-    var progress = ' ';
-    if(ass.pmAssQuantity){
-        progress = '<progress value='+ass.pmAssConsumed+' max='+ass.pmAssQuantity+'></progress>'
-    }
-    return '<div class="table-row"><div class="table-data small">'+ass.pmAssRole+'</div><div class="table-data">'+quantity+'</div><div class="table-data big">'+ass.pmAssConsumed+'</div><div class="table-data big">'+progress+'</div></div>';
-  }
-function toDict(list) {
-    var data ={
-        labelRole:' ',
-        labelQuantity:' ',
-        labelConsumed:' ',
-        ass: []
-    }
-    list.forEach(ass => data.ass.push(function(ass){
-        var objAss = {
-            pmAssRole: ass.pmAssRole,
-            pmAssConsumed: ass.pmAssConsumed,
-            pmAssQuantity:' ',
-            setProgress:false
+    function toDict(list) {
+        var lang = app.getGrant().getLang();
+        var data ={
+            labelRole:'Role',
+            labelQuantity:'Quantity',
+            labelConsumed:'Consumed',
+            ass: []
+        };
+        if (lang == "FRA"){
+            data.labelRole = "Rôle";
+            data.labelQuantity = "Quantité";
+            data.labelConsumed = "Consommée";
         };
         
-        if(ass.pmAssQuantity){
-            objAss.setProgress=true;
-            objAss.pmAssQuantity =ass.pmAssQuantity;
-        }
-        return objAss;
-    }(ass)));
-    return data;
-  }
+        list.forEach(ass => data.ass.push(function(ass){
+            var objAss = {
+                pmAssRole: ass.pmAssRole,
+                pmAssConsumed: ass.pmAssConsumed,
+                pmAssQuantity:' ',
+                setProgress:false
+            };
+            
+            if(ass.pmAssQuantity){
+                objAss.setProgress=true;
+                objAss.pmAssQuantity =ass.pmAssQuantity;
+            }
+            return objAss;
+        }(ass)));
+        return data;
+    }
+})(jQuery);
