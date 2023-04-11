@@ -1,20 +1,8 @@
 var PmTimesheetExt = (function($) {
 	//CRA
     function render(params) {
-            var userid =$ui.grant.getUserID();
-            $ui.displayTimesheet($('#ts'), "PmUser",userid , "PmTimeSheetAssign");
-        try {
-           
-			if (typeof Mustache === 'undefined') throw 'Mustache not available';
-		} catch(e) {
-			console.error('Render error: ' + e.message);
-		}
-
-
-
-
-
-        
+        var userid =$ui.grant.getUserID();
+        $ui.displayTimesheet($('#ts'), "PmUser",userid , "PmTimeSheetAssign");
 		var div=$('#recap')
         var template =div.html();
 		if (userid) {
