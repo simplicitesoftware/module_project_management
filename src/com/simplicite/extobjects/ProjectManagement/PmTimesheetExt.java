@@ -18,10 +18,9 @@ public class PmTimesheetExt extends ExternalObject {
 		try {
 			boolean pub = isPublic();
 			setDecoration(!pub);
-			String render = getName() + ".render(" + params.toJSONObject().put("bannerURL", HTMLTool.getResourceImageURL(this, "BANNER")).put("pub", pub).toString() + ");";
+			String render = getName() + ".render();";
 			if (pub) { // Public page version (standalone Bootstrap page)
 				BootstrapWebPage wp = new BootstrapWebPage(params.getRoot(), getDisplay());
-				wp.setFavicon(HTMLTool.getResourceIconURL(this, "FAVICON"));
 				wp.appendAjax(true);
 				wp.appendMustache();
 				wp.appendJSInclude(HTMLTool.getResourceJSURL(this, "SCRIPT"));
