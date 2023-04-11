@@ -55,4 +55,5 @@ function toDict(list) {
         }
         return objAss;
     }(ass)));
+    return data;
   }
