@@ -10,8 +10,8 @@ var PmTimesheetExt = (function() {
 			var affect = app.getBusinessObject('PmAssignment');
             affect.search(function(list) {
                 if (list && list.length) {
-                    ass =  list[0];
-                    div.html(div.html()+'<br>'+list);
+                    list.forEach(ass => div.html(div.html()+'<br>'+ass.pmAssRole));
+                    
                 }
             }, {
                 pmAssPmUserid: userid
