@@ -37,7 +37,9 @@ function formatLineAss(ass) {
   }
 function toDict(list) {
     var data ={
-        
+        labelRole:' ',
+        labelQuantity:' ',
+        labelConsumed:' ',
         ass: []
     }
     list.forEach(ass => data.ass.push(function(ass){
