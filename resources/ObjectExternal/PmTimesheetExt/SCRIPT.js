@@ -12,7 +12,7 @@ var PmTimesheetExt = (function($) {
             affect.search(function(list) {
                 //div.html(Mustache.render(template,list))
                 if (list && list.length) {
-                    list.forEach(ass => div.html(div.html()+'<br>'+formatLineAss(ass)));
+                    list.forEach(ass => div.html(div.html()+formatLineAss(ass)));
                 }
             }, {
                 pmAssPmUserid: userid
@@ -24,7 +24,11 @@ var PmTimesheetExt = (function($) {
 })(jQuery);
 function formatLineAss(ass) {
     var quantity = ass.pmAssQuantity || ' ';
-    return '<div class="table-row"><div class="table-data small">'+ass.pmAssRole+'</div><div class="table-data">'+quantity+'</div><div class="table-data big">'+ass.pmAssConsumed+'</div></div>';
+    var progress = ' ':
+    if(ass.pmAssQuantity){
+        progress = '<progress value='+ass.pmAssConsumed+' max='+ass.pmAssQuantity+'></progress>'
+    }
+    return '<div class="table-row"><div class="table-data small">'+ass.pmAssRole+'</div><div class="table-data">'+quantity+'</div><div class="table-data big">'+ass.pmAssConsumed+'</div><div class="table-data big">'+progress+'</div></div>';
   }
   
 
