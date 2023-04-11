@@ -21,7 +21,7 @@ var PmTimesheetExt = PmTimesheetExt || (function($) {
                     pmAssPmUserid: userid
                 });
             }
-            else throw 'No user id';
+            else console.alert('No user id');
 		/* } catch(e) {
 			console.error('Render error: ' + e.message);
 		} */
