@@ -7,8 +7,7 @@ var PmTimesheetRecapExt = PmTimesheetRecapExt || (function($) {
         try {
 			//if (typeof Mustache === 'undefined') throw 'Mustache not available';
             var div=$('#recap')
-            var template =div.html();
-            div.html('');
+            var template =$('#pm-ass-template').html();
             if (userid) {
                 // Search the client
                 app = $ui.getAjax();
