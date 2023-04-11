@@ -34,7 +34,6 @@ var PmTimesheetExt = (function($) {
             listNotEmpty: false,
             ass: []
         };
-        data.listNotEmpty = false;
         if (lang == "FRA"){
             data.labelRole = "Rôle";
             data.labelQuantity = "Droit";
@@ -56,9 +55,9 @@ var PmTimesheetExt = (function($) {
                 }
                 return objAss;
             }(ass)));
-            return data;
+            
         };
-        
+        return data;
     }
     return { render: render };
 })(jQuery);
