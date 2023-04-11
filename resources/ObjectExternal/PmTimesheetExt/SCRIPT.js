@@ -5,7 +5,7 @@ var PmTimesheetExt = PmTimesheetExt || (function($) {
         var userid =$ui.grant.getUserID();
         $ui.displayTimesheet($('#ts'), "PmUser",userid , "PmTimeSheetAssign");
         //try {
-            if (typeof Mustache === 'undefined') throw 'Mustache not available';
+            //if (typeof Mustache === 'undefined') throw 'Mustache not available';
             const div=$('#recap')
             const template =$('#pm-ass-template').html();
             if (userid) {
