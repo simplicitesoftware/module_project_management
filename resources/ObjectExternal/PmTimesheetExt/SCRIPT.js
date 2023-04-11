@@ -31,28 +31,32 @@ var PmTimesheetExt = (function($) {
             labelRole:'Role',
             labelQuantity:'Quantity',
             labelConsumed:'Consumed',
+            listNotEmpty:false,
             ass: []
         };
         if (lang == "FRA"){
             data.labelRole = "Rôle";
-            data.labelQuantity = "Quantité";
+            data.labelQuantity = "Droit";
             data.labelConsumed = "Consommée";
         };
+        if(list && length(list)){
+            data.listNotEmpty = true;
+            list.forEach(ass => data.ass.push(function(ass){
+                var objAss = {
+                    pmAssRole: ass.pmAssRole,
+                    pmAssConsumed: ass.pmAssConsumed,
+                    pmAssQuantity:' ',
+                    setProgress:false
+                };
+                
+                if(ass.pmAssQuantity){
+                    objAss.setProgress=true;
+                    objAss.pmAssQuantity =ass.pmAssQuantity;
+                }
+                return objAss;
+            }(ass)));
+            return data;
+        }
         
-        list.forEach(ass => data.ass.push(function(ass){
-            var objAss = {
-                pmAssRole: ass.pmAssRole,
-                pmAssConsumed: ass.pmAssConsumed,
-                pmAssQuantity:' ',
-                setProgress:false
-            };
-            
-            if(ass.pmAssQuantity){
-                objAss.setProgress=true;
-                objAss.pmAssQuantity =ass.pmAssQuantity;
-            }
-            return objAss;
-        }(ass)));
-        return data;
     }
 })(jQuery);
