@@ -12,7 +12,7 @@ var PmTimesheetExt = (function($) {
                 app = $ui.getAjax();
                 var affect = app.getBusinessObject('PmAssignment');
                 affect.search(function(list) {
-                    div.html(Mustache.render(template,list))
+                    div.html(Mustache.render(template,toDict(list)))
                     /* if (list && list.length) {
                         list.forEach(ass => div.html(div.html()+formatLineAss(ass)));
                     } */
@@ -34,4 +34,26 @@ function formatLineAss(ass) {
         progress = '<progress value='+ass.pmAssConsumed+' max='+ass.pmAssQuantity+'></progress>'
     }
     return '<div class="table-row"><div class="table-data small">'+ass.pmAssRole+'</div><div class="table-data">'+quantity+'</div><div class="table-data big">'+ass.pmAssConsumed+'</div><div class="table-data big">'+progress+'</div></div>';
+  }
+function toDict(list) {
+    var data ={
+        labelRole:' ',
+        labelQuantity:' ',
+        labelConsumed:' ',
+        ass: []
+    }
+    list.forEach(ass => data.ass.push(function(ass){
+        var objAss = {
+            pmAssRole: ass.pmAssRole,
+            pmAssConsumed: ass.pmAssConsumed,
+            pmAssQuantity:' ',
+            setProgress:false
+        };
+        
+        if(ass.pmAssQuantity){
+            objAss.setProgress=true;
+            objAss.pmAssQuantity =ass.pmAssQuantity;
+        }
+        return objAss;
+    }(ass)));
   }
