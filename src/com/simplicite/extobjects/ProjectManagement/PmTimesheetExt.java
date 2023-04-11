@@ -25,7 +25,7 @@ public class PmTimesheetExt extends ExternalObject {
 				wp.appendAjax(true);
 				wp.appendMustache();
 				wp.appendJSInclude(HTMLTool.getResourceJSURL(this, "SCRIPT"));
-				wp.appendCSSInclude(HTMLTool.getResourceCSSURL(this, "STYLE"));
+				wp.appendCSSInclude(HTMLTool.getResourceCSSURL(this, "STYLES"));
 				wp.append(HTMLTool.getResourceHTMLContent(this, "HTML"));
 				wp.setReady(render);
 				return wp.toString();
