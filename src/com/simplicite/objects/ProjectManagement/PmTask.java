@@ -209,6 +209,8 @@ public class PmTask extends ObjectDB {
 						.put("pmAssPmTaskid", sltTskId)
 						)) {
 						// Set functional keys fields
+						tmpAss.setFieldValue("pmAssPmUserid", sltUsrId);
+						tmpAss.setFieldValue("pmAssPmTaskid", sltTskId);
 						tmpAss.setFieldValue("pmAssRole", sltRole);
 						tmpAss.setFieldValue("pmAssQuantity", sltQuantity);
 						
