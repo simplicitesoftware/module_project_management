@@ -26,4 +26,10 @@ public class PmUser extends SimpleUser {
 		}
     	save();
 	}
+	public String getidModule(){
+		ObjectCore obj = this;
+		AppLog.info("DEBUG id mod: "+obj.getModuleName(), getGrant());
+		AppLog.info("DEBUG id mod: "+obj.getModuleId(), getGrant());
+		return obj.getModuleId();
+	}
 }
