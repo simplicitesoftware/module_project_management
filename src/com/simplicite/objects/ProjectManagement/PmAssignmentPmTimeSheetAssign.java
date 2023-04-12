@@ -20,21 +20,23 @@ public class PmAssignmentPmTimeSheetAssign extends ObjectDB {
 	@Override
 	public List<String> postSaveTimesheet(Timesheet ts) {
 		Grant g = getGrant(); 
+		
 		List<String> msgs= new ArrayList<>();
         List<TimesheetLine> lines = ts.getCurrentLines();
 		try {
 			if (ts.getObjectResource1().getName().equals("PmUser")){
 				for(TimesheetLine tsLine: lines){
+					boolean[] oldcrud = g.changeAccess("PmAssignment",true,true,true,false);
 					ObjectDB tmpAss = g.getTmpObject("PmAssignment");
 					BusinessObjectTool ot = tmpAss.getTool();
-					if (ot.getForCreateOrUpdate(
-		                    new JSONObject()
-		                            .put("row_id", tsLine.getAssignRowId())
-		                            )) {
-										String conso = g.simpleQuery("select sum(tsh_total1) from pm_assignment_pm_time_sheet_assign where tsh_parent_id="+tsLine.getAssignRowId());
-										tmpAss.setFieldValue("pmAssConsumed",conso);
-			            				ot.validateAndSave();
-									}
+					if (ot.getForCreateOrUpdate(new JSONObject()
+		                .put("row_id", tsLine.getAssignRowId())
+		                )) {
+							String conso = g.simpleQuery("select sum(tsh_total1) from pm_assignment_pm_time_sheet_assign where tsh_parent_id="+tsLine.getAssignRowId());
+							tmpAss.setFieldValue("pmAssConsumed",conso);
+	        				ot.validateAndSave();
+						}
+					g.changeAccess("PmAssignment",oldcrud);
 				}
 			}
 		} catch (JSONException e) {
