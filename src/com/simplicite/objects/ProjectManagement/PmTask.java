@@ -210,7 +210,7 @@ public class PmTask extends ObjectDB {
 							.put("pmAssPmTaskid", sltTskId)
 							)) {
 							// Set functional keys fields
-							tmpAss.setFieldValue("pmAssPmUserid", sltUsrId);
+							//tmpAss.setFieldValue("pmAssPmUserid", sltUsrId);
 							tmpAss.setFieldValue("pmAssPmTaskid", sltTskId);
 						}
 						tmpAss.setFieldValue("pmAssRole", sltRole);
@@ -218,7 +218,7 @@ public class PmTask extends ObjectDB {
 						ot.validateAndSave();
 					} catch (Exception e) {
 						AppLog.error(e, getGrant());
-						msgs.add(e.toString());
+						msgs.add(Message.formatError("PM_ERR_TSK_SAVE_UP_ASSIGN", sltTskId, null));
 					}
 				}
 			}
