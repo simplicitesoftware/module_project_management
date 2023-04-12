@@ -13,8 +13,16 @@ import com.simplicite.util.tools.*;
  */
 public class PmTask extends ObjectDB {
 	private static final long serialVersionUID = 1L;
-	public int autoGenNumber(){
+	/*
+		Function for calculat Number of task 
+		(return the first none used number)
+	*/ 
+	public boolean isInt(String str){
+        return str.matches("[-,+]?\\d+");
+    }
+	public String autoGenNumber(){
 		int number =1;
+		int lenMax=0;
 		ObjectDB tmpTask = this.getGrant().getTmpObject("PmTask");
 		List<Integer> listExist= new ArrayList<>();
 		tmpTask.resetFilters();
@@ -22,13 +30,41 @@ public class PmTask extends ObjectDB {
 		synchronized(tmpTask){
 			for(String[] row : tmpTask.search()){// for all assignment invoke increaseUserNbtask methode to update the nbTask of user assigned on task
 				tmpTask.select(row[0]);
-				listExist.add(Integer.parseInt(tmpTask.getFieldValue("pmTskNumber")));
+				String strNum=tmpTask.getFieldValue("pmTskNumber");
+				if(isInt(strNum)){
+					listExist.add(Integer.parseInt(strNum));
+					if (lenMax < strNum.length() ){
+						lenMax = strNum.length();
+					}
+				}
 			}
 		}
 		while(listExist.contains(number)){
 			number+=1;
 		}
-		return number;
+		String strNum=String.valueOf(number);
+		if(strNum.length()> lenMax){
+			reFactorNumberForOrder(strNum.length());
+		}else{
+			while(strNum.length() < lenMax) strNum="0"+strNum;
+		}
+		return strNum;
+	}
+	public void reFactorNumberForOrder(int len){
+		ObjectDB tmpTask = this.getGrant().getTmpObject("PmTask");
+		tmpTask.resetFilters();
+		tmpTask.setFieldFilter("pmTskVrsId", getFieldValue("pmTskVrsId"));// number is unique per version
+		synchronized(tmpTask){
+			for(String[] row : tmpTask.search()){// for all assignment invoke increaseUserNbtask methode to update the nbTask of user assigned on task
+				tmpTask.select(row[0]);
+				String strNum=tmpTask.getFieldValue("pmTskNumber");
+				if(isInt(strNum) && strNum.length() < len){
+					while(strNum.length() < len) strNum="0"+strNum;
+					tmpTask.setFieldValue("pmTskNumber",strNum);
+					tmpTask.save();
+				}
+			}
+		}
 	}
 	@Override
 	public void initCreate() {
