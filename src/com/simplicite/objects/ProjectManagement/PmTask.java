@@ -197,28 +197,29 @@ public class PmTask extends ObjectDB {
 			String sltRole= getAction(ACT_ASSIGN).getConfirmField(getGrant().getLang(), "pmTskActAssRole").getValue();
 			String sltQuantity= getAction(ACT_ASSIGN).getConfirmField(getGrant().getLang(), "pmTskActAssQuantity").getValue();
 			String sltUsrId= sltUser[1];
-			for(String sltTskId:sltTsks){
-				try {
-					ObjectDB tmpAss= getGrant().getTmpObject("PmAssignment");
-					BusinessObjectTool ot = tmpAss.getTool();
-				
-					// Get an existing record or an empty record based on functional keys filters
-					// False means no record was found => creation
-					if (!ot.getForCreateOrUpdate(new JSONObject() // or its alias getForUpsert 
-						.put("pmAssPmUserid", sltUsrId)
-						.put("pmAssPmTaskid", sltTskId)
-						)) {
-						// Set functional keys fields
-						tmpAss.setFieldValue("pmAssPmUserid", sltUsrId);
-						tmpAss.setFieldValue("pmAssPmTaskid", sltTskId);
+			ObjectDB tmpAss= getGrant().getTmpObject("PmAssignment");
+			BusinessObjectTool ot = tmpAss.getTool();
+			synchronized(tmpAss){		
+				for(String sltTskId:sltTsks){
+					try {
+						
+						// Get an existing record or an empty record based on functional keys filters
+						// False means no record was found => creation
+						if (!ot.getForCreateOrUpdate(new JSONObject() // or its alias getForUpsert 
+							.put("pmAssPmUserid", sltUsrId)
+							.put("pmAssPmTaskid", sltTskId)
+							)) {
+							// Set functional keys fields
+							tmpAss.setFieldValue("pmAssPmUserid", sltUsrId);
+							tmpAss.setFieldValue("pmAssPmTaskid", sltTskId);
+						}
 						tmpAss.setFieldValue("pmAssRole", sltRole);
 						tmpAss.setFieldValue("pmAssQuantity", sltQuantity);
-						
+						ot.validateAndSave();
+					} catch (Exception e) {
+						AppLog.error(e, getGrant());
+						msgs.add(e.toString());
 					}
-					ot.validateAndSave();
-				} catch (Exception e) {
-					AppLog.error(e, getGrant());
-					msgs.add(e.toString());
 				}
 			}
 		}
