@@ -180,5 +180,23 @@ public class PmTask extends ObjectDB {
 		}
 		return msgs;
 	}
-
+	/*
+		Function of action PM_ASSIGN
+	*/ 
+	private static final String ACT_ASSIGN = "PM_ASSIGN"; 
+	public List<String> pmTaskAssign(){
+		List<String> selected= getSelectedIds();
+		List<String> msgs = new ArrayList<>();
+		
+		String[] sltUser= getAction(ACT_ASSIGN).getConfirmField(getGrant().getLang(), "pmTskActAssRole").getValue().split(":");
+		String[] sltRole= getAction(ACT_ASSIGN).getConfirmField(getGrant().getLang(), "pmTskActAssUser").getValue().split(":");
+		String[] sltQuantity= getAction(ACT_ASSIGN).getConfirmField(getGrant().getLang(), "pmTskActAssQuantity").getValue().split(":");
+		if(!sltUser[0].equals("PmUser")){
+			msgs.add(Message.formatError("PM_ERR_ASSIGN_OBJECT_TYPE", null, "pmTskActAssUser"));
+		}else{
+			AppLog.info("DEBUG: sltUser "+sltUser+", sltRole "+sltRole+", sltQuantity "+sltQuantity, getGrant());
+			AppLog.info("DEBUG: selectedid "+selected, getGrant());
+		}
+		return msgs;
+	}
 }
