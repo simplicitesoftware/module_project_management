@@ -188,8 +188,8 @@ public class PmTask extends ObjectDB {
 		List<String> selected= getSelectedIds();
 		List<String> msgs = new ArrayList<>();
 		
-		String[] sltUser= getAction(ACT_ASSIGN).getConfirmField(getGrant().getLang(), "pmTskActAssRole").getValue().split(":");
-		String[] sltRole= getAction(ACT_ASSIGN).getConfirmField(getGrant().getLang(), "pmTskActAssUser").getValue().split(":");
+		String[] sltUser= getAction(ACT_ASSIGN).getConfirmField(getGrant().getLang(), "pmTskActAssUser").getValue().split(":");
+		String[] sltRole= getAction(ACT_ASSIGN).getConfirmField(getGrant().getLang(), "pmTskActAssRole").getValue().split(":");
 		String[] sltQuantity= getAction(ACT_ASSIGN).getConfirmField(getGrant().getLang(), "pmTskActAssQuantity").getValue().split(":");
 		//DEBUG
 		String tmpMsg="DEBUG: sltUser ";
