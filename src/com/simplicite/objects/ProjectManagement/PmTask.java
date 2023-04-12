@@ -191,7 +191,14 @@ public class PmTask extends ObjectDB {
 		String[] sltUser= getAction(ACT_ASSIGN).getConfirmField(getGrant().getLang(), "pmTskActAssRole").getValue().split(":");
 		String[] sltRole= getAction(ACT_ASSIGN).getConfirmField(getGrant().getLang(), "pmTskActAssUser").getValue().split(":");
 		String[] sltQuantity= getAction(ACT_ASSIGN).getConfirmField(getGrant().getLang(), "pmTskActAssQuantity").getValue().split(":");
-		AppLog.info("DEBUG: sltUser "+sltUser+", sltRole "+sltRole+", sltQuantity "+sltQuantity, getGrant());
+		//DEBUG
+		String tmpMsg="DEBUG: sltUser ";
+		for (String tmp:sltUser) tmpMsg+=tmp+", ";
+		tmpMsg+="sltRole ";
+		for (String tmp:sltRole) tmpMsg+=tmp+", ";
+		tmpMsg+="sltQuantity ";
+		for (String tmp:sltQuantity) tmpMsg+=tmp+", ";
+		AppLog.info(tmpMsg, getGrant());
 		if(!sltUser[0].equals("PmUser")){
 			msgs.add(Message.formatError("PM_ERR_ASSIGN_OBJECT_TYPE", null, "pmTskActAssUser"));
 		}else{
