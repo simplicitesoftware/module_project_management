@@ -3,6 +3,8 @@ package com.simplicite.objects.ProjectManagement;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
+
+import org.json.JSONObject;
 import com.simplicite.util.*;
 import com.simplicite.util.tools.*;
 
@@ -185,25 +187,38 @@ public class PmTask extends ObjectDB {
 	*/ 
 	private static final String ACT_ASSIGN = "PM_ASSIGN"; 
 	public List<String> pmTaskAssign(){
-		List<String> selected= getSelectedIds();
+		List<String> sltTsks= getSelectedIds();
 		List<String> msgs = new ArrayList<>();
 		
 		String[] sltUser= getAction(ACT_ASSIGN).getConfirmField(getGrant().getLang(), "pmTskActAssUser").getValue().split(":");
-		String[] sltRole= getAction(ACT_ASSIGN).getConfirmField(getGrant().getLang(), "pmTskActAssRole").getValue().split(":");
-		String[] sltQuantity= getAction(ACT_ASSIGN).getConfirmField(getGrant().getLang(), "pmTskActAssQuantity").getValue().split(":");
-		//DEBUG
-		String tmpMsg="DEBUG: sltUser ";
-		for (String tmp:sltUser) tmpMsg+=tmp+", ";
-		tmpMsg+="sltRole ";
-		for (String tmp:sltRole) tmpMsg+=tmp+", ";
-		tmpMsg+="sltQuantity ";
-		for (String tmp:sltQuantity) tmpMsg+=tmp+", ";
-		AppLog.info(tmpMsg, getGrant());
 		if(!sltUser[0].equals("PmUser")){
 			msgs.add(Message.formatError("PM_ERR_ASSIGN_OBJECT_TYPE", null, "pmTskActAssUser"));
 		}else{
-			
-			AppLog.info("DEBUG: selectedid "+selected, getGrant());
+			String sltRole= getAction(ACT_ASSIGN).getConfirmField(getGrant().getLang(), "pmTskActAssRole").getValue();
+			String sltQuantity= getAction(ACT_ASSIGN).getConfirmField(getGrant().getLang(), "pmTskActAssQuantity").getValue();
+			String sltUsrId= sltUser[1];
+			for(String sltTskId:sltTsks){
+				try {
+					ObjectDB tmpAss= getGrant().getTmpObject("PmAssignment");
+					BusinessObjectTool ot = tmpAss.getTool();
+				
+					// Get an existing record or an empty record based on functional keys filters
+					// False means no record was found => creation
+					if (!ot.getForCreateOrUpdate(new JSONObject() // or its alias getForUpsert 
+						.put("pmAssPmUserid", sltUsrId)
+						.put("pmAssPmTaskid", sltTskId)
+						)) {
+						// Set functional keys fields
+						tmpAss.setFieldValue("pmAssRole", sltRole);
+						tmpAss.setFieldValue("pmAssQuantity", sltQuantity);
+						
+					}
+					ot.validateAndSave();
+				} catch (Exception e) {
+					AppLog.error(e, getGrant());
+					msgs.add(e.toString());
+				}
+			}
 		}
 		return msgs;
 	}
