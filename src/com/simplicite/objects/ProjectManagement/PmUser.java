@@ -9,13 +9,12 @@ import com.simplicite.objects.System.*;
  */
 public class PmUser extends SimpleUser {
 	private static final long serialVersionUID = 1L;
-	
 	@Override
-	public void initCreate() {
-		// TODO Auto-generated method stub
-		this.setFieldValue("row_module_id", this.getModuleId());
-		super.initCreate();
+	public void postLoad() {
+		getField("row_module_id").setDefaultValue(this.getModuleId());
+		super.postLoad();
 	}
+	
 	/* 
 		Fonctions for update pmUsrNbTask
 	 */
