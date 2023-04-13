@@ -329,6 +329,11 @@ paths:
         description: Search filter for Budget
         type: number
         required: false
+      - in: query
+        name: pmPrjTestCalcul
+        description: Search filter for TestCalcul
+        type: string
+        required: false
       tags:
       - PmProject
   /rest/PmDocument:
@@ -4286,6 +4291,9 @@ definitions:
         - SERVICEA
         - SERVICEB
         - SERVICEC
+      pmPrjTestCalcul:
+        description: TestCalcul
+        type: string
       row_id:
         description: Unique technical row ID
         type: string

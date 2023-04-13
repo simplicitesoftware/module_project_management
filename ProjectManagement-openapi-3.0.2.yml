@@ -680,6 +680,9 @@ components:
           - SERVICEA
           - SERVICEB
           - SERVICEC
+        pmPrjTestCalcul:
+          description: TestCalcul
+          type: string
         row_id:
           description: Unique technical row ID
           type: string
@@ -1181,6 +1184,12 @@ paths:
         in: query
         name: pmPrjBudget
         description: Search filter for Budget
+        required: false
+      - schema:
+          type: string
+        in: query
+        name: pmPrjTestCalcul
+        description: Search filter for TestCalcul
         required: false
       tags:
       - PmProject
