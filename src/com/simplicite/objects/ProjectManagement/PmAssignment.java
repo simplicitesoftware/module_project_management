@@ -1,6 +1,7 @@
 package com.simplicite.objects.ProjectManagement;
 
 import com.simplicite.util.*;
+import com.simplicite.util.exceptions.MethodException;
 /**
  * Business object PmAssignment
  */
@@ -52,7 +53,7 @@ public class PmAssignment extends ObjectDB {
             tmpUser.select(this.getFieldValue("pmAssPmUserid"));
 			try {
 				tmpUser.invokeMethod("increaseNbTask",null, null);
-			} catch (Exception e) {
+			} catch (MethodException e) {
 				AppLog.error(getClass(),"increaseUserNbTask","invokeMethod exception",e, getGrant());
 			}
 			
@@ -66,7 +67,7 @@ public class PmAssignment extends ObjectDB {
             tmpUser.select(this.getFieldValue("pmAssPmUserid"));
 			try {
 				tmpUser.invokeMethod("decreaseNbTask",null, null);
-			} catch (Exception e) {
+			} catch (MethodException e) {
 				AppLog.error(getClass(),"decreaseUserNbTask","invokeMethod exception",e, getGrant());
 			}
 			

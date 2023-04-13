@@ -3,8 +3,10 @@ package com.simplicite.objects.ProjectManagement;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
-import org.json.JSONObject;
+
+import org.json.*;
 import com.simplicite.util.*;
+import com.simplicite.util.exceptions.*;
 import com.simplicite.util.tools.*;
 
 /**
@@ -104,7 +106,7 @@ public class PmTask extends ObjectDB {
 					tmpAssignment.select(row[0]);
 					try {
 						tmpAssignment.invokeMethod("increaseUserNbTask",null, null);
-					} catch (Exception e) {
+					} catch (MethodException e) {
 						AppLog.error(getClass(),"postUpdate","invokeMethod exception",e, getGrant());
 					}
 					tmpAssignment.save();
@@ -120,7 +122,7 @@ public class PmTask extends ObjectDB {
 					tmpAssignment.select(row[0]);
 					try {
 						tmpAssignment.invokeMethod("decreaseUserNbTask",null, null);
-					} catch (Exception e) {
+					} catch (MethodException e) {
 						AppLog.error(getClass(),"postUpdate","invokeMethod exception",e, getGrant());
 					}
 					tmpAssignment.save();
@@ -143,7 +145,7 @@ public class PmTask extends ObjectDB {
 					tmpAssignment.select(row[0]);
 					try {
 						tmpAssignment.invokeMethod("decreaseUserNbTask",null, null);
-					} catch (Exception e) {
+					} catch (MethodException e) {
 						AppLog.error(getClass(),"postUpdate","invokeMethod exception",e, getGrant());
 					}
 					tmpAssignment.save();
@@ -201,7 +203,7 @@ public class PmTask extends ObjectDB {
 					for(String[] row : tmpMsg.search()){
 						try {
 							ot.getForDelete(row[0]);
-						} catch (Exception e) {
+						} catch (GetException e) {
 							msgs.add(Message.formatError(null,e.toString(),null));
 							continue;
 						}
@@ -251,7 +253,7 @@ public class PmTask extends ObjectDB {
 						tmpAss.setFieldValue("pmAssRole", sltRole);
 						tmpAss.setFieldValue("pmAssQuantity", sltQuantity);
 						ot.validateAndSave();
-					} catch (Exception e) {
+					} catch (JSONException|GetException|ValidateException|SaveException e) {
 						AppLog.error(e, getGrant());
 						msgs.add(Message.formatError("PM_ERR_TSK_SAVE_UP_ASSIGN", sltTskId, null));
 					}

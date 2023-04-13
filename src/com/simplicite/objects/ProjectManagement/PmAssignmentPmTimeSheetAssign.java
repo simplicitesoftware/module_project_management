@@ -2,8 +2,7 @@ package com.simplicite.objects.ProjectManagement;
 
 import java.util.*;
 
-import org.json.JSONException;
-import org.json.JSONObject;
+import org.json.*;
 
 import com.simplicite.util.*;
 import com.simplicite.util.Timesheet.*;

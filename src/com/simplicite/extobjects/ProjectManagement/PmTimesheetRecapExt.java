@@ -1,9 +1,7 @@
 package com.simplicite.extobjects.ProjectManagement;
 
-import java.util.*;
 
 import com.simplicite.util.*;
-import com.simplicite.util.exceptions.*;
 import com.simplicite.util.tools.*;
 
 /**
@@ -21,13 +19,9 @@ public class PmTimesheetRecapExt extends ExternalObject { // or com.simplicite.w
 	@Override
 	public Object display(Parameters params) {
 		AppLog.info("DEBUG in dysplay PmTimesheetRecapExt", getGrant());
-		try {
-			// ctn is the "div.extern-content" to fill on UI
-			addMustache();
-			return javascript(getName() + ".render(ctn);");
-		} catch (Exception e) {
-			AppLog.error(null, e, getGrant());
-			return e.getMessage();
-		}
+		// ctn is the "div.extern-content" to fill on UI
+		addMustache();
+		return javascript(getName() + ".render(ctn);");
+		
 	}
 }
