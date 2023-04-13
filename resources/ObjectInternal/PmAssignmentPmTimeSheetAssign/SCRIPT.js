@@ -10,8 +10,7 @@
 			console.log("PmAssignmentPmTimeSheetAssign hooks loading...");
 			var p = o.locals.ui;
 			if (p && o.isMainInstance()) {
-				p.form.onload = function(ctn, obj, params) {
-					var app = $ui.getAjax(); 
+				p.form.onload = function(ctn, obj, params) { 
 					var extobj = "PmTimesheetRecapExt"; 
 					var embedded = true; 
 					var param = null; 

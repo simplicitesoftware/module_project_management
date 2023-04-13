@@ -3,7 +3,6 @@ package com.simplicite.objects.ProjectManagement;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
-
 import org.json.JSONObject;
 import com.simplicite.util.*;
 import com.simplicite.util.tools.*;

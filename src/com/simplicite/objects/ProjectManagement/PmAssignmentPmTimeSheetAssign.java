@@ -39,16 +39,7 @@ public class PmAssignmentPmTimeSheetAssign extends ObjectDB {
 					g.changeAccess("PmAssignment",oldcrud);
 				}
 			}
-		} catch (JSONException e) {
-			msgs.add(Message.formatError("PM_ERR_EXPTION_TS", null, null));
-			AppLog.error("postSaveTimesheet", e, g);
-		} catch (GetException e) {
-			msgs.add(Message.formatError("PM_ERR_EXPTION_TS", null, null));
-			AppLog.error("postSaveTimesheet", e, g);
-		} catch (ValidateException e) {
-			msgs.add(Message.formatError("PM_ERR_EXPTION_TS", null, null));
-			AppLog.error("postSaveTimesheet", e, g);
-		} catch (SaveException e) {
+		} catch (JSONException|GetException|ValidateException|SaveException e) {
 			msgs.add(Message.formatError("PM_ERR_EXPTION_TS", null, null));
 			AppLog.error("postSaveTimesheet", e, g);
 		}

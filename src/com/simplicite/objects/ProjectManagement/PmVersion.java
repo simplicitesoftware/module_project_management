@@ -90,7 +90,7 @@ public class PmVersion extends ObjectDB {
 		Function of action PM_DEFER_TASK
 	*/ 
 	public String deferTask(){
-		String msg = new String();
+		String msg = "";
 		String[] selected= getAction("PM_DEFER_TASK").getConfirmField(getGrant().getLang(), "pmDtVrsVersion").getValue().split(":");
 		if(!selected[0].equals("PmVersion")){
 			msg= Message.formatError("PM_ERR_DEFER_TASK_OBJECT_TYPE", null, "pmVrsStatus");

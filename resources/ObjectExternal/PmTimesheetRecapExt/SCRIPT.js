@@ -4,10 +4,9 @@ var PmTimesheetRecapExt = PmTimesheetRecapExt || (function($) {
     function render(params) {
         var userid =$ui.grant.getUserID();
         try {
-			//if (typeof Mustache === 'undefined') throw 'Mustache not available';
+			if (typeof Mustache === 'undefined') throw 'Mustache not available';
             var div=$('#recap')
             var template =$('#pm-ass-template').html();
-            //template='{{#listNotEmpty}}<div class="container"><div class="table"><div class="table-content">	<div class="table-header"><div class="header__item">{{labelRole}}</div><div class="header__item ">{{labelQuantity}}</div><div class="header__item">{{labelConsumed}}</div><div class="header__item"></div></div>{{#ass}}<div class="table-row">		<div class="table-data ">{{pmAssRole}}</div><div class="table-data ">{{pmAssQuantity}}</div><div class="table-data ">{{pmAssConsumed}}</div><div class="table-data ">{{#setProgress}}<progress value="{{pmAssConsumed}}" max="{{pmAssQuantity}}"></progress>{{/setProgress}}</div></div>{{/ass}}</div>	</div></div>{{/listNotEmpty}}'
             if (userid) {
                 // Search the client
                 app = $ui.getAjax();
@@ -33,30 +32,30 @@ var PmTimesheetRecapExt = PmTimesheetRecapExt || (function($) {
             labelConsumed:'Consumed',
             listNotEmpty: false,
             ass: []
-        };
+        }
         if (lang == "FRA"){
             data.labelRole = "Rôle";
             data.labelQuantity = "Droit";
             data.labelConsumed = "Consommée";
-        };
+        }
         if (list && list.length){
             data.listNotEmpty = true;
-            list.forEach(ass => data.ass.push(function(ass){
+            list.forEach(ass => data.ass.push(function(assign){
                 var objAss = {
-                    pmAssRole: ass.pmAssRole,
-                    pmAssConsumed: ass.pmAssConsumed,
+                    pmAssRole: assign.pmAssRole,
+                    pmAssConsumed: assign.pmAssConsumed,
                     pmAssQuantity:' ',
                     setProgress:false
                 };
                 
-                if(ass.pmAssQuantity){
+                if(assign.pmAssQuantity){
                     objAss.setProgress=true;
-                    objAss.pmAssQuantity =ass.pmAssQuantity;
+                    objAss.pmAssQuantity =assign.pmAssQuantity;
                 }
                 return objAss;
             }(ass)));
             
-        };
+        }
         return data;
     }
     return { render: render };

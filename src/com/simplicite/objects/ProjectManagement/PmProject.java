@@ -21,17 +21,18 @@ public class PmProject extends ObjectDB {
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 		String now = dateObj.format(formatter);
 		JSONObject projectJson= new JSONObject();
+		String objTask ="PmTask";
 		projectJson.put("pmPrjName",getFieldValue("pmPrjName"));
 		projectJson.put("timeStamp",now);
 		projectJson.put("labelPublicationDate",getGrant().getTmpObject("PmVersion").getField("pmVrsPublicationDate").getDisplay());
-		projectJson.put("labelNumber",getGrant().getTmpObject("PmTask").getField("pmTskNumber").getDisplay());
-		projectJson.put("labelTitle",getGrant().getTmpObject("PmTask").getField("pmTskTitle").getDisplay());
-		projectJson.put("labelDescription",getGrant().getTmpObject("PmTask").getField("pmTskDescription").getDisplay());
-		projectJson.put("labelStatus",getGrant().getTmpObject("PmTask").getField("pmTskStatus").getDisplay());
-		projectJson.put("labelPriority",getGrant().getTmpObject("PmTask").getField("pmTskPriority").getDisplay());
-		projectJson.put("labelCreationDate",getGrant().getTmpObject("PmTask").getField("pmTskCreation").getDisplay());
-		projectJson.put("labelEffectiveClosingDate",getGrant().getTmpObject("PmTask").getField("pmTskEffectiveClosingDate").getDisplay());
-		projectJson.put("labelExpetedDuration",getGrant().getTmpObject("PmTask").getField("pmTskExpectedDuration").getDisplay());
+		projectJson.put("labelNumber",getGrant().getTmpObject(objTask).getField("pmTskNumber").getDisplay());
+		projectJson.put("labelTitle",getGrant().getTmpObject(objTask).getField("pmTskTitle").getDisplay());
+		projectJson.put("labelDescription",getGrant().getTmpObject(objTask).getField("pmTskDescription").getDisplay());
+		projectJson.put("labelStatus",getGrant().getTmpObject(objTask).getField("pmTskStatus").getDisplay());
+		projectJson.put("labelPriority",getGrant().getTmpObject(objTask).getField("pmTskPriority").getDisplay());
+		projectJson.put("labelCreationDate",getGrant().getTmpObject(objTask).getField("pmTskCreation").getDisplay());
+		projectJson.put("labelEffectiveClosingDate",getGrant().getTmpObject(objTask).getField("pmTskEffectiveClosingDate").getDisplay());
+		projectJson.put("labelExpetedDuration",getGrant().getTmpObject(objTask).getField("pmTskExpectedDuration").getDisplay());
 		projectJson.put("labelLabels",getGrant().getTmpObject("PmLabel").getPluralDisplay());
 
 		ObjectDB tmpVrs = this.getGrant().getTmpObject("PmVersion");
@@ -46,7 +47,7 @@ public class PmProject extends ObjectDB {
 				versionJson.put("pmVrsVersion",tmpVrs.getFieldValue("pmVrsVersion"));
 				versionJson.put("pmVrsPublicationDate",tmpVrs.getFieldValue("pmVrsPublicationDate"));
 				JSONArray taskArray = new JSONArray();
-				ObjectDB tmpTsk = this.getGrant().getTmpObject("PmTask");
+				ObjectDB tmpTsk = this.getGrant().getTmpObject(objTask);
 				synchronized(tmpTsk){
 					tmpTsk.resetFilters();
 					tmpTsk.setFieldFilter("pmTskVrsId", tmpVrs.getRowId());
@@ -84,7 +85,7 @@ public class PmProject extends ObjectDB {
 				}
 				
 				versionJson.put("NotEmpty",!Tool.isEmpty(taskArray));
-				versionJson.put("PmTask",taskArray);
+				versionJson.put(objTask,taskArray);
 				versionArray.put(versionJson);
 			}
 			projectJson.put("PmVersion", versionArray );
