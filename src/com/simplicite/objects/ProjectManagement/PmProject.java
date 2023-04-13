@@ -2,9 +2,8 @@ package com.simplicite.objects.ProjectManagement;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import org.json.*;
 
-import com.github.openjson.JSONArray;
-import com.github.openjson.JSONObject;
 import com.simplicite.util.*;
 import com.simplicite.util.tools.*;
 

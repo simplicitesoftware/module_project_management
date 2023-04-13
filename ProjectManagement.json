@@ -242,6 +242,7 @@
       "usr_menu_defdomain_id__obd_name": "PmDomain",
       "usr_last_logon": "2023-04-13 11:47:24",
       "usr_dateformat": null,
+      "usr_numformat": null,
       "usr_lang_pref": "FRA",
       "usr_mfa_method": null,
       "usr_mfa_settings": {}
@@ -276,8 +277,9 @@
       "usr_menu": true,
       "usr_menu_defcollapsed": null,
       "usr_menu_defdomain_id__obd_name": null,
-      "usr_last_logon": "2023-04-13 13:41:02",
+      "usr_last_logon": "2023-04-13 17:04:06",
       "usr_dateformat": null,
+      "usr_numformat": null,
       "usr_lang_pref": "FRA",
       "usr_mfa_method": null,
       "usr_mfa_settings": {}
@@ -312,8 +314,9 @@
       "usr_menu": true,
       "usr_menu_defcollapsed": null,
       "usr_menu_defdomain_id__obd_name": "PmDomain",
-      "usr_last_logon": "2023-04-13 11:48:22",
+      "usr_last_logon": "2023-04-13 14:30:10",
       "usr_dateformat": null,
+      "usr_numformat": null,
       "usr_lang_pref": "FRA",
       "usr_mfa_method": null,
       "usr_mfa_settings": {}
@@ -329,57 +332,15 @@
    "list": [
     {
      "object": "UserSysParam",
-     "userkey": "CLIENT_ID",
+     "userkey": "PmManager~DISPOSITION",
      "item": {
-      "usp_user_id__usr_login": null,
-      "usp_param_id__sys_code": "CLIENT_ID",
-      "usp_value": "[{\n \"dt\": \"2023-04-13 10:31:03\",\n \"ag\": \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36\",\n \"id\": \"ogovknccmgkya3zxay9see6s39be4hzt7wmz70z8slyoxqh0hx4umr2w33irl1vz1680618811018\"\n}]",
-      "usp_param_id__sys_type": null,
-      "usp_param_id__sys_value": "empty",
-      "usp_param_id__sys_value2": null,
-      "usp_param_id__sys_desc": null,
-      "row_module_id__mdl_name": "ProjectManagement"
-     }
-    },
-    {
-     "object": "UserSysParam",
-     "userkey": "HISTORY",
-     "item": {
-      "usp_user_id__usr_login": null,
-      "usp_param_id__sys_code": "HISTORY",
-      "usp_value": "[]",
-      "usp_param_id__sys_type": "APP",
-      "usp_param_id__sys_value": "empty",
-      "usp_param_id__sys_value2": null,
-      "usp_param_id__sys_desc": "User navigation history",
-      "row_module_id__mdl_name": "ProjectManagement"
-     }
-    },
-    {
-     "object": "UserSysParam",
-     "userkey": "HISTORY PmUserHome",
-     "item": {
-      "usp_user_id__usr_login": null,
-      "usp_param_id__sys_code": "HISTORY PmUserHome",
-      "usp_value": "[{\"object\":\"PmVersion\",\"rowId\":\"22\",\"label\":\"Release : 0.1 Certification\"},\n{\"object\":\"PmProject\",\"rowId\":\"6\",\"label\":\"Project : Certification\"},\n{\"object\":\"PmTask\",\"rowId\":\"75\",\"label\":\"Task : T1\"},\n{\"object\":\"PmVersion\",\"rowId\":\"23\",\"label\":\"Release : 0.2 Certification\"}]",
-      "usp_param_id__sys_type": null,
-      "usp_param_id__sys_value": "empty",
-      "usp_param_id__sys_value2": null,
-      "usp_param_id__sys_desc": null,
-      "row_module_id__mdl_name": "ProjectManagement"
-     }
-    },
-    {
-     "object": "UserSysParam",
-     "userkey": "SCOPE_PREFS",
-     "item": {
-      "usp_user_id__usr_login": null,
-      "usp_param_id__sys_code": "SCOPE_PREFS",
-      "usp_value": "PmUserHome",
+      "usp_user_id__usr_login": "PmManager",
+      "usp_param_id__sys_code": "DISPOSITION",
+      "usp_value": null,
       "usp_param_id__sys_type": "LFL",
-      "usp_param_id__sys_value": "empty",
+      "usp_param_id__sys_value": "default",
       "usp_param_id__sys_value2": null,
-      "usp_param_id__sys_desc": "Technical, do not change/remove, needed in user's parameters",
+      "usp_param_id__sys_desc": "Webapp disposition, ex: default, myapp, ...",
       "row_module_id__mdl_name": "ProjectManagement"
      }
     },
@@ -403,25 +364,11 @@
      "item": {
       "usp_user_id__usr_login": "PmReader",
       "usp_param_id__sys_code": "CLIENT_ID",
-      "usp_value": "[\n {\n  \"dt\": \"2023-04-12 10:08:52\",\n  \"ag\": \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36\",\n  \"id\": \"ogovknccmgkya3zxay9see6s39be4hzt7wmz70z8slyoxqh0hx4umr2w33irl1vz1680618811018\"\n },\n {\n  \"dt\": \"2023-04-13 11:48:22\",\n  \"ag\": \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36\",\n  \"id\": \"l94lz9s15dzvn2b7blz9hgdq8mq3yhu34z4ym8tk4i2gpvwj3ec1o6alqpr14p8e1681375963515\"\n }\n]",
+      "usp_value": "[\n {\n  \"dt\": \"2023-04-12 10:08:52\",\n  \"ag\": \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36\",\n  \"id\": \"ogovknccmgkya3zxay9see6s39be4hzt7wmz70z8slyoxqh0hx4umr2w33irl1vz1680618811018\"\n },\n {\n  \"dt\": \"2023-04-13 14:30:10\",\n  \"ag\": \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36\",\n  \"id\": \"l94lz9s15dzvn2b7blz9hgdq8mq3yhu34z4ym8tk4i2gpvwj3ec1o6alqpr14p8e1681375963515\"\n }\n]",
       "usp_param_id__sys_type": null,
       "usp_param_id__sys_value": "empty",
       "usp_param_id__sys_value2": null,
       "usp_param_id__sys_desc": null,
-      "row_module_id__mdl_name": "ProjectManagement"
-     }
-    },
-    {
-     "object": "UserSysParam",
-     "userkey": "PmReader~DISPOSITION",
-     "item": {
-      "usp_user_id__usr_login": "PmReader",
-      "usp_param_id__sys_code": "DISPOSITION",
-      "usp_value": null,
-      "usp_param_id__sys_type": "LFL",
-      "usp_param_id__sys_value": "default",
-      "usp_param_id__sys_value2": null,
-      "usp_param_id__sys_desc": "Webapp disposition, ex: default, myapp, ...",
       "row_module_id__mdl_name": "ProjectManagement"
      }
     },
@@ -474,6 +421,62 @@
       "usp_user_id__usr_login": "PmReader",
       "usp_param_id__sys_code": "SCOPE_PREFS",
       "usp_value": "PmReaderHome",
+      "usp_param_id__sys_type": "LFL",
+      "usp_param_id__sys_value": "empty",
+      "usp_param_id__sys_value2": null,
+      "usp_param_id__sys_desc": "Technical, do not change/remove, needed in user's parameters",
+      "row_module_id__mdl_name": "ProjectManagement"
+     }
+    },
+    {
+     "object": "UserSysParam",
+     "userkey": "TESt~CLIENT_ID",
+     "item": {
+      "usp_user_id__usr_login": "TESt",
+      "usp_param_id__sys_code": "CLIENT_ID",
+      "usp_value": "[\n {\n  \"dt\": \"2023-04-13 10:31:03\",\n  \"ag\": \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36\",\n  \"id\": \"ogovknccmgkya3zxay9see6s39be4hzt7wmz70z8slyoxqh0hx4umr2w33irl1vz1680618811018\"\n },\n {\n  \"dt\": \"2023-04-13 14:30:21\",\n  \"ag\": \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36\",\n  \"id\": \"l94lz9s15dzvn2b7blz9hgdq8mq3yhu34z4ym8tk4i2gpvwj3ec1o6alqpr14p8e1681375963515\"\n }\n]",
+      "usp_param_id__sys_type": null,
+      "usp_param_id__sys_value": "empty",
+      "usp_param_id__sys_value2": null,
+      "usp_param_id__sys_desc": null,
+      "row_module_id__mdl_name": "ProjectManagement"
+     }
+    },
+    {
+     "object": "UserSysParam",
+     "userkey": "TESt~HISTORY",
+     "item": {
+      "usp_user_id__usr_login": "TESt",
+      "usp_param_id__sys_code": "HISTORY",
+      "usp_value": "[]",
+      "usp_param_id__sys_type": "APP",
+      "usp_param_id__sys_value": "empty",
+      "usp_param_id__sys_value2": null,
+      "usp_param_id__sys_desc": "User navigation history",
+      "row_module_id__mdl_name": "ProjectManagement"
+     }
+    },
+    {
+     "object": "UserSysParam",
+     "userkey": "TESt~HISTORY PmUserHome",
+     "item": {
+      "usp_user_id__usr_login": "TESt",
+      "usp_param_id__sys_code": "HISTORY PmUserHome",
+      "usp_value": "[{\"object\":\"PmTask\",\"rowId\":\"65\",\"label\":\"Tâche : T2\"},\n{\"object\":\"PmTask\",\"rowId\":\"64\",\"label\":\"Tâche : T1\"},\n{\"object\":\"PmTask\",\"rowId\":\"67\",\"label\":\"Tâche : T1\"},\n{\"object\":\"PmProject\",\"rowId\":\"6\",\"label\":\"Project : Certification\"},\n{\"object\":\"PmVersion\",\"rowId\":\"22\",\"label\":\"Release : 0.1 Certification\"},\n{\"object\":\"PmTask\",\"rowId\":\"75\",\"label\":\"Task : T1\"},\n{\"object\":\"PmVersion\",\"rowId\":\"23\",\"label\":\"Release : 0.2 Certification\"}]",
+      "usp_param_id__sys_type": null,
+      "usp_param_id__sys_value": "empty",
+      "usp_param_id__sys_value2": null,
+      "usp_param_id__sys_desc": null,
+      "row_module_id__mdl_name": "ProjectManagement"
+     }
+    },
+    {
+     "object": "UserSysParam",
+     "userkey": "TESt~SCOPE_PREFS",
+     "item": {
+      "usp_user_id__usr_login": "TESt",
+      "usp_param_id__sys_code": "SCOPE_PREFS",
+      "usp_value": "PmUserHome",
       "usp_param_id__sys_type": "LFL",
       "usp_param_id__sys_value": "empty",
       "usp_param_id__sys_value2": null,
@@ -584,7 +587,10 @@
      "shc_url": "[EXPR:HTMLPage.getExternalObjectURL(\"MDViewer\", \"doc=PROJECTMANAGEMENT\")]",
      "shc_target": "_blank",
      "shc_order": 145,
-     "shc_visible": "1",
+     "shc_visible": [
+      "P",
+      "H"
+     ],
      "shc_icon": "fas/book",
      "shc_keys": null,
      "row_module_id__mdl_name": "ProjectManagement"
@@ -1981,6 +1987,7 @@
       "fld_more": false,
       "fld_listmore": false,
       "fld_listsum": null,
+      "fld_exportable": true,
       "fld_tray": null,
       "fld_type": "0",
       "fld_type_id__flt_code": null,
@@ -2003,7 +2010,8 @@
       "fld_objlist": null,
       "fld_comment": null,
       "fld_classification": null,
-      "row_module_id__mdl_name": "ProjectManagement"
+      "row_module_id__mdl_name": "ProjectManagement",
+      "fld_incrementsyntax": null
      }
     },
     {
@@ -2025,6 +2033,7 @@
       "fld_more": false,
       "fld_listmore": false,
       "fld_listsum": null,
+      "fld_exportable": true,
       "fld_tray": null,
       "fld_type": "0",
       "fld_type_id__flt_code": null,
@@ -2047,7 +2056,8 @@
       "fld_objlist": null,
       "fld_comment": null,
       "fld_classification": null,
-      "row_module_id__mdl_name": "ProjectManagement"
+      "row_module_id__mdl_name": "ProjectManagement",
+      "fld_incrementsyntax": null
      }
     },
     {
@@ -2066,6 +2076,7 @@
       "fld_more": false,
       "fld_listmore": false,
       "fld_listsum": null,
+      "fld_exportable": true,
       "fld_tray": null,
       "fld_type": "2",
       "fld_type_id__flt_code": null,
@@ -2088,7 +2099,8 @@
       "fld_objlist": null,
       "fld_comment": null,
       "fld_classification": null,
-      "row_module_id__mdl_name": "ProjectManagement"
+      "row_module_id__mdl_name": "ProjectManagement",
+      "fld_incrementsyntax": null
      }
     },
     {
@@ -2111,6 +2123,7 @@
       "fld_more": false,
       "fld_listmore": false,
       "fld_listsum": null,
+      "fld_exportable": true,
       "fld_tray": null,
       "fld_type": "0",
       "fld_type_id__flt_code": null,
@@ -2133,7 +2146,8 @@
       "fld_objlist": null,
       "fld_comment": null,
       "fld_classification": null,
-      "row_module_id__mdl_name": "ProjectManagement"
+      "row_module_id__mdl_name": "ProjectManagement",
+      "fld_incrementsyntax": null
      }
     },
     {
@@ -2157,6 +2171,7 @@
       "fld_more": false,
       "fld_listmore": false,
       "fld_listsum": null,
+      "fld_exportable": true,
       "fld_tray": null,
       "fld_type": "0",
       "fld_type_id__flt_code": null,
@@ -2179,7 +2194,8 @@
       "fld_objlist": null,
       "fld_comment": null,
       "fld_classification": null,
-      "row_module_id__mdl_name": "ProjectManagement"
+      "row_module_id__mdl_name": "ProjectManagement",
+      "fld_incrementsyntax": null
      }
     },
     {
@@ -2198,6 +2214,7 @@
       "fld_more": false,
       "fld_listmore": false,
       "fld_listsum": null,
+      "fld_exportable": true,
       "fld_tray": null,
       "fld_type": "2",
       "fld_type_id__flt_code": null,
@@ -2220,7 +2237,8 @@
       "fld_objlist": null,
       "fld_comment": null,
       "fld_classification": null,
-      "row_module_id__mdl_name": "ProjectManagement"
+      "row_module_id__mdl_name": "ProjectManagement",
+      "fld_incrementsyntax": null
      }
     },
     {
@@ -2239,6 +2257,7 @@
       "fld_more": false,
       "fld_listmore": false,
       "fld_listsum": null,
+      "fld_exportable": true,
       "fld_tray": null,
       "fld_type": "7",
       "fld_type_id__flt_code": null,
@@ -2261,7 +2280,8 @@
       "fld_objlist": null,
       "fld_comment": null,
       "fld_classification": null,
-      "row_module_id__mdl_name": "ProjectManagement"
+      "row_module_id__mdl_name": "ProjectManagement",
+      "fld_incrementsyntax": null
      }
     },
     {
@@ -2283,6 +2303,7 @@
       "fld_more": false,
       "fld_listmore": false,
       "fld_listsum": null,
+      "fld_exportable": true,
       "fld_tray": null,
       "fld_type": "17",
       "fld_type_id__flt_code": null,
@@ -2305,7 +2326,8 @@
       "fld_objlist": null,
       "fld_comment": null,
       "fld_classification": null,
-      "row_module_id__mdl_name": "ProjectManagement"
+      "row_module_id__mdl_name": "ProjectManagement",
+      "fld_incrementsyntax": null
      }
     },
     {
@@ -2327,6 +2349,7 @@
       "fld_more": false,
       "fld_listmore": false,
       "fld_listsum": null,
+      "fld_exportable": true,
       "fld_tray": null,
       "fld_type": "0",
       "fld_type_id__flt_code": null,
@@ -2349,7 +2372,8 @@
       "fld_objlist": null,
       "fld_comment": null,
       "fld_classification": null,
-      "row_module_id__mdl_name": "ProjectManagement"
+      "row_module_id__mdl_name": "ProjectManagement",
+      "fld_incrementsyntax": null
      }
     },
     {
@@ -2371,6 +2395,7 @@
       "fld_more": false,
       "fld_listmore": false,
       "fld_listsum": null,
+      "fld_exportable": true,
       "fld_tray": null,
       "fld_type": "3",
       "fld_type_id__flt_code": null,
@@ -2393,7 +2418,8 @@
       "fld_objlist": null,
       "fld_comment": null,
       "fld_classification": null,
-      "row_module_id__mdl_name": "ProjectManagement"
+      "row_module_id__mdl_name": "ProjectManagement",
+      "fld_incrementsyntax": null
      }
     },
     {
@@ -2415,6 +2441,7 @@
       "fld_more": false,
       "fld_listmore": false,
       "fld_listsum": null,
+      "fld_exportable": true,
       "fld_tray": null,
       "fld_type": "0",
       "fld_type_id__flt_code": null,
@@ -2437,7 +2464,8 @@
       "fld_objlist": null,
       "fld_comment": null,
       "fld_classification": null,
-      "row_module_id__mdl_name": "ProjectManagement"
+      "row_module_id__mdl_name": "ProjectManagement",
+      "fld_incrementsyntax": null
      }
     },
     {
@@ -2456,6 +2484,7 @@
       "fld_more": false,
       "fld_listmore": false,
       "fld_listsum": null,
+      "fld_exportable": true,
       "fld_tray": null,
       "fld_type": "24",
       "fld_type_id__flt_code": null,
@@ -2478,7 +2507,8 @@
       "fld_objlist": "PmVersion",
       "fld_comment": null,
       "fld_classification": null,
-      "row_module_id__mdl_name": "ProjectManagement"
+      "row_module_id__mdl_name": "ProjectManagement",
+      "fld_incrementsyntax": null
      }
     },
     {
@@ -2500,6 +2530,7 @@
       "fld_more": false,
       "fld_listmore": false,
       "fld_listsum": null,
+      "fld_exportable": true,
       "fld_tray": null,
       "fld_type": "20",
       "fld_type_id__flt_code": null,
@@ -2522,7 +2553,8 @@
       "fld_objlist": null,
       "fld_comment": null,
       "fld_classification": null,
-      "row_module_id__mdl_name": "ProjectManagement"
+      "row_module_id__mdl_name": "ProjectManagement",
+      "fld_incrementsyntax": null
      }
     },
     {
@@ -2544,6 +2576,7 @@
       "fld_more": false,
       "fld_listmore": false,
       "fld_listsum": null,
+      "fld_exportable": true,
       "fld_tray": null,
       "fld_type": "3",
       "fld_type_id__flt_code": null,
@@ -2566,7 +2599,8 @@
       "fld_objlist": null,
       "fld_comment": null,
       "fld_classification": null,
-      "row_module_id__mdl_name": "ProjectManagement"
+      "row_module_id__mdl_name": "ProjectManagement",
+      "fld_incrementsyntax": null
      }
     },
     {
@@ -2588,6 +2622,7 @@
       "fld_more": false,
       "fld_listmore": false,
       "fld_listsum": null,
+      "fld_exportable": true,
       "fld_tray": null,
       "fld_type": "13",
       "fld_type_id__flt_code": null,
@@ -2610,7 +2645,8 @@
       "fld_objlist": null,
       "fld_comment": null,
       "fld_classification": null,
-      "row_module_id__mdl_name": "ProjectManagement"
+      "row_module_id__mdl_name": "ProjectManagement",
+      "fld_incrementsyntax": null
      }
     },
     {
@@ -2632,6 +2668,7 @@
       "fld_more": false,
       "fld_listmore": false,
       "fld_listsum": null,
+      "fld_exportable": true,
       "fld_tray": null,
       "fld_type": "4",
       "fld_type_id__flt_code": null,
@@ -2654,7 +2691,8 @@
       "fld_objlist": null,
       "fld_comment": null,
       "fld_classification": null,
-      "row_module_id__mdl_name": "ProjectManagement"
+      "row_module_id__mdl_name": "ProjectManagement",
+      "fld_incrementsyntax": null
      }
     },
     {
@@ -2677,6 +2715,7 @@
       "fld_more": false,
       "fld_listmore": false,
       "fld_listsum": null,
+      "fld_exportable": true,
       "fld_tray": null,
       "fld_type": "3",
       "fld_type_id__flt_code": null,
@@ -2699,7 +2738,8 @@
       "fld_objlist": null,
       "fld_comment": null,
       "fld_classification": null,
-      "row_module_id__mdl_name": "ProjectManagement"
+      "row_module_id__mdl_name": "ProjectManagement",
+      "fld_incrementsyntax": null
      }
     },
     {
@@ -2718,6 +2758,7 @@
       "fld_more": false,
       "fld_listmore": false,
       "fld_listsum": null,
+      "fld_exportable": true,
       "fld_tray": null,
       "fld_type": "0",
       "fld_type_id__flt_code": null,
@@ -2740,7 +2781,8 @@
       "fld_objlist": null,
       "fld_comment": null,
       "fld_classification": null,
-      "row_module_id__mdl_name": "ProjectManagement"
+      "row_module_id__mdl_name": "ProjectManagement",
+      "fld_incrementsyntax": null
      }
     },
     {
@@ -2762,6 +2804,7 @@
       "fld_more": false,
       "fld_listmore": false,
       "fld_listsum": null,
+      "fld_exportable": true,
       "fld_tray": null,
       "fld_type": "0",
       "fld_type_id__flt_code": null,
@@ -2784,7 +2827,8 @@
       "fld_objlist": null,
       "fld_comment": null,
       "fld_classification": null,
-      "row_module_id__mdl_name": "ProjectManagement"
+      "row_module_id__mdl_name": "ProjectManagement",
+      "fld_incrementsyntax": null
      }
     },
     {
@@ -2806,6 +2850,7 @@
       "fld_more": false,
       "fld_listmore": false,
       "fld_listsum": null,
+      "fld_exportable": true,
       "fld_tray": null,
       "fld_type": "2",
       "fld_type_id__flt_code": null,
@@ -2828,7 +2873,8 @@
       "fld_objlist": null,
       "fld_comment": null,
       "fld_classification": null,
-      "row_module_id__mdl_name": "ProjectManagement"
+      "row_module_id__mdl_name": "ProjectManagement",
+      "fld_incrementsyntax": null
      }
     },
     {
@@ -2850,6 +2896,7 @@
       "fld_more": false,
       "fld_listmore": false,
       "fld_listsum": null,
+      "fld_exportable": true,
       "fld_tray": null,
       "fld_type": "13",
       "fld_type_id__flt_code": null,
@@ -2872,7 +2919,8 @@
       "fld_objlist": null,
       "fld_comment": null,
       "fld_classification": null,
-      "row_module_id__mdl_name": "ProjectManagement"
+      "row_module_id__mdl_name": "ProjectManagement",
+      "fld_incrementsyntax": null
      }
     },
     {
@@ -2891,6 +2939,7 @@
       "fld_more": false,
       "fld_listmore": false,
       "fld_listsum": null,
+      "fld_exportable": true,
       "fld_tray": null,
       "fld_type": "3",
       "fld_type_id__flt_code": null,
@@ -2913,7 +2962,8 @@
       "fld_objlist": null,
       "fld_comment": null,
       "fld_classification": null,
-      "row_module_id__mdl_name": "ProjectManagement"
+      "row_module_id__mdl_name": "ProjectManagement",
+      "fld_incrementsyntax": null
      }
     },
     {
@@ -2935,6 +2985,7 @@
       "fld_more": false,
       "fld_listmore": false,
       "fld_listsum": null,
+      "fld_exportable": true,
       "fld_tray": null,
       "fld_type": "7",
       "fld_type_id__flt_code": null,
@@ -2957,7 +3008,8 @@
       "fld_objlist": null,
       "fld_comment": null,
       "fld_classification": null,
-      "row_module_id__mdl_name": "ProjectManagement"
+      "row_module_id__mdl_name": "ProjectManagement",
+      "fld_incrementsyntax": null
      }
     },
     {
@@ -2976,6 +3028,7 @@
       "fld_more": false,
       "fld_listmore": false,
       "fld_listsum": null,
+      "fld_exportable": true,
       "fld_tray": null,
       "fld_type": "13",
       "fld_type_id__flt_code": null,
@@ -2998,7 +3051,8 @@
       "fld_objlist": null,
       "fld_comment": null,
       "fld_classification": null,
-      "row_module_id__mdl_name": "ProjectManagement"
+      "row_module_id__mdl_name": "ProjectManagement",
+      "fld_incrementsyntax": null
      }
     },
     {
@@ -3020,6 +3074,7 @@
       "fld_more": false,
       "fld_listmore": false,
       "fld_listsum": null,
+      "fld_exportable": true,
       "fld_tray": null,
       "fld_type": "0",
       "fld_type_id__flt_code": null,
@@ -3042,7 +3097,8 @@
       "fld_objlist": null,
       "fld_comment": null,
       "fld_classification": null,
-      "row_module_id__mdl_name": "ProjectManagement"
+      "row_module_id__mdl_name": "ProjectManagement",
+      "fld_incrementsyntax": null
      }
     },
     {
@@ -3061,6 +3117,7 @@
       "fld_more": false,
       "fld_listmore": false,
       "fld_listsum": null,
+      "fld_exportable": true,
       "fld_tray": null,
       "fld_type": "7",
       "fld_type_id__flt_code": null,
@@ -3083,7 +3140,8 @@
       "fld_objlist": null,
       "fld_comment": null,
       "fld_classification": null,
-      "row_module_id__mdl_name": "ProjectManagement"
+      "row_module_id__mdl_name": "ProjectManagement",
+      "fld_incrementsyntax": null
      }
     },
     {
@@ -3105,6 +3163,7 @@
       "fld_more": false,
       "fld_listmore": false,
       "fld_listsum": null,
+      "fld_exportable": true,
       "fld_tray": null,
       "fld_type": "0",
       "fld_type_id__flt_code": null,
@@ -3127,7 +3186,8 @@
       "fld_objlist": null,
       "fld_comment": null,
       "fld_classification": null,
-      "row_module_id__mdl_name": "ProjectManagement"
+      "row_module_id__mdl_name": "ProjectManagement",
+      "fld_incrementsyntax": null
      }
     },
     {
@@ -3149,6 +3209,7 @@
       "fld_more": false,
       "fld_listmore": false,
       "fld_listsum": null,
+      "fld_exportable": true,
       "fld_tray": null,
       "fld_type": "7",
       "fld_type_id__flt_code": null,
@@ -3171,7 +3232,8 @@
       "fld_objlist": null,
       "fld_comment": null,
       "fld_classification": null,
-      "row_module_id__mdl_name": "ProjectManagement"
+      "row_module_id__mdl_name": "ProjectManagement",
+      "fld_incrementsyntax": null
      }
     },
     {
@@ -3190,6 +3252,7 @@
       "fld_more": false,
       "fld_listmore": false,
       "fld_listsum": null,
+      "fld_exportable": true,
       "fld_tray": null,
       "fld_type": "2",
       "fld_type_id__flt_code": null,
@@ -3212,7 +3275,8 @@
       "fld_objlist": null,
       "fld_comment": null,
       "fld_classification": null,
-      "row_module_id__mdl_name": "ProjectManagement"
+      "row_module_id__mdl_name": "ProjectManagement",
+      "fld_incrementsyntax": null
      }
     },
     {
@@ -3231,6 +3295,7 @@
       "fld_more": false,
       "fld_listmore": false,
       "fld_listsum": null,
+      "fld_exportable": true,
       "fld_tray": null,
       "fld_type": "7",
       "fld_type_id__flt_code": null,
@@ -3253,7 +3318,8 @@
       "fld_objlist": null,
       "fld_comment": null,
       "fld_classification": null,
-      "row_module_id__mdl_name": "ProjectManagement"
+      "row_module_id__mdl_name": "ProjectManagement",
+      "fld_incrementsyntax": null
      }
     },
     {
@@ -3272,6 +3338,7 @@
       "fld_more": false,
       "fld_listmore": false,
       "fld_listsum": null,
+      "fld_exportable": true,
       "fld_tray": null,
       "fld_type": "24",
       "fld_type_id__flt_code": null,
@@ -3294,7 +3361,8 @@
       "fld_objlist": "PmUser",
       "fld_comment": null,
       "fld_classification": null,
-      "row_module_id__mdl_name": "ProjectManagement"
+      "row_module_id__mdl_name": "ProjectManagement",
+      "fld_incrementsyntax": null
      }
     },
     {
@@ -3318,6 +3386,7 @@
       "fld_more": false,
       "fld_listmore": false,
       "fld_listsum": null,
+      "fld_exportable": true,
       "fld_tray": null,
       "fld_type": "1",
       "fld_type_id__flt_code": null,
@@ -3340,7 +3409,8 @@
       "fld_objlist": null,
       "fld_comment": null,
       "fld_classification": null,
-      "row_module_id__mdl_name": "ProjectManagement"
+      "row_module_id__mdl_name": "ProjectManagement",
+      "fld_incrementsyntax": null
      }
     },
     {
@@ -3363,6 +3433,7 @@
       "fld_more": false,
       "fld_listmore": false,
       "fld_listsum": null,
+      "fld_exportable": true,
       "fld_tray": null,
       "fld_type": "4",
       "fld_type_id__flt_code": null,
@@ -3385,7 +3456,8 @@
       "fld_objlist": null,
       "fld_comment": null,
       "fld_classification": null,
-      "row_module_id__mdl_name": "ProjectManagement"
+      "row_module_id__mdl_name": "ProjectManagement",
+      "fld_incrementsyntax": null
      }
     },
     {
@@ -3404,6 +3476,7 @@
       "fld_more": false,
       "fld_listmore": false,
       "fld_listsum": null,
+      "fld_exportable": true,
       "fld_tray": null,
       "fld_type": "1",
       "fld_type_id__flt_code": null,
@@ -3426,7 +3499,8 @@
       "fld_objlist": null,
       "fld_comment": null,
       "fld_classification": null,
-      "row_module_id__mdl_name": "ProjectManagement"
+      "row_module_id__mdl_name": "ProjectManagement",
+      "fld_incrementsyntax": null
      }
     },
     {
@@ -3448,6 +3522,7 @@
       "fld_more": false,
       "fld_listmore": false,
       "fld_listsum": null,
+      "fld_exportable": true,
       "fld_tray": null,
       "fld_type": "4",
       "fld_type_id__flt_code": null,
@@ -3470,7 +3545,8 @@
       "fld_objlist": null,
       "fld_comment": null,
       "fld_classification": null,
-      "row_module_id__mdl_name": "ProjectManagement"
+      "row_module_id__mdl_name": "ProjectManagement",
+      "fld_incrementsyntax": null
      }
     },
     {
@@ -3492,6 +3568,7 @@
       "fld_more": false,
       "fld_listmore": false,
       "fld_listsum": null,
+      "fld_exportable": true,
       "fld_tray": null,
       "fld_type": "13",
       "fld_type_id__flt_code": null,
@@ -3514,7 +3591,8 @@
       "fld_objlist": null,
       "fld_comment": null,
       "fld_classification": null,
-      "row_module_id__mdl_name": "ProjectManagement"
+      "row_module_id__mdl_name": "ProjectManagement",
+      "fld_incrementsyntax": null
      }
     },
     {
@@ -3537,6 +3615,7 @@
       "fld_more": false,
       "fld_listmore": false,
       "fld_listsum": null,
+      "fld_exportable": true,
       "fld_tray": null,
       "fld_type": "4",
       "fld_type_id__flt_code": null,
@@ -3559,7 +3638,8 @@
       "fld_objlist": null,
       "fld_comment": null,
       "fld_classification": null,
-      "row_module_id__mdl_name": "ProjectManagement"
+      "row_module_id__mdl_name": "ProjectManagement",
+      "fld_incrementsyntax": null
      }
     },
     {
@@ -3581,6 +3661,7 @@
       "fld_more": false,
       "fld_listmore": false,
       "fld_listsum": null,
+      "fld_exportable": true,
       "fld_tray": null,
       "fld_type": "1",
       "fld_type_id__flt_code": null,
@@ -3603,7 +3684,8 @@
       "fld_objlist": null,
       "fld_comment": null,
       "fld_classification": null,
-      "row_module_id__mdl_name": "ProjectManagement"
+      "row_module_id__mdl_name": "ProjectManagement",
+      "fld_incrementsyntax": null
      }
     },
     {
@@ -3622,6 +3704,7 @@
       "fld_more": false,
       "fld_listmore": false,
       "fld_listsum": null,
+      "fld_exportable": true,
       "fld_tray": null,
       "fld_type": "0",
       "fld_type_id__flt_code": null,
@@ -3644,7 +3727,8 @@
       "fld_objlist": null,
       "fld_comment": null,
       "fld_classification": null,
-      "row_module_id__mdl_name": "ProjectManagement"
+      "row_module_id__mdl_name": "ProjectManagement",
+      "fld_incrementsyntax": null
      }
     },
     {
@@ -3663,6 +3747,7 @@
       "fld_more": false,
       "fld_listmore": false,
       "fld_listsum": null,
+      "fld_exportable": true,
       "fld_tray": null,
       "fld_type": "0",
       "fld_type_id__flt_code": null,
@@ -3685,7 +3770,8 @@
       "fld_objlist": null,
       "fld_comment": null,
       "fld_classification": null,
-      "row_module_id__mdl_name": "ProjectManagement"
+      "row_module_id__mdl_name": "ProjectManagement",
+      "fld_incrementsyntax": null
      }
     },
     {
@@ -3707,6 +3793,7 @@
       "fld_more": false,
       "fld_listmore": false,
       "fld_listsum": null,
+      "fld_exportable": true,
       "fld_tray": null,
       "fld_type": "3",
       "fld_type_id__flt_code": null,
@@ -3729,7 +3816,8 @@
       "fld_objlist": null,
       "fld_comment": null,
       "fld_classification": null,
-      "row_module_id__mdl_name": "ProjectManagement"
+      "row_module_id__mdl_name": "ProjectManagement",
+      "fld_incrementsyntax": null
      }
     },
     {
@@ -3751,6 +3839,7 @@
       "fld_more": false,
       "fld_listmore": false,
       "fld_listsum": null,
+      "fld_exportable": true,
       "fld_tray": null,
       "fld_type": "7",
       "fld_type_id__flt_code": null,
@@ -3773,7 +3862,8 @@
       "fld_objlist": null,
       "fld_comment": null,
       "fld_classification": null,
-      "row_module_id__mdl_name": "ProjectManagement"
+      "row_module_id__mdl_name": "ProjectManagement",
+      "fld_incrementsyntax": null
      }
     },
     {
@@ -3792,6 +3882,7 @@
       "fld_more": false,
       "fld_listmore": false,
       "fld_listsum": null,
+      "fld_exportable": true,
       "fld_tray": null,
       "fld_type": "0",
       "fld_type_id__flt_code": null,
@@ -3814,7 +3905,8 @@
       "fld_objlist": null,
       "fld_comment": null,
       "fld_classification": null,
-      "row_module_id__mdl_name": "ProjectManagement"
+      "row_module_id__mdl_name": "ProjectManagement",
+      "fld_incrementsyntax": null
      }
     },
     {
@@ -3836,6 +3928,7 @@
       "fld_more": false,
       "fld_listmore": false,
       "fld_listsum": null,
+      "fld_exportable": true,
       "fld_tray": null,
       "fld_type": "7",
       "fld_type_id__flt_code": null,
@@ -3858,7 +3951,8 @@
       "fld_objlist": null,
       "fld_comment": null,
       "fld_classification": null,
-      "row_module_id__mdl_name": "ProjectManagement"
+      "row_module_id__mdl_name": "ProjectManagement",
+      "fld_incrementsyntax": null
      }
     },
     {
@@ -3880,6 +3974,7 @@
       "fld_more": false,
       "fld_listmore": false,
       "fld_listsum": null,
+      "fld_exportable": true,
       "fld_tray": null,
       "fld_type": "3",
       "fld_type_id__flt_code": null,
@@ -3902,7 +3997,8 @@
       "fld_objlist": null,
       "fld_comment": null,
       "fld_classification": null,
-      "row_module_id__mdl_name": "ProjectManagement"
+      "row_module_id__mdl_name": "ProjectManagement",
+      "fld_incrementsyntax": null
      }
     },
     {
@@ -3924,6 +4020,7 @@
       "fld_more": false,
       "fld_listmore": false,
       "fld_listsum": null,
+      "fld_exportable": true,
       "fld_tray": null,
       "fld_type": "0",
       "fld_type_id__flt_code": null,
@@ -3946,7 +4043,8 @@
       "fld_objlist": null,
       "fld_comment": null,
       "fld_classification": null,
-      "row_module_id__mdl_name": "ProjectManagement"
+      "row_module_id__mdl_name": "ProjectManagement",
+      "fld_incrementsyntax": null
      }
     },
     {
@@ -3968,6 +4066,7 @@
       "fld_more": false,
       "fld_listmore": false,
       "fld_listsum": null,
+      "fld_exportable": true,
       "fld_tray": null,
       "fld_type": "0",
       "fld_type_id__flt_code": null,
@@ -3990,7 +4089,8 @@
       "fld_objlist": null,
       "fld_comment": null,
       "fld_classification": null,
-      "row_module_id__mdl_name": "ProjectManagement"
+      "row_module_id__mdl_name": "ProjectManagement",
+      "fld_incrementsyntax": null
      }
     },
     {
@@ -4018,6 +4118,7 @@
       "fld_more": false,
       "fld_listmore": false,
       "fld_listsum": null,
+      "fld_exportable": true,
       "fld_tray": null,
       "fld_type": "1",
       "fld_type_id__flt_code": null,
@@ -4040,7 +4141,8 @@
       "fld_objlist": null,
       "fld_comment": null,
       "fld_classification": null,
-      "row_module_id__mdl_name": "ProjectManagement"
+      "row_module_id__mdl_name": "ProjectManagement",
+      "fld_incrementsyntax": null
      }
     },
     {
@@ -4059,6 +4161,7 @@
       "fld_more": false,
       "fld_listmore": false,
       "fld_listsum": null,
+      "fld_exportable": true,
       "fld_tray": null,
       "fld_type": "1",
       "fld_type_id__flt_code": null,
@@ -4081,7 +4184,8 @@
       "fld_objlist": null,
       "fld_comment": null,
       "fld_classification": null,
-      "row_module_id__mdl_name": "ProjectManagement"
+      "row_module_id__mdl_name": "ProjectManagement",
+      "fld_incrementsyntax": null
      }
     },
     {
@@ -4104,6 +4208,7 @@
       "fld_more": false,
       "fld_listmore": false,
       "fld_listsum": null,
+      "fld_exportable": true,
       "fld_tray": null,
       "fld_type": "3",
       "fld_type_id__flt_code": null,
@@ -4126,7 +4231,8 @@
       "fld_objlist": null,
       "fld_comment": "Concatenation of project name and version number",
       "fld_classification": null,
-      "row_module_id__mdl_name": "ProjectManagement"
+      "row_module_id__mdl_name": "ProjectManagement",
+      "fld_incrementsyntax": null
      }
     },
     {
@@ -4148,6 +4254,7 @@
       "fld_more": false,
       "fld_listmore": false,
       "fld_listsum": null,
+      "fld_exportable": true,
       "fld_tray": null,
       "fld_type": "0",
       "fld_type_id__flt_code": null,
@@ -4170,7 +4277,8 @@
       "fld_objlist": null,
       "fld_comment": null,
       "fld_classification": null,
-      "row_module_id__mdl_name": "ProjectManagement"
+      "row_module_id__mdl_name": "ProjectManagement",
+      "fld_incrementsyntax": null
      }
     },
     {
@@ -4193,6 +4301,7 @@
       "fld_more": false,
       "fld_listmore": false,
       "fld_listsum": null,
+      "fld_exportable": true,
       "fld_tray": null,
       "fld_type": "4",
       "fld_type_id__flt_code": null,
@@ -4215,7 +4324,8 @@
       "fld_objlist": null,
       "fld_comment": null,
       "fld_classification": null,
-      "row_module_id__mdl_name": "ProjectManagement"
+      "row_module_id__mdl_name": "ProjectManagement",
+      "fld_incrementsyntax": null
      }
     },
     {
@@ -4237,6 +4347,7 @@
       "fld_more": false,
       "fld_listmore": false,
       "fld_listsum": null,
+      "fld_exportable": true,
       "fld_tray": null,
       "fld_type": "7",
       "fld_type_id__flt_code": null,
@@ -4259,7 +4370,8 @@
       "fld_objlist": null,
       "fld_comment": null,
       "fld_classification": null,
-      "row_module_id__mdl_name": "ProjectManagement"
+      "row_module_id__mdl_name": "ProjectManagement",
+      "fld_incrementsyntax": null
      }
     },
     {
@@ -4281,6 +4393,7 @@
       "fld_more": false,
       "fld_listmore": false,
       "fld_listsum": null,
+      "fld_exportable": true,
       "fld_tray": null,
       "fld_type": "3",
       "fld_type_id__flt_code": null,
@@ -4303,7 +4416,8 @@
       "fld_objlist": null,
       "fld_comment": null,
       "fld_classification": null,
-      "row_module_id__mdl_name": "ProjectManagement"
+      "row_module_id__mdl_name": "ProjectManagement",
+      "fld_incrementsyntax": null
      }
     }
    ]
@@ -4502,7 +4616,7 @@
      "userkey": "PmProject",
      "item": {
       "tpl_name": "PmProject",
-      "tpl_ui": "<div>\n  <div class=\"area\" data-area=\"1\"><\/div>\n  <div class=\"field\" data-field=\"pmPrjTestCalcul\"><\/div>\n<\/div>",
+      "tpl_ui": "<div class=\"area\" data-area=\"1\"><\/div>",
       "tpl_min": null,
       "tpl_image": null,
       "row_module_id__mdl_name": "ProjectManagement"
@@ -5067,7 +5181,6 @@
       "obo_groupby": false,
       "obo_dfltref": null,
       "obo_template_id__tpl_name": "PmArrayOfTask",
-      "obo_cache": "D",
       "obo_copy": true,
       "obo_export": true,
       "obo_pagine": true,
@@ -5097,6 +5210,7 @@
       "row_module_id__mdl_name": "ProjectManagement",
       "obo_btn_reload": "P",
       "obo_btn_prefs": "P",
+      "obo_btn_bookmark": "1",
       "obo_btn_del": "P",
       "obo_btn_copy": "P",
       "obo_btn_export": "P",
@@ -5146,7 +5260,6 @@
       "obo_groupby": false,
       "obo_dfltref": null,
       "obo_template_id__tpl_name": "PmAssignment",
-      "obo_cache": "D",
       "obo_copy": true,
       "obo_export": true,
       "obo_pagine": true,
@@ -5176,6 +5289,7 @@
       "row_module_id__mdl_name": "ProjectManagement",
       "obo_btn_reload": "P",
       "obo_btn_prefs": "P",
+      "obo_btn_bookmark": "1",
       "obo_btn_del": "P",
       "obo_btn_copy": "P",
       "obo_btn_export": "P",
@@ -5232,7 +5346,6 @@
       "obo_groupby": false,
       "obo_dfltref": null,
       "obo_template_id__tpl_name": "PmImputation",
-      "obo_cache": "D",
       "obo_copy": false,
       "obo_export": true,
       "obo_pagine": true,
@@ -5258,6 +5371,7 @@
       "row_module_id__mdl_name": "ProjectManagement",
       "obo_btn_reload": "P",
       "obo_btn_prefs": "P",
+      "obo_btn_bookmark": "1",
       "obo_btn_del": "P",
       "obo_btn_copy": "P",
       "obo_btn_export": "P",
@@ -5306,7 +5420,6 @@
       "obo_groupby": false,
       "obo_dfltref": null,
       "obo_template_id__tpl_name": "PmDocuments",
-      "obo_cache": "D",
       "obo_copy": true,
       "obo_export": true,
       "obo_pagine": true,
@@ -5336,6 +5449,7 @@
       "row_module_id__mdl_name": "ProjectManagement",
       "obo_btn_reload": "P",
       "obo_btn_prefs": "P",
+      "obo_btn_bookmark": "1",
       "obo_btn_del": "P",
       "obo_btn_copy": "P",
       "obo_btn_export": "P",
@@ -5384,7 +5498,6 @@
       "obo_groupby": false,
       "obo_dfltref": null,
       "obo_template_id__tpl_name": "PmLabel",
-      "obo_cache": "D",
       "obo_copy": true,
       "obo_export": true,
       "obo_pagine": true,
@@ -5414,6 +5527,7 @@
       "row_module_id__mdl_name": "ProjectManagement",
       "obo_btn_reload": "P",
       "obo_btn_prefs": "P",
+      "obo_btn_bookmark": "1",
       "obo_btn_del": "P",
       "obo_btn_copy": "P",
       "obo_btn_export": "P",
@@ -5462,7 +5576,6 @@
       "obo_groupby": false,
       "obo_dfltref": null,
       "obo_template_id__tpl_name": "PmMessage",
-      "obo_cache": "D",
       "obo_copy": true,
       "obo_export": true,
       "obo_pagine": true,
@@ -5492,6 +5605,7 @@
       "row_module_id__mdl_name": "ProjectManagement",
       "obo_btn_reload": "P",
       "obo_btn_prefs": "P",
+      "obo_btn_bookmark": "1",
       "obo_btn_del": "P",
       "obo_btn_copy": "P",
       "obo_btn_export": "P",
@@ -5541,7 +5655,6 @@
       "obo_groupby": false,
       "obo_dfltref": null,
       "obo_template_id__tpl_name": "PmProject",
-      "obo_cache": "D",
       "obo_copy": true,
       "obo_export": true,
       "obo_pagine": true,
@@ -5571,6 +5684,7 @@
       "row_module_id__mdl_name": "ProjectManagement",
       "obo_btn_reload": "P",
       "obo_btn_prefs": "P",
+      "obo_btn_bookmark": "1",
       "obo_btn_del": "P",
       "obo_btn_copy": "P",
       "obo_btn_export": "P",
@@ -5619,7 +5733,6 @@
       "obo_groupby": false,
       "obo_dfltref": null,
       "obo_template_id__tpl_name": "PmRole",
-      "obo_cache": "D",
       "obo_copy": true,
       "obo_export": true,
       "obo_pagine": true,
@@ -5649,6 +5762,7 @@
       "row_module_id__mdl_name": "ProjectManagement",
       "obo_btn_reload": "P",
       "obo_btn_prefs": "P",
+      "obo_btn_bookmark": "1",
       "obo_btn_del": "P",
       "obo_btn_copy": "P",
       "obo_btn_export": "P",
@@ -5701,7 +5815,6 @@
       "obo_groupby": true,
       "obo_dfltref": null,
       "obo_template_id__tpl_name": "PmTache",
-      "obo_cache": "D",
       "obo_copy": true,
       "obo_export": true,
       "obo_pagine": true,
@@ -5734,6 +5847,7 @@
       "row_module_id__mdl_name": "ProjectManagement",
       "obo_btn_reload": "P",
       "obo_btn_prefs": "P",
+      "obo_btn_bookmark": "1",
       "obo_btn_del": "P",
       "obo_btn_copy": "P",
       "obo_btn_export": "P",
@@ -5779,7 +5893,6 @@
       "obo_groupby": false,
       "obo_dfltref": null,
       "obo_template_id__tpl_name": "PmTache",
-      "obo_cache": "D",
       "obo_copy": false,
       "obo_export": false,
       "obo_pagine": true,
@@ -5809,6 +5922,7 @@
       "row_module_id__mdl_name": "ProjectManagement",
       "obo_btn_reload": "P",
       "obo_btn_prefs": "P",
+      "obo_btn_bookmark": "1",
       "obo_btn_del": "P",
       "obo_btn_copy": "P",
       "obo_btn_export": "P",
@@ -5858,7 +5972,6 @@
       "obo_groupby": false,
       "obo_dfltref": null,
       "obo_template_id__tpl_name": "PmTskLbl",
-      "obo_cache": "D",
       "obo_copy": true,
       "obo_export": true,
       "obo_pagine": true,
@@ -5888,6 +6001,7 @@
       "row_module_id__mdl_name": "ProjectManagement",
       "obo_btn_reload": "P",
       "obo_btn_prefs": "P",
+      "obo_btn_bookmark": "1",
       "obo_btn_del": "P",
       "obo_btn_copy": "P",
       "obo_btn_export": "P",
@@ -5943,7 +6057,6 @@
       "obo_groupby": false,
       "obo_dfltref": null,
       "obo_template_id__tpl_name": "PmUtilisateur",
-      "obo_cache": "D",
       "obo_copy": true,
       "obo_export": true,
       "obo_pagine": true,
@@ -5973,6 +6086,7 @@
       "row_module_id__mdl_name": "ProjectManagement",
       "obo_btn_reload": "P",
       "obo_btn_prefs": "P",
+      "obo_btn_bookmark": "1",
       "obo_btn_del": "P",
       "obo_btn_copy": "P",
       "obo_btn_export": "P",
@@ -6025,7 +6139,6 @@
       "obo_groupby": true,
       "obo_dfltref": null,
       "obo_template_id__tpl_name": "PmVersion",
-      "obo_cache": "D",
       "obo_copy": true,
       "obo_export": true,
       "obo_pagine": true,
@@ -6055,6 +6168,7 @@
       "row_module_id__mdl_name": "ProjectManagement",
       "obo_btn_reload": "P",
       "obo_btn_prefs": "P",
+      "obo_btn_bookmark": "1",
       "obo_btn_del": "P",
       "obo_btn_copy": "P",
       "obo_btn_export": "P",
@@ -6115,6 +6229,9 @@
       "obf_fld_researchreq": null,
       "obf_fld_dfault": null,
       "obf_field_id__fld_dfault": null,
+      "obf_fld_exportable": null,
+      "obf_field_id__fld_exportable": true,
+      "obf_fld_uk": null,
       "obf_area_id__ofa_name": "PmArrayOfTask-2",
       "obf_area_id__ofa_position": 2,
       "row_module_id__mdl_name": "ProjectManagement"
@@ -6148,6 +6265,9 @@
       "obf_fld_researchreq": null,
       "obf_fld_dfault": null,
       "obf_field_id__fld_dfault": "0",
+      "obf_fld_exportable": null,
+      "obf_field_id__fld_exportable": true,
+      "obf_fld_uk": null,
       "obf_area_id__ofa_name": "PmArrayOfTask-2",
       "obf_area_id__ofa_position": 2,
       "row_module_id__mdl_name": "ProjectManagement"
@@ -6181,6 +6301,9 @@
       "obf_fld_researchreq": null,
       "obf_fld_dfault": null,
       "obf_field_id__fld_dfault": null,
+      "obf_fld_exportable": null,
+      "obf_field_id__fld_exportable": true,
+      "obf_fld_uk": null,
       "obf_area_id__ofa_name": "PmArrayOfTask-2",
       "obf_area_id__ofa_position": 2,
       "row_module_id__mdl_name": "ProjectManagement"
@@ -6214,6 +6337,9 @@
       "obf_fld_researchreq": null,
       "obf_fld_dfault": null,
       "obf_field_id__fld_dfault": null,
+      "obf_fld_exportable": null,
+      "obf_field_id__fld_exportable": true,
+      "obf_fld_uk": null,
       "obf_area_id__ofa_name": "PmArrayOfTask-2",
       "obf_area_id__ofa_position": 2,
       "row_module_id__mdl_name": "ProjectManagement"
@@ -6247,6 +6373,9 @@
       "obf_fld_researchreq": null,
       "obf_fld_dfault": null,
       "obf_field_id__fld_dfault": null,
+      "obf_fld_exportable": null,
+      "obf_field_id__fld_exportable": true,
+      "obf_fld_uk": null,
       "obf_area_id__ofa_name": "PmArrayOfTask-2",
       "obf_area_id__ofa_position": 2,
       "row_module_id__mdl_name": "ProjectManagement"
@@ -6280,6 +6409,9 @@
       "obf_fld_researchreq": null,
       "obf_fld_dfault": null,
       "obf_field_id__fld_dfault": null,
+      "obf_fld_exportable": null,
+      "obf_field_id__fld_exportable": true,
+      "obf_fld_uk": null,
       "obf_area_id__ofa_name": "PmArrayOfTask-2",
       "obf_area_id__ofa_position": 2,
       "row_module_id__mdl_name": "ProjectManagement"
@@ -6313,6 +6445,9 @@
       "obf_fld_researchreq": null,
       "obf_fld_dfault": null,
       "obf_field_id__fld_dfault": null,
+      "obf_fld_exportable": null,
+      "obf_field_id__fld_exportable": true,
+      "obf_fld_uk": null,
       "obf_area_id__ofa_name": "PmArrayOfTask-3",
       "obf_area_id__ofa_position": 3,
       "row_module_id__mdl_name": "ProjectManagement"
@@ -6346,6 +6481,9 @@
       "obf_fld_researchreq": null,
       "obf_fld_dfault": null,
       "obf_field_id__fld_dfault": "0",
+      "obf_fld_exportable": null,
+      "obf_field_id__fld_exportable": true,
+      "obf_fld_uk": null,
       "obf_area_id__ofa_name": "PmArrayOfTask-3",
       "obf_area_id__ofa_position": 3,
       "row_module_id__mdl_name": "ProjectManagement"
@@ -6379,6 +6517,9 @@
       "obf_fld_researchreq": null,
       "obf_fld_dfault": null,
       "obf_field_id__fld_dfault": null,
+      "obf_fld_exportable": null,
+      "obf_field_id__fld_exportable": true,
+      "obf_fld_uk": null,
       "obf_area_id__ofa_name": "PmArrayOfTask-3",
       "obf_area_id__ofa_position": 3,
       "row_module_id__mdl_name": "ProjectManagement"
@@ -6412,6 +6553,9 @@
       "obf_fld_researchreq": null,
       "obf_fld_dfault": null,
       "obf_field_id__fld_dfault": null,
+      "obf_fld_exportable": null,
+      "obf_field_id__fld_exportable": true,
+      "obf_fld_uk": null,
       "obf_area_id__ofa_name": "PmArrayOfTask-3",
       "obf_area_id__ofa_position": 3,
       "row_module_id__mdl_name": "ProjectManagement"
@@ -6445,6 +6589,9 @@
       "obf_fld_researchreq": null,
       "obf_fld_dfault": null,
       "obf_field_id__fld_dfault": null,
+      "obf_fld_exportable": null,
+      "obf_field_id__fld_exportable": true,
+      "obf_fld_uk": null,
       "obf_area_id__ofa_name": "PmArrayOfTask-3",
       "obf_area_id__ofa_position": 3,
       "row_module_id__mdl_name": "ProjectManagement"
@@ -6478,6 +6625,9 @@
       "obf_fld_researchreq": null,
       "obf_fld_dfault": null,
       "obf_field_id__fld_dfault": null,
+      "obf_fld_exportable": null,
+      "obf_field_id__fld_exportable": true,
+      "obf_fld_uk": null,
       "obf_area_id__ofa_name": "PmArrayOfTask-3",
       "obf_area_id__ofa_position": 3,
       "row_module_id__mdl_name": "ProjectManagement"
@@ -6511,6 +6661,9 @@
       "obf_fld_researchreq": null,
       "obf_fld_dfault": null,
       "obf_field_id__fld_dfault": null,
+      "obf_fld_exportable": null,
+      "obf_field_id__fld_exportable": true,
+      "obf_fld_uk": null,
       "obf_area_id__ofa_name": "PmAssignment-6",
       "obf_area_id__ofa_position": 6,
       "row_module_id__mdl_name": "ProjectManagement"
@@ -6544,6 +6697,9 @@
       "obf_fld_researchreq": null,
       "obf_fld_dfault": null,
       "obf_field_id__fld_dfault": "[USERID]",
+      "obf_fld_exportable": null,
+      "obf_field_id__fld_exportable": true,
+      "obf_fld_uk": null,
       "obf_area_id__ofa_name": "PmAssignment-3",
       "obf_area_id__ofa_position": 3,
       "row_module_id__mdl_name": "ProjectManagement"
@@ -6577,6 +6733,9 @@
       "obf_fld_researchreq": null,
       "obf_fld_dfault": null,
       "obf_field_id__fld_dfault": null,
+      "obf_fld_exportable": null,
+      "obf_field_id__fld_exportable": true,
+      "obf_fld_uk": null,
       "obf_area_id__ofa_name": "PmAssignment-3",
       "obf_area_id__ofa_position": 3,
       "row_module_id__mdl_name": "ProjectManagement"
@@ -6610,6 +6769,9 @@
       "obf_fld_researchreq": null,
       "obf_fld_dfault": null,
       "obf_field_id__fld_dfault": "0",
+      "obf_fld_exportable": null,
+      "obf_field_id__fld_exportable": true,
+      "obf_fld_uk": null,
       "obf_area_id__ofa_name": "PmAssignment-3",
       "obf_area_id__ofa_position": 3,
       "row_module_id__mdl_name": "ProjectManagement"
@@ -6643,6 +6805,9 @@
       "obf_fld_researchreq": null,
       "obf_fld_dfault": null,
       "obf_field_id__fld_dfault": null,
+      "obf_fld_exportable": null,
+      "obf_field_id__fld_exportable": true,
+      "obf_fld_uk": null,
       "obf_area_id__ofa_name": "PmAssignment-2",
       "obf_area_id__ofa_position": 2,
       "row_module_id__mdl_name": "ProjectManagement"
@@ -6676,6 +6841,9 @@
       "obf_fld_researchreq": null,
       "obf_fld_dfault": null,
       "obf_field_id__fld_dfault": "0",
+      "obf_fld_exportable": null,
+      "obf_field_id__fld_exportable": true,
+      "obf_fld_uk": null,
       "obf_area_id__ofa_name": "PmAssignment-2",
       "obf_area_id__ofa_position": 2,
       "row_module_id__mdl_name": "ProjectManagement"
@@ -6709,6 +6877,9 @@
       "obf_fld_researchreq": null,
       "obf_fld_dfault": null,
       "obf_field_id__fld_dfault": null,
+      "obf_fld_exportable": null,
+      "obf_field_id__fld_exportable": true,
+      "obf_fld_uk": null,
       "obf_area_id__ofa_name": "PmAssignment-2",
       "obf_area_id__ofa_position": 2,
       "row_module_id__mdl_name": "ProjectManagement"
@@ -6742,6 +6913,9 @@
       "obf_fld_researchreq": null,
       "obf_fld_dfault": null,
       "obf_field_id__fld_dfault": null,
+      "obf_fld_exportable": null,
+      "obf_field_id__fld_exportable": true,
+      "obf_fld_uk": null,
       "obf_area_id__ofa_name": "PmAssignment-5",
       "obf_area_id__ofa_position": 5,
       "row_module_id__mdl_name": "ProjectManagement"
@@ -6775,6 +6949,9 @@
       "obf_fld_researchreq": null,
       "obf_fld_dfault": null,
       "obf_field_id__fld_dfault": null,
+      "obf_fld_exportable": null,
+      "obf_field_id__fld_exportable": true,
+      "obf_fld_uk": null,
       "obf_area_id__ofa_name": "PmAssignment-2",
       "obf_area_id__ofa_position": 2,
       "row_module_id__mdl_name": "ProjectManagement"
@@ -6808,6 +6985,9 @@
       "obf_fld_researchreq": null,
       "obf_fld_dfault": null,
       "obf_field_id__fld_dfault": "DRAFT",
+      "obf_fld_exportable": null,
+      "obf_field_id__fld_exportable": true,
+      "obf_fld_uk": null,
       "obf_area_id__ofa_name": "PmAssignment-2",
       "obf_area_id__ofa_position": 2,
       "row_module_id__mdl_name": "ProjectManagement"
@@ -6841,6 +7021,9 @@
       "obf_fld_researchreq": null,
       "obf_fld_dfault": null,
       "obf_field_id__fld_dfault": null,
+      "obf_fld_exportable": null,
+      "obf_field_id__fld_exportable": true,
+      "obf_fld_uk": null,
       "obf_area_id__ofa_name": "PmAssignment-5",
       "obf_area_id__ofa_position": 5,
       "row_module_id__mdl_name": "ProjectManagement"
@@ -6874,6 +7057,9 @@
       "obf_fld_researchreq": null,
       "obf_fld_dfault": null,
       "obf_field_id__fld_dfault": null,
+      "obf_fld_exportable": null,
+      "obf_field_id__fld_exportable": true,
+      "obf_fld_uk": null,
       "obf_area_id__ofa_name": "PmAssignment-5",
       "obf_area_id__ofa_position": 5,
       "row_module_id__mdl_name": "ProjectManagement"
@@ -6907,6 +7093,9 @@
       "obf_fld_researchreq": null,
       "obf_fld_dfault": null,
       "obf_field_id__fld_dfault": "NORMAL",
+      "obf_fld_exportable": null,
+      "obf_field_id__fld_exportable": true,
+      "obf_fld_uk": null,
       "obf_area_id__ofa_name": "PmAssignment-2",
       "obf_area_id__ofa_position": 2,
       "row_module_id__mdl_name": "ProjectManagement"
@@ -6940,6 +7129,9 @@
       "obf_fld_researchreq": null,
       "obf_fld_dfault": null,
       "obf_field_id__fld_dfault": null,
+      "obf_fld_exportable": null,
+      "obf_field_id__fld_exportable": true,
+      "obf_fld_uk": null,
       "obf_area_id__ofa_name": "PmAssignment-5",
       "obf_area_id__ofa_position": 5,
       "row_module_id__mdl_name": "ProjectManagement"
@@ -6973,6 +7165,9 @@
       "obf_fld_researchreq": null,
       "obf_fld_dfault": null,
       "obf_field_id__fld_dfault": "[DATE]",
+      "obf_fld_exportable": null,
+      "obf_field_id__fld_exportable": true,
+      "obf_fld_uk": null,
       "obf_area_id__ofa_name": "PmAssignment-5",
       "obf_area_id__ofa_position": 5,
       "row_module_id__mdl_name": "ProjectManagement"
@@ -7006,6 +7201,9 @@
       "obf_fld_researchreq": null,
       "obf_fld_dfault": null,
       "obf_field_id__fld_dfault": "[DATE:7]",
+      "obf_fld_exportable": null,
+      "obf_field_id__fld_exportable": true,
+      "obf_fld_uk": null,
       "obf_area_id__ofa_name": "PmAssignment-5",
       "obf_area_id__ofa_position": 5,
       "row_module_id__mdl_name": "ProjectManagement"
@@ -7039,6 +7237,9 @@
       "obf_fld_researchreq": null,
       "obf_fld_dfault": null,
       "obf_field_id__fld_dfault": null,
+      "obf_fld_exportable": null,
+      "obf_field_id__fld_exportable": true,
+      "obf_fld_uk": null,
       "obf_area_id__ofa_name": "PmAssignment-6",
       "obf_area_id__ofa_position": 6,
       "row_module_id__mdl_name": "ProjectManagement"
@@ -7072,6 +7273,9 @@
       "obf_fld_researchreq": null,
       "obf_fld_dfault": null,
       "obf_field_id__fld_dfault": "0",
+      "obf_fld_exportable": null,
+      "obf_field_id__fld_exportable": true,
+      "obf_fld_uk": null,
       "obf_area_id__ofa_name": "PmAssignment-6",
       "obf_area_id__ofa_position": 6,
       "row_module_id__mdl_name": "ProjectManagement"
@@ -7105,6 +7309,9 @@
       "obf_fld_researchreq": null,
       "obf_fld_dfault": null,
       "obf_field_id__fld_dfault": null,
+      "obf_fld_exportable": null,
+      "obf_field_id__fld_exportable": true,
+      "obf_fld_uk": null,
       "obf_area_id__ofa_name": "PmAssignmentPmTimeSheetAssign-1",
       "obf_area_id__ofa_position": 1,
       "row_module_id__mdl_name": "ProjectManagement"
@@ -7138,6 +7345,9 @@
       "obf_fld_researchreq": null,
       "obf_fld_dfault": null,
       "obf_field_id__fld_dfault": null,
+      "obf_fld_exportable": null,
+      "obf_field_id__fld_exportable": true,
+      "obf_fld_uk": null,
       "obf_area_id__ofa_name": "PmAssignmentPmTimeSheetAssign-1",
       "obf_area_id__ofa_position": 1,
       "row_module_id__mdl_name": "ProjectManagement"
@@ -7171,6 +7381,9 @@
       "obf_fld_researchreq": null,
       "obf_fld_dfault": null,
       "obf_field_id__fld_dfault": null,
+      "obf_fld_exportable": null,
+      "obf_field_id__fld_exportable": true,
+      "obf_fld_uk": null,
       "obf_area_id__ofa_name": "PmAssignmentPmTimeSheetAssign-1",
       "obf_area_id__ofa_position": 1,
       "row_module_id__mdl_name": "ProjectManagement"
@@ -7204,6 +7417,9 @@
       "obf_fld_researchreq": null,
       "obf_fld_dfault": null,
       "obf_field_id__fld_dfault": null,
+      "obf_fld_exportable": null,
+      "obf_field_id__fld_exportable": true,
+      "obf_fld_uk": null,
       "obf_area_id__ofa_name": "PmAssignmentPmTimeSheetAssign-1",
       "obf_area_id__ofa_position": 1,
       "row_module_id__mdl_name": "ProjectManagement"
@@ -7237,6 +7453,9 @@
       "obf_fld_researchreq": null,
       "obf_fld_dfault": null,
       "obf_field_id__fld_dfault": null,
+      "obf_fld_exportable": null,
+      "obf_field_id__fld_exportable": true,
+      "obf_fld_uk": null,
       "obf_area_id__ofa_name": "PmAssignmentPmTimeSheetAssign-1",
       "obf_area_id__ofa_position": 1,
       "row_module_id__mdl_name": "ProjectManagement"
@@ -7270,6 +7489,9 @@
       "obf_fld_researchreq": null,
       "obf_fld_dfault": null,
       "obf_field_id__fld_dfault": "[USERID]",
+      "obf_fld_exportable": null,
+      "obf_field_id__fld_exportable": true,
+      "obf_fld_uk": null,
       "obf_area_id__ofa_name": "PmAssignmentPmTimeSheetAssign-1",
       "obf_area_id__ofa_position": 1,
       "row_module_id__mdl_name": "ProjectManagement"
@@ -7303,6 +7525,9 @@
       "obf_fld_researchreq": null,
       "obf_fld_dfault": null,
       "obf_field_id__fld_dfault": null,
+      "obf_fld_exportable": null,
+      "obf_field_id__fld_exportable": true,
+      "obf_fld_uk": null,
       "obf_area_id__ofa_name": "PmAssignmentPmTimeSheetAssign-1",
       "obf_area_id__ofa_position": 1,
       "row_module_id__mdl_name": "ProjectManagement"
@@ -7336,6 +7561,9 @@
       "obf_fld_researchreq": null,
       "obf_fld_dfault": null,
       "obf_field_id__fld_dfault": null,
+      "obf_fld_exportable": null,
+      "obf_field_id__fld_exportable": true,
+      "obf_fld_uk": null,
       "obf_area_id__ofa_name": "PmAssignmentPmTimeSheetAssign-1",
       "obf_area_id__ofa_position": 1,
       "row_module_id__mdl_name": "ProjectManagement"
@@ -7369,6 +7597,9 @@
       "obf_fld_researchreq": null,
       "obf_fld_dfault": null,
       "obf_field_id__fld_dfault": "0",
+      "obf_fld_exportable": null,
+      "obf_field_id__fld_exportable": true,
+      "obf_fld_uk": null,
       "obf_area_id__ofa_name": "PmAssignmentPmTimeSheetAssign-1",
       "obf_area_id__ofa_position": 1,
       "row_module_id__mdl_name": "ProjectManagement"
@@ -7402,6 +7633,9 @@
       "obf_fld_researchreq": null,
       "obf_fld_dfault": null,
       "obf_field_id__fld_dfault": null,
+      "obf_fld_exportable": null,
+      "obf_field_id__fld_exportable": true,
+      "obf_fld_uk": null,
       "obf_area_id__ofa_name": "PmAssignmentPmTimeSheetAssign-1",
       "obf_area_id__ofa_position": 1,
       "row_module_id__mdl_name": "ProjectManagement"
@@ -7435,6 +7669,9 @@
       "obf_fld_researchreq": null,
       "obf_fld_dfault": null,
       "obf_field_id__fld_dfault": null,
+      "obf_fld_exportable": null,
+      "obf_field_id__fld_exportable": true,
+      "obf_fld_uk": null,
       "obf_area_id__ofa_name": "PmAssignmentPmTimeSheetAssign-1",
       "obf_area_id__ofa_position": 1,
       "row_module_id__mdl_name": "ProjectManagement"
@@ -7468,6 +7705,9 @@
       "obf_fld_researchreq": null,
       "obf_fld_dfault": null,
       "obf_field_id__fld_dfault": null,
+      "obf_fld_exportable": null,
+      "obf_field_id__fld_exportable": true,
+      "obf_fld_uk": null,
       "obf_area_id__ofa_name": "PmAssignmentPmTimeSheetAssign-1",
       "obf_area_id__ofa_position": 1,
       "row_module_id__mdl_name": "ProjectManagement"
@@ -7501,6 +7741,9 @@
       "obf_fld_researchreq": null,
       "obf_fld_dfault": null,
       "obf_field_id__fld_dfault": null,
+      "obf_fld_exportable": null,
+      "obf_field_id__fld_exportable": true,
+      "obf_fld_uk": null,
       "obf_area_id__ofa_name": "PmAssignmentPmTimeSheetAssign-1",
       "obf_area_id__ofa_position": 1,
       "row_module_id__mdl_name": "ProjectManagement"
@@ -7534,6 +7777,9 @@
       "obf_fld_researchreq": null,
       "obf_fld_dfault": null,
       "obf_field_id__fld_dfault": null,
+      "obf_fld_exportable": null,
+      "obf_field_id__fld_exportable": true,
+      "obf_fld_uk": null,
       "obf_area_id__ofa_name": "PmDocument-1",
       "obf_area_id__ofa_position": 1,
       "row_module_id__mdl_name": "ProjectManagement"
@@ -7567,6 +7813,9 @@
       "obf_fld_researchreq": null,
       "obf_fld_dfault": null,
       "obf_field_id__fld_dfault": null,
+      "obf_fld_exportable": null,
+      "obf_field_id__fld_exportable": true,
+      "obf_fld_uk": null,
       "obf_area_id__ofa_name": "PmDocument-1",
       "obf_area_id__ofa_position": 1,
       "row_module_id__mdl_name": "ProjectManagement"
@@ -7600,6 +7849,9 @@
       "obf_fld_researchreq": null,
       "obf_fld_dfault": null,
       "obf_field_id__fld_dfault": null,
+      "obf_fld_exportable": null,
+      "obf_field_id__fld_exportable": true,
+      "obf_fld_uk": null,
       "obf_area_id__ofa_name": "PmDocument-3",
       "obf_area_id__ofa_position": 3,
       "row_module_id__mdl_name": "ProjectManagement"
@@ -7633,6 +7885,9 @@
       "obf_fld_researchreq": null,
       "obf_fld_dfault": null,
       "obf_field_id__fld_dfault": "0",
+      "obf_fld_exportable": null,
+      "obf_field_id__fld_exportable": true,
+      "obf_fld_uk": null,
       "obf_area_id__ofa_name": "PmDocument-3",
       "obf_area_id__ofa_position": 3,
       "row_module_id__mdl_name": "ProjectManagement"
@@ -7666,6 +7921,9 @@
       "obf_fld_researchreq": null,
       "obf_fld_dfault": null,
       "obf_field_id__fld_dfault": null,
+      "obf_fld_exportable": null,
+      "obf_field_id__fld_exportable": true,
+      "obf_fld_uk": null,
       "obf_area_id__ofa_name": "PmDocument-3",
       "obf_area_id__ofa_position": 3,
       "row_module_id__mdl_name": "ProjectManagement"
@@ -7699,6 +7957,9 @@
       "obf_fld_researchreq": null,
       "obf_fld_dfault": null,
       "obf_field_id__fld_dfault": null,
+      "obf_fld_exportable": null,
+      "obf_field_id__fld_exportable": true,
+      "obf_fld_uk": null,
       "obf_area_id__ofa_name": "PmDocument-3",
       "obf_area_id__ofa_position": 3,
       "row_module_id__mdl_name": "ProjectManagement"
@@ -7732,6 +7993,9 @@
       "obf_fld_researchreq": null,
       "obf_fld_dfault": null,
       "obf_field_id__fld_dfault": null,
+      "obf_fld_exportable": null,
+      "obf_field_id__fld_exportable": true,
+      "obf_fld_uk": null,
       "obf_area_id__ofa_name": "PmDocument-3",
       "obf_area_id__ofa_position": 3,
       "row_module_id__mdl_name": "ProjectManagement"
@@ -7765,6 +8029,9 @@
       "obf_fld_researchreq": null,
       "obf_fld_dfault": null,
       "obf_field_id__fld_dfault": null,
+      "obf_fld_exportable": null,
+      "obf_field_id__fld_exportable": true,
+      "obf_fld_uk": null,
       "obf_area_id__ofa_name": "PmDocument-3",
       "obf_area_id__ofa_position": 3,
       "row_module_id__mdl_name": "ProjectManagement"
@@ -7798,6 +8065,9 @@
       "obf_fld_researchreq": null,
       "obf_fld_dfault": null,
       "obf_field_id__fld_dfault": null,
+      "obf_fld_exportable": null,
+      "obf_field_id__fld_exportable": true,
+      "obf_fld_uk": null,
       "obf_area_id__ofa_name": "PmDocument-3",
       "obf_area_id__ofa_position": 3,
       "row_module_id__mdl_name": "ProjectManagement"
@@ -7831,6 +8101,9 @@
       "obf_fld_researchreq": null,
       "obf_fld_dfault": null,
       "obf_field_id__fld_dfault": null,
+      "obf_fld_exportable": null,
+      "obf_field_id__fld_exportable": true,
+      "obf_fld_uk": null,
       "obf_area_id__ofa_name": "PmDocument-3",
       "obf_area_id__ofa_position": 3,
       "row_module_id__mdl_name": "ProjectManagement"
@@ -7864,6 +8137,9 @@
       "obf_fld_researchreq": null,
       "obf_fld_dfault": null,
       "obf_field_id__fld_dfault": null,
+      "obf_fld_exportable": null,
+      "obf_field_id__fld_exportable": true,
+      "obf_fld_uk": null,
       "obf_area_id__ofa_name": "PmDocument-2",
       "obf_area_id__ofa_position": 2,
       "row_module_id__mdl_name": "ProjectManagement"
@@ -7897,6 +8173,9 @@
       "obf_fld_researchreq": null,
       "obf_fld_dfault": null,
       "obf_field_id__fld_dfault": null,
+      "obf_fld_exportable": null,
+      "obf_field_id__fld_exportable": true,
+      "obf_fld_uk": null,
       "obf_area_id__ofa_name": "PmLabel-1",
       "obf_area_id__ofa_position": 1,
       "row_module_id__mdl_name": "ProjectManagement"
@@ -7930,6 +8209,9 @@
       "obf_fld_researchreq": null,
       "obf_fld_dfault": null,
       "obf_field_id__fld_dfault": null,
+      "obf_fld_exportable": null,
+      "obf_field_id__fld_exportable": true,
+      "obf_fld_uk": null,
       "obf_area_id__ofa_name": "PmLabel-1",
       "obf_area_id__ofa_position": 1,
       "row_module_id__mdl_name": "ProjectManagement"
@@ -7963,6 +8245,9 @@
       "obf_fld_researchreq": null,
       "obf_fld_dfault": null,
       "obf_field_id__fld_dfault": null,
+      "obf_fld_exportable": null,
+      "obf_field_id__fld_exportable": true,
+      "obf_fld_uk": null,
       "obf_area_id__ofa_name": "PmMessage-1",
       "obf_area_id__ofa_position": 1,
       "row_module_id__mdl_name": "ProjectManagement"
@@ -7996,6 +8281,9 @@
       "obf_fld_researchreq": null,
       "obf_fld_dfault": null,
       "obf_field_id__fld_dfault": null,
+      "obf_fld_exportable": null,
+      "obf_field_id__fld_exportable": true,
+      "obf_fld_uk": null,
       "obf_area_id__ofa_name": "PmMessage-1",
       "obf_area_id__ofa_position": 1,
       "row_module_id__mdl_name": "ProjectManagement"
@@ -8029,6 +8317,9 @@
       "obf_fld_researchreq": null,
       "obf_fld_dfault": null,
       "obf_field_id__fld_dfault": "[DATE]",
+      "obf_fld_exportable": null,
+      "obf_field_id__fld_exportable": true,
+      "obf_fld_uk": null,
       "obf_area_id__ofa_name": "PmMessage-1",
       "obf_area_id__ofa_position": 1,
       "row_module_id__mdl_name": "ProjectManagement"
@@ -8062,6 +8353,9 @@
       "obf_fld_researchreq": null,
       "obf_fld_dfault": null,
       "obf_field_id__fld_dfault": "[USERID]",
+      "obf_fld_exportable": null,
+      "obf_field_id__fld_exportable": true,
+      "obf_fld_uk": null,
       "obf_area_id__ofa_name": "PmMessage-2",
       "obf_area_id__ofa_position": 2,
       "row_module_id__mdl_name": "ProjectManagement"
@@ -8095,6 +8389,9 @@
       "obf_fld_researchreq": null,
       "obf_fld_dfault": null,
       "obf_field_id__fld_dfault": null,
+      "obf_fld_exportable": null,
+      "obf_field_id__fld_exportable": true,
+      "obf_fld_uk": null,
       "obf_area_id__ofa_name": "PmMessage-2",
       "obf_area_id__ofa_position": 2,
       "row_module_id__mdl_name": "ProjectManagement"
@@ -8128,6 +8425,9 @@
       "obf_fld_researchreq": null,
       "obf_fld_dfault": null,
       "obf_field_id__fld_dfault": null,
+      "obf_fld_exportable": null,
+      "obf_field_id__fld_exportable": true,
+      "obf_fld_uk": null,
       "obf_area_id__ofa_name": "PmMessage-3",
       "obf_area_id__ofa_position": 3,
       "row_module_id__mdl_name": "ProjectManagement"
@@ -8161,6 +8461,9 @@
       "obf_fld_researchreq": null,
       "obf_fld_dfault": null,
       "obf_field_id__fld_dfault": "0",
+      "obf_fld_exportable": null,
+      "obf_field_id__fld_exportable": true,
+      "obf_fld_uk": null,
       "obf_area_id__ofa_name": "PmMessage-3",
       "obf_area_id__ofa_position": 3,
       "row_module_id__mdl_name": "ProjectManagement"
@@ -8194,6 +8497,9 @@
       "obf_fld_researchreq": null,
       "obf_fld_dfault": null,
       "obf_field_id__fld_dfault": null,
+      "obf_fld_exportable": null,
+      "obf_field_id__fld_exportable": true,
+      "obf_fld_uk": null,
       "obf_area_id__ofa_name": "PmMessage-3",
       "obf_area_id__ofa_position": 3,
       "row_module_id__mdl_name": "ProjectManagement"
@@ -8227,6 +8533,9 @@
       "obf_fld_researchreq": null,
       "obf_fld_dfault": null,
       "obf_field_id__fld_dfault": null,
+      "obf_fld_exportable": null,
+      "obf_field_id__fld_exportable": true,
+      "obf_fld_uk": null,
       "obf_area_id__ofa_name": "PmMessage-3",
       "obf_area_id__ofa_position": 3,
       "row_module_id__mdl_name": "ProjectManagement"
@@ -8260,6 +8569,9 @@
       "obf_fld_researchreq": null,
       "obf_fld_dfault": null,
       "obf_field_id__fld_dfault": null,
+      "obf_fld_exportable": null,
+      "obf_field_id__fld_exportable": true,
+      "obf_fld_uk": null,
       "obf_area_id__ofa_name": "PmMessage-3",
       "obf_area_id__ofa_position": 3,
       "row_module_id__mdl_name": "ProjectManagement"
@@ -8293,6 +8605,9 @@
       "obf_fld_researchreq": null,
       "obf_fld_dfault": null,
       "obf_field_id__fld_dfault": null,
+      "obf_fld_exportable": null,
+      "obf_field_id__fld_exportable": true,
+      "obf_fld_uk": null,
       "obf_area_id__ofa_name": "PmMessage-3",
       "obf_area_id__ofa_position": 3,
       "row_module_id__mdl_name": "ProjectManagement"
@@ -8326,6 +8641,9 @@
       "obf_fld_researchreq": null,
       "obf_fld_dfault": null,
       "obf_field_id__fld_dfault": null,
+      "obf_fld_exportable": null,
+      "obf_field_id__fld_exportable": true,
+      "obf_fld_uk": null,
       "obf_area_id__ofa_name": "PmMessage-3",
       "obf_area_id__ofa_position": 3,
       "row_module_id__mdl_name": "ProjectManagement"
@@ -8359,6 +8677,9 @@
       "obf_fld_researchreq": null,
       "obf_fld_dfault": null,
       "obf_field_id__fld_dfault": null,
+      "obf_fld_exportable": null,
+      "obf_field_id__fld_exportable": true,
+      "obf_fld_uk": null,
       "obf_area_id__ofa_name": "PmProject-1",
       "obf_area_id__ofa_position": 1,
       "row_module_id__mdl_name": "ProjectManagement"
@@ -8392,6 +8713,9 @@
       "obf_fld_researchreq": null,
       "obf_fld_dfault": null,
       "obf_field_id__fld_dfault": "SERVICEA",
+      "obf_fld_exportable": null,
+      "obf_field_id__fld_exportable": true,
+      "obf_fld_uk": null,
       "obf_area_id__ofa_name": null,
       "obf_area_id__ofa_position": null,
       "row_module_id__mdl_name": "ProjectManagement"
@@ -8425,6 +8749,9 @@
       "obf_fld_researchreq": null,
       "obf_fld_dfault": null,
       "obf_field_id__fld_dfault": null,
+      "obf_fld_exportable": null,
+      "obf_field_id__fld_exportable": true,
+      "obf_fld_uk": null,
       "obf_area_id__ofa_name": null,
       "obf_area_id__ofa_position": null,
       "row_module_id__mdl_name": "ProjectManagement"
@@ -8458,39 +8785,9 @@
       "obf_fld_researchreq": null,
       "obf_fld_dfault": null,
       "obf_field_id__fld_dfault": null,
-      "obf_area_id__ofa_name": null,
-      "obf_area_id__ofa_position": null,
-      "row_module_id__mdl_name": "ProjectManagement"
-     }
-    },
-    {
-     "object": "ObjectFieldSystem",
-     "userkey": "PmProject~pmPrjTestCalcul~50",
-     "item": {
-      "obf_object_id__obo_name": "PmProject",
-      "obf_field_id__fld_name": "pmPrjTestCalcul",
-      "obf_field_id__fld_type": "13",
-      "obf_order": 50,
-      "obf_group_by": null,
-      "obf_dfault_order": null,
-      "obf_input": null,
-      "obf_ref_field_id__fld_name": null,
-      "obf_ref_object_id__obo_name": null,
-      "obf_cascad": null,
-      "obf_card": null,
-      "obf_visible": null,
-      "obf_ref_export": true,
-      "obf_copy": null,
-      "obf_ref_order": null,
-      "obf_fld_visible": null,
-      "obf_fld_required": null,
-      "obf_fld_updatable": null,
-      "obf_fld_research": null,
-      "obf_fld_more": null,
-      "obf_fld_listmore": null,
-      "obf_fld_researchreq": null,
-      "obf_fld_dfault": null,
-      "obf_field_id__fld_dfault": null,
+      "obf_fld_exportable": null,
+      "obf_field_id__fld_exportable": true,
+      "obf_fld_uk": null,
       "obf_area_id__ofa_name": null,
       "obf_area_id__ofa_position": null,
       "row_module_id__mdl_name": "ProjectManagement"
@@ -8524,6 +8821,9 @@
       "obf_fld_researchreq": null,
       "obf_fld_dfault": null,
       "obf_field_id__fld_dfault": null,
+      "obf_fld_exportable": null,
+      "obf_field_id__fld_exportable": true,
+      "obf_fld_uk": null,
       "obf_area_id__ofa_name": "PmRole-3",
       "obf_area_id__ofa_position": 3,
       "row_module_id__mdl_name": "ProjectManagement"
@@ -8557,6 +8857,9 @@
       "obf_fld_researchreq": null,
       "obf_fld_dfault": null,
       "obf_field_id__fld_dfault": null,
+      "obf_fld_exportable": null,
+      "obf_field_id__fld_exportable": true,
+      "obf_fld_uk": null,
       "obf_area_id__ofa_name": "PmRole-3",
       "obf_area_id__ofa_position": 3,
       "row_module_id__mdl_name": "ProjectManagement"
@@ -8590,6 +8893,9 @@
       "obf_fld_researchreq": null,
       "obf_fld_dfault": null,
       "obf_field_id__fld_dfault": null,
+      "obf_fld_exportable": null,
+      "obf_field_id__fld_exportable": true,
+      "obf_fld_uk": null,
       "obf_area_id__ofa_name": "PmRole-2",
       "obf_area_id__ofa_position": 2,
       "row_module_id__mdl_name": "ProjectManagement"
@@ -8623,6 +8929,9 @@
       "obf_fld_researchreq": null,
       "obf_fld_dfault": null,
       "obf_field_id__fld_dfault": null,
+      "obf_fld_exportable": null,
+      "obf_field_id__fld_exportable": true,
+      "obf_fld_uk": null,
       "obf_area_id__ofa_name": "PmRole-2",
       "obf_area_id__ofa_position": 2,
       "row_module_id__mdl_name": "ProjectManagement"
@@ -8656,6 +8965,9 @@
       "obf_fld_researchreq": null,
       "obf_fld_dfault": null,
       "obf_field_id__fld_dfault": null,
+      "obf_fld_exportable": null,
+      "obf_field_id__fld_exportable": true,
+      "obf_fld_uk": null,
       "obf_area_id__ofa_name": "PmRole-1",
       "obf_area_id__ofa_position": 1,
       "row_module_id__mdl_name": "ProjectManagement"
@@ -8689,6 +9001,9 @@
       "obf_fld_researchreq": null,
       "obf_fld_dfault": null,
       "obf_field_id__fld_dfault": "0",
+      "obf_fld_exportable": null,
+      "obf_field_id__fld_exportable": true,
+      "obf_fld_uk": null,
       "obf_area_id__ofa_name": "PmTask-1",
       "obf_area_id__ofa_position": 1,
       "row_module_id__mdl_name": "ProjectManagement"
@@ -8722,6 +9037,9 @@
       "obf_fld_researchreq": null,
       "obf_fld_dfault": null,
       "obf_field_id__fld_dfault": null,
+      "obf_fld_exportable": null,
+      "obf_field_id__fld_exportable": true,
+      "obf_fld_uk": null,
       "obf_area_id__ofa_name": "PmTask-1",
       "obf_area_id__ofa_position": 1,
       "row_module_id__mdl_name": "ProjectManagement"
@@ -8755,6 +9073,9 @@
       "obf_fld_researchreq": null,
       "obf_fld_dfault": null,
       "obf_field_id__fld_dfault": null,
+      "obf_fld_exportable": null,
+      "obf_field_id__fld_exportable": true,
+      "obf_fld_uk": null,
       "obf_area_id__ofa_name": "PmTask-1",
       "obf_area_id__ofa_position": 1,
       "row_module_id__mdl_name": "ProjectManagement"
@@ -8788,6 +9109,9 @@
       "obf_fld_researchreq": null,
       "obf_fld_dfault": null,
       "obf_field_id__fld_dfault": "DRAFT",
+      "obf_fld_exportable": null,
+      "obf_field_id__fld_exportable": true,
+      "obf_fld_uk": null,
       "obf_area_id__ofa_name": "PmTask-1",
       "obf_area_id__ofa_position": 1,
       "row_module_id__mdl_name": "ProjectManagement"
@@ -8821,6 +9145,9 @@
       "obf_fld_researchreq": null,
       "obf_fld_dfault": null,
       "obf_field_id__fld_dfault": "NORMAL",
+      "obf_fld_exportable": null,
+      "obf_field_id__fld_exportable": true,
+      "obf_fld_uk": null,
       "obf_area_id__ofa_name": "PmTask-1",
       "obf_area_id__ofa_position": 1,
       "row_module_id__mdl_name": "ProjectManagement"
@@ -8854,6 +9181,9 @@
       "obf_fld_researchreq": null,
       "obf_fld_dfault": null,
       "obf_field_id__fld_dfault": "[DATE]",
+      "obf_fld_exportable": null,
+      "obf_field_id__fld_exportable": true,
+      "obf_fld_uk": null,
       "obf_area_id__ofa_name": "PmTask-1",
       "obf_area_id__ofa_position": 1,
       "row_module_id__mdl_name": "ProjectManagement"
@@ -8887,6 +9217,9 @@
       "obf_fld_researchreq": null,
       "obf_fld_dfault": null,
       "obf_field_id__fld_dfault": "[DATE:7]",
+      "obf_fld_exportable": null,
+      "obf_field_id__fld_exportable": true,
+      "obf_fld_uk": null,
       "obf_area_id__ofa_name": "PmTask-1",
       "obf_area_id__ofa_position": 1,
       "row_module_id__mdl_name": "ProjectManagement"
@@ -8920,6 +9253,9 @@
       "obf_fld_researchreq": null,
       "obf_fld_dfault": null,
       "obf_field_id__fld_dfault": null,
+      "obf_fld_exportable": null,
+      "obf_field_id__fld_exportable": true,
+      "obf_fld_uk": null,
       "obf_area_id__ofa_name": "PmTask-1",
       "obf_area_id__ofa_position": 1,
       "row_module_id__mdl_name": "ProjectManagement"
@@ -8953,6 +9289,9 @@
       "obf_fld_researchreq": null,
       "obf_fld_dfault": null,
       "obf_field_id__fld_dfault": null,
+      "obf_fld_exportable": null,
+      "obf_field_id__fld_exportable": true,
+      "obf_fld_uk": null,
       "obf_area_id__ofa_name": "PmTask-1",
       "obf_area_id__ofa_position": 1,
       "row_module_id__mdl_name": "ProjectManagement"
@@ -8986,6 +9325,9 @@
       "obf_fld_researchreq": null,
       "obf_fld_dfault": null,
       "obf_field_id__fld_dfault": null,
+      "obf_fld_exportable": null,
+      "obf_field_id__fld_exportable": true,
+      "obf_fld_uk": null,
       "obf_area_id__ofa_name": "PmTask-1",
       "obf_area_id__ofa_position": 1,
       "row_module_id__mdl_name": "ProjectManagement"
@@ -9019,6 +9361,9 @@
       "obf_fld_researchreq": null,
       "obf_fld_dfault": null,
       "obf_field_id__fld_dfault": "[USERID]",
+      "obf_fld_exportable": null,
+      "obf_field_id__fld_exportable": true,
+      "obf_fld_uk": null,
       "obf_area_id__ofa_name": "PmTask-3",
       "obf_area_id__ofa_position": 3,
       "row_module_id__mdl_name": "ProjectManagement"
@@ -9052,6 +9397,9 @@
       "obf_fld_researchreq": null,
       "obf_fld_dfault": null,
       "obf_field_id__fld_dfault": null,
+      "obf_fld_exportable": null,
+      "obf_field_id__fld_exportable": true,
+      "obf_fld_uk": null,
       "obf_area_id__ofa_name": "PmTask-3",
       "obf_area_id__ofa_position": 3,
       "row_module_id__mdl_name": "ProjectManagement"
@@ -9085,6 +9433,9 @@
       "obf_fld_researchreq": null,
       "obf_fld_dfault": null,
       "obf_field_id__fld_dfault": null,
+      "obf_fld_exportable": null,
+      "obf_field_id__fld_exportable": true,
+      "obf_fld_uk": null,
       "obf_area_id__ofa_name": "PmTask-3",
       "obf_area_id__ofa_position": 3,
       "row_module_id__mdl_name": "ProjectManagement"
@@ -9118,6 +9469,9 @@
       "obf_fld_researchreq": null,
       "obf_fld_dfault": null,
       "obf_field_id__fld_dfault": null,
+      "obf_fld_exportable": null,
+      "obf_field_id__fld_exportable": true,
+      "obf_fld_uk": null,
       "obf_area_id__ofa_name": "PmTask-3",
       "obf_area_id__ofa_position": 3,
       "row_module_id__mdl_name": "ProjectManagement"
@@ -9151,6 +9505,9 @@
       "obf_fld_researchreq": null,
       "obf_fld_dfault": null,
       "obf_field_id__fld_dfault": null,
+      "obf_fld_exportable": null,
+      "obf_field_id__fld_exportable": true,
+      "obf_fld_uk": null,
       "obf_area_id__ofa_name": "PmTask-4",
       "obf_area_id__ofa_position": 4,
       "row_module_id__mdl_name": "ProjectManagement"
@@ -9184,6 +9541,9 @@
       "obf_fld_researchreq": null,
       "obf_fld_dfault": null,
       "obf_field_id__fld_dfault": null,
+      "obf_fld_exportable": null,
+      "obf_field_id__fld_exportable": true,
+      "obf_fld_uk": null,
       "obf_area_id__ofa_name": "PmTask-4",
       "obf_area_id__ofa_position": 4,
       "row_module_id__mdl_name": "ProjectManagement"
@@ -9217,6 +9577,9 @@
       "obf_fld_researchreq": null,
       "obf_fld_dfault": null,
       "obf_field_id__fld_dfault": null,
+      "obf_fld_exportable": null,
+      "obf_field_id__fld_exportable": true,
+      "obf_fld_uk": null,
       "obf_area_id__ofa_name": "PmTask-4",
       "obf_area_id__ofa_position": 4,
       "row_module_id__mdl_name": "ProjectManagement"
@@ -9250,6 +9613,9 @@
       "obf_fld_researchreq": null,
       "obf_fld_dfault": null,
       "obf_field_id__fld_dfault": null,
+      "obf_fld_exportable": null,
+      "obf_field_id__fld_exportable": true,
+      "obf_fld_uk": null,
       "obf_area_id__ofa_name": "PmTask-4",
       "obf_area_id__ofa_position": 4,
       "row_module_id__mdl_name": "ProjectManagement"
@@ -9283,6 +9649,9 @@
       "obf_fld_researchreq": null,
       "obf_fld_dfault": null,
       "obf_field_id__fld_dfault": null,
+      "obf_fld_exportable": null,
+      "obf_field_id__fld_exportable": true,
+      "obf_fld_uk": null,
       "obf_area_id__ofa_name": "PmTask-4",
       "obf_area_id__ofa_position": 4,
       "row_module_id__mdl_name": "ProjectManagement"
@@ -9316,6 +9685,9 @@
       "obf_fld_researchreq": null,
       "obf_fld_dfault": null,
       "obf_field_id__fld_dfault": "ALPHA",
+      "obf_fld_exportable": null,
+      "obf_field_id__fld_exportable": true,
+      "obf_fld_uk": null,
       "obf_area_id__ofa_name": "PmTask-4",
       "obf_area_id__ofa_position": 4,
       "row_module_id__mdl_name": "ProjectManagement"
@@ -9349,6 +9721,9 @@
       "obf_fld_researchreq": null,
       "obf_fld_dfault": null,
       "obf_field_id__fld_dfault": null,
+      "obf_fld_exportable": null,
+      "obf_field_id__fld_exportable": true,
+      "obf_fld_uk": null,
       "obf_area_id__ofa_name": "PmTask-4",
       "obf_area_id__ofa_position": 4,
       "row_module_id__mdl_name": "ProjectManagement"
@@ -9382,6 +9757,9 @@
       "obf_fld_researchreq": null,
       "obf_fld_dfault": null,
       "obf_field_id__fld_dfault": "[DATE:30]",
+      "obf_fld_exportable": null,
+      "obf_field_id__fld_exportable": true,
+      "obf_fld_uk": null,
       "obf_area_id__ofa_name": "PmTask-4",
       "obf_area_id__ofa_position": 4,
       "row_module_id__mdl_name": "ProjectManagement"
@@ -9415,6 +9793,9 @@
       "obf_fld_researchreq": null,
       "obf_fld_dfault": null,
       "obf_field_id__fld_dfault": null,
+      "obf_fld_exportable": null,
+      "obf_field_id__fld_exportable": true,
+      "obf_fld_uk": null,
       "obf_area_id__ofa_name": "PmTask-1",
       "obf_area_id__ofa_position": 1,
       "row_module_id__mdl_name": "ProjectManagement"
@@ -9448,6 +9829,9 @@
       "obf_fld_researchreq": null,
       "obf_fld_dfault": null,
       "obf_field_id__fld_dfault": null,
+      "obf_fld_exportable": null,
+      "obf_field_id__fld_exportable": true,
+      "obf_fld_uk": null,
       "obf_area_id__ofa_name": null,
       "obf_area_id__ofa_position": null,
       "row_module_id__mdl_name": "ProjectManagement"
@@ -9481,6 +9865,9 @@
       "obf_fld_researchreq": null,
       "obf_fld_dfault": null,
       "obf_field_id__fld_dfault": null,
+      "obf_fld_exportable": null,
+      "obf_field_id__fld_exportable": true,
+      "obf_fld_uk": null,
       "obf_area_id__ofa_name": null,
       "obf_area_id__ofa_position": null,
       "row_module_id__mdl_name": "ProjectManagement"
@@ -9514,6 +9901,9 @@
       "obf_fld_researchreq": null,
       "obf_fld_dfault": null,
       "obf_field_id__fld_dfault": null,
+      "obf_fld_exportable": null,
+      "obf_field_id__fld_exportable": true,
+      "obf_fld_uk": null,
       "obf_area_id__ofa_name": null,
       "obf_area_id__ofa_position": null,
       "row_module_id__mdl_name": "ProjectManagement"
@@ -9547,6 +9937,9 @@
       "obf_fld_researchreq": null,
       "obf_fld_dfault": null,
       "obf_field_id__fld_dfault": null,
+      "obf_fld_exportable": null,
+      "obf_field_id__fld_exportable": true,
+      "obf_fld_uk": null,
       "obf_area_id__ofa_name": null,
       "obf_area_id__ofa_position": null,
       "row_module_id__mdl_name": "ProjectManagement"
@@ -9580,6 +9973,9 @@
       "obf_fld_researchreq": null,
       "obf_fld_dfault": null,
       "obf_field_id__fld_dfault": "0",
+      "obf_fld_exportable": null,
+      "obf_field_id__fld_exportable": true,
+      "obf_fld_uk": null,
       "obf_area_id__ofa_name": "PmTask-1",
       "obf_area_id__ofa_position": 1,
       "row_module_id__mdl_name": "ProjectManagement"
@@ -9613,6 +10009,9 @@
       "obf_fld_researchreq": null,
       "obf_fld_dfault": null,
       "obf_field_id__fld_dfault": null,
+      "obf_fld_exportable": null,
+      "obf_field_id__fld_exportable": true,
+      "obf_fld_uk": null,
       "obf_area_id__ofa_name": "PmTask-1",
       "obf_area_id__ofa_position": 1,
       "row_module_id__mdl_name": "ProjectManagement"
@@ -9646,6 +10045,9 @@
       "obf_fld_researchreq": null,
       "obf_fld_dfault": null,
       "obf_field_id__fld_dfault": null,
+      "obf_fld_exportable": null,
+      "obf_field_id__fld_exportable": true,
+      "obf_fld_uk": null,
       "obf_area_id__ofa_name": "PmTask-1",
       "obf_area_id__ofa_position": 1,
       "row_module_id__mdl_name": "ProjectManagement"
@@ -9679,6 +10081,9 @@
       "obf_fld_researchreq": null,
       "obf_fld_dfault": null,
       "obf_field_id__fld_dfault": "DRAFT",
+      "obf_fld_exportable": null,
+      "obf_field_id__fld_exportable": true,
+      "obf_fld_uk": null,
       "obf_area_id__ofa_name": "PmTask-1",
       "obf_area_id__ofa_position": 1,
       "row_module_id__mdl_name": "ProjectManagement"
@@ -9712,6 +10117,9 @@
       "obf_fld_researchreq": null,
       "obf_fld_dfault": null,
       "obf_field_id__fld_dfault": "NORMAL",
+      "obf_fld_exportable": null,
+      "obf_field_id__fld_exportable": true,
+      "obf_fld_uk": null,
       "obf_area_id__ofa_name": "PmTask-1",
       "obf_area_id__ofa_position": 1,
       "row_module_id__mdl_name": "ProjectManagement"
@@ -9745,6 +10153,9 @@
       "obf_fld_researchreq": null,
       "obf_fld_dfault": null,
       "obf_field_id__fld_dfault": "[DATE]",
+      "obf_fld_exportable": null,
+      "obf_field_id__fld_exportable": true,
+      "obf_fld_uk": null,
       "obf_area_id__ofa_name": "PmTask-1",
       "obf_area_id__ofa_position": 1,
       "row_module_id__mdl_name": "ProjectManagement"
@@ -9778,6 +10189,9 @@
       "obf_fld_researchreq": null,
       "obf_fld_dfault": null,
       "obf_field_id__fld_dfault": "[DATE:7]",
+      "obf_fld_exportable": null,
+      "obf_field_id__fld_exportable": true,
+      "obf_fld_uk": null,
       "obf_area_id__ofa_name": "PmTask-1",
       "obf_area_id__ofa_position": 1,
       "row_module_id__mdl_name": "ProjectManagement"
@@ -9811,6 +10225,9 @@
       "obf_fld_researchreq": null,
       "obf_fld_dfault": null,
       "obf_field_id__fld_dfault": null,
+      "obf_fld_exportable": null,
+      "obf_field_id__fld_exportable": true,
+      "obf_fld_uk": null,
       "obf_area_id__ofa_name": "PmTask-1",
       "obf_area_id__ofa_position": 1,
       "row_module_id__mdl_name": "ProjectManagement"
@@ -9844,6 +10261,9 @@
       "obf_fld_researchreq": null,
       "obf_fld_dfault": null,
       "obf_field_id__fld_dfault": null,
+      "obf_fld_exportable": null,
+      "obf_field_id__fld_exportable": true,
+      "obf_fld_uk": null,
       "obf_area_id__ofa_name": "PmTask-1",
       "obf_area_id__ofa_position": 1,
       "row_module_id__mdl_name": "ProjectManagement"
@@ -9877,6 +10297,9 @@
       "obf_fld_researchreq": null,
       "obf_fld_dfault": null,
       "obf_field_id__fld_dfault": "[USERID]",
+      "obf_fld_exportable": null,
+      "obf_field_id__fld_exportable": true,
+      "obf_fld_uk": null,
       "obf_area_id__ofa_name": "PmTask-3",
       "obf_area_id__ofa_position": 3,
       "row_module_id__mdl_name": "ProjectManagement"
@@ -9910,6 +10333,9 @@
       "obf_fld_researchreq": null,
       "obf_fld_dfault": null,
       "obf_field_id__fld_dfault": null,
+      "obf_fld_exportable": null,
+      "obf_field_id__fld_exportable": true,
+      "obf_fld_uk": null,
       "obf_area_id__ofa_name": "PmTask-3",
       "obf_area_id__ofa_position": 3,
       "row_module_id__mdl_name": "ProjectManagement"
@@ -9943,6 +10369,9 @@
       "obf_fld_researchreq": null,
       "obf_fld_dfault": null,
       "obf_field_id__fld_dfault": null,
+      "obf_fld_exportable": null,
+      "obf_field_id__fld_exportable": true,
+      "obf_fld_uk": null,
       "obf_area_id__ofa_name": "PmTask-3",
       "obf_area_id__ofa_position": 3,
       "row_module_id__mdl_name": "ProjectManagement"
@@ -9976,6 +10405,9 @@
       "obf_fld_researchreq": null,
       "obf_fld_dfault": null,
       "obf_field_id__fld_dfault": null,
+      "obf_fld_exportable": null,
+      "obf_field_id__fld_exportable": true,
+      "obf_fld_uk": null,
       "obf_area_id__ofa_name": "PmTask-3",
       "obf_area_id__ofa_position": 3,
       "row_module_id__mdl_name": "ProjectManagement"
@@ -10009,6 +10441,9 @@
       "obf_fld_researchreq": null,
       "obf_fld_dfault": null,
       "obf_field_id__fld_dfault": null,
+      "obf_fld_exportable": null,
+      "obf_field_id__fld_exportable": true,
+      "obf_fld_uk": null,
       "obf_area_id__ofa_name": "PmTask-4",
       "obf_area_id__ofa_position": 4,
       "row_module_id__mdl_name": "ProjectManagement"
@@ -10042,6 +10477,9 @@
       "obf_fld_researchreq": null,
       "obf_fld_dfault": null,
       "obf_field_id__fld_dfault": null,
+      "obf_fld_exportable": null,
+      "obf_field_id__fld_exportable": true,
+      "obf_fld_uk": null,
       "obf_area_id__ofa_name": "PmTask-4",
       "obf_area_id__ofa_position": 4,
       "row_module_id__mdl_name": "ProjectManagement"
@@ -10075,6 +10513,9 @@
       "obf_fld_researchreq": null,
       "obf_fld_dfault": null,
       "obf_field_id__fld_dfault": null,
+      "obf_fld_exportable": null,
+      "obf_field_id__fld_exportable": true,
+      "obf_fld_uk": null,
       "obf_area_id__ofa_name": "PmTask-4",
       "obf_area_id__ofa_position": 4,
       "row_module_id__mdl_name": "ProjectManagement"
@@ -10108,6 +10549,9 @@
       "obf_fld_researchreq": null,
       "obf_fld_dfault": null,
       "obf_field_id__fld_dfault": null,
+      "obf_fld_exportable": null,
+      "obf_field_id__fld_exportable": true,
+      "obf_fld_uk": null,
       "obf_area_id__ofa_name": "PmTask-4",
       "obf_area_id__ofa_position": 4,
       "row_module_id__mdl_name": "ProjectManagement"
@@ -10141,6 +10585,9 @@
       "obf_fld_researchreq": null,
       "obf_fld_dfault": null,
       "obf_field_id__fld_dfault": null,
+      "obf_fld_exportable": null,
+      "obf_field_id__fld_exportable": true,
+      "obf_fld_uk": null,
       "obf_area_id__ofa_name": "PmTask-4",
       "obf_area_id__ofa_position": 4,
       "row_module_id__mdl_name": "ProjectManagement"
@@ -10174,6 +10621,9 @@
       "obf_fld_researchreq": null,
       "obf_fld_dfault": null,
       "obf_field_id__fld_dfault": "ALPHA",
+      "obf_fld_exportable": null,
+      "obf_field_id__fld_exportable": true,
+      "obf_fld_uk": null,
       "obf_area_id__ofa_name": "PmTask-4",
       "obf_area_id__ofa_position": 4,
       "row_module_id__mdl_name": "ProjectManagement"
@@ -10207,6 +10657,9 @@
       "obf_fld_researchreq": null,
       "obf_fld_dfault": null,
       "obf_field_id__fld_dfault": null,
+      "obf_fld_exportable": null,
+      "obf_field_id__fld_exportable": true,
+      "obf_fld_uk": null,
       "obf_area_id__ofa_name": "PmTask-4",
       "obf_area_id__ofa_position": 4,
       "row_module_id__mdl_name": "ProjectManagement"
@@ -10240,6 +10693,9 @@
       "obf_fld_researchreq": null,
       "obf_fld_dfault": null,
       "obf_field_id__fld_dfault": "[DATE:30]",
+      "obf_fld_exportable": null,
+      "obf_field_id__fld_exportable": true,
+      "obf_fld_uk": null,
       "obf_area_id__ofa_name": "PmTask-4",
       "obf_area_id__ofa_position": 4,
       "row_module_id__mdl_name": "ProjectManagement"
@@ -10273,6 +10729,9 @@
       "obf_fld_researchreq": null,
       "obf_fld_dfault": null,
       "obf_field_id__fld_dfault": null,
+      "obf_fld_exportable": null,
+      "obf_field_id__fld_exportable": true,
+      "obf_fld_uk": null,
       "obf_area_id__ofa_name": null,
       "obf_area_id__ofa_position": null,
       "row_module_id__mdl_name": "ProjectManagement"
@@ -10306,6 +10765,9 @@
       "obf_fld_researchreq": null,
       "obf_fld_dfault": null,
       "obf_field_id__fld_dfault": "0",
+      "obf_fld_exportable": null,
+      "obf_field_id__fld_exportable": true,
+      "obf_fld_uk": null,
       "obf_area_id__ofa_name": null,
       "obf_area_id__ofa_position": null,
       "row_module_id__mdl_name": "ProjectManagement"
@@ -10339,6 +10801,9 @@
       "obf_fld_researchreq": null,
       "obf_fld_dfault": null,
       "obf_field_id__fld_dfault": null,
+      "obf_fld_exportable": null,
+      "obf_field_id__fld_exportable": true,
+      "obf_fld_uk": null,
       "obf_area_id__ofa_name": "PmTskLbl-3",
       "obf_area_id__ofa_position": 3,
       "row_module_id__mdl_name": "ProjectManagement"
@@ -10372,6 +10837,9 @@
       "obf_fld_researchreq": null,
       "obf_fld_dfault": null,
       "obf_field_id__fld_dfault": null,
+      "obf_fld_exportable": null,
+      "obf_field_id__fld_exportable": true,
+      "obf_fld_uk": null,
       "obf_area_id__ofa_name": null,
       "obf_area_id__ofa_position": null,
       "row_module_id__mdl_name": "ProjectManagement"
@@ -10405,6 +10873,9 @@
       "obf_fld_researchreq": null,
       "obf_fld_dfault": null,
       "obf_field_id__fld_dfault": null,
+      "obf_fld_exportable": null,
+      "obf_field_id__fld_exportable": true,
+      "obf_fld_uk": null,
       "obf_area_id__ofa_name": "PmTskLbl-1",
       "obf_area_id__ofa_position": 1,
       "row_module_id__mdl_name": "ProjectManagement"
@@ -10438,6 +10909,9 @@
       "obf_fld_researchreq": null,
       "obf_fld_dfault": null,
       "obf_field_id__fld_dfault": null,
+      "obf_fld_exportable": null,
+      "obf_field_id__fld_exportable": true,
+      "obf_fld_uk": null,
       "obf_area_id__ofa_name": "PmTskLbl-3",
       "obf_area_id__ofa_position": 3,
       "row_module_id__mdl_name": "ProjectManagement"
@@ -10471,6 +10945,9 @@
       "obf_fld_researchreq": null,
       "obf_fld_dfault": null,
       "obf_field_id__fld_dfault": null,
+      "obf_fld_exportable": null,
+      "obf_field_id__fld_exportable": true,
+      "obf_fld_uk": null,
       "obf_area_id__ofa_name": "PmTskLbl-3",
       "obf_area_id__ofa_position": 3,
       "row_module_id__mdl_name": "ProjectManagement"
@@ -10504,6 +10981,9 @@
       "obf_fld_researchreq": null,
       "obf_fld_dfault": null,
       "obf_field_id__fld_dfault": null,
+      "obf_fld_exportable": null,
+      "obf_field_id__fld_exportable": true,
+      "obf_fld_uk": null,
       "obf_area_id__ofa_name": "PmTskLbl-2",
       "obf_area_id__ofa_position": 2,
       "row_module_id__mdl_name": "ProjectManagement"
@@ -10537,6 +11017,9 @@
       "obf_fld_researchreq": null,
       "obf_fld_dfault": null,
       "obf_field_id__fld_dfault": null,
+      "obf_fld_exportable": null,
+      "obf_field_id__fld_exportable": true,
+      "obf_fld_uk": null,
       "obf_area_id__ofa_name": "PmTskLbl-2",
       "obf_area_id__ofa_position": 2,
       "row_module_id__mdl_name": "ProjectManagement"
@@ -10570,8 +11053,47 @@
       "obf_fld_researchreq": null,
       "obf_fld_dfault": null,
       "obf_field_id__fld_dfault": null,
+      "obf_fld_exportable": null,
+      "obf_field_id__fld_exportable": true,
+      "obf_fld_uk": null,
       "obf_area_id__ofa_name": "PmTskLbl-3",
       "obf_area_id__ofa_position": 3,
+      "row_module_id__mdl_name": "ProjectManagement"
+     }
+    },
+    {
+     "object": "ObjectFieldSystem",
+     "userkey": "PmUser~pmPrjTestCalcul~2",
+     "item": {
+      "obf_object_id__obo_name": "PmUser",
+      "obf_field_id__fld_name": "pmPrjTestCalcul",
+      "obf_field_id__fld_type": "13",
+      "obf_order": 2,
+      "obf_group_by": null,
+      "obf_dfault_order": null,
+      "obf_input": null,
+      "obf_ref_field_id__fld_name": null,
+      "obf_ref_object_id__obo_name": null,
+      "obf_cascad": null,
+      "obf_card": null,
+      "obf_visible": null,
+      "obf_ref_export": true,
+      "obf_copy": null,
+      "obf_ref_order": null,
+      "obf_fld_visible": null,
+      "obf_fld_required": null,
+      "obf_fld_updatable": null,
+      "obf_fld_research": null,
+      "obf_fld_more": null,
+      "obf_fld_listmore": null,
+      "obf_fld_researchreq": null,
+      "obf_fld_dfault": null,
+      "obf_field_id__fld_dfault": null,
+      "obf_fld_exportable": null,
+      "obf_field_id__fld_exportable": true,
+      "obf_fld_uk": null,
+      "obf_area_id__ofa_name": null,
+      "obf_area_id__ofa_position": null,
       "row_module_id__mdl_name": "ProjectManagement"
      }
     },
@@ -10603,6 +11125,9 @@
       "obf_fld_researchreq": null,
       "obf_fld_dfault": null,
       "obf_field_id__fld_dfault": "0",
+      "obf_fld_exportable": null,
+      "obf_field_id__fld_exportable": true,
+      "obf_fld_uk": null,
       "obf_area_id__ofa_name": "PmUser-1",
       "obf_area_id__ofa_position": 1,
       "row_module_id__mdl_name": "ProjectManagement"
@@ -10636,6 +11161,9 @@
       "obf_fld_researchreq": null,
       "obf_fld_dfault": null,
       "obf_field_id__fld_dfault": null,
+      "obf_fld_exportable": null,
+      "obf_field_id__fld_exportable": true,
+      "obf_fld_uk": null,
       "obf_area_id__ofa_name": "PmVersion-1",
       "obf_area_id__ofa_position": 1,
       "row_module_id__mdl_name": "ProjectManagement"
@@ -10669,6 +11197,9 @@
       "obf_fld_researchreq": null,
       "obf_fld_dfault": null,
       "obf_field_id__fld_dfault": "[DATE:30]",
+      "obf_fld_exportable": null,
+      "obf_field_id__fld_exportable": true,
+      "obf_fld_uk": null,
       "obf_area_id__ofa_name": "PmVersion-1",
       "obf_area_id__ofa_position": 1,
       "row_module_id__mdl_name": "ProjectManagement"
@@ -10702,6 +11233,9 @@
       "obf_fld_researchreq": null,
       "obf_fld_dfault": null,
       "obf_field_id__fld_dfault": "ALPHA",
+      "obf_fld_exportable": null,
+      "obf_field_id__fld_exportable": true,
+      "obf_fld_uk": null,
       "obf_area_id__ofa_name": "PmVersion-1",
       "obf_area_id__ofa_position": 1,
       "row_module_id__mdl_name": "ProjectManagement"
@@ -10735,6 +11269,9 @@
       "obf_fld_researchreq": null,
       "obf_fld_dfault": null,
       "obf_field_id__fld_dfault": null,
+      "obf_fld_exportable": null,
+      "obf_field_id__fld_exportable": true,
+      "obf_fld_uk": null,
       "obf_area_id__ofa_name": "PmVersion-1",
       "obf_area_id__ofa_position": 1,
       "row_module_id__mdl_name": "ProjectManagement"
@@ -10768,6 +11305,9 @@
       "obf_fld_researchreq": null,
       "obf_fld_dfault": null,
       "obf_field_id__fld_dfault": null,
+      "obf_fld_exportable": null,
+      "obf_field_id__fld_exportable": true,
+      "obf_fld_uk": null,
       "obf_area_id__ofa_name": "PmVersion-2",
       "obf_area_id__ofa_position": 2,
       "row_module_id__mdl_name": "ProjectManagement"
@@ -10801,6 +11341,9 @@
       "obf_fld_researchreq": null,
       "obf_fld_dfault": null,
       "obf_field_id__fld_dfault": null,
+      "obf_fld_exportable": null,
+      "obf_field_id__fld_exportable": true,
+      "obf_fld_uk": null,
       "obf_area_id__ofa_name": "PmVersion-2",
       "obf_area_id__ofa_position": 2,
       "row_module_id__mdl_name": "ProjectManagement"
@@ -10834,6 +11377,9 @@
       "obf_fld_researchreq": null,
       "obf_fld_dfault": null,
       "obf_field_id__fld_dfault": null,
+      "obf_fld_exportable": null,
+      "obf_field_id__fld_exportable": true,
+      "obf_fld_uk": null,
       "obf_area_id__ofa_name": "PmVersion-1",
       "obf_area_id__ofa_position": 1,
       "row_module_id__mdl_name": "ProjectManagement"
@@ -10863,6 +11409,7 @@
       "obf_cascad": "C",
       "obf_card": "0,n",
       "obf_query": null,
+      "obf_filters": null,
       "obf_visible": false,
       "obf_ref_export": false,
       "obf_copy": false,
@@ -10891,6 +11438,7 @@
       "obf_cascad": "C",
       "obf_card": "0,n",
       "obf_query": null,
+      "obf_filters": null,
       "obf_visible": true,
       "obf_ref_export": true,
       "obf_copy": false,
@@ -10919,6 +11467,7 @@
       "obf_cascad": "C",
       "obf_card": "0,n",
       "obf_query": null,
+      "obf_filters": null,
       "obf_visible": true,
       "obf_ref_export": true,
       "obf_copy": false,
@@ -10947,6 +11496,7 @@
       "obf_cascad": "C",
       "obf_card": "0,n",
       "obf_query": null,
+      "obf_filters": null,
       "obf_visible": true,
       "obf_ref_export": true,
       "obf_copy": false,
@@ -10975,6 +11525,7 @@
       "obf_cascad": "C",
       "obf_card": "0,n",
       "obf_query": null,
+      "obf_filters": null,
       "obf_visible": true,
       "obf_ref_export": true,
       "obf_copy": false,
@@ -11003,6 +11554,7 @@
       "obf_cascad": "Z",
       "obf_card": "0,n",
       "obf_query": "t.row_id in (select ta.row_id from pm_task ta\nleft join pm_version v on v.row_id = ta.pm_tsk_vrs_id\nleft join pm_project p on p.row_id = v.pm_vrs_prj_id \nwhere p.row_id = [row_id] \nGROUP BY v.pmVrsVersion\n)",
+      "obf_filters": null,
       "obf_visible": true,
       "obf_ref_export": true,
       "obf_copy": false,
@@ -11031,6 +11583,7 @@
       "obf_cascad": "Z",
       "obf_card": "0,n",
       "obf_query": null,
+      "obf_filters": null,
       "obf_visible": false,
       "obf_ref_export": true,
       "obf_copy": false,
@@ -11059,6 +11612,7 @@
       "obf_cascad": "C",
       "obf_card": "0,n",
       "obf_query": null,
+      "obf_filters": null,
       "obf_visible": true,
       "obf_ref_export": true,
       "obf_copy": false,
@@ -11087,6 +11641,7 @@
       "obf_cascad": "C",
       "obf_card": "0,n",
       "obf_query": null,
+      "obf_filters": null,
       "obf_visible": true,
       "obf_ref_export": true,
       "obf_copy": false,
@@ -11115,6 +11670,7 @@
       "obf_cascad": "C",
       "obf_card": "0,n",
       "obf_query": null,
+      "obf_filters": null,
       "obf_visible": true,
       "obf_ref_export": true,
       "obf_copy": false,
@@ -11143,6 +11699,7 @@
       "obf_cascad": "C",
       "obf_card": "0,n",
       "obf_query": null,
+      "obf_filters": null,
       "obf_visible": true,
       "obf_ref_export": true,
       "obf_copy": false,
@@ -11171,6 +11728,7 @@
       "obf_cascad": "C",
       "obf_card": "0,n",
       "obf_query": null,
+      "obf_filters": null,
       "obf_visible": true,
       "obf_ref_export": true,
       "obf_copy": false,
@@ -11199,6 +11757,7 @@
       "obf_cascad": "C",
       "obf_card": "0,n",
       "obf_query": null,
+      "obf_filters": null,
       "obf_visible": true,
       "obf_ref_export": true,
       "obf_copy": false,
@@ -11227,6 +11786,7 @@
       "obf_cascad": "C",
       "obf_card": "0,n",
       "obf_query": null,
+      "obf_filters": null,
       "obf_visible": false,
       "obf_ref_export": false,
       "obf_copy": false,
@@ -11255,6 +11815,7 @@
       "obf_cascad": "C",
       "obf_card": "0,n",
       "obf_query": null,
+      "obf_filters": null,
       "obf_visible": true,
       "obf_ref_export": true,
       "obf_copy": false,
@@ -11283,6 +11844,7 @@
       "obf_cascad": "C",
       "obf_card": "0,n",
       "obf_query": null,
+      "obf_filters": null,
       "obf_visible": true,
       "obf_ref_export": true,
       "obf_copy": false,
@@ -11311,6 +11873,7 @@
       "obf_cascad": "C",
       "obf_card": "0,n",
       "obf_query": null,
+      "obf_filters": null,
       "obf_visible": true,
       "obf_ref_export": true,
       "obf_copy": false,
@@ -11339,6 +11902,7 @@
       "obf_cascad": "C",
       "obf_card": "0,n",
       "obf_query": null,
+      "obf_filters": null,
       "obf_visible": true,
       "obf_ref_export": true,
       "obf_copy": false,
@@ -11367,6 +11931,7 @@
       "obf_cascad": "C",
       "obf_card": "0,n",
       "obf_query": null,
+      "obf_filters": null,
       "obf_visible": false,
       "obf_ref_export": true,
       "obf_copy": false,
@@ -11395,6 +11960,7 @@
       "obf_cascad": "C",
       "obf_card": "0,n",
       "obf_query": null,
+      "obf_filters": null,
       "obf_visible": true,
       "obf_ref_export": true,
       "obf_copy": false,
@@ -11423,6 +11989,7 @@
       "obf_cascad": "C",
       "obf_card": "0,n",
       "obf_query": null,
+      "obf_filters": null,
       "obf_visible": false,
       "obf_ref_export": true,
       "obf_copy": false,
@@ -11440,7 +12007,7 @@
   {
    "object": "Action",
    "label": "Actions",
-   "icon": "img/system/action",
+   "icon": "img/system/action_btn",
    "field": "row_module_id",
    "list": [
     {
@@ -11463,7 +12030,9 @@
       "row_module_id__mdl_name": "ProjectManagement",
       "act_exec": "BCK",
       "act_count": null,
-      "act_order": 3
+      "act_order": 3,
+      "act_color": null,
+      "act_color_bg": null
      }
     },
     {
@@ -11486,7 +12055,9 @@
       "row_module_id__mdl_name": "ProjectManagement",
       "act_exec": "BCK",
       "act_count": null,
-      "act_order": null
+      "act_order": null,
+      "act_color": null,
+      "act_color_bg": null
      }
     },
     {
@@ -11509,7 +12080,9 @@
       "row_module_id__mdl_name": "ProjectManagement",
       "act_exec": "BCK",
       "act_count": null,
-      "act_order": null
+      "act_order": null,
+      "act_color": null,
+      "act_color_bg": null
      }
     },
     {
@@ -11532,7 +12105,9 @@
       "row_module_id__mdl_name": "ProjectManagement",
       "act_exec": "NUL",
       "act_count": null,
-      "act_order": null
+      "act_order": null,
+      "act_color": null,
+      "act_color_bg": null
      }
     },
     {
@@ -11555,7 +12130,9 @@
       "row_module_id__mdl_name": "ProjectManagement",
       "act_exec": "NUL",
       "act_count": null,
-      "act_order": null
+      "act_order": null,
+      "act_color": null,
+      "act_color_bg": null
      }
     },
     {
@@ -11578,7 +12155,9 @@
       "row_module_id__mdl_name": "ProjectManagement",
       "act_exec": "NUL",
       "act_count": null,
-      "act_order": null
+      "act_order": null,
+      "act_color": null,
+      "act_color_bg": null
      }
     },
     {
@@ -11601,7 +12180,9 @@
       "row_module_id__mdl_name": "ProjectManagement",
       "act_exec": "NUL",
       "act_count": null,
-      "act_order": null
+      "act_order": null,
+      "act_color": null,
+      "act_color_bg": null
      }
     },
     {
@@ -11624,7 +12205,9 @@
       "row_module_id__mdl_name": "ProjectManagement",
       "act_exec": "NUL",
       "act_count": null,
-      "act_order": null
+      "act_order": null,
+      "act_color": null,
+      "act_color_bg": null
      }
     },
     {
@@ -11647,7 +12230,9 @@
       "row_module_id__mdl_name": "ProjectManagement",
       "act_exec": "NUL",
       "act_count": null,
-      "act_order": null
+      "act_order": null,
+      "act_color": null,
+      "act_color_bg": null
      }
     },
     {
@@ -11670,7 +12255,9 @@
       "row_module_id__mdl_name": "ProjectManagement",
       "act_exec": "NUL",
       "act_count": null,
-      "act_order": null
+      "act_order": null,
+      "act_color": null,
+      "act_color_bg": null
      }
     },
     {
@@ -11693,7 +12280,9 @@
       "row_module_id__mdl_name": "ProjectManagement",
       "act_exec": "NUL",
       "act_count": null,
-      "act_order": null
+      "act_order": null,
+      "act_color": null,
+      "act_color_bg": null
      }
     },
     {
@@ -11716,7 +12305,9 @@
       "row_module_id__mdl_name": "ProjectManagement",
       "act_exec": "NUL",
       "act_count": null,
-      "act_order": null
+      "act_order": null,
+      "act_color": null,
+      "act_color_bg": null
      }
     },
     {
@@ -11739,7 +12330,9 @@
       "row_module_id__mdl_name": "ProjectManagement",
       "act_exec": "NUL",
       "act_count": null,
-      "act_order": null
+      "act_order": null,
+      "act_color": null,
+      "act_color_bg": null
      }
     },
     {
@@ -11762,7 +12355,9 @@
       "row_module_id__mdl_name": "ProjectManagement",
       "act_exec": "NUL",
       "act_count": null,
-      "act_order": null
+      "act_order": null,
+      "act_color": null,
+      "act_color_bg": null
      }
     },
     {
@@ -11785,7 +12380,9 @@
       "row_module_id__mdl_name": "ProjectManagement",
       "act_exec": "NUL",
       "act_count": null,
-      "act_order": null
+      "act_order": null,
+      "act_color": null,
+      "act_color_bg": null
      }
     },
     {
@@ -11808,7 +12405,9 @@
       "row_module_id__mdl_name": "ProjectManagement",
       "act_exec": "NUL",
       "act_count": null,
-      "act_order": null
+      "act_order": null,
+      "act_color": null,
+      "act_color_bg": null
      }
     },
     {
@@ -11831,7 +12430,9 @@
       "row_module_id__mdl_name": "ProjectManagement",
       "act_exec": "NUL",
       "act_count": null,
-      "act_order": null
+      "act_order": null,
+      "act_color": null,
+      "act_color_bg": null
      }
     },
     {
@@ -11854,7 +12455,9 @@
       "row_module_id__mdl_name": "ProjectManagement",
       "act_exec": "NUL",
       "act_count": null,
-      "act_order": null
+      "act_order": null,
+      "act_color": null,
+      "act_color_bg": null
      }
     },
     {
@@ -11877,7 +12480,9 @@
       "row_module_id__mdl_name": "ProjectManagement",
       "act_exec": "NUL",
       "act_count": null,
-      "act_order": null
+      "act_order": null,
+      "act_color": null,
+      "act_color_bg": null
      }
     },
     {
@@ -11900,7 +12505,9 @@
       "row_module_id__mdl_name": "ProjectManagement",
       "act_exec": "NUL",
       "act_count": null,
-      "act_order": null
+      "act_order": null,
+      "act_color": null,
+      "act_color_bg": null
      }
     },
     {
@@ -11923,7 +12530,9 @@
       "row_module_id__mdl_name": "ProjectManagement",
       "act_exec": "NUL",
       "act_count": null,
-      "act_order": null
+      "act_order": null,
+      "act_color": null,
+      "act_color_bg": null
      }
     },
     {
@@ -11946,7 +12555,9 @@
       "row_module_id__mdl_name": "ProjectManagement",
       "act_exec": "NUL",
       "act_count": null,
-      "act_order": null
+      "act_order": null,
+      "act_color": null,
+      "act_color_bg": null
      }
     },
     {
@@ -11969,7 +12580,9 @@
       "row_module_id__mdl_name": "ProjectManagement",
       "act_exec": "NUL",
       "act_count": null,
-      "act_order": null
+      "act_order": null,
+      "act_color": null,
+      "act_color_bg": null
      }
     },
     {
@@ -11992,7 +12605,9 @@
       "row_module_id__mdl_name": "ProjectManagement",
       "act_exec": "NUL",
       "act_count": null,
-      "act_order": null
+      "act_order": null,
+      "act_color": null,
+      "act_color_bg": null
      }
     },
     {
@@ -12015,7 +12630,9 @@
       "row_module_id__mdl_name": "ProjectManagement",
       "act_exec": "NUL",
       "act_count": null,
-      "act_order": null
+      "act_order": null,
+      "act_color": null,
+      "act_color_bg": null
      }
     },
     {
@@ -12038,7 +12655,9 @@
       "row_module_id__mdl_name": "ProjectManagement",
       "act_exec": "NUL",
       "act_count": null,
-      "act_order": null
+      "act_order": null,
+      "act_color": null,
+      "act_color_bg": null
      }
     },
     {
@@ -12061,7 +12680,9 @@
       "row_module_id__mdl_name": "ProjectManagement",
       "act_exec": "NUL",
       "act_count": null,
-      "act_order": null
+      "act_order": null,
+      "act_color": null,
+      "act_color_bg": null
      }
     },
     {
@@ -12084,7 +12705,9 @@
       "row_module_id__mdl_name": "ProjectManagement",
       "act_exec": "NUL",
       "act_count": null,
-      "act_order": null
+      "act_order": null,
+      "act_color": null,
+      "act_color_bg": null
      }
     },
     {
@@ -12107,7 +12730,9 @@
       "row_module_id__mdl_name": "ProjectManagement",
       "act_exec": "NUL",
       "act_count": null,
-      "act_order": null
+      "act_order": null,
+      "act_color": null,
+      "act_color_bg": null
      }
     },
     {
@@ -12130,7 +12755,9 @@
       "row_module_id__mdl_name": "ProjectManagement",
       "act_exec": "NUL",
       "act_count": null,
-      "act_order": null
+      "act_order": null,
+      "act_color": null,
+      "act_color_bg": null
      }
     },
     {
@@ -12153,7 +12780,9 @@
       "row_module_id__mdl_name": "ProjectManagement",
       "act_exec": "NUL",
       "act_count": null,
-      "act_order": null
+      "act_order": null,
+      "act_color": null,
+      "act_color_bg": null
      }
     },
     {
@@ -12176,7 +12805,9 @@
       "row_module_id__mdl_name": "ProjectManagement",
       "act_exec": "NUL",
       "act_count": null,
-      "act_order": null
+      "act_order": null,
+      "act_color": null,
+      "act_color_bg": null
      }
     },
     {
@@ -12199,7 +12830,9 @@
       "row_module_id__mdl_name": "ProjectManagement",
       "act_exec": "NUL",
       "act_count": null,
-      "act_order": null
+      "act_order": null,
+      "act_color": null,
+      "act_color_bg": null
      }
     },
     {
@@ -12222,7 +12855,9 @@
       "row_module_id__mdl_name": "ProjectManagement",
       "act_exec": "NUL",
       "act_count": null,
-      "act_order": null
+      "act_order": null,
+      "act_color": null,
+      "act_color_bg": null
      }
     },
     {
@@ -12245,7 +12880,9 @@
       "row_module_id__mdl_name": "ProjectManagement",
       "act_exec": "NUL",
       "act_count": null,
-      "act_order": null
+      "act_order": null,
+      "act_color": null,
+      "act_color_bg": null
      }
     },
     {
@@ -12268,7 +12905,9 @@
       "row_module_id__mdl_name": "ProjectManagement",
       "act_exec": "NUL",
       "act_count": null,
-      "act_order": null
+      "act_order": null,
+      "act_color": null,
+      "act_color_bg": null
      }
     },
     {
@@ -12291,7 +12930,9 @@
       "row_module_id__mdl_name": "ProjectManagement",
       "act_exec": "NUL",
       "act_count": null,
-      "act_order": null
+      "act_order": null,
+      "act_color": null,
+      "act_color_bg": null
      }
     },
     {
@@ -12314,7 +12955,9 @@
       "row_module_id__mdl_name": "ProjectManagement",
       "act_exec": "NUL",
       "act_count": null,
-      "act_order": null
+      "act_order": null,
+      "act_color": null,
+      "act_color_bg": null
      }
     },
     {
@@ -12337,7 +12980,9 @@
       "row_module_id__mdl_name": "ProjectManagement",
       "act_exec": "NUL",
       "act_count": null,
-      "act_order": null
+      "act_order": null,
+      "act_color": null,
+      "act_color_bg": null
      }
     },
     {
@@ -12360,7 +13005,9 @@
       "row_module_id__mdl_name": "ProjectManagement",
       "act_exec": "NUL",
       "act_count": null,
-      "act_order": null
+      "act_order": null,
+      "act_color": null,
+      "act_color_bg": null
      }
     },
     {
@@ -12383,7 +13030,9 @@
       "row_module_id__mdl_name": "ProjectManagement",
       "act_exec": "NUL",
       "act_count": null,
-      "act_order": null
+      "act_order": null,
+      "act_color": null,
+      "act_color_bg": null
      }
     },
     {
@@ -12406,7 +13055,9 @@
       "row_module_id__mdl_name": "ProjectManagement",
       "act_exec": "NUL",
       "act_count": null,
-      "act_order": null
+      "act_order": null,
+      "act_color": null,
+      "act_color_bg": null
      }
     },
     {
@@ -12429,7 +13080,9 @@
       "row_module_id__mdl_name": "ProjectManagement",
       "act_exec": "NUL",
       "act_count": null,
-      "act_order": null
+      "act_order": null,
+      "act_color": null,
+      "act_color_bg": null
      }
     },
     {
@@ -12452,7 +13105,9 @@
       "row_module_id__mdl_name": "ProjectManagement",
       "act_exec": "NUL",
       "act_count": null,
-      "act_order": null
+      "act_order": null,
+      "act_color": null,
+      "act_color_bg": null
      }
     },
     {
@@ -12475,7 +13130,9 @@
       "row_module_id__mdl_name": "ProjectManagement",
       "act_exec": "NUL",
       "act_count": null,
-      "act_order": null
+      "act_order": null,
+      "act_color": null,
+      "act_color_bg": null
      }
     },
     {
@@ -12498,7 +13155,9 @@
       "row_module_id__mdl_name": "ProjectManagement",
       "act_exec": "NUL",
       "act_count": null,
-      "act_order": null
+      "act_order": null,
+      "act_color": null,
+      "act_color_bg": null
      }
     },
     {
@@ -12521,7 +13180,9 @@
       "row_module_id__mdl_name": "ProjectManagement",
       "act_exec": "NUL",
       "act_count": null,
-      "act_order": null
+      "act_order": null,
+      "act_color": null,
+      "act_color_bg": null
      }
     },
     {
@@ -12544,7 +13205,9 @@
       "row_module_id__mdl_name": "ProjectManagement",
       "act_exec": "NUL",
       "act_count": null,
-      "act_order": null
+      "act_order": null,
+      "act_color": null,
+      "act_color_bg": null
      }
     },
     {
@@ -12567,7 +13230,9 @@
       "row_module_id__mdl_name": "ProjectManagement",
       "act_exec": "NUL",
       "act_count": null,
-      "act_order": null
+      "act_order": null,
+      "act_color": null,
+      "act_color_bg": null
      }
     },
     {
@@ -12590,7 +13255,9 @@
       "row_module_id__mdl_name": "ProjectManagement",
       "act_exec": "NUL",
       "act_count": null,
-      "act_order": null
+      "act_order": null,
+      "act_color": null,
+      "act_color_bg": null
      }
     },
     {
@@ -12613,7 +13280,9 @@
       "row_module_id__mdl_name": "ProjectManagement",
       "act_exec": "NUL",
       "act_count": null,
-      "act_order": null
+      "act_order": null,
+      "act_color": null,
+      "act_color_bg": null
      }
     },
     {
@@ -12636,7 +13305,9 @@
       "row_module_id__mdl_name": "ProjectManagement",
       "act_exec": "NUL",
       "act_count": null,
-      "act_order": null
+      "act_order": null,
+      "act_color": null,
+      "act_color_bg": null
      }
     },
     {
@@ -12659,7 +13330,9 @@
       "row_module_id__mdl_name": "ProjectManagement",
       "act_exec": "NUL",
       "act_count": null,
-      "act_order": null
+      "act_order": null,
+      "act_color": null,
+      "act_color_bg": null
      }
     }
    ]
@@ -14964,25 +15637,6 @@
    "list": [
     {
      "object": "ConstraintObject",
-     "userkey": "pmtestConstraint_1",
-     "item": {
-      "cst_name": "pmtestConstraint_1",
-      "cst_object_id__obo_name": "PmProject",
-      "cst_order": 1,
-      "cst_desc": null,
-      "cst_type": "E",
-      "cst_effects": [
-       "F",
-       "B"
-      ],
-      "cst_field_id__fld_name": null,
-      "cst_expr": "true",
-      "cst_method": null,
-      "row_module_id__mdl_name": "ProjectManagement"
-     }
-    },
-    {
-     "object": "ConstraintObject",
      "userkey": "pmTskConstraint_1",
      "item": {
       "cst_name": "pmTskConstraint_1",
@@ -15040,25 +15694,6 @@
    "icon": "img/system/impact",
    "field": "row_module_id",
    "list": [
-    {
-     "object": "ConstraintImpact",
-     "userkey": "pmtestConstraint_1~PmProject~1",
-     "item": {
-      "csi_const_id__cst_name": "pmtestConstraint_1",
-      "csi_const_id__cst_object_id__obo_name": "PmProject",
-      "csi_const_id__cst_order": 1,
-      "csi_order": 1,
-      "csi_object_prop": null,
-      "csi_field_prop": "E",
-      "csi_apply": "F",
-      "csi_expr": "obj.getModuleName();",
-      "csi_target": null,
-      "csi_objfield_id__obf_object_id__obo_name": "PmProject",
-      "csi_objfield_id__obf_field_id__fld_name": "pmPrjTestCalcul",
-      "csi_objfield_id__obf_order": 50,
-      "row_module_id__mdl_name": "ProjectManagement"
-     }
-    },
     {
      "object": "ConstraintImpact",
      "userkey": "pmTskConstraint_1~PmTask~1",
@@ -20407,6 +21042,7 @@
       "vwi_show": null,
       "vwi_url": null,
       "vwi_image": null,
+      "vwi_subview_id__viw_name": null,
       "vwi_treeview_id__trv_name": null,
       "vwi_crosstab_id__ctb_name": null,
       "vwi_printtmpl_id__prt_name": null,
@@ -20430,6 +21066,7 @@
       "vwi_show": "PmTask",
       "vwi_url": "ztable=yes&zstotal=no&zcontrol=no&zgraph=&zcaption=no",
       "vwi_image": null,
+      "vwi_subview_id__viw_name": null,
       "vwi_treeview_id__trv_name": null,
       "vwi_crosstab_id__ctb_name": "PmTcTask",
       "vwi_printtmpl_id__prt_name": null,
@@ -20453,6 +21090,7 @@
       "vwi_show": "PmAssignment",
       "vwi_url": "ztable=yes&zstotal=no&zcontrol=no&zgraph=&zcaption=no",
       "vwi_image": null,
+      "vwi_subview_id__viw_name": null,
       "vwi_treeview_id__trv_name": null,
       "vwi_crosstab_id__ctb_name": "PmUserTask",
       "vwi_printtmpl_id__prt_name": null,
@@ -20476,6 +21114,7 @@
       "vwi_show": null,
       "vwi_url": null,
       "vwi_image": null,
+      "vwi_subview_id__viw_name": null,
       "vwi_treeview_id__trv_name": null,
       "vwi_crosstab_id__ctb_name": null,
       "vwi_printtmpl_id__prt_name": null,
@@ -20499,6 +21138,7 @@
       "vwi_show": null,
       "vwi_url": null,
       "vwi_image": null,
+      "vwi_subview_id__viw_name": null,
       "vwi_treeview_id__trv_name": null,
       "vwi_crosstab_id__ctb_name": null,
       "vwi_printtmpl_id__prt_name": null,
@@ -20522,6 +21162,7 @@
       "vwi_show": null,
       "vwi_url": null,
       "vwi_image": null,
+      "vwi_subview_id__viw_name": null,
       "vwi_treeview_id__trv_name": null,
       "vwi_crosstab_id__ctb_name": null,
       "vwi_printtmpl_id__prt_name": null,
@@ -20545,6 +21186,7 @@
       "vwi_show": null,
       "vwi_url": "[EXPR:HTMLTool.getExternalObjectURL(\"PmTimesheetExt\")]",
       "vwi_image": null,
+      "vwi_subview_id__viw_name": null,
       "vwi_treeview_id__trv_name": null,
       "vwi_crosstab_id__ctb_name": null,
       "vwi_printtmpl_id__prt_name": null,
@@ -20568,6 +21210,7 @@
       "vwi_show": "PmTask",
       "vwi_url": "ztable=yes&zstotal=no&zcontrol=no&zgraph=&zcaption=no",
       "vwi_image": null,
+      "vwi_subview_id__viw_name": null,
       "vwi_treeview_id__trv_name": null,
       "vwi_crosstab_id__ctb_name": "PmTcTask",
       "vwi_printtmpl_id__prt_name": null,
@@ -20591,6 +21234,7 @@
       "vwi_show": "PmAssignment",
       "vwi_url": "ztable=yes&zstotal=no&zcontrol=no&zgraph=&zcaption=no",
       "vwi_image": null,
+      "vwi_subview_id__viw_name": null,
       "vwi_treeview_id__trv_name": null,
       "vwi_crosstab_id__ctb_name": "PmUserTask",
       "vwi_printtmpl_id__prt_name": null,
@@ -20614,6 +21258,7 @@
       "vwi_show": null,
       "vwi_url": null,
       "vwi_image": null,
+      "vwi_subview_id__viw_name": null,
       "vwi_treeview_id__trv_name": null,
       "vwi_crosstab_id__ctb_name": null,
       "vwi_printtmpl_id__prt_name": null,
@@ -26416,16 +27061,16 @@
    "field": "row_module_id",
    "list": [{
     "object": "Dataset",
-    "userkey": "ProjectManagement~ProjectManagement-data-20230413095923",
+    "userkey": "ProjectManagement~ProjectManagement-data-20230413135545",
     "item": {
      "row_module_id__mdl_name": "ProjectManagement",
-     "dt_name": "ProjectManagement-data-20230413095923",
+     "dt_name": "ProjectManagement-data-20230413135545",
      "dt_file": {
-      "path": "data/ProjectManagement-data-20230413095923.zip",
+      "path": "data/ProjectManagement-data-20230413135545.zip",
       "mime": "application/zip",
-      "name": "ProjectManagement-data-20230413095923.zip"
+      "name": "ProjectManagement-data-20230413135545.zip"
      },
-     "dt_desc": "Created by module's data export on 2023-04-13 09:59:23"
+     "dt_desc": "Created by module's data export on 2023-04-13 13:55:45"
     }
    }]
   }

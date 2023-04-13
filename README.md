@@ -78,6 +78,7 @@ Module de gestion de projet et de gestion de tâche ou de tickets.
 
 | Name                                                         | Type                                     | Required | Updatable | Personal | Description                                                                      |
 |--------------------------------------------------------------|------------------------------------------|----------|-----------|----------|----------------------------------------------------------------------------------|
+| `pmPrjTestCalcul`                                            | text(100)                                |          | yes       |          | -                                                                                |
 | `pmUsrNbTask`                                                | int(100)                                 |          |           |          | -                                                                                |
 
 `PmProject` business object definition
@@ -93,7 +94,6 @@ Module de gestion de projet et de gestion de tâche ou de tickets.
 | `pmPrjService`                                               | enum(100) using `PM_PRJ_SERVICE` list    | yes      | yes       |          | -                                                                                |
 | `pmPrjDescription`                                           | text(1000)                               |          | yes       |          | -                                                                                |
 | `pmPrjBudget`                                                | float(100, 2)                            |          | yes       |          | -                                                                                |
-| `pmPrjTestCalcul`                                            | text(100)                                |          | yes       |          | -                                                                                |
 
 ### Lists
 

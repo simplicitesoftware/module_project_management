@@ -2,6 +2,7 @@ package com.simplicite.objects.ProjectManagement;
 
 import com.simplicite.util.*;
 import com.simplicite.util.exceptions.MethodException;
+
 /**
  * Business object PmAssignment
  */

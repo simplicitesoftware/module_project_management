@@ -329,11 +329,6 @@ paths:
         description: Search filter for Budget
         type: number
         required: false
-      - in: query
-        name: pmPrjTestCalcul
-        description: Search filter for TestCalcul
-        type: string
-        required: false
       tags:
       - PmProject
   /rest/PmDocument:
@@ -2706,6 +2701,11 @@ paths:
         type: boolean
         required: false
       - in: query
+        name: pmPrjTestCalcul
+        description: Search filter for TestCalcul
+        type: string
+        required: false
+      - in: query
         name: pmUsrNbTask
         description: Search filter for Number of current task
         type: integer
@@ -4051,6 +4051,9 @@ definitions:
         enum:
         - ENU
         - FRA
+      pmPrjTestCalcul:
+        description: TestCalcul
+        type: string
       row_id:
         description: Unique technical row ID
         type: string
@@ -4291,9 +4294,6 @@ definitions:
         - SERVICEA
         - SERVICEB
         - SERVICEC
-      pmPrjTestCalcul:
-        description: TestCalcul
-        type: string
       row_id:
         description: Unique technical row ID
         type: string
