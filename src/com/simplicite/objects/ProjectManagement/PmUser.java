@@ -63,9 +63,10 @@ public class PmUser extends SimpleUser {
 		String[] sltGroup= getAction("PM_USER_GROUP").getConfirmField(getGrant().getLang(), "pmUserGroup").getValue().split(":");
 		ObjectDB tmpResp = this.getGrant().getTmpObject("Responsability");
 		BusinessObjectTool ot = tmpResp.getTool();
+		String moduleId = getModuleId();
 		tmpResp.resetFilters();
 		tmpResp.setFieldFilter("rsp_login_id", getRowId()); 
-		tmpResp.setFieldFilter("row_module_id", getModuleId());
+		tmpResp.setFieldFilter("row_module_id",moduleId );
 		AppLog.info("DEBUG USER id: "+getRowId(), getGrant());
 		synchronized(tmpResp){
 			try{
@@ -81,7 +82,7 @@ public class PmUser extends SimpleUser {
 				tmpResp.setFieldValue("rsp_group_id", sltGroup[1]);
 				tmpResp.setFieldValue("rsp_login_id", getRowId());
 				tmpResp.setFieldFilter("rsp_start_dt", Tool.getCurrentDate());
-				tmpResp.setFieldFilter("row_module_id", getModuleId());
+				tmpResp.setFieldFilter("row_module_id", moduleId);
 				ot.validateAndSave();
 				
 			}catch(GetException|ValidateException|SaveException| DeleteException e){
