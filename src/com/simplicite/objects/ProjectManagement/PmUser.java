@@ -64,15 +64,15 @@ public class PmUser extends SimpleUser {
 		tmpResp.resetFilters();
 		tmpResp.setFieldFilter("rsp_login_id", getGrant().getUserId());
 		synchronized(tmpResp){
-			try
-				{for(String[] row : tmpResp.search()){
+			try{
+				/* for(String[] row : tmpResp.search()){
 						
 						ot.getForDelete(row[0]);
 						ot.delete();
 						
 					
 					
-				}
+				} */
 				ot.selectForCreate();
 				tmpResp.setFieldValue("rsp_login_id", getGrant().getUserId());
 				tmpResp.setFieldValue("rsp_group_id", sltGroup[1]);
