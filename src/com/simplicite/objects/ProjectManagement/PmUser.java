@@ -6,6 +6,7 @@ import com.simplicite.util.exceptions.ActionException;
 import com.simplicite.util.exceptions.DeleteException;
 import com.simplicite.util.exceptions.GetException;
 import com.simplicite.util.exceptions.SaveException;
+import com.simplicite.util.exceptions.SearchException;
 import com.simplicite.util.exceptions.ValidateException;
 import com.simplicite.util.tools.*;
 
@@ -36,16 +37,24 @@ public class PmUser extends SimpleUser {
 		//setFieldValue("usr_active", 1);
 		ObjectDB tmpResp = this.getGrant().getTmpObject("Responsability");
 		BusinessObjectTool ot = tmpResp.getTool();
+		ObjectDB tmpGroup = this.getGrant().getTmpObject("PmGroup");
+		BusinessObjectTool otG = tmpGroup.getTool();
+		
+		tmpGroup.setFieldFilter("grp_name","PM_USER_GROUP");
 		try {
-			ot.selectForCreate();
-			tmpResp.setFieldValue("grp_name", "PM_USER_GROUP");
-			tmpResp.setFieldValue("rsp_login_id", getRowId());
-			tmpResp.setFieldValue("row_module_id", getModuleId());
-			ot.validateAndSave();
-		} catch (GetException|ValidateException|SaveException e) {
-			AppLog.error(e, getGrant());
+			List<String[]> rows = otG.search();
+			if (!rows.isEmpty()){
+				ot.selectForCreate();
+				tmpResp.setFieldValue("rsp_group_id", rows.get(0)[0]);
+				tmpResp.setFieldValue("rsp_login_id", getRowId());
+				tmpResp.setFieldValue("row_module_id", getModuleId());
+				ot.validateAndSave();
+			}
 			
-		}	
+		} catch (SearchException|GetException|ValidateException|SaveException e) {
+			AppLog.error(e, getGrant());
+		}
+		
 		
 		return super.postCreate();
 	}
@@ -119,7 +128,7 @@ public class PmUser extends SimpleUser {
 			List<String[]> SearchResult=tmpResp.search();
 			if (SearchResult.size() > 1){
 				AppLog.info(Message.formatError("PM_ERR_TOO_MANY_RESP", null, null), getGrant());
-			}else if(SearchResult.size() >0){
+			}else if(!SearchResult.isEmpty()){
 				tmpResp.select(SearchResult.get(0)[0]);
 				try {
 					if (!ot.getForCreateOrUpdate(new JSONObject() // or its alias getForUpsert 
