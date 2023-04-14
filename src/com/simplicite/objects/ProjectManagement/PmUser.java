@@ -12,6 +12,7 @@ import com.simplicite.util.tools.*;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import com.simplicite.objects.System.*;
@@ -98,7 +99,8 @@ public class PmUser extends SimpleUser {
 	public String pmUsrCurentGroup() {
 		String groupDisplay = "No group";
 		ObjectDB tmpResp = this.getGrant().getTmpObject("Responsability");
-		ObjectDB tmpGroup = this.getGrant().getTmpObject("PmGroup");
+		ObjectDB tmpTrad= this.getGrant().getTmpObject("TranslateGroup");
+		BusinessObjectTool ot = tmpTrad.getTool();
 		tmpResp.setFieldFilter("rsp_login_id", getRowId()); 
 		tmpResp.setFieldFilter("row_module_id",getModuleId() );
 		synchronized(tmpResp){
@@ -107,8 +109,18 @@ public class PmUser extends SimpleUser {
 				AppLog.info(Message.formatError("PM_ERR_TOO_MANY_RESP", null, null), getGrant());
 			}
 			tmpResp.select(SearchResult.get(0)[0]);
-			tmpGroup.select(tmpResp.getFieldValue("rsp_group_id"));
-			groupDisplay =  tmpGroup.getDisplay();
+			try {
+				if (!ot.getForCreateOrUpdate(new JSONObject() // or its alias getForUpsert 
+								.put("tsl_id",tmpResp.getFieldValue("rsp_group_id"))
+								.put("tsl_lang",getGrant().getLang() )
+								)){
+									AppLog.info(Message.formatError("PM_GROUP_NO_TRAD", null, null), getGrant());
+									groupDisplay = tmpResp.getFieldValue("grp_name") ;
+								}else groupDisplay=tmpTrad.getFieldValue("tsl_value");
+			} catch (GetException|JSONException e) {
+				AppLog.error(e, getGrant());
+			}
+			
 		}
 		return  groupDisplay;
 		
