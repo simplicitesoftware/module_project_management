@@ -3,6 +3,7 @@ package com.simplicite.objects.ProjectManagement;
 
 import com.simplicite.util.*;
 import com.simplicite.util.exceptions.ActionException;
+import com.simplicite.util.exceptions.DeleteException;
 import com.simplicite.util.exceptions.GetException;
 import com.simplicite.util.exceptions.SaveException;
 import com.simplicite.util.exceptions.ValidateException;
@@ -66,9 +67,10 @@ public class PmUser extends SimpleUser {
 		synchronized(tmpResp){
 			try
 				{for(String[] row : tmpResp.search()){
-					
+						AppLog.info("DEBUG DELETE usr id: "+getGrant().getUserId(), getGrant());
 						ot.getForDelete(row[0]);
-						tmpResp.delete();
+						AppLog.info("DEBUG DELETE: "+tmpResp.getFieldValue("rsp_login_id"), getGrant());
+						ot.delete();
 					
 					
 				}
@@ -77,7 +79,7 @@ public class PmUser extends SimpleUser {
 				tmpResp.setFieldValue("rsp_group_id", sltGroup[1]);
 				ot.validateAndSave();
 				
-			}catch(GetException|ValidateException|SaveException e){
+			}catch(GetException|ValidateException|SaveException|DeleteException e){
 				AppLog.error(e, getGrant());
 				msgs.add(Message.formatError("PM_RESP_ERR", null, null));
 			}
