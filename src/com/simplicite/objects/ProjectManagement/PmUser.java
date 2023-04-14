@@ -30,7 +30,7 @@ public class PmUser extends SimpleUser {
 		return super.postCreate();
 	}
 	@Override
-	public String postUpdate() {
+	public List<String> postValidate() {
 		ObjectDB tmpUser = this.getGrant().getTmpObject("SimpleUser");
 		synchronized(tmpUser){
 			
