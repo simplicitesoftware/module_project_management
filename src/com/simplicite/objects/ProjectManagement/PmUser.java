@@ -2,6 +2,7 @@ package com.simplicite.objects.ProjectManagement;
 
 
 import com.simplicite.util.*;
+import com.simplicite.util.exceptions.ActionException;
 import com.simplicite.objects.System.*;
 
 /**
@@ -16,8 +17,14 @@ public class PmUser extends SimpleUser {
 	}
 	@Override
 	public String postCreate() {
-		setFieldValue("usr_active", 1);
-		AppLog.info("DEBUG POST CREATE", getGrant());
+		//setFieldValue("usr_active", 1);
+		
+		try {
+			AppLog.info("DEBUG POST CREATE action: "+invokeAction("UserStatusActivate"), getGrant());
+		} catch (ActionException e) {
+			AppLog.error("postCreate", e, getGrant());
+			e.printStackTrace();
+		}
 		return super.postCreate();
 	}
 	/* 
