@@ -43,12 +43,6 @@ public class PmUser extends SimpleUser {
 		.getClass()
 		.getEnclosingMethod()
 		.getName() , getGrant());
-		ObjectDB tmpUser = this.getGrant().getTmpObject("SimpleUser");
-		synchronized(tmpUser){
-			
-			AppLog.info("DEBUG POST Validate user: select "+tmpUser.select(getRowId()), getGrant());
-			
-		}
 		return super.postValidate();
 	}
 	@Override
@@ -97,6 +91,12 @@ public class PmUser extends SimpleUser {
 		.getClass()
 		.getEnclosingMethod()
 		.getName() , getGrant());
+		ObjectDB tmpUser = this.getGrant().getTmpObject("SimpleUser");
+		synchronized(tmpUser){
+			
+			AppLog.info("DEBUG POST CREATE user: select "+getRowId()+" "+tmpUser.select(getRowId()), getGrant());
+			
+		}
 		return super.postSave();
 	}
 	@Override
