@@ -75,6 +75,7 @@ public class PmUser extends SimpleUser {
 				tmpResp.save();
 			}catch(GetException e){
 				AppLog.error(e, getGrant());
+				msgs.add(Message.formatError("PM_RESP_ERR", null, null));
 			}
 		}
 				
