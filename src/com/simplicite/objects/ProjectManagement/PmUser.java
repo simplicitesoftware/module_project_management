@@ -66,9 +66,8 @@ public class PmUser extends SimpleUser {
 		synchronized(tmpResp){
 			try
 				{for(String[] row : tmpResp.search()){
-						AppLog.info("DEBUG DELETE usr id: "+getGrant().getUserId(), getGrant());
+						
 						ot.getForDelete(row[0]);
-						AppLog.info("DEBUG DELETE: "+tmpResp.delete(), getGrant());
 						ot.delete();
 						
 					
