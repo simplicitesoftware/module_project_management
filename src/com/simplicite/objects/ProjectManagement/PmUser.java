@@ -119,19 +119,21 @@ public class PmUser extends SimpleUser {
 			List<String[]> SearchResult=tmpResp.search();
 			if (SearchResult.size() > 1){
 				AppLog.info(Message.formatError("PM_ERR_TOO_MANY_RESP", null, null), getGrant());
+			}else if(SearchResult.size() >0){
+				tmpResp.select(SearchResult.get(0)[0]);
+				try {
+					if (!ot.getForCreateOrUpdate(new JSONObject() // or its alias getForUpsert 
+									.put("tsl_id",tmpResp.getFieldValue("rsp_group_id"))
+									.put("tsl_lang",getGrant().getLang() )
+									)){
+										AppLog.info(Message.formatError("PM_GROUP_NO_TRAD", null, null), getGrant());
+										groupDisplay = tmpResp.getFieldValue("grp_name") ;
+									}else groupDisplay=tmpTrad.getFieldValue("tsl_value");
+				} catch (GetException|JSONException e) {
+					AppLog.error(e, getGrant());
+				}
 			}
-			tmpResp.select(SearchResult.get(0)[0]);
-			try {
-				if (!ot.getForCreateOrUpdate(new JSONObject() // or its alias getForUpsert 
-								.put("tsl_id",tmpResp.getFieldValue("rsp_group_id"))
-								.put("tsl_lang",getGrant().getLang() )
-								)){
-									AppLog.info(Message.formatError("PM_GROUP_NO_TRAD", null, null), getGrant());
-									groupDisplay = tmpResp.getFieldValue("grp_name") ;
-								}else groupDisplay=tmpTrad.getFieldValue("tsl_value");
-			} catch (GetException|JSONException e) {
-				AppLog.error(e, getGrant());
-			}
+			
 			
 		}
 		return  groupDisplay;
