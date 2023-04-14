@@ -76,6 +76,7 @@ public class PmUser extends SimpleUser {
 				ot.selectForCreate();
 				tmpResp.setFieldValue("rsp_login_id", getGrant().getUserId());
 				tmpResp.setFieldValue("rsp_group_id", sltGroup[1]);
+				tmpResp.setFieldFilter("row_module_id", getModuleId());
 				ot.validateAndSave();
 				
 			}catch(GetException|ValidateException|SaveException/*| DeleteException */ e){
