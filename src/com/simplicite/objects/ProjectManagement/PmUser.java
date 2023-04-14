@@ -4,6 +4,8 @@ package com.simplicite.objects.ProjectManagement;
 import com.simplicite.util.*;
 import com.simplicite.util.exceptions.ActionException;
 import com.simplicite.util.exceptions.GetException;
+import com.simplicite.util.exceptions.SaveException;
+import com.simplicite.util.exceptions.ValidateException;
 import com.simplicite.util.tools.BusinessObjectTool;
 
 import java.util.ArrayList;
@@ -73,8 +75,9 @@ public class PmUser extends SimpleUser {
 				ot.selectForCreate();
 				tmpResp.setFieldValue("rsp_login_id", getGrant().getUserId());
 				tmpResp.setFieldValue("rsp_group_id", sltGroup[1]);
-				tmpResp.save();
-			}catch(GetException e){
+				ot.validateAndSave();
+				
+			}catch(GetException|ValidateException|SaveException e){
 				AppLog.error(e, getGrant());
 				msgs.add(Message.formatError("PM_RESP_ERR", null, null));
 			}
