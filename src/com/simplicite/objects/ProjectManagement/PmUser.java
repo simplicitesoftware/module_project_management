@@ -34,6 +34,18 @@ public class PmUser extends SimpleUser {
 		.getEnclosingMethod()
 		.getName() , getGrant()); */
 		//setFieldValue("usr_active", 1);
+		ObjectDB tmpResp = this.getGrant().getTmpObject("Responsability");
+		BusinessObjectTool ot = tmpResp.getTool();
+		try {
+			ot.selectForCreate();
+			tmpResp.setFieldValue("grp_name", "PM_USER_GROUP");
+			tmpResp.setFieldValue("rsp_login_id", getRowId());
+			tmpResp.setFieldValue("row_module_id", getModuleId());
+			ot.validateAndSave();
+		} catch (GetException|ValidateException|SaveException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}	
 		
 		return super.postCreate();
 	}
