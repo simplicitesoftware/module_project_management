@@ -22,11 +22,6 @@ public class PmUser extends SimpleUser {
 	/* 
 		Fonctions for update pmUsrNbTask
 	 */
-	@Override
-	public List<String> postValidate() {
-		
-		return super.postValidate();
-	}
 	public void increaseNbTask(){
 		ObjectField nbTask = this.getField("pmUsrNbTask");
     	nbTask.setValue(nbTask.getInt(0)+1);
