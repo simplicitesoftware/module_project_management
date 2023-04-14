@@ -14,13 +14,17 @@ public class PmUser extends SimpleUser {
 		getField("row_module_id").setDefaultValue(this.getModuleId());
 		super.postLoad();
 	}
-	
+	@Override
+	public String postCreate() {
+		setFieldValue("usr_active", 1);
+		return super.postCreate();
+	}
 	/* 
 		Fonctions for update pmUsrNbTask
 	 */
 	@Override
 	public List<String> postValidate() {
-		setFieldValue("usr_active", 1);
+		
 		return super.postValidate();
 	}
 	public void increaseNbTask(){
