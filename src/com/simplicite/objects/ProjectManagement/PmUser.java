@@ -65,17 +65,18 @@ public class PmUser extends SimpleUser {
 		BusinessObjectTool ot = tmpResp.getTool();
 		tmpResp.resetFilters();
 		tmpResp.setFieldFilter("rsp_login_id", getRowId()); 
+		tmpResp.setFieldFilter("row_module_id", getModuleId());
 		AppLog.info("DEBUG USER id: "+getRowId(), getGrant());
 		synchronized(tmpResp){
 			try{
-				/* for(String[] row : tmpResp.search()){
+				for(String[] row : tmpResp.search()){
 						
 						ot.getForDelete(row[0]);
 						ot.delete();
 						
 					
 					
-				} */
+				}
 				//ot.selectForCreate();
 				if (!ot.getForCreateOrUpdate(new JSONObject() 
 							.put("rsp_login_id", getRowId())
@@ -90,10 +91,9 @@ public class PmUser extends SimpleUser {
 							tmpResp.setFieldFilter("rsp_start_dt", Tool.getCurrentDate());
 							AppLog.info("DEBUG CREATION", getGrant());
 				}else AppLog.info("DEBUG ALLREADY EXIST", getGrant());
-				msgs.addAll(tmpResp.validate());
 				ot.validateAndSave();
 				
-			}catch(GetException|ValidateException|SaveException/*| DeleteException */ e){
+			}catch(GetException|ValidateException|SaveException| DeleteException e){
 				AppLog.error(e, getGrant());
 				msgs.add(Message.formatError("PM_RESP_ERR", null, null));
 			}
