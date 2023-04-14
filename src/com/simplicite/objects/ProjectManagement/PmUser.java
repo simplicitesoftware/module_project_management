@@ -83,6 +83,7 @@ public class PmUser extends SimpleUser {
 				tmpResp.setFieldValue("rsp_login_id", getRowId());
 				tmpResp.setFieldFilter("rsp_start_dt", Tool.getCurrentDate());
 				tmpResp.setFieldFilter("row_module_id", moduleId);
+				AppLog.info("DEBUG MODULE NAME:"+getModuleName(), getGrant());
 				ot.validateAndSave();
 				
 			}catch(GetException|ValidateException|SaveException| DeleteException e){
