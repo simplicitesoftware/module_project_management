@@ -47,7 +47,7 @@ public class PmTask extends ObjectDB {
 		if(strNum.length()> lenMax){
 			reFactorNumberForOrder(strNum.length());
 		}else{
-			strNum=String.format("%"+lenMax+"d", number);
+			strNum=String.format("%0"+lenMax+"d", number);
 
 		}
 		return strNum;
@@ -62,8 +62,8 @@ public class PmTask extends ObjectDB {
 				tmpTask.select(row[0]);
 				String strNum=tmpTask.getFieldValue("pmTskNumber");
 				if(isInt(strNum) && strNum.length() < len){
-					AppLog.info("DEBUG in reFactorNumberForOrder format:  String.format('%'"+len+"'d', Integer.parseInt("+strNum+")):" +String.format("%"+len+"d", Integer.parseInt(strNum)), getGrant());
-					tmpTask.setFieldValue("pmTskNumber",String.format("%"+len+"d", Integer.parseInt(strNum)));
+					AppLog.info("DEBUG in reFactorNumberForOrder format:  String.format('%'"+len+"'d', Integer.parseInt("+strNum+")):|" +String.format("%0"+len+"d", Integer.parseInt(strNum))+"|", getGrant());
+					tmpTask.setFieldValue("pmTskNumber",String.format("%0"+len+"d", Integer.parseInt(strNum)));
 					tmpTask.save();
 				}
 			}
