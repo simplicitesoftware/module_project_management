@@ -64,7 +64,7 @@ public class PmUser extends SimpleUser {
 		ObjectDB tmpResp = this.getGrant().getTmpObject("Responsability");
 		BusinessObjectTool ot = tmpResp.getTool();
 		tmpResp.resetFilters();
-		tmpResp.setFieldFilter("rsp_login_id", getGrant().getUserId());
+		tmpResp.setFieldFilter("rsp_login_id", getRowId()); 
 		synchronized(tmpResp){
 			try{
 				/* for(String[] row : tmpResp.search()){
@@ -77,13 +77,13 @@ public class PmUser extends SimpleUser {
 				} */
 				//ot.selectForCreate();
 				if (!ot.getForCreateOrUpdate(new JSONObject() 
-							.put("rsp_login_id", getGrant().getUserId())
+							.put("rsp_login_id", getRowId())
 							.put("rsp_group_id", sltGroup[1])
 							.put("row_module_id", getModuleId())
 							.put("rsp_start_dt", Tool.getCurrentDate())
 							)) {
 							// Set functional keys fields
-							tmpResp.setFieldValue("rsp_login_id", getGrant().getUserId());
+							tmpResp.setFieldValue("rsp_login_id", getRowId());
 							tmpResp.setFieldValue("rsp_group_id", sltGroup[1]);
 							tmpResp.setFieldFilter("row_module_id", getModuleId());
 							tmpResp.setFieldFilter("rsp_start_dt", Tool.getCurrentDate());
