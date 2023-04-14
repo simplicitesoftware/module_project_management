@@ -12,6 +12,8 @@ import com.simplicite.util.tools.BusinessObjectTool;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.json.JSONObject;
+
 import com.simplicite.objects.System.*;
 
 /**
@@ -73,11 +75,20 @@ public class PmUser extends SimpleUser {
 					
 					
 				} */
-				ot.selectForCreate();
-				tmpResp.setFieldValue("rsp_login_id", getGrant().getUserId());
-				tmpResp.setFieldValue("rsp_group_id", sltGroup[1]);
-				tmpResp.setFieldFilter("row_module_id", getModuleId());
-				tmpResp.setFieldFilter("rsp_start_dt", Tool.getCurrentDate());
+				//ot.selectForCreate();
+				if (!ot.getForCreateOrUpdate(new JSONObject() 
+							.put("rsp_login_id", getGrant().getUserId())
+							.put("rsp_group_id", sltGroup[1])
+							.put("row_module_id", getModuleId())
+							.put("rsp_start_dt", Tool.getCurrentDate())
+							)) {
+							// Set functional keys fields
+							tmpResp.setFieldValue("rsp_login_id", getGrant().getUserId());
+							tmpResp.setFieldValue("rsp_group_id", sltGroup[1]);
+							tmpResp.setFieldFilter("row_module_id", getModuleId());
+							tmpResp.setFieldFilter("rsp_start_dt", Tool.getCurrentDate());
+							AppLog.info("DEBUG CREATION", getGrant());
+				}else AppLog.info("DEBUG ALLREADY EXIST", getGrant());
 				ot.validateAndSave();
 				
 			}catch(GetException|ValidateException|SaveException/*| DeleteException */ e){
