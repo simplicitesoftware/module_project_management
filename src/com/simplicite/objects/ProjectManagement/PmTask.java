@@ -47,7 +47,7 @@ public class PmTask extends ObjectDB {
 		if(strNum.length()> lenMax){
 			reFactorNumberForOrder(strNum.length());
 		}else{
-			while(strNum.length() < lenMax) strNum="0"+strNum;
+			strNum=String.format("%"+lenMax+"d", number);
 		}
 		return strNum;
 	}
@@ -60,8 +60,8 @@ public class PmTask extends ObjectDB {
 				tmpTask.select(row[0]);
 				String strNum=tmpTask.getFieldValue("pmTskNumber");
 				if(isInt(strNum) && strNum.length() < len){
-					while(strNum.length() < len) strNum="0"+strNum;
-					tmpTask.setFieldValue("pmTskNumber",strNum);
+					
+					tmpTask.setFieldValue("pmTskNumber",String.format("%"+len+"d", Integer.parseInt(strNum)));
 					tmpTask.save();
 				}
 			}
