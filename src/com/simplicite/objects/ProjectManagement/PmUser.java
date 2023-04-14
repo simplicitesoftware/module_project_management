@@ -21,7 +21,7 @@ public class PmUser extends SimpleUser {
 		ObjectDB tmpUser = this.getGrant().getTmpObject("SimpleUser");
 		synchronized(tmpUser){
 			tmpUser.select(getRowId());
-			AppLog.info("DEBUG POST CREATE user: "+tmpUser, getGrant());
+			AppLog.info("DEBUG POST CREATE user: "+getRowId(), getGrant());
 			
 		}
 		return super.postCreate();
