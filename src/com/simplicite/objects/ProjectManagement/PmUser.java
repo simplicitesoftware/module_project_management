@@ -15,25 +15,21 @@ public class PmUser extends SimpleUser {
 	private static final long serialVersionUID = 1L;
 	@Override
 	public void postLoad() {
-		AppLog.info("DEBUG "+new Object() {}
-		.getClass()
-		.getEnclosingMethod()
-		.getName() , getGrant());
 		getField("row_module_id").setDefaultValue(this.getModuleId());
 		super.postLoad();
 	}
 	@Override
 	public String postCreate() {
-		AppLog.info("DEBUG "+new Object() {}
+		/* AppLog.info("DEBUG "+new Object() {}
 		.getClass()
 		.getEnclosingMethod()
-		.getName() , getGrant());
+		.getName() , getGrant()); */
 		//setFieldValue("usr_active", 1);
 		ObjectDB tmpUser = this.getGrant().getTmpObject("SimpleUser");
 		synchronized(tmpUser){
 			
 			try {
-				AppLog.info("DEBUG POST CREATE user: select "+getRowId()+" "+super.invokeAction("UserStatusActivate"), getGrant());
+				AppLog.info("DEBUG POST CREATE user: select "+getRowId()+" "+invokeAction("USER_STATUS-0-1"), getGrant());
 			} catch (ActionException e) {
 				AppLog.error("postCreate", e, getGrant());
 				e.printStackTrace();
