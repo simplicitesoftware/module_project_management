@@ -62,7 +62,7 @@ public class PmUser extends SimpleUser {
 		BusinessObjectTool ot = tmpResp.getTool();
 		tmpResp.resetFilters();
 		tmpResp.setFieldFilter("rsp_login_id", getGrant().getUserId());
-		tmpResp.setFieldFilter("rsp_group_id", sltGroup[1]);
+		
 		synchronized(tmpResp){
 			try
 				{for(String[] row : tmpResp.search()){
