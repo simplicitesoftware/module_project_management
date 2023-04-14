@@ -96,8 +96,9 @@ public class PmUser extends SimpleUser {
 		Function for calculated expression of field pmUsrCurrentGroup in PmUser
 	*/ 
 	public String pmUsrCurentGroup() {
-		String groupName = "No group";
+		String groupDisplay = "No group";
 		ObjectDB tmpResp = this.getGrant().getTmpObject("Responsability");
+		ObjectDB tmpGroup = this.getGrant().getTmpObject("PmGroup");
 		tmpResp.setFieldFilter("rsp_login_id", getRowId()); 
 		tmpResp.setFieldFilter("row_module_id",getModuleId() );
 		synchronized(tmpResp){
@@ -106,10 +107,10 @@ public class PmUser extends SimpleUser {
 				AppLog.info(Message.formatError("PM_ERR_TOO_MANY_RESP", null, null), getGrant());
 			}
 			tmpResp.select(SearchResult.get(0)[0]);
-			groupName =tmpResp.getFieldValue("grp_name");
-
+			tmpGroup.select(tmpResp.getFieldValue("rsp_group_id"));
+			groupDisplay =  tmpGroup.getDisplay();
 		}
-		return  groupName;
+		return  groupDisplay;
 		
 	}
 }
