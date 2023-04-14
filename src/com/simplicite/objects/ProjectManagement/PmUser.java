@@ -3,6 +3,9 @@ package com.simplicite.objects.ProjectManagement;
 
 import com.simplicite.util.*;
 import com.simplicite.util.exceptions.ActionException;
+
+import java.util.List;
+
 import com.simplicite.objects.System.*;
 
 /**
@@ -25,6 +28,16 @@ public class PmUser extends SimpleUser {
 			
 		}
 		return super.postCreate();
+	}
+	@Override
+	public List<String> postValidate() {
+		ObjectDB tmpUser = this.getGrant().getTmpObject("SimpleUser");
+		synchronized(tmpUser){
+			
+			AppLog.info("DEBUG POST CREATE user: select "+tmpUser.select(getRowId()), getGrant());
+			
+		}
+		return super.postValidate();
 	}
 	/* 
 		Fonctions for update pmUsrNbTask
