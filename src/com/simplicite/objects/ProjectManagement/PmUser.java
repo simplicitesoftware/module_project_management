@@ -2,12 +2,7 @@ package com.simplicite.objects.ProjectManagement;
 
 
 import com.simplicite.util.*;
-import com.simplicite.util.exceptions.ActionException;
-import com.simplicite.util.exceptions.DeleteException;
-import com.simplicite.util.exceptions.GetException;
-import com.simplicite.util.exceptions.SaveException;
-import com.simplicite.util.exceptions.SearchException;
-import com.simplicite.util.exceptions.ValidateException;
+import com.simplicite.util.exceptions.*;
 import com.simplicite.util.tools.*;
 
 import java.util.ArrayList;
@@ -30,11 +25,7 @@ public class PmUser extends SimpleUser {
 	}
 	@Override
 	public String postCreate() {
-		/* AppLog.info("DEBUG "+new Object() {}
-		.getClass()
-		.getEnclosingMethod()
-		.getName() , getGrant()); */
-		//setFieldValue("usr_active", 1);
+		
 		ObjectDB tmpResp = this.getGrant().getTmpObject("Responsability");
 		BusinessObjectTool ot = tmpResp.getTool();
 		ObjectDB tmpGroup = this.getGrant().getTmpObject("PmGroup");
@@ -125,11 +116,11 @@ public class PmUser extends SimpleUser {
 		tmpResp.setFieldFilter("rsp_login_id", getRowId()); 
 		tmpResp.setFieldFilter("row_module_id",getModuleId() );
 		synchronized(tmpResp){
-			List<String[]> SearchResult=tmpResp.search();
-			if (SearchResult.size() > 1){
+			List<String[]> searchResult=tmpResp.search();
+			if (searchResult.size() > 1){
 				AppLog.info(Message.formatError("PM_ERR_TOO_MANY_RESP", null, null), getGrant());
-			}else if(!SearchResult.isEmpty()){
-				tmpResp.select(SearchResult.get(0)[0]);
+			}else if(!searchResult.isEmpty()){
+				tmpResp.select(searchResult.get(0)[0]);
 				try {
 					if (!ot.getForCreateOrUpdate(new JSONObject() // or its alias getForUpsert 
 									.put("tsl_id",tmpResp.getFieldValue("rsp_group_id"))
