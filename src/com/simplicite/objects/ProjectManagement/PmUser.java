@@ -3,6 +3,8 @@ package com.simplicite.objects.ProjectManagement;
 
 import com.simplicite.util.*;
 import com.simplicite.util.exceptions.ActionException;
+import com.simplicite.util.exceptions.GetException;
+import com.simplicite.util.tools.BusinessObjectTool;
 
 import java.util.List;
 
@@ -25,17 +27,7 @@ public class PmUser extends SimpleUser {
 		.getEnclosingMethod()
 		.getName() , getGrant()); */
 		//setFieldValue("usr_active", 1);
-		ObjectDB tmpUser = this.getGrant().getTmpObject("SimpleUser");
-		synchronized(tmpUser){
-			
-			try {
-				AppLog.info("DEBUG POST CREATE user: select "+getRowId()+" "+invokeAction("USER_STATUS-0-1"), getGrant());
-			} catch (ActionException e) {
-				AppLog.error("postCreate", e, getGrant());
-				e.printStackTrace();
-			}
-			
-		}
+		
 		return super.postCreate();
 	}
 	
@@ -55,5 +47,37 @@ public class PmUser extends SimpleUser {
 			nbTask.setValue(0);
 		}
     	save();
+	}
+	/*
+		Function of action PM_USER_GROUP
+	*/ 
+	
+	public List<String> pmUserGroup(){
+		List<String> msgs = new ArrayList<>();
+		String[] sltGroup= getAction("PM_USER_GROUP").getConfirmField(getGrant().getLang(), "pmUserGroup").getValue().split(":");
+		ObjectDB tmpResp = this.getGrant().getTmpObject("Responsability");
+		BusinessObjectTool ot = tmpResp.getTool();
+		tmpResp.resetFilters();
+		tmpResp.setFieldFilter("rsp_login_id", getGrant().getUserId());
+		tmpResp.setFieldFilter("rsp_group_id", sltGroup[1]);
+		synchronized(tmpResp){
+			try
+				{for(String[] row : tmpResp.search()){
+					
+						ot.getForDelete(row[0]);
+						tmpResp.delete();
+					
+					
+				}
+				ot.selectForCreate();
+				tmpResp.setFieldValue("rsp_login_id", getGrant().getUserId());
+				tmpResp.setFieldValue("rsp_group_id", sltGroup[1]);
+				tmpResp.save();
+			}catch(GetException e){
+				AppLog.error(e, getGrant());
+			}
+		}
+				
+		return msgs;
 	}
 }
