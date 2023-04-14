@@ -12,13 +12,17 @@ public class PmUser extends SimpleUser {
 	@Override
 	public void postLoad() {
 		getField("row_module_id").setDefaultValue(this.getModuleId());
-		AppLog.info("DEBUG PM USER STATUS:"+getFieldValue("usr_active")+": "+getFieldDisplayValue("usr_active"), getGrant());
 		super.postLoad();
 	}
 	
 	/* 
 		Fonctions for update pmUsrNbTask
 	 */
+	@Override
+	public List<String> postValidate() {
+		setFieldValue("usr_active", 1);
+		return super.postValidate();
+	}
 	public void increaseNbTask(){
 		ObjectField nbTask = this.getField("pmUsrNbTask");
     	nbTask.setValue(nbTask.getInt(0)+1);
