@@ -7,7 +7,7 @@ import com.simplicite.util.exceptions.DeleteException;
 import com.simplicite.util.exceptions.GetException;
 import com.simplicite.util.exceptions.SaveException;
 import com.simplicite.util.exceptions.ValidateException;
-import com.simplicite.util.tools.BusinessObjectTool;
+import com.simplicite.util.tools.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -91,5 +91,25 @@ public class PmUser extends SimpleUser {
 		}
 				
 		return msgs;
+	}
+	/*
+		Function for calculated expression of field pmUsrCurrentGroup in PmUser
+	*/ 
+	public String pmUsrCurentGroup() {
+		String groupName = "No group";
+		ObjectDB tmpResp = this.getGrant().getTmpObject("Responsability");
+		tmpResp.setFieldFilter("rsp_login_id", getRowId()); 
+		tmpResp.setFieldFilter("row_module_id",getModuleId() );
+		synchronized(tmpResp){
+			List<String[]> SearchResult=tmpResp.search();
+			if (SearchResult.size() > 1){
+				AppLog.info(Message.formatError("PM_ERR_TOO_MANY_RESP", null, null), getGrant());
+			}
+			tmpResp.select(SearchResult.get(0)[0]);
+			groupName =tmpResp.getFieldValue("grp_name");
+
+		}
+		return  groupName;
+		
 	}
 }
