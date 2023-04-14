@@ -48,10 +48,12 @@ public class PmTask extends ObjectDB {
 			reFactorNumberForOrder(strNum.length());
 		}else{
 			strNum=String.format("%"+lenMax+"d", number);
+
 		}
 		return strNum;
 	}
 	public void reFactorNumberForOrder(int len){
+		AppLog.info("DEBUG in reFactorNumberForOrder", getGrant());
 		ObjectDB tmpTask = this.getGrant().getTmpObject("PmTask");
 		tmpTask.resetFilters();
 		tmpTask.setFieldFilter("pmTskVrsId", getFieldValue("pmTskVrsId"));// number is unique per version
@@ -60,7 +62,7 @@ public class PmTask extends ObjectDB {
 				tmpTask.select(row[0]);
 				String strNum=tmpTask.getFieldValue("pmTskNumber");
 				if(isInt(strNum) && strNum.length() < len){
-					
+					AppLog.info("DEBUG in reFactorNumberForOrder format:  String.format('%'"+len+"'d', Integer.parseInt("+strNum+")):" +String.format("%"+len+"d", Integer.parseInt(strNum)), getGrant());
 					tmpTask.setFieldValue("pmTskNumber",String.format("%"+len+"d", Integer.parseInt(strNum)));
 					tmpTask.save();
 				}
