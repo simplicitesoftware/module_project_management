@@ -68,8 +68,9 @@ public class PmUser extends SimpleUser {
 				{for(String[] row : tmpResp.search()){
 						AppLog.info("DEBUG DELETE usr id: "+getGrant().getUserId(), getGrant());
 						ot.getForDelete(row[0]);
-						AppLog.info("DEBUG DELETE: "+tmpResp.getFieldValue("rsp_login_id"), getGrant());
+						AppLog.info("DEBUG DELETE: "+tmpResp.delete(), getGrant());
 						ot.delete();
+						
 					
 					
 				}
