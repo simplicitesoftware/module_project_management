@@ -78,7 +78,7 @@ public class PmUser extends SimpleUser {
 				tmpResp.setFieldValue("rsp_group_id", sltGroup[1]);
 				ot.validateAndSave();
 				
-			}catch(GetException|ValidateException|SaveException|DeleteException e){
+			}catch(GetException|ValidateException|SaveException/*| DeleteException */ e){
 				AppLog.error(e, getGrant());
 				msgs.add(Message.formatError("PM_RESP_ERR", null, null));
 			}
