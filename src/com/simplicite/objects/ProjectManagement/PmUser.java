@@ -43,8 +43,8 @@ public class PmUser extends SimpleUser {
 			tmpResp.setFieldValue("row_module_id", getModuleId());
 			ot.validateAndSave();
 		} catch (GetException|ValidateException|SaveException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			AppLog.error(e, getGrant());
+			
 		}	
 		
 		return super.postCreate();
