@@ -12,6 +12,7 @@ public class PmUser extends SimpleUser {
 	@Override
 	public void postLoad() {
 		getField("row_module_id").setDefaultValue(this.getModuleId());
+		getField("pmPrjTestCalcul").setVisibility(ObjectField.VIS_HIDDEN);
 		super.postLoad();
 	}
 	
