@@ -20,13 +20,9 @@ public class PmUser extends SimpleUser {
 		//setFieldValue("usr_active", 1);
 		ObjectDB tmpUser = this.getGrant().getTmpObject("SimpleUser");
 		synchronized(tmpUser){
-			tmpUser=getParentObject();
-			try {
-				AppLog.info("DEBUG POST CREATE action: "+tmpUser.invokeAction("UserStatusActivate"), getGrant());
-			} catch (ActionException e) {
-				AppLog.error("postCreate", e, getGrant());
-				e.printStackTrace();
-			}
+			tmpUser.select(getRowId());
+			AppLog.info("DEBUG POST CREATE action "+tmpUser.getFieldValue("usr_login"), getGrant());
+			
 		}
 		return super.postCreate();
 	}
