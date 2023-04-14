@@ -32,81 +32,12 @@ public class PmUser extends SimpleUser {
 		ObjectDB tmpUser = this.getGrant().getTmpObject("SimpleUser");
 		synchronized(tmpUser){
 			
-			AppLog.info("DEBUG POST CREATE user: select "+getRowId()+" "+tmpUser.select(getRowId()), getGrant());
+			AppLog.info("DEBUG POST CREATE user: select "+getRowId()+" "+super.getFieldValue("usr_login"), getGrant());
 			
 		}
 		return super.postCreate();
 	}
-	@Override
-	public List<String> postValidate() {
-		AppLog.info("DEBUG "+new Object() {}
-		.getClass()
-		.getEnclosingMethod()
-		.getName() , getGrant());
-		return super.postValidate();
-	}
-	@Override
-	public String preCreate() {
-		AppLog.info("DEBUG "+new Object() {}
-		.getClass()
-		.getEnclosingMethod()
-		.getName() , getGrant());
-		return super.preCreate();
-	}
-	@Override
-	public void preLoad() {
-		AppLog.info("DEBUG "+new Object() {}
-		.getClass()
-		.getEnclosingMethod()
-		.getName() , getGrant());
-		super.preLoad();
-	}
-	@Override
-	public String preSave() {
-		AppLog.info("DEBUG "+new Object() {}
-		.getClass()
-		.getEnclosingMethod()
-		.getName() , getGrant());
-		return super.preSave();
-	}
-	@Override
-	public String preUpdate() {
-		AppLog.info("DEBUG "+new Object() {}
-		.getClass()
-		.getEnclosingMethod()
-		.getName() , getGrant());
-		return super.preUpdate();
-	}
-	@Override
-	public List<String> preValidate() {
-		AppLog.info("DEBUG "+new Object() {}
-		.getClass()
-		.getEnclosingMethod()
-		.getName() , getGrant());
-		return super.preValidate();
-	}
-	@Override
-	public String postSave() {
-		AppLog.info("DEBUG "+new Object() {}
-		.getClass()
-		.getEnclosingMethod()
-		.getName() , getGrant());
-		ObjectDB tmpUser = this.getGrant().getTmpObject("SimpleUser");
-		synchronized(tmpUser){
-			
-			AppLog.info("DEBUG POST CREATE user: select "+getRowId()+" "+tmpUser.select(getRowId()), getGrant());
-			
-		}
-		return super.postSave();
-	}
-	@Override
-	public String postUpdate() {
-		AppLog.info("DEBUG "+new Object() {}
-		.getClass()
-		.getEnclosingMethod()
-		.getName() , getGrant());
-		return super.postUpdate();
-	}
+	
 	/* 
 		Fonctions for update pmUsrNbTask
 	 */
