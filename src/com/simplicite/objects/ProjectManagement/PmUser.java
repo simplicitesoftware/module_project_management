@@ -65,6 +65,7 @@ public class PmUser extends SimpleUser {
 		BusinessObjectTool ot = tmpResp.getTool();
 		tmpResp.resetFilters();
 		tmpResp.setFieldFilter("rsp_login_id", getRowId()); 
+		AppLog.info("DEBUG USER id", getGrant());
 		synchronized(tmpResp){
 			try{
 				/* for(String[] row : tmpResp.search()){
