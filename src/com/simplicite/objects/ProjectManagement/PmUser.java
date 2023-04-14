@@ -77,20 +77,11 @@ public class PmUser extends SimpleUser {
 					
 					
 				}
-				//ot.selectForCreate();
-				if (!ot.getForCreateOrUpdate(new JSONObject() 
-							.put("rsp_login_id", getRowId())
-							.put("rsp_group_id", sltGroup[1])
-							.put("row_module_id", getModuleId())
-							.put("rsp_start_dt", Tool.getCurrentDate())
-							)) {
-							// Set functional keys fields
-							tmpResp.setFieldValue("rsp_login_id", getRowId());
-							tmpResp.setFieldValue("rsp_group_id", sltGroup[1]);
-							tmpResp.setFieldFilter("row_module_id", getModuleId());
-							tmpResp.setFieldFilter("rsp_start_dt", Tool.getCurrentDate());
-							AppLog.info("DEBUG CREATION", getGrant());
-				}else AppLog.info("DEBUG ALLREADY EXIST", getGrant());
+				ot.selectForCreate();	
+				tmpResp.setFieldValue("rsp_group_id", sltGroup[1]);
+				tmpResp.setFieldValue("rsp_login_id", getRowId());
+				tmpResp.setFieldFilter("rsp_start_dt", Tool.getCurrentDate());
+				tmpResp.setFieldFilter("row_module_id", getModuleId());
 				ot.validateAndSave();
 				
 			}catch(GetException|ValidateException|SaveException| DeleteException e){
