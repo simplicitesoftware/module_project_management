@@ -70,7 +70,7 @@ public class PmUser extends SimpleUser {
 						AppLog.info("DEBUG DELETE usr id: "+getGrant().getUserId(), getGrant());
 						ot.getForDelete(row[0]);
 						AppLog.info("DEBUG DELETE: "+tmpResp.getFieldValue("rsp_login_id"), getGrant());
-						ot.delete();
+						tmpResp.delete();
 					
 					
 				}
