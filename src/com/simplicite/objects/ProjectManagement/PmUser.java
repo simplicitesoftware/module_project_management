@@ -63,14 +63,13 @@ public class PmUser extends SimpleUser {
 		BusinessObjectTool ot = tmpResp.getTool();
 		tmpResp.resetFilters();
 		tmpResp.setFieldFilter("rsp_login_id", getGrant().getUserId());
-		
 		synchronized(tmpResp){
 			try
 				{for(String[] row : tmpResp.search()){
 						AppLog.info("DEBUG DELETE usr id: "+getGrant().getUserId(), getGrant());
 						ot.getForDelete(row[0]);
 						AppLog.info("DEBUG DELETE: "+tmpResp.getFieldValue("rsp_login_id"), getGrant());
-						tmpResp.delete();
+						ot.delete();
 					
 					
 				}
