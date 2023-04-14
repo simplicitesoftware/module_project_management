@@ -89,6 +89,7 @@ public class PmUser extends SimpleUser {
 							tmpResp.setFieldFilter("rsp_start_dt", Tool.getCurrentDate());
 							AppLog.info("DEBUG CREATION", getGrant());
 				}else AppLog.info("DEBUG ALLREADY EXIST", getGrant());
+				msgs.addAll(tmpResp.validate());
 				ot.validateAndSave();
 				
 			}catch(GetException|ValidateException|SaveException/*| DeleteException */ e){
