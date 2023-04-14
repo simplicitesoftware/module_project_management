@@ -18,12 +18,15 @@ public class PmUser extends SimpleUser {
 	@Override
 	public String postCreate() {
 		//setFieldValue("usr_active", 1);
-		
-		try {
-			AppLog.info("DEBUG POST CREATE action: "+invokeAction("UserStatusActivate"), getGrant());
-		} catch (ActionException e) {
-			AppLog.error("postCreate", e, getGrant());
-			e.printStackTrace();
+		ObjectDB tmpUser = this.getGrant().getTmpObject("SimpleUser");
+		synchronized(tmpUser){
+			tmpUser=getParentObject();
+			try {
+				AppLog.info("DEBUG POST CREATE action: "+tmpUser.invokeAction("UserStatusActivate"), getGrant());
+			} catch (ActionException e) {
+				AppLog.error("postCreate", e, getGrant());
+				e.printStackTrace();
+			}
 		}
 		return super.postCreate();
 	}
