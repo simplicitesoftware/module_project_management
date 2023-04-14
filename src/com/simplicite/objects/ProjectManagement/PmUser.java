@@ -32,7 +32,12 @@ public class PmUser extends SimpleUser {
 		ObjectDB tmpUser = this.getGrant().getTmpObject("SimpleUser");
 		synchronized(tmpUser){
 			
-			AppLog.info("DEBUG POST CREATE user: select "+getRowId()+" "+super.getFieldValue("usr_login"), getGrant());
+			try {
+				AppLog.info("DEBUG POST CREATE user: select "+getRowId()+" "+super.invokeAction("UserStatusActivate"), getGrant());
+			} catch (ActionException e) {
+				AppLog.error("postCreate", e, getGrant());
+				e.printStackTrace();
+			}
 			
 		}
 		return super.postCreate();
