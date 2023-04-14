@@ -6,6 +6,7 @@ import com.simplicite.util.exceptions.ActionException;
 import com.simplicite.util.exceptions.GetException;
 import com.simplicite.util.tools.BusinessObjectTool;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.simplicite.objects.System.*;
