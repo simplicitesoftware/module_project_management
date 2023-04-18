@@ -22,6 +22,8 @@ public class PmTask extends ObjectDB {
 		if ("PmArrayOfTask".equals(parent.getName()) && (!Tool.isEmpty(parent.getFieldValue("pmAotPrvTskId"))||!Tool.isEmpty(parent.getFieldValue("pmAotNextTskId")))){
 			//AppLog.info("DEBUG: initRefSelect"+parent.getFieldValue("pmAotPrvTskId")+"--"+parent.getFieldValue("pmAotNextTskId")+" prj: "+ parent.getFieldValue("pmVrsPrjId"), getGrant());
 			setFieldFilter("pmVrsPrjId", (Tool.isEmpty(parent.getFieldValue("pmAotPrvTskId"))?parent.getFieldValue("pmAotNextTskId.pmTskVrsId.pmVrsPrjId"):parent.getFieldValue("pmAotPrvTskId.pmTskVrsId.pmVrsPrjId")));
+		}else{
+			resetFilters();
 		}
 			
 			
