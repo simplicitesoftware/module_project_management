@@ -13,6 +13,16 @@
 
 Module de gestion de projet et de gestion de tâche ou de tickets.
 
+`PmGroup` business object definition
+------------------------------------
+
+
+
+### Fields
+
+| Name                                                         | Type                                     | Required | Updatable | Personal | Description                                                                      |
+|--------------------------------------------------------------|------------------------------------------|----------|-----------|----------|----------------------------------------------------------------------------------|
+
 `PmTaskHistoric` business object definition
 -------------------------------------------
 
@@ -33,7 +43,7 @@ Module de gestion de projet et de gestion de tâche ou de tickets.
 | `pmTskPriority`                                              | enum(100) using `PM_TSK_PRIORITE` list   | yes      | yes       |          | -                                                                                |
 | `pmTskCreation`                                              | date                                     | yes      | yes       |          | -                                                                                |
 | `pmTskClose`                                                 | date                                     | yes      | yes       |          | -                                                                                |
-| `pmTskEffectiveClosingDate`                                  | date                                     |          | yes       |          | -                                                                                |
+| `pmTskEffectiveClosingDate`                                  | date                                     |          |           |          | -                                                                                |
 | `pmTskExpectedDuration`                                      | int(100)                                 | yes      |           |          | -                                                                                |
 | `pmTskUsrId` link to **`PmUser`**                            | id                                       |          |           |          | -                                                                                |
 | _Ref. `pmTskUsrId.usr_login`_                                | _regexp(100)_                            |          |           | yes      | _Login_                                                                          |
@@ -80,6 +90,28 @@ Module de gestion de projet et de gestion de tâche ou de tickets.
 |--------------------------------------------------------------|------------------------------------------|----------|-----------|----------|----------------------------------------------------------------------------------|
 | `pmPrjTestCalcul`                                            | text(100)                                |          | yes       |          | -                                                                                |
 | `pmUsrNbTask`                                                | int(100)                                 |          |           |          | -                                                                                |
+| `usr_lang`                                                   | enum(3) using `LANG` list                | yes      | yes       | yes      | Language                                                                         |
+| `usr_active`                                                 | enum(1) using `USER_STATUS` list         |          | yes       |          | -                                                                                |
+| `usr_home_id` link to **`View`**                             | id                                       |          | yes       |          | -                                                                                |
+| _Ref. `usr_home_id.viw_name`_                                | _char(100)_                              |          |           |          | -                                                                                |
+| `row_module_id` link to **`Module`**                         | id                                       | yes      | yes       |          | Module                                                                           |
+| _Ref. `row_module_id.mdl_name`_                              | _regexp(100)_                            |          |           |          | _Module name_                                                                    |
+| `pmUsrCurrentGroup`                                          | char(100)                                |          |           |          | -                                                                                |
+
+### Lists
+
+* `LANG`
+    - `ENU` English language
+    - `FRA` French language
+* `USER_STATUS`
+    - `0` Disabled
+    - `1` Enabled
+    - `2` Pending
+    - `3` Web services only
+
+### Custom actions
+
+* `PM_USER_GROUP`: 
 
 `PmProject` business object definition
 --------------------------------------
@@ -146,7 +178,7 @@ Tasks of project
 | `pmTskPriority`                                              | enum(100) using `PM_TSK_PRIORITE` list   | yes      | yes       |          | -                                                                                |
 | `pmTskCreation`                                              | date                                     | yes      | yes       |          | -                                                                                |
 | `pmTskClose`                                                 | date                                     | yes      | yes       |          | -                                                                                |
-| `pmTskEffectiveClosingDate`                                  | date                                     |          | yes       |          | -                                                                                |
+| `pmTskEffectiveClosingDate`                                  | date                                     |          |           |          | -                                                                                |
 | `pmTskExpectedDuration`                                      | int(100)                                 | yes      |           |          | -                                                                                |
 | `pmTskActualDuration`                                        | int(100)                                 |          |           |          | -                                                                                |
 | `pmTskUsrId` link to **`PmUser`**                            | id                                       |          |           |          | -                                                                                |
@@ -161,7 +193,7 @@ Tasks of project
 | _Ref. `pmTskVrsId.pmVrsStatus`_                              | _enum(100) using `PM_VRS_STATUS` list_   |          |           |          | -                                                                                |
 | _Ref. `pmTskVrsId.pmVrsName`_                                | _char(200)_                              |          |           |          | _Concatenation of project name and version number_                               |
 | _Ref. `pmTskVrsId.pmVrsPublicationDate`_                     | _date_                                   |          |           |          | -                                                                                |
-| `pmTskCompletion`                                            | int(100)                                 |          | yes       |          | -                                                                                |
+| `pmTskCompletion`                                            | int(100)                                 |          |           |          | -                                                                                |
 
 ### Lists
 

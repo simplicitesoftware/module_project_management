@@ -1336,6 +1336,168 @@ paths:
       - PmRole
       consumes:
       - application/json
+  /rest/PmGroup/{row_id}:
+    post:
+      summary: Create a new PmGroupbusiness object record
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-pmgroup-create
+      responses:
+        '200':
+          schema:
+            $ref: '#/definitions/PmGroup'
+          description: Success in creating a new business object record
+        '400':
+          schema:
+            $ref: '#/definitions/Error400'
+          description: Bad request
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+      parameters:
+      - in: path
+        name: row_id
+        description: Row ID (or empty or _ for all row IDs)
+        type: string
+        required: true
+      - schema:
+          $ref: '#/definitions/PmGroup'
+        in: body
+        name: body
+      tags:
+      - PmGroup
+      consumes:
+      - application/json
+    get:
+      summary: Get a PmGroup business object record
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-pmgroup-get
+      responses:
+        '200':
+          schema:
+            $ref: '#/definitions/PmGroup'
+          description: Success in getting a single business object record
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+        '404':
+          schema:
+            $ref: '#/definitions/Error404'
+          description: Not found
+      parameters:
+      - in: path
+        name: row_id
+        description: Row ID (or empty or _ for all row IDs)
+        type: string
+        required: true
+      - in: query
+        name: _inline_documents
+        description: Inline documents?
+        type: boolean
+        required: false
+      - in: query
+        name: _inline_thumbnails
+        description: Inline documents' thumbnails?
+        type: boolean
+        required: false
+      - in: query
+        name: _inline_objects
+        description: Inline objects?
+        type: boolean
+        required: false
+      tags:
+      - PmGroup
+    delete:
+      summary: Delete a PmGroup business object record
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-pmgroup-delete
+      responses:
+        '200':
+          description: Success in deleting a business object record
+        '400':
+          schema:
+            $ref: '#/definitions/Error400'
+          description: Bad request
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+        '404':
+          schema:
+            $ref: '#/definitions/Error404'
+          description: Not found
+      parameters:
+      - in: path
+        name: row_id
+        description: Row ID (or empty or _ for all row IDs)
+        type: string
+        required: true
+      tags:
+      - PmGroup
+    put:
+      summary: Update a PmGroupbusiness object record
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-pmgroup-update
+      responses:
+        '200':
+          schema:
+            $ref: '#/definitions/PmGroup'
+          description: Success in updating a business object record
+        '400':
+          schema:
+            $ref: '#/definitions/Error400'
+          description: Bad request
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+        '404':
+          schema:
+            $ref: '#/definitions/Error404'
+          description: Not found
+      parameters:
+      - in: path
+        name: row_id
+        description: Row ID (or empty or _ for all row IDs)
+        type: string
+        required: true
+      - schema:
+          $ref: '#/definitions/PmGroup'
+        in: body
+        name: body
+      tags:
+      - PmGroup
+      consumes:
+      - application/json
   /rest/PmMessage/{row_id}:
     post:
       summary: Create a new PmMessagebusiness object record
@@ -1498,6 +1660,97 @@ paths:
       - PmMessage
       consumes:
       - application/json
+  /rest/PmGroup:
+    get:
+      summary: Search PmGroup business object records or get contextualized metadata
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-pmgroup-search
+      responses:
+        '200':
+          schema:
+            $ref: '#/definitions/ArrayOfPmGroup'
+          description: Success in searching business object records (or in getting
+            contextualized business object metadata, documentation, ...)
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+      parameters:
+      - in: query
+        name: _metadata
+        description: Metadata?
+        type: boolean
+        required: false
+      - in: query
+        name: _count
+        description: Count?
+        type: boolean
+        required: false
+      - in: query
+        name: _doc
+        description: Documentation?
+        type: boolean
+        required: false
+      - in: query
+        name: grp_name
+        description: Search filter for Name
+        type: string
+        required: false
+      - in: query
+        name: grp_comment
+        description: Search filter for Description
+        type: string
+        required: false
+      - in: query
+        name: grp_type
+        description: Search filter for Type
+        type: string
+        required: false
+        enum:
+        - G
+        - D
+        - W
+        - R
+        - N
+      - in: query
+        name: grp_parent_id
+        description: Search filter for Parent
+        type: string
+        required: false
+      - in: query
+        name: grp_parent_id__grp_name
+        description: Search filter for Parent group
+        type: string
+        required: false
+      - in: query
+        name: grp_home_id
+        description: Search filter for View
+        type: string
+        required: false
+      - in: query
+        name: grp_home_id__viw_name
+        description: Search filter for Home page
+        type: string
+        required: false
+      - in: query
+        name: row_module_id
+        description: Search filter for Module
+        type: string
+        required: false
+      - in: query
+        name: row_module_id__mdl_name
+        description: Search filter for Module name
+        type: string
+        required: false
+      tags:
+      - PmGroup
   /rest/PmRole:
     get:
       summary: Search PmRole business object records or get contextualized metadata
@@ -1746,6 +1999,44 @@ paths:
           description: Unauthorized
       tags:
       - session
+  /rest/PmUser/{row_id}/action:PM_USER_GROUP:
+    get:
+      summary: Call a custom action for a PmUser business object record or for all
+        records
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-pmuser-action-pm_user_group
+      responses:
+        '200':
+          schema:
+            $ref: '#/definitions/ActionResult'
+          description: Success in calling the custom action
+        '400':
+          schema:
+            $ref: '#/definitions/Error400'
+          description: Bad request
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+        '404':
+          schema:
+            $ref: '#/definitions/Error404'
+          description: Not found
+      parameters:
+      - in: path
+        name: row_id
+        description: Row ID (or empty or _ for all row IDs)
+        type: string
+        required: true
+      tags:
+      - PmUser
   /rest/PmTask:
     get:
       summary: Search PmTask business object records or get contextualized metadata
@@ -2776,6 +3067,11 @@ paths:
       - in: query
         name: row_module_id__mdl_name
         description: Search filter for Module name
+        type: string
+        required: false
+      - in: query
+        name: pmUsrCurrentGroup
+        description: Search filter for Current group
         type: string
         required: false
       tags:
@@ -4054,6 +4350,9 @@ definitions:
       pmPrjTestCalcul:
         description: TestCalcul
         type: string
+      pmUsrCurrentGroup:
+        description: Current group
+        type: string
       row_id:
         description: Unique technical row ID
         type: string
@@ -4259,6 +4558,47 @@ definitions:
     type: array
     items:
       $ref: '#/definitions/PmUser'
+  PmGroup:
+    type: object
+    properties:
+      grp_parent_id__grp_name:
+        description: Parent group
+        type: string
+      row_module_id__mdl_name:
+        description: Module name
+        type: string
+      row_module_id:
+        description: Module
+        type: string
+      grp_home_id:
+        description: View
+        type: string
+      grp_name:
+        description: Name
+        type: string
+      grp_comment:
+        description: Description
+        type: string
+      grp_type:
+        description: Type
+        type: array
+        items:
+          type: string
+          enum:
+          - G
+          - D
+          - W
+          - R
+          - N
+      row_id:
+        description: Unique technical row ID
+        type: string
+      grp_parent_id:
+        description: Parent
+        type: string
+      grp_home_id__viw_name:
+        description: Home page
+        type: string
   ActionResult:
     type: object
     properties:
@@ -4301,6 +4641,10 @@ definitions:
     type: array
     items:
       $ref: '#/definitions/PmTask'
+  ArrayOfPmGroup:
+    type: array
+    items:
+      $ref: '#/definitions/PmGroup'
   PmTaskHistoric:
     type: object
     properties:
@@ -4426,6 +4770,8 @@ tags:
   description: Assignment pm time sheet assign
 - name: PmDocument
   description: Document
+- name: PmGroup
+  description: Group
 - name: PmLabel
   description: Label
 - name: PmMessage

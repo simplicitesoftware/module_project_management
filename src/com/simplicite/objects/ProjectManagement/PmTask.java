@@ -14,6 +14,16 @@ import com.simplicite.util.tools.*;
  */
 public class PmTask extends ObjectDB {
 	private static final long serialVersionUID = 1L;
+	
+	
+	@Override
+	public void initRefSelect(ObjectDB parent) {
+		if ("PmArrayOfTask".equals(parent.getName()) && (!Tool.isEmpty(parent.getFieldValue("pmAotPrvTskId"))||!Tool.isEmpty(parent.getFieldValue("pmAotNextTskId"))))
+			setFieldFilter("pmVrsPrjId", parent.getFieldValue("pmVrsPrjId"));
+			
+	}
+	
+	
 	/*
 		Function for calculat Number of task 
 		(return the first none used number)

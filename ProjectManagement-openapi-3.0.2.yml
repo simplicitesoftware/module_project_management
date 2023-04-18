@@ -443,6 +443,9 @@ components:
         pmPrjTestCalcul:
           description: TestCalcul
           type: string
+        pmUsrCurrentGroup:
+          description: Current group
+          type: string
         row_id:
           description: Unique technical row ID
           type: string
@@ -648,6 +651,47 @@ components:
       type: array
       items:
         $ref: '#/components/schemas/PmUser'
+    PmGroup:
+      type: object
+      properties:
+        grp_parent_id__grp_name:
+          description: Parent group
+          type: string
+        row_module_id__mdl_name:
+          description: Module name
+          type: string
+        row_module_id:
+          description: Module
+          type: string
+        grp_home_id:
+          description: View
+          type: string
+        grp_name:
+          description: Name
+          type: string
+        grp_comment:
+          description: Description
+          type: string
+        grp_type:
+          description: Type
+          type: array
+          items:
+            type: string
+            enum:
+            - G
+            - D
+            - W
+            - R
+            - N
+        row_id:
+          description: Unique technical row ID
+          type: string
+        grp_parent_id:
+          description: Parent
+          type: string
+        grp_home_id__viw_name:
+          description: Home page
+          type: string
     ActionResult:
       type: object
       properties:
@@ -690,6 +734,10 @@ components:
       type: array
       items:
         $ref: '#/components/schemas/PmTask'
+    ArrayOfPmGroup:
+      type: array
+      items:
+        $ref: '#/components/schemas/PmGroup'
     PmTaskHistoric:
       type: object
       properties:
@@ -2394,6 +2442,201 @@ paths:
         required: true
       tags:
       - PmRole
+  /rest/PmGroup/{row_id}:
+    post:
+      summary: Create a new PmGroupbusiness object record
+      security:
+      - bearerAuth: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PmGroup'
+      operationId: obj-pmgroup-create
+      responses:
+        '200':
+          description: Success in creating a new business object record
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PmGroup'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error400'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error401'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error500'
+      parameters:
+      - schema:
+          type: string
+        in: path
+        name: row_id
+        description: Row ID (or empty or _ for all row IDs)
+        required: true
+      tags:
+      - PmGroup
+    get:
+      summary: Get a PmGroup business object record
+      security:
+      - bearerAuth: []
+      operationId: obj-pmgroup-get
+      responses:
+        '200':
+          description: Success in getting a single business object record
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PmGroup'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error401'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error500'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error404'
+      parameters:
+      - schema:
+          type: string
+        in: path
+        name: row_id
+        description: Row ID (or empty or _ for all row IDs)
+        required: true
+      - schema:
+          type: boolean
+        in: query
+        name: _inline_documents
+        description: Inline documents?
+        required: false
+      - schema:
+          type: boolean
+        in: query
+        name: _inline_thumbnails
+        description: Inline documents' thumbnails?
+        required: false
+      - schema:
+          type: boolean
+        in: query
+        name: _inline_objects
+        description: Inline objects?
+        required: false
+      tags:
+      - PmGroup
+    delete:
+      summary: Delete a PmGroup business object record
+      security:
+      - bearerAuth: []
+      operationId: obj-pmgroup-delete
+      responses:
+        '200':
+          description: Success in deleting a business object record
+          content:
+            application/json: {}
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error400'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error401'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error500'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error404'
+      parameters:
+      - schema:
+          type: string
+        in: path
+        name: row_id
+        description: Row ID (or empty or _ for all row IDs)
+        required: true
+      tags:
+      - PmGroup
+    put:
+      summary: Update a PmGroupbusiness object record
+      security:
+      - bearerAuth: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PmGroup'
+      operationId: obj-pmgroup-update
+      responses:
+        '200':
+          description: Success in updating a business object record
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PmGroup'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error400'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error401'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error500'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error404'
+      parameters:
+      - schema:
+          type: string
+        in: path
+        name: row_id
+        description: Row ID (or empty or _ for all row IDs)
+        required: true
+      tags:
+      - PmGroup
   /rest/PmMessage/{row_id}:
     post:
       summary: Create a new PmMessagebusiness object record
@@ -2589,6 +2832,113 @@ paths:
         required: true
       tags:
       - PmMessage
+  /rest/PmGroup:
+    get:
+      summary: Search PmGroup business object records or get contextualized metadata
+      security:
+      - bearerAuth: []
+      operationId: obj-pmgroup-search
+      responses:
+        '200':
+          description: Success in searching business object records (or in getting
+            contextualized business object metadata, documentation, ...)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ArrayOfPmGroup'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error401'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error500'
+      parameters:
+      - schema:
+          type: boolean
+        in: query
+        name: _metadata
+        description: Metadata?
+        required: false
+      - schema:
+          type: boolean
+        in: query
+        name: _count
+        description: Count?
+        required: false
+      - schema:
+          type: boolean
+        in: query
+        name: _doc
+        description: Documentation?
+        required: false
+      - schema:
+          type: string
+        in: query
+        name: grp_name
+        description: Search filter for Name
+        required: false
+      - schema:
+          type: string
+        in: query
+        name: grp_comment
+        description: Search filter for Description
+        required: false
+      - schema:
+          type: string
+          enum:
+          - G
+          - D
+          - W
+          - R
+          - N
+        in: query
+        name: grp_type
+        description: Search filter for Type
+        required: false
+      - schema:
+          type: string
+        in: query
+        name: grp_parent_id
+        description: Search filter for Parent
+        required: false
+      - schema:
+          type: string
+        in: query
+        name: grp_parent_id__grp_name
+        description: Search filter for Parent group
+        required: false
+      - schema:
+          type: string
+        in: query
+        name: grp_home_id
+        description: Search filter for View
+        required: false
+      - schema:
+          type: string
+        in: query
+        name: grp_home_id__viw_name
+        description: Search filter for Home page
+        required: false
+      - schema:
+          type: string
+        in: query
+        name: row_module_id
+        description: Search filter for Module
+        required: false
+      - schema:
+          type: string
+        in: query
+        name: row_module_id__mdl_name
+        description: Search filter for Module name
+        required: false
+      tags:
+      - PmGroup
   /rest/PmRole:
     get:
       summary: Search PmRole business object records or get contextualized metadata
@@ -2884,6 +3234,53 @@ paths:
                 $ref: '#/components/schemas/Error401'
       tags:
       - session
+  /rest/PmUser/{row_id}/action:PM_USER_GROUP:
+    get:
+      summary: Call a custom action for a PmUser business object record or for all
+        records
+      security:
+      - bearerAuth: []
+      operationId: obj-pmuser-action-pm_user_group
+      responses:
+        '200':
+          description: Success in calling the custom action
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ActionResult'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error400'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error401'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error500'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error404'
+      parameters:
+      - schema:
+          type: string
+        in: path
+        name: row_id
+        description: Row ID (or empty or _ for all row IDs)
+        required: true
+      tags:
+      - PmUser
   /rest/PmTask:
     get:
       summary: Search PmTask business object records or get contextualized metadata
@@ -4108,6 +4505,12 @@ paths:
         name: row_module_id__mdl_name
         description: Search filter for Module name
         required: false
+      - schema:
+          type: string
+        in: query
+        name: pmUsrCurrentGroup
+        description: Search filter for Current group
+        required: false
       tags:
       - PmUser
   /rest/PmVersion/{row_id}:
@@ -5123,6 +5526,8 @@ tags:
   description: Assignment pm time sheet assign
 - name: PmDocument
   description: Document
+- name: PmGroup
+  description: Group
 - name: PmLabel
   description: Label
 - name: PmMessage
