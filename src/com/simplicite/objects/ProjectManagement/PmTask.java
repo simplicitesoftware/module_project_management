@@ -16,18 +16,6 @@ public class PmTask extends ObjectDB {
 	private static final long serialVersionUID = 1L;
 	
 	
-	@Override
-	public void initRefSelect(ObjectDB parent) {
-		//AppLog.info("DEBUG: initRefSelect"+parent.getName(), getGrant());
-		if ("PmArrayOfTask".equals(parent.getName()) && (!Tool.isEmpty(parent.getFieldValue("pmAotPrvTskId"))||!Tool.isEmpty(parent.getFieldValue("pmAotNextTskId")))){
-			//AppLog.info("DEBUG: initRefSelect"+parent.getFieldValue("pmAotPrvTskId")+"--"+parent.getFieldValue("pmAotNextTskId")+" prj: "+ parent.getFieldValue("pmVrsPrjId"), getGrant());
-			setFieldFilter("pmVrsPrjId", (Tool.isEmpty(parent.getFieldValue("pmAotPrvTskId"))?parent.getFieldValue("pmAotNextTskId.pmTskVrsId.pmVrsPrjId"):parent.getFieldValue("pmAotPrvTskId.pmTskVrsId.pmVrsPrjId")));
-		}else{
-			resetFilters();
-		}
-			
-			
-	}
 	
 	
 	/*
@@ -83,6 +71,14 @@ public class PmTask extends ObjectDB {
 			}
 		}
 	}
+
+	@Override
+	public void initRefSelect(ObjectDB parent) {
+		/* if ("PmArrayOfTask".equals(parent.getName()) && (!Tool.isEmpty(parent.getFieldValue("pmAotPrvTskId"))||!Tool.isEmpty(parent.getFieldValue("pmAotNextTskId"))))
+			setFieldFilter("pmVrsPrjId", (Tool.isEmpty(parent.getFieldValue("pmAotPrvTskId"))?parent.getFieldValue("pmAotNextTskId.pmTskVrsId.pmVrsPrjId"):parent.getFieldValue("pmAotPrvTskId.pmTskVrsId.pmVrsPrjId")));
+		else resetFilters(); */	
+	}
+	
 	@Override
 	public void initCreate() {
 		HashMap<String, String> filters = new HashMap<>();
@@ -107,6 +103,7 @@ public class PmTask extends ObjectDB {
 			setFieldValue("pmTskNumber", autoGenNumber());
 			save();
 		}
+		
 		List<String> msgsSuper =super.postValidate();
 		if (!Tool.isEmpty(msgsSuper)) msgs.addAll(msgsSuper);
 		return msgs;
