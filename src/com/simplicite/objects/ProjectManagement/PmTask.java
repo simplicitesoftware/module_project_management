@@ -18,10 +18,10 @@ public class PmTask extends ObjectDB {
 	
 	@Override
 	public void initRefSelect(ObjectDB parent) {
-		AppLog.info("DEBUG: initRefSelect"+parent.getName(), getGrant());
+		//AppLog.info("DEBUG: initRefSelect"+parent.getName(), getGrant());
 		if ("PmArrayOfTask".equals(parent.getName()) && (!Tool.isEmpty(parent.getFieldValue("pmAotPrvTskId"))||!Tool.isEmpty(parent.getFieldValue("pmAotNextTskId")))){
-			AppLog.info("DEBUG: initRefSelect"+parent.getFieldValue("pmAotPrvTskId")+"--"+parent.getFieldValue("pmAotNextTskId")+" prj: "+ parent.getFieldValue("pmVrsPrjId"), getGrant());
-			setFieldFilter("pmVrsPrjId", parent.getFieldValue("pmVrsPrjId"));
+			//AppLog.info("DEBUG: initRefSelect"+parent.getFieldValue("pmAotPrvTskId")+"--"+parent.getFieldValue("pmAotNextTskId")+" prj: "+ parent.getFieldValue("pmVrsPrjId"), getGrant());
+			setFieldFilter("pmVrsPrjId", (Tool.isEmpty(parent.getFieldValue("pmAotPrvTskId"))?parent.getFieldValue("pmAotNextTskId.pmTskVrsId.pmVrsPrjId"):parent.getFieldValue("pmAotPrvTskId.pmTskVrsId.pmVrsPrjId")));
 		}
 			
 			
