@@ -24,17 +24,7 @@ var PmTimesheetRecapExt = PmTimesheetRecapExt || (function($) {
 			console.error('Render error: ' + e.message);
 		}
     }        
-    function getTskName(id){
-        var obj = app.getBusinessObject("PmTask");
-        obj.search(function(l) {
-            console.log(l[0].pmTskTitle);
-            return l[0].pmTskTitle;
-        }, {
-            row_id: id
-        });
-        return "not title"
-        
-    }
+    
     function toDict(list) {
         var lang = app.getGrant().getLang();
         var data ={
@@ -54,7 +44,7 @@ var PmTimesheetRecapExt = PmTimesheetRecapExt || (function($) {
             data.listNotEmpty = true;
             list.forEach(ass => data.ass.push(function(assign){
                 var objAss = {
-                	pmAssTskName: getTskName(assign.pmAssPmTaskid),
+                	pmAssTskName: assign.getField("pmTskTitle"),
                     pmAssRole: assign.pmAssRole,
                     pmAssConsumed: assign.pmAssConsumed,
                     pmAssQuantity:' ',
