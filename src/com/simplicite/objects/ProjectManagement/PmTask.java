@@ -37,8 +37,10 @@ public class PmTask extends ObjectDB {
 			tmpTask.setFieldFilter("pmTskVrsId", getFieldValue("pmTskVrsId"));// number is unique per version
 			
 			for(String[] row : tmpTask.search()){// for all assignment invoke increaseUserNbtask methode to update the nbTask of user assigned on task
-				tmpTask.select(row[0]);
-				listExist.add(Integer.parseInt(tmpTask.getFieldValue("pmTskNumber")));
+				if(!row[0].equals(getRowId()) ){
+					tmpTask.select(row[0]);
+					listExist.add(Integer.parseInt(tmpTask.getFieldValue("pmTskNumber")));
+				}
 			}
 		}
 		while(listExist.contains(number)){
