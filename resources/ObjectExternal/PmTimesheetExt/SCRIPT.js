@@ -5,7 +5,7 @@ var PmTimesheetExt = PmTimesheetExt || (function($) {
         var userid =$ui.grant.getUserID();
         $ui.displayTimesheet($('#ts'), "PmUser",userid , "PmTimeSheetAssign");
         console.log("DEBUG in PmTimesheetExt");
-        /* app = $ui.getAjax(); 
+       /*  app = $ui.getAjax(); 
 		var extobj = "PmTimesheetRecapExt"; 
 		var embedded = true; 
 		var param = null; 
