@@ -4,6 +4,7 @@ var PmTimesheetRecapExt = PmTimesheetRecapExt || (function($) {
     function render(params) {
         var userid =$ui.grant.getUserID();
         try {
+            console.log("DEBUG in PmTimesheetRecapExt")
 			if (typeof Mustache === 'undefined') throw 'Mustache not available';
             var div=$('#recap')
             var template =$('#pm-ass-template').html();
