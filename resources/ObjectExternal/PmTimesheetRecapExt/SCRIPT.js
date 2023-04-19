@@ -9,7 +9,7 @@ var PmTimesheetRecapExt = PmTimesheetRecapExt || (function($) {
             $("#timesheet_PmTimeSheetAssign").after("<div id='recap'></div>");
             var div=$('#recap')
             var template =$('#pm-ass-template').html();
-            var htmlRecap= loadpart("")
+            
             if (userid) {
                 // Search the client
                 app = $ui.getAjax();
