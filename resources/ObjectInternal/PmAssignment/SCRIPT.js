@@ -1,5 +1,5 @@
 // PmAssignment front side hook
-/* (function(ui) {
+(function(ui) {
 	if (!ui) return;
 	const app = ui.getAjax();
 	// Hook called by each object instance
