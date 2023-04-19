@@ -24,7 +24,17 @@ var PmTimesheetRecapExt = PmTimesheetRecapExt || (function($) {
 			console.error('Render error: ' + e.message);
 		}
     }        
-    
+    function getTskName(id){
+        var obj = app.getBusinessObject("PmTask");
+        obj.search(function(l) {
+            console.log(l[0].pmTskTitle);
+            return l[0].pmTskTitle;
+        }, {
+            row_id: id
+        });
+        return "not title"
+        
+    }
     function toDict(list) {
         var lang = app.getGrant().getLang();
         var data ={
@@ -44,24 +54,23 @@ var PmTimesheetRecapExt = PmTimesheetRecapExt || (function($) {
             data.listNotEmpty = true;
             list.forEach(ass => data.ass.push(function(assign){
                 var objAss = {
-                	pmAssTskName: ' ',
+                	pmAssTskName: getTskName(assign.pmAssPmTaskid),
                     pmAssRole: assign.pmAssRole,
                     pmAssConsumed: assign.pmAssConsumed,
                     pmAssQuantity:' ',
                     setProgress:false
                 };
-                if(assign.pmAssQuantity){
-                    objAss.setProgress=true;
-                    objAss.pmAssQuantity =assign.pmAssQuantity;
-                }
                 var obj = app.getBusinessObject("PmTask");
                 obj.search(function(l) {
                     objAss.pmAssTskName=l[0].pmTskTitle;
                     console.log(l[0].pmTskTitle)
-                    return objAss;
                 }, {
                     row_id: assign.pmAssPmTaskid
                 });
+                if(assign.pmAssQuantity){
+                    objAss.setProgress=true;
+                    objAss.pmAssQuantity =assign.pmAssQuantity;
+                }
                 return objAss;
             }(ass)));
             
