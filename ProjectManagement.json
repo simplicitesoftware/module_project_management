@@ -240,7 +240,7 @@
       "usr_menu": true,
       "usr_menu_defcollapsed": false,
       "usr_menu_defdomain_id__obd_name": null,
-      "usr_last_logon": "2023-04-13 11:47:24",
+      "usr_last_logon": "2023-04-19 14:13:35",
       "usr_dateformat": null,
       "usr_numformat": null,
       "usr_lang_pref": "FRA",
@@ -277,7 +277,7 @@
       "usr_menu": true,
       "usr_menu_defcollapsed": false,
       "usr_menu_defdomain_id__obd_name": null,
-      "usr_last_logon": "2023-04-13 17:04:06",
+      "usr_last_logon": "2023-04-19 16:56:06",
       "usr_dateformat": null,
       "usr_numformat": null,
       "usr_lang_pref": "FRA",
@@ -314,7 +314,7 @@
       "usr_menu": true,
       "usr_menu_defcollapsed": false,
       "usr_menu_defdomain_id__obd_name": null,
-      "usr_last_logon": "2023-04-13 14:30:10",
+      "usr_last_logon": "2023-04-19 14:46:34",
       "usr_dateformat": null,
       "usr_numformat": null,
       "usr_lang_pref": "FRA",
@@ -517,11 +517,25 @@
      "item": {
       "usp_user_id__usr_login": "PmReader",
       "usp_param_id__sys_code": "CLIENT_ID",
-      "usp_value": "[\n {\n  \"dt\": \"2023-04-12 10:08:52\",\n  \"ag\": \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36\",\n  \"id\": \"ogovknccmgkya3zxay9see6s39be4hzt7wmz70z8slyoxqh0hx4umr2w33irl1vz1680618811018\"\n },\n {\n  \"dt\": \"2023-04-13 14:30:10\",\n  \"ag\": \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36\",\n  \"id\": \"l94lz9s15dzvn2b7blz9hgdq8mq3yhu34z4ym8tk4i2gpvwj3ec1o6alqpr14p8e1681375963515\"\n }\n]",
+      "usp_value": "[\n {\n  \"dt\": \"2023-04-12 10:08:52\",\n  \"ag\": \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36\",\n  \"id\": \"ogovknccmgkya3zxay9see6s39be4hzt7wmz70z8slyoxqh0hx4umr2w33irl1vz1680618811018\"\n },\n {\n  \"dt\": \"2023-04-19 14:46:35\",\n  \"ag\": \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36\",\n  \"id\": \"l94lz9s15dzvn2b7blz9hgdq8mq3yhu34z4ym8tk4i2gpvwj3ec1o6alqpr14p8e1681375963515\"\n }\n]",
       "usp_param_id__sys_type": null,
       "usp_param_id__sys_value": "empty",
       "usp_param_id__sys_value2": null,
       "usp_param_id__sys_desc": null,
+      "row_module_id__mdl_name": "ProjectManagement"
+     }
+    },
+    {
+     "object": "UserSysParam",
+     "userkey": "PmReader~DISPOSITION",
+     "item": {
+      "usp_user_id__usr_login": "PmReader",
+      "usp_param_id__sys_code": "DISPOSITION",
+      "usp_value": null,
+      "usp_param_id__sys_type": "LFL",
+      "usp_param_id__sys_value": "default",
+      "usp_param_id__sys_value2": null,
+      "usp_param_id__sys_desc": "Webapp disposition, ex: default, myapp, ...",
       "row_module_id__mdl_name": "ProjectManagement"
      }
     },
@@ -830,6 +844,32 @@
    "list": [
     {
      "object": "ListOfValue",
+     "userkey": "TEXT~PM_ERR_AOT_DIFF_PRJ~ENU",
+     "item": {
+      "lov_name": "TEXT",
+      "lov_code": "PM_ERR_AOT_DIFF_PRJ",
+      "lov_lang": "ENU",
+      "lov_value": "Both tasks must be in the same project to be linked",
+      "lov_order_by": 1,
+      "lov_event_id__lev_code": null,
+      "row_module_id__mdl_name": "ProjectManagement"
+     }
+    },
+    {
+     "object": "ListOfValue",
+     "userkey": "TEXT~PM_ERR_ASSIGN_NO_TASK~ENU",
+     "item": {
+      "lov_name": "TEXT",
+      "lov_code": "PM_ERR_ASSIGN_NO_TASK",
+      "lov_lang": "ENU",
+      "lov_value": "You must select at least one task to assign to someone.",
+      "lov_order_by": 1,
+      "lov_event_id__lev_code": null,
+      "row_module_id__mdl_name": "ProjectManagement"
+     }
+    },
+    {
+     "object": "ListOfValue",
      "userkey": "TEXT~PM_ERR_ASSIGN_OBJECT_TYPE~ENU",
      "item": {
       "lov_name": "TEXT",
@@ -953,6 +993,32 @@
       "lov_code": "PM_RESP_ERR",
       "lov_lang": "ENU",
       "lov_value": "An error occurred while changing responsibility",
+      "lov_order_by": 1,
+      "lov_event_id__lev_code": null,
+      "row_module_id__mdl_name": "ProjectManagement"
+     }
+    },
+    {
+     "object": "ListOfValue",
+     "userkey": "TEXT~PM_ERR_AOT_DIFF_PRJ~FRA",
+     "item": {
+      "lov_name": "TEXT",
+      "lov_code": "PM_ERR_AOT_DIFF_PRJ",
+      "lov_lang": "FRA",
+      "lov_value": "Les deux tâches doivent être dans le même projet pour être liées",
+      "lov_order_by": 1,
+      "lov_event_id__lev_code": null,
+      "row_module_id__mdl_name": "ProjectManagement"
+     }
+    },
+    {
+     "object": "ListOfValue",
+     "userkey": "TEXT~PM_ERR_ASSIGN_NO_TASK~FRA",
+     "item": {
+      "lov_name": "TEXT",
+      "lov_code": "PM_ERR_ASSIGN_NO_TASK",
+      "lov_lang": "FRA",
+      "lov_value": "Vous devez sélectionner au moins une tâche à attribuer à quelqu'un.",
       "lov_order_by": 1,
       "lov_event_id__lev_code": null,
       "row_module_id__mdl_name": "ProjectManagement"
@@ -2239,7 +2305,7 @@
   },
   {
    "object": "Field",
-   "label": "Fields",
+   "label": "Fields (Module)",
    "icon": "img/system/field",
    "field": "row_module_id",
    "list": [
@@ -2274,7 +2340,7 @@
       "fld_fromdate_id__fld_name": null,
       "fld_dfault": null,
       "fld_indexable": false,
-      "fld_autocomp": "0",
+      "fld_autocomp": "1",
       "fld_groupby": false,
       "fld_updall": true,
       "fld_case": null,
@@ -2320,7 +2386,7 @@
       "fld_fromdate_id__fld_name": null,
       "fld_dfault": null,
       "fld_indexable": false,
-      "fld_autocomp": "0",
+      "fld_autocomp": "1",
       "fld_groupby": false,
       "fld_updall": true,
       "fld_case": null,
@@ -2410,12 +2476,12 @@
       "fld_fromdate_id__fld_name": null,
       "fld_dfault": null,
       "fld_indexable": false,
-      "fld_autocomp": "0",
+      "fld_autocomp": "1",
       "fld_groupby": false,
       "fld_updall": true,
       "fld_case": null,
       "fld_righttoleft": false,
-      "fld_rendering": null,
+      "fld_rendering": "FKPS",
       "fld_speech": null,
       "fld_calc": null,
       "fld_objlist": null,
@@ -2458,7 +2524,7 @@
       "fld_fromdate_id__fld_name": null,
       "fld_dfault": "[USERID]",
       "fld_indexable": false,
-      "fld_autocomp": "0",
+      "fld_autocomp": "1",
       "fld_groupby": false,
       "fld_updall": true,
       "fld_case": null,
@@ -2863,7 +2929,7 @@
       "fld_fromdate_id__fld_name": null,
       "fld_dfault": null,
       "fld_indexable": false,
-      "fld_autocomp": "0",
+      "fld_autocomp": "1",
       "fld_groupby": false,
       "fld_updall": true,
       "fld_case": null,
@@ -3045,7 +3111,7 @@
       "fld_fromdate_id__fld_name": null,
       "fld_dfault": null,
       "fld_indexable": false,
-      "fld_autocomp": "0",
+      "fld_autocomp": "1",
       "fld_groupby": false,
       "fld_updall": true,
       "fld_case": null,
@@ -3226,7 +3292,7 @@
       "fld_fromdate_id__fld_name": null,
       "fld_dfault": null,
       "fld_indexable": false,
-      "fld_autocomp": "0",
+      "fld_autocomp": "1",
       "fld_groupby": false,
       "fld_updall": true,
       "fld_case": null,
@@ -3361,7 +3427,7 @@
       "fld_fromdate_id__fld_name": null,
       "fld_dfault": null,
       "fld_indexable": false,
-      "fld_autocomp": "0",
+      "fld_autocomp": "1",
       "fld_groupby": false,
       "fld_updall": true,
       "fld_case": null,
@@ -3450,7 +3516,7 @@
       "fld_fromdate_id__fld_name": null,
       "fld_dfault": null,
       "fld_indexable": false,
-      "fld_autocomp": "0",
+      "fld_autocomp": "1",
       "fld_groupby": false,
       "fld_updall": true,
       "fld_case": null,
@@ -3991,7 +4057,7 @@
       "fld_fromdate_id__fld_name": null,
       "fld_dfault": null,
       "fld_indexable": false,
-      "fld_autocomp": "0",
+      "fld_autocomp": "1",
       "fld_groupby": false,
       "fld_updall": true,
       "fld_case": null,
@@ -4034,7 +4100,7 @@
       "fld_fromdate_id__fld_name": null,
       "fld_dfault": null,
       "fld_indexable": false,
-      "fld_autocomp": "0",
+      "fld_autocomp": "1",
       "fld_groupby": false,
       "fld_updall": true,
       "fld_case": null,
@@ -4059,7 +4125,7 @@
       },
       "fld_dbname": "pm_tsk_number",
       "fld_visible": "3",
-      "fld_updatable": "1",
+      "fld_updatable": "0",
       "fld_required": true,
       "fld_fonctid": true,
       "fld_research": "1",
@@ -4080,7 +4146,7 @@
       "fld_fromdate_id__fld_name": null,
       "fld_dfault": "0",
       "fld_indexable": false,
-      "fld_autocomp": "0",
+      "fld_autocomp": "1",
       "fld_groupby": false,
       "fld_updall": true,
       "fld_case": null,
@@ -4766,7 +4832,7 @@
       "fld_fromdate_id__fld_name": null,
       "fld_dfault": null,
       "fld_indexable": false,
-      "fld_autocomp": "0",
+      "fld_autocomp": "1",
       "fld_groupby": false,
       "fld_updall": true,
       "fld_case": null,
@@ -5526,7 +5592,7 @@
   },
   {
    "object": "ObjectInternal",
-   "label": "Business objects",
+   "label": "Business objects (Module)",
    "icon": "img/system/business_object",
    "field": "row_module_id",
    "list": [
@@ -6656,7 +6722,7 @@
   },
   {
    "object": "ObjectFieldSystem",
-   "label": "Object fields",
+   "label": "Object fields (Module)",
    "icon": "img/system/object_field",
    "field": "row_module_id",
    "list": [
@@ -23052,6 +23118,30 @@
        "path": "resources/ObjectInternal/PmProject/pmPrjPubHtml.html",
        "mime": "text/html",
        "name": "pmPrjPubHtml.html"
+      },
+      "res_image": null,
+      "row_module_id__mdl_name": "ProjectManagement"
+     }
+    },
+    {
+     "object": "Resource",
+     "userkey": "ObjectInternal(PmAssignment)~ANY~SCRIPT",
+     "item": {
+      "res_object": {
+       "item": {"obo_name": "PmAssignment"},
+       "icon": "img/system/business_object",
+       "label": "Business object",
+       "userkeylabel": "PmAssignment",
+       "object": "ObjectInternal"
+      },
+      "res_type": "JS",
+      "res_lang": "ANY",
+      "res_code": "SCRIPT",
+      "res_cached": false,
+      "res_file": {
+       "path": "resources/ObjectInternal/PmAssignment/SCRIPT.js",
+       "mime": "text/javascript",
+       "name": "script.js"
       },
       "res_image": null,
       "row_module_id__mdl_name": "ProjectManagement"

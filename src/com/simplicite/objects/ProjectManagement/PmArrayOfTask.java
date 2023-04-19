@@ -11,4 +11,11 @@ import com.simplicite.util.tools.*;
  */
 public class PmArrayOfTask extends ObjectDB {
 	private static final long serialVersionUID = 1L;
+	@Override
+	public List<String> postValidate() {
+		List<String> msgs = new ArrayList<>();
+		if (!getFieldValue("pmAotNextTskId.pmTskVrsId.pmVrsPrjId").equals(getFieldValue("pmAotPrvTskId.pmTskVrsId.pmVrsPrjId")))
+			msgs.add(Message.formatInfo("PM_ERR_AOT_DIFF_PRJ", null, "pmAotNextTskId.pmTskVrsId.pmVrsPrjId"));
+		return msgs;
+	}
 }

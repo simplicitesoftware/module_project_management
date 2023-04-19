@@ -36,7 +36,7 @@ Module de gestion de projet et de gestion de tâche ou de tickets.
 | `row_idx`                                                    | int(11)                                  | yes*     | yes       |          | History record index                                                             |
 | `created_by_hist`                                            | char(100)                                | yes*     |           |          | Created by                                                                       |
 | `created_dt_hist`                                            | datetime                                 | yes*     |           |          | Created date                                                                     |
-| `pmTskNumber`                                                | char(100)                                | yes*     | yes       |          | -                                                                                |
+| `pmTskNumber`                                                | char(100)                                | yes*     |           |          | -                                                                                |
 | `pmTskTitle`                                                 | char(100)                                | yes      | yes       |          | -                                                                                |
 | `pmTskDescription`                                           | text(4000)                               |          | yes       |          | -                                                                                |
 | `pmTskStatus`                                                | enum(100) using `PM_TSK_STATUT` list     | yes      | yes       |          | -                                                                                |
@@ -171,7 +171,7 @@ Tasks of project
 
 | Name                                                         | Type                                     | Required | Updatable | Personal | Description                                                                      |
 |--------------------------------------------------------------|------------------------------------------|----------|-----------|----------|----------------------------------------------------------------------------------|
-| `pmTskNumber`                                                | char(100)                                | yes*     | yes       |          | -                                                                                |
+| `pmTskNumber`                                                | char(100)                                | yes*     |           |          | -                                                                                |
 | `pmTskTitle`                                                 | char(100)                                | yes      | yes       |          | -                                                                                |
 | `pmTskDescription`                                           | text(4000)                               |          | yes       |          | -                                                                                |
 | `pmTskStatus`                                                | enum(100) using `PM_TSK_STATUT` list     | yes      | yes       |          | -                                                                                |

@@ -27,6 +27,7 @@ var PmTimesheetRecapExt = PmTimesheetRecapExt || (function($) {
     function toDict(list) {
         var lang = app.getGrant().getLang();
         var data ={
+        	labeltache: 'task',
             labelRole:'Role',
             labelQuantity:'Quantity',
             labelConsumed:'Consumed',
@@ -42,6 +43,7 @@ var PmTimesheetRecapExt = PmTimesheetRecapExt || (function($) {
             data.listNotEmpty = true;
             list.forEach(ass => data.ass.push(function(assign){
                 var objAss = {
+                	pmAssTskName: assign.pmAssPmTaskid.pmTskTitle
                     pmAssRole: assign.pmAssRole,
                     pmAssConsumed: assign.pmAssConsumed,
                     pmAssQuantity:' ',
