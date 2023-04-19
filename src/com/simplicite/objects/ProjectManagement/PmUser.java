@@ -27,25 +27,29 @@ public class PmUser extends SimpleUser {
 	public String postCreate() {
 		
 		ObjectDB tmpResp = this.getGrant().getTmpObject("Responsability");
-		BusinessObjectTool ot = tmpResp.getTool();
-		ObjectDB tmpGroup = this.getGrant().getTmpObject("PmGroup");
-		BusinessObjectTool otG = tmpGroup.getTool();
-		
-		tmpGroup.setFieldFilter("grp_name","PM_USER_GROUP");
-		try {
-			List<String[]> rows = otG.search();
-			if (!rows.isEmpty()){
-				ot.selectForCreate();
-				tmpResp.setFieldValue("rsp_group_id", rows.get(0)[0]);
-				tmpResp.setFieldValue("rsp_login_id", getRowId());
-				tmpResp.setFieldValue("row_module_id", getModuleId());
-				ot.validateAndSave();
-			}
-			
-		} catch (SearchException|GetException|ValidateException|SaveException e) {
-			AppLog.error(e, getGrant());
-		}
-		
+		synchronized(tmpResp){
+			tmpResp.getLock();
+			BusinessObjectTool ot = tmpResp.getTool();
+			ObjectDB tmpGroup = this.getGrant().getTmpObject("PmGroup");
+			synchronized(tmpGroup){
+				tmpGroup.getLock();
+				BusinessObjectTool otG = tmpGroup.getTool();
+				
+				tmpGroup.setFieldFilter("grp_name","PM_USER_GROUP");
+				try {
+					List<String[]> rows = otG.search();
+					if (!rows.isEmpty()){
+						ot.selectForCreate();
+						tmpResp.setFieldValue("rsp_group_id", rows.get(0)[0]);
+						tmpResp.setFieldValue("rsp_login_id", getRowId());
+						tmpResp.setFieldValue("row_module_id", getModuleId());
+						ot.validateAndSave();
+					}
+					
+				} catch (SearchException|GetException|ValidateException|SaveException e) {
+					AppLog.error(e, getGrant());
+				}}
+		}	
 		
 		return super.postCreate();
 	}
@@ -75,13 +79,15 @@ public class PmUser extends SimpleUser {
 		List<String> msgs = new ArrayList<>();
 		String[] sltGroup= getAction("PM_USER_GROUP").getConfirmField(getGrant().getLang(), "pmUserGroup").getValue().split(":");
 		ObjectDB tmpResp = this.getGrant().getTmpObject("Responsability");
-		BusinessObjectTool ot = tmpResp.getTool();
-		String moduleId = getModuleId();
-		tmpResp.resetFilters();
-		tmpResp.setFieldFilter("rsp_login_id", getRowId()); 
-		tmpResp.setFieldFilter("row_module_id",moduleId );
-		AppLog.info("DEBUG USER id: "+getRowId(), getGrant());
+		
 		synchronized(tmpResp){
+			BusinessObjectTool ot = tmpResp.getTool();
+			String moduleId = getModuleId();
+			tmpResp.resetFilters();
+			tmpResp.setFieldFilter("rsp_login_id", getRowId()); 
+			tmpResp.setFieldFilter("row_module_id",moduleId );
+			AppLog.info("DEBUG USER id: "+getRowId(), getGrant());
+			tmpResp.getLock();
 			try{
 				for(String[] row : tmpResp.search()){
 						
@@ -111,26 +117,32 @@ public class PmUser extends SimpleUser {
 	public String pmUsrCurentGroup() {
 		String groupDisplay = "No group";
 		ObjectDB tmpResp = this.getGrant().getTmpObject("Responsability");
-		ObjectDB tmpTrad= this.getGrant().getTmpObject("TranslateGroup");
-		BusinessObjectTool ot = tmpTrad.getTool();
-		tmpResp.setFieldFilter("rsp_login_id", getRowId()); 
-		tmpResp.setFieldFilter("row_module_id",getModuleId() );
+		
 		synchronized(tmpResp){
-			List<String[]> searchResult=tmpResp.search();
-			if (searchResult.size() > 1){
-				AppLog.info(Message.formatError("PM_ERR_TOO_MANY_RESP", null, null), getGrant());
-			}else if(!searchResult.isEmpty()){
-				tmpResp.select(searchResult.get(0)[0]);
-				try {
-					if (!ot.getForCreateOrUpdate(new JSONObject() // or its alias getForUpsert 
-									.put("tsl_id",tmpResp.getFieldValue("rsp_group_id"))
-									.put("tsl_lang",getGrant().getLang() )
-									)){
-										AppLog.info(Message.formatError("PM_GROUP_NO_TRAD", null, null), getGrant());
-										groupDisplay = tmpResp.getFieldValue("grp_name") ;
-									}else groupDisplay=tmpTrad.getFieldValue("tsl_value");
-				} catch (GetException|JSONException e) {
-					AppLog.error(e, getGrant());
+			tmpResp.getLock();
+			ObjectDB tmpTrad= this.getGrant().getTmpObject("TranslateGroup");
+			synchronized(tmpTrad){
+				tmpTrad.getLock();
+				BusinessObjectTool ot = tmpTrad.getTool();
+				tmpResp.setFieldFilter("rsp_login_id", getRowId()); 
+				tmpResp.setFieldFilter("row_module_id",getModuleId() );
+				
+				List<String[]> searchResult=tmpResp.search();
+				if (searchResult.size() > 1){
+					AppLog.info(Message.formatError("PM_ERR_TOO_MANY_RESP", null, null), getGrant());
+				}else if(!searchResult.isEmpty()){
+					tmpResp.select(searchResult.get(0)[0]);
+					try {
+						if (!ot.getForCreateOrUpdate(new JSONObject() // or its alias getForUpsert 
+										.put("tsl_id",tmpResp.getFieldValue("rsp_group_id"))
+										.put("tsl_lang",getGrant().getLang() )
+										)){
+											AppLog.info(Message.formatError("PM_GROUP_NO_TRAD", null, null), getGrant());
+											groupDisplay = tmpResp.getFieldValue("grp_name") ;
+										}else groupDisplay=tmpTrad.getFieldValue("tsl_value");
+					} catch (GetException|JSONException e) {
+						AppLog.error(e, getGrant());
+					}
 				}
 			}
 			

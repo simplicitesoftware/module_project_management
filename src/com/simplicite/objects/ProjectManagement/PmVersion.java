@@ -46,6 +46,7 @@ public class PmVersion extends ObjectDB {
 		if(getStatus().equals("PUBLISHED") && !getOldStatus().equals("PUBLISHED")){
 			ObjectDB tmpTask= this.getGrant().getTmpObject("PmTask");
 			synchronized(tmpTask){
+				tmpTask.getLock();
 				tmpTask.resetFilters();
 				tmpTask.setFieldFilter("pmTskVrsId", getRowId());
 				for(String[] row : tmpTask.search()){
@@ -72,6 +73,7 @@ public class PmVersion extends ObjectDB {
 		int finishedTaskCount=0;
 		ObjectDB tmpTask= this.getGrant().getTmpObject("PmTask");
 		synchronized(tmpTask){
+			tmpTask.getLock();
 			tmpTask.resetFilters();
 			tmpTask.setFieldFilter("pmTskVrsId", getRowId());
 			for(String[] row : tmpTask.search()){
@@ -97,12 +99,14 @@ public class PmVersion extends ObjectDB {
 		}else{
 			ObjectDB tmpVrs = this.getGrant().getTmpObject("PmVersion");
 			synchronized(tmpVrs){
+				tmpVrs.getLock();
 				tmpVrs.select(selected[1]);
 				if (tmpVrs.getStatus().equals("PUBLISHED")){
 					msg= Message.formatError("PM_ERR_TSK_VRS_STATUS", null, null);
 				}else{
 					ObjectDB tmpTask = getGrant().getTmpObject("PmTask");
 					synchronized(tmpTask){
+						tmpTask.getLock();
 						tmpTask.resetFilters();
 						tmpTask.setFieldFilter("pmTskVrsId", getRowId());
 						for(String[] row : tmpTask.search()){

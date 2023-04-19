@@ -36,6 +36,7 @@ public class PmProject extends ObjectDB {
 
 		ObjectDB tmpVrs = this.getGrant().getTmpObject("PmVersion");
 		synchronized(tmpVrs){
+			tmpVrs.getLock();
 			tmpVrs.resetFilters();
 			tmpVrs.setFieldFilter("pmVrsPrjId", getRowId());
 			tmpVrs.setFieldFilter("pmVrsStatus", "PUBLISHED");
@@ -48,6 +49,7 @@ public class PmProject extends ObjectDB {
 				JSONArray taskArray = new JSONArray();
 				ObjectDB tmpTsk = this.getGrant().getTmpObject(objTask);
 				synchronized(tmpTsk){
+					tmpTsk.getLock();
 					tmpTsk.resetFilters();
 					tmpTsk.setFieldFilter("pmTskVrsId", tmpVrs.getRowId());
 					for(String[] rowTsk : tmpTsk.search()){//for all task of version
@@ -64,6 +66,7 @@ public class PmProject extends ObjectDB {
 						StringBuilder labelArray = new StringBuilder();
 						ObjectDB tmpLbl = this.getGrant().getTmpObject("PmTskLbl");
 						synchronized(tmpLbl){
+							tmpLbl.getLock();
 							tmpLbl.resetFilters();
 							tmpLbl.setFieldFilter("pmTsklblTskId", tmpTsk.getRowId());
 							for(String[] rowLbl : tmpLbl.search()){ //for all label of task

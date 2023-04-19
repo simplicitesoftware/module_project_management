@@ -33,6 +33,7 @@ public class PmTask extends ObjectDB {
 		tmpTask.resetFilters();
 		tmpTask.setFieldFilter("pmTskVrsId", getFieldValue("pmTskVrsId"));// number is unique per version
 		synchronized(tmpTask){
+			tmpTask.getLock();
 			for(String[] row : tmpTask.search()){// for all assignment invoke increaseUserNbtask methode to update the nbTask of user assigned on task
 				tmpTask.select(row[0]);
 				String strNum=tmpTask.getFieldValue("pmTskNumber");
@@ -61,6 +62,7 @@ public class PmTask extends ObjectDB {
 		tmpTask.resetFilters();
 		tmpTask.setFieldFilter("pmTskVrsId", getFieldValue("pmTskVrsId"));// number is unique per version
 		synchronized(tmpTask){
+			tmpTask.getLock();
 			for(String[] row : tmpTask.search()){// for all assignment invoke increaseUserNbtask methode to update the nbTask of user assigned on task
 				tmpTask.select(row[0]);
 				String strNum=tmpTask.getFieldValue("pmTskNumber");
@@ -113,6 +115,7 @@ public class PmTask extends ObjectDB {
 		if(getStatus().equals("TODO") && !getOldStatus().equals("DOING")){// If task is toDo status from other status expte Doing we have to inrease the number of task of user
 			ObjectDB tmpAssignment = this.getGrant().getTmpObject("PmAssignment");
 			synchronized(tmpAssignment){
+				tmpAssignment.getLock();
 				tmpAssignment.resetFilters();
 				tmpAssignment.setFieldFilter("pmAssPmTaskid", getRowId());
 				for(String[] row : tmpAssignment.search()){// for all assignment invoke increaseUserNbtask methode to update the nbTask of user assigned on task
@@ -129,6 +132,7 @@ public class PmTask extends ObjectDB {
 		}else if((getStatus().equals("DONE") || getStatus().equals("CANCEL") || getStatus().equals("REJECTED")) && (getOldStatus().equals("TODO") || getOldStatus().equals("DOING") )){// if task is done,cancel or rejected from to do or doing status we have to decrease the number of task of user
 			ObjectDB tmpAssignment = this.getGrant().getTmpObject("PmAssignment");
 			synchronized(tmpAssignment){
+				tmpAssignment.getLock();
 				tmpAssignment.resetFilters();
 				tmpAssignment.setFieldFilter("pmAssPmTaskid", getRowId());
 				for(String[] row :tmpAssignment.search()){// for all assignment invoke decreaseUserNbtask methode to update the nbTask of user assigned on task
@@ -152,6 +156,7 @@ public class PmTask extends ObjectDB {
 		if(getStatus().equals("TODO") || getStatus().equals("DOING")){// if task is to do or doing status at delete  we have to decrease the number of task of user
 			ObjectDB tmpAssignment = this.getGrant().getTmpObject("PmAssignment");
 			synchronized(tmpAssignment){
+				tmpAssignment.getLock();
 				tmpAssignment.resetFilters();
 				tmpAssignment.setFieldFilter("pmAssPmTaskid", getRowId());
 				for(String[] row : tmpAssignment.search()){// for all assignment invoke decreaseUserNbtask methode to update the nbTask of user assigned on task
@@ -209,11 +214,13 @@ public class PmTask extends ObjectDB {
 		}
 		ObjectDB tmpTask= getGrant().getTmpObject("PmTask");
 		synchronized(tmpTask){
+			tmpTask.getLock();
 			for(String id : selected){
 				tmpTask.select(id);
 				ObjectDB tmpMsg = getGrant().getTmpObject("PmMessage");
 				BusinessObjectTool ot = tmpMsg.getTool();
 				synchronized(tmpMsg){
+					tmpMsg.getLock();
 					tmpMsg.resetFilters();
 					tmpMsg.setFieldFilter("pmMsgTskId", tmpTask.getRowId());
 					for(String[] row : tmpMsg.search()){
@@ -252,7 +259,8 @@ public class PmTask extends ObjectDB {
 			String sltUsrId= sltUser[1];
 			ObjectDB tmpAss= getGrant().getTmpObject("PmAssignment");
 			BusinessObjectTool ot = tmpAss.getTool();
-			synchronized(tmpAss){		
+			synchronized(tmpAss){	
+				tmpAss.getLock();	
 				for(String sltTskId:sltTsks){
 					try {
 						

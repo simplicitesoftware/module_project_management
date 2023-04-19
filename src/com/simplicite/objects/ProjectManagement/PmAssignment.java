@@ -24,6 +24,7 @@ public class PmAssignment extends ObjectDB {
 	public String postCreate() {// if we created assignment we have to update the number of task of user
 		ObjectDB tmpTask = this.getGrant().getTmpObject("PmTask");
 		synchronized(tmpTask){
+			tmpTask.getLock();
 			// select = chargement dans l'instance des valeurs en base à partir d'une clef technique (id)
             tmpTask.select(this.getFieldValue("pmAssPmTaskid"));
 			if(tmpTask.getStatus().equals("TODO") ||tmpTask.getStatus().equals("DOING")){// if the task assigned is in to do or doing status we increase the number of task
@@ -36,6 +37,7 @@ public class PmAssignment extends ObjectDB {
 	public String preDelete() {// if we deleted assignment we have to update the number of task of user
 		ObjectDB tmpTask = this.getGrant().getTmpObject("PmTask");
 		synchronized(tmpTask){
+			tmpTask.getLock();
 			// select = chargement dans l'instance des valeurs en base à partir d'une clef technique (id)
             tmpTask.select(this.getFieldValue("pmAssPmTaskid"));
 			if(tmpTask.getStatus().equals("TODO") ||tmpTask.getStatus().equals("DOING")){// if the task assigned is in to do or doing status we decrease the number of task
@@ -50,6 +52,7 @@ public class PmAssignment extends ObjectDB {
 	public void increaseUserNbTask(){// invoke the increase methode of object user
 		ObjectDB tmpUser = this.getGrant().getTmpObject("PmUser");
         synchronized(tmpUser){
+			tmpUser.getLock();
             // select = chargement dans l'instance des valeurs en base à partir d'une clef technique (id)
             tmpUser.select(this.getFieldValue("pmAssPmUserid"));
 			try {
@@ -64,6 +67,7 @@ public class PmAssignment extends ObjectDB {
 	public void decreaseUserNbTask(){// invoke the decrease methode of object user
 		ObjectDB tmpUser = this.getGrant().getTmpObject("PmUser");
         synchronized(tmpUser){
+			tmpUser.getLock();
             // select = chargement dans l'instance des valeurs en base à partir d'une clef technique (id)
             tmpUser.select(this.getFieldValue("pmAssPmUserid"));
 			try {
