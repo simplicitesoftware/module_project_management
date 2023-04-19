@@ -6,7 +6,7 @@ var PmTimesheetRecapExt = PmTimesheetRecapExt || (function($) {
         try {
             console.log("DEBUG in PmTimesheetRecapExt")
 			if (typeof Mustache === 'undefined') throw 'Mustache not available';
-            $("#timesheet_PmTimeSheetAssign").after("<div id='recap'></div>");
+           /*  $("#timesheet_PmTimeSheetAssign").after("<div id='recap'></div>"); */
             var div=$('#recap')
             var template =$('#pm-ass-template').html();
             
