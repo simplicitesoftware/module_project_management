@@ -6,7 +6,6 @@
 	Simplicite.UI.hooks.PmAssignment = function(o, cbk) {
 		try {
 			console.log("DEBUG Simplicite.UI.hooks.PmAssignment hook");
-			app = $ui.getAjax(); 
 			var extobj = "PmTimesheetRecapExt"; 
 			var embedded = true; 
 			var param = null; 
