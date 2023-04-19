@@ -44,7 +44,7 @@ var PmTimesheetRecapExt = PmTimesheetRecapExt || (function($) {
             data.listNotEmpty = true;
             list.forEach(ass => data.ass.push(function(assign){
                 var objAss = {
-                	pmAssTskName: 'assign.pmAssPmTaskid',
+                	pmAssTskName: ' ',
                     pmAssRole: assign.pmAssRole,
                     pmAssConsumed: assign.pmAssConsumed,
                     pmAssQuantity:' ',
@@ -53,15 +53,16 @@ var PmTimesheetRecapExt = PmTimesheetRecapExt || (function($) {
                 var obj = app.getBusinessObject("PmTask");
                 obj.search(function(l) {
                     objAss.pmAssTskName=l[0].pmTskTitle;
-                    console.log(l[0].pmTskTitle)
+                    console.log(l[0].pmTskTitle);
+                    if(assign.pmAssQuantity){
+                        objAss.setProgress=true;
+                        objAss.pmAssQuantity =assign.pmAssQuantity;
+                    }
+                    return objAss;
                 }, {
                     row_id: assign.pmAssPmTaskid
                 });
-                if(assign.pmAssQuantity){
-                    objAss.setProgress=true;
-                    objAss.pmAssQuantity =assign.pmAssQuantity;
-                }
-                return objAss;
+                
             }(ass)));
             
         }
