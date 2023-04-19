@@ -6,7 +6,7 @@
 	// Hook called by each object instance
 	Simplicite.UI.hooks.PmAssignmentPmTimeSheetAssign = function(o, cbk) {
 		console.log("DEBUG Simplicite.UI.hooks.PmAssignmentPmTimeSheetAssign ------------------------------------");
-		try {
+		/* try {
 			console.log("PmAssignmentPmTimeSheetAssign hooks loading...");
 			var p = o.locals.ui;
 			if (p && o.isMainInstance()) {
@@ -26,6 +26,6 @@
 		} finally {
 			console.log("PmAssignmentPmTimeSheetAssign hooks loaded.");
 			cbk && cbk(); // final callback
-		}
+		} */
 	};
 })(window.$ui);
