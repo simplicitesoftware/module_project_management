@@ -53,6 +53,7 @@ var PmTimesheetRecapExt = PmTimesheetRecapExt || (function($) {
                 var obj = app.getBusinessObject("PmTask");
                 obj.search(function(l) {
                     objAss.pmAssTskName=l[0].pmTskTitle;
+                    console.log(l[0].pmTskTitle)
                 }, {
                     row_id: assign.pmAssPmTaskid
                 });
