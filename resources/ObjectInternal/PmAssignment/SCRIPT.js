@@ -20,6 +20,7 @@
 			}
 		} catch (e) {
 			app.error("Error in Simplicite.UI.hooks.PmAssignment: " + e.message);
+			console.log("Error in Simplicite.UI.hooks.PmAssignment: " + e.message)
 		} finally {
 			console.log("PmAssignment hooks loaded.");
 			cbk && cbk(); // final callback
