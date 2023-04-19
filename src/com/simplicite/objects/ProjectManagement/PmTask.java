@@ -175,11 +175,8 @@ public class PmTask extends ObjectDB {
 	public int actualDuration(){//used by the calculated field pmTskActualDuraition
 		String begin = getFieldValue("pmTskCreation");
 		String  end = getFieldValue("pmTskEffectiveClosingDate");
-		if(Tool.isEmpty(end)){
-			LocalDate dateObj = LocalDate.now();
-			DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-			end = dateObj.format(formatter);
-		}
+		if(Tool.isEmpty(end))
+			end=Tool.getCurrentDate();
 		return Tool.diffDate(begin, end);
 	}
 	/*
@@ -187,11 +184,17 @@ public class PmTask extends ObjectDB {
 	*/ 
 	public int completionDuration(){//used by the calculated field pmTskActualDuraition
 		String  expeted = getFieldValue("pmTskExpectedDuration");
-		if(Tool.isEmpty(getFieldValue("pmTskEffectiveClosingDate"))){
-			return actualDuration()*100/Integer.parseInt(expeted);
-			
+		switch(getFieldValue("pmTskStatus")){
+			case "DRAFT": 
+			case "CANCEL":
+			case "REJECTED":
+				return 0;
+			case "CLOSED":
+				return 100;
+			default:
+				return actualDuration()*100/Integer.parseInt(expeted);
+				
 		}
-		return 100;
 	}
 	/*
 		Function of action PM_TASK_MSG_DELETION
