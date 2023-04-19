@@ -45,8 +45,8 @@ var PmTimesheetRecapExt = PmTimesheetRecapExt || (function($) {
             list.forEach(ass => data.ass.push(function(assign){
                 console.log("DEBUG assign.pmAssPmTaskid: "+assign.pmAssPmTaskid);
                 var obj = app.getBusinessObject("PmTask");
-                obj.get(null, assign.pmAssPmTaskid);
-                console.log("DEBUG obj.pmTskTitle: "+obj.pmTskTitle);
+                obj.get(console.log("DEBUG obj.pmTskTitle: "+obj.pmTskTitle), assign.pmAssPmTaskid);
+                
                 var objAss = {
                 	pmAssTskName: assign.pmAssPmTaskid,
                     pmAssRole: assign.pmAssRole,
