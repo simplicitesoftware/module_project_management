@@ -50,19 +50,19 @@ var PmTimesheetRecapExt = PmTimesheetRecapExt || (function($) {
                     pmAssQuantity:' ',
                     setProgress:false
                 };
+                if(assign.pmAssQuantity){
+                    objAss.setProgress=true;
+                    objAss.pmAssQuantity =assign.pmAssQuantity;
+                }
                 var obj = app.getBusinessObject("PmTask");
                 obj.search(function(l) {
                     objAss.pmAssTskName=l[0].pmTskTitle;
-                    console.log(l[0].pmTskTitle);
-                    if(assign.pmAssQuantity){
-                        objAss.setProgress=true;
-                        objAss.pmAssQuantity =assign.pmAssQuantity;
-                    }
+                    console.log(l[0].pmTskTitle)
                     return objAss;
                 }, {
                     row_id: assign.pmAssPmTaskid
                 });
-                
+                return objAss;
             }(ass)));
             
         }
