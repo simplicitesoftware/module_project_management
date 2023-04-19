@@ -240,7 +240,7 @@
       "usr_menu": true,
       "usr_menu_defcollapsed": false,
       "usr_menu_defdomain_id__obd_name": null,
-      "usr_last_logon": "2023-04-19 14:13:35",
+      "usr_last_logon": "2023-04-19 18:59:48",
       "usr_dateformat": null,
       "usr_numformat": null,
       "usr_lang_pref": "FRA",
@@ -277,7 +277,7 @@
       "usr_menu": true,
       "usr_menu_defcollapsed": false,
       "usr_menu_defdomain_id__obd_name": null,
-      "usr_last_logon": "2023-04-19 16:56:06",
+      "usr_last_logon": "2023-04-19 19:45:03",
       "usr_dateformat": null,
       "usr_numformat": null,
       "usr_lang_pref": "FRA",
@@ -23077,6 +23077,30 @@
     },
     {
      "object": "Resource",
+     "userkey": "ObjectInternal(PmUser)~ANY~SCRIPT",
+     "item": {
+      "res_object": {
+       "item": {"obo_name": "PmUser"},
+       "icon": "img/system/business_object",
+       "label": "Business object",
+       "userkeylabel": "PmUser",
+       "object": "ObjectInternal"
+      },
+      "res_type": "JS",
+      "res_lang": "ANY",
+      "res_code": "SCRIPT",
+      "res_cached": false,
+      "res_file": {
+       "path": "resources/ObjectInternal/PmUser/SCRIPT.js",
+       "mime": "text/javascript",
+       "name": "script.js"
+      },
+      "res_image": null,
+      "row_module_id__mdl_name": "ProjectManagement"
+     }
+    },
+    {
+     "object": "Resource",
      "userkey": "ObjectInternal(PmProject)~ANY~pmPrjPubStyle",
      "item": {
       "res_object": {
@@ -23118,54 +23142,6 @@
        "path": "resources/ObjectInternal/PmProject/pmPrjPubHtml.html",
        "mime": "text/html",
        "name": "pmPrjPubHtml.html"
-      },
-      "res_image": null,
-      "row_module_id__mdl_name": "ProjectManagement"
-     }
-    },
-    {
-     "object": "Resource",
-     "userkey": "ObjectInternal(PmAssignment)~ANY~SCRIPT",
-     "item": {
-      "res_object": {
-       "item": {"obo_name": "PmAssignment"},
-       "icon": "img/system/business_object",
-       "label": "Business object",
-       "userkeylabel": "PmAssignment",
-       "object": "ObjectInternal"
-      },
-      "res_type": "JS",
-      "res_lang": "ANY",
-      "res_code": "SCRIPT",
-      "res_cached": false,
-      "res_file": {
-       "path": "resources/ObjectInternal/PmAssignment/SCRIPT.js",
-       "mime": "text/javascript",
-       "name": "script.js"
-      },
-      "res_image": null,
-      "row_module_id__mdl_name": "ProjectManagement"
-     }
-    },
-    {
-     "object": "Resource",
-     "userkey": "ObjectInternal(PmAssignmentPmTimeSheetAssign)~ANY~SCRIPT",
-     "item": {
-      "res_object": {
-       "item": {"obo_name": "PmAssignmentPmTimeSheetAssign"},
-       "icon": "img/system/business_object",
-       "label": "Business object",
-       "userkeylabel": "PmAssignmentPmTimeSheetAssign",
-       "object": "ObjectInternal"
-      },
-      "res_type": "JS",
-      "res_lang": "ANY",
-      "res_code": "SCRIPT",
-      "res_cached": false,
-      "res_file": {
-       "path": "resources/ObjectInternal/PmAssignmentPmTimeSheetAssign/SCRIPT.js",
-       "mime": "text/javascript",
-       "name": "script.js"
       },
       "res_image": null,
       "row_module_id__mdl_name": "ProjectManagement"
