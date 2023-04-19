@@ -1,5 +1,5 @@
 // PmAssignmentPmTimeSheetAssign front side hook
-/* (function(ui) {
+(function(ui) {
 	if (!ui) return;
 	var app = ui.getAjax();
 	// Hook called by each object instance
@@ -24,4 +24,4 @@
 			cbk && cbk(); // final callback
 		}
 	};
-})(window.$ui); */
+})(window.$ui);
