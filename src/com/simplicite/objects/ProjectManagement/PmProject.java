@@ -24,7 +24,6 @@ public class PmProject extends ObjectDB {
 		projectJson.put("pmPrjName",getFieldValue("pmPrjName"));
 		projectJson.put("timeStamp",now);
 		projectJson.put("labelPublicationDate",getGrant().getTmpObject("PmVersion").getField("pmVrsPublicationDate").getDisplay());
-		projectJson.put("labelNumber",getGrant().getTmpObject(objTask).getField("pmTskNumber").getDisplay());
 		projectJson.put("labelTitle",getGrant().getTmpObject(objTask).getField("pmTskTitle").getDisplay());
 		projectJson.put("labelDescription",getGrant().getTmpObject(objTask).getField("pmTskDescription").getDisplay());
 		projectJson.put("labelStatus",getGrant().getTmpObject(objTask).getField("pmTskStatus").getDisplay());
@@ -55,7 +54,6 @@ public class PmProject extends ObjectDB {
 					for(String[] rowTsk : tmpTsk.search()){//for all task of version
 						tmpTsk.select(rowTsk[0]);
 						JSONObject taskJson= new JSONObject();
-						taskJson.put("pmTskNumber",tmpTsk.getFieldValue("pmTskNumber"));
 						taskJson.put("pmTskTitle",tmpTsk.getFieldValue("pmTskTitle"));
 						taskJson.put("pmTskDescription",tmpTsk.getFieldValue("pmTskDescription"));
 						taskJson.put("pmTskStatus",tmpTsk.getField("pmTskStatus").getDisplayValue());

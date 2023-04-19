@@ -26,7 +26,26 @@ public class PmTask extends ObjectDB {
         return str.matches("[-,+]?\\d+");
     }
 	public String autoGenNumber(){
-		int number =1;
+
+		
+		ObjectDB tmpTask = this.getGrant().getTmpObject("PmTask");
+		int number=1;
+		List<Integer> listExist= new ArrayList<>();
+		synchronized(tmpTask){
+			tmpTask.getLock();
+			tmpTask.resetFilters();
+			tmpTask.setFieldFilter("pmTskVrsId", getFieldValue("pmTskVrsId"));// number is unique per version
+			
+			for(String[] row : tmpTask.search()){// for all assignment invoke increaseUserNbtask methode to update the nbTask of user assigned on task
+				tmpTask.select(row[0]);
+				listExist.add(Integer.parseInt(tmpTask.getFieldValue("pmTskNumber")));
+			}
+		}
+		while(listExist.contains(number)){
+			number+=1;
+		}
+		return String.format("%04d", number);
+		/* int number =1;
 		int lenMax=0;
 		ObjectDB tmpTask = this.getGrant().getTmpObject("PmTask");
 		List<Integer> listExist= new ArrayList<>();
@@ -55,9 +74,9 @@ public class PmTask extends ObjectDB {
 			strNum=String.format("%0"+lenMax+"d", number);
 
 		}
-		return strNum;
+		return strNum; */
 	}
-	public void reFactorNumberForOrder(int len){
+	/* public void reFactorNumberForOrder(int len){
 		ObjectDB tmpTask = this.getGrant().getTmpObject("PmTask");
 		tmpTask.resetFilters();
 		tmpTask.setFieldFilter("pmTskVrsId", getFieldValue("pmTskVrsId"));// number is unique per version
@@ -72,7 +91,7 @@ public class PmTask extends ObjectDB {
 				}
 			}
 		}
-	}
+	} */
 
 	@Override
 	public void initRefSelect(ObjectDB parent) {
