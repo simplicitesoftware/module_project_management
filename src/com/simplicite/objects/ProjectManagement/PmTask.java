@@ -225,7 +225,10 @@ public class PmTask extends ObjectDB {
 	public List<String> pmTaskAssign(){
 		List<String> sltTsks= getSelectedIds();
 		List<String> msgs = new ArrayList<>();
-		
+		if(Tool.isEmpty(sltTsks)){
+			msgs.add(Message.formatError("PM_ERR_ASSIGN_NO_TASK", null, null));
+			return msgs;
+		}
 		String[] sltUser= getAction(ACT_ASSIGN).getConfirmField(getGrant().getLang(), "pmTskActAssUser").getValue().split(":");
 		if(!sltUser[0].equals("PmUser")){
 			msgs.add(Message.formatError("PM_ERR_ASSIGN_OBJECT_TYPE", null, "pmTskActAssUser"));
