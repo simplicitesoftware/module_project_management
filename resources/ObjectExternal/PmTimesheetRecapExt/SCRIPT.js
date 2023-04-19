@@ -51,13 +51,6 @@ var PmTimesheetRecapExt = PmTimesheetRecapExt || (function($) {
                     pmAssQuantity:' ',
                     setProgress:false
                 };
-                var obj = app.getBusinessObject("PmTask");
-                obj.search(function(l) {
-                    objAss.pmAssTskName=l[0].pmTskTitle;
-                    console.log(l[0].pmTskTitle)
-                }, {
-                    row_id: assign.pmAssPmTaskid
-                });
                 if(assign.pmAssQuantity){
                     objAss.setProgress=true;
                     objAss.pmAssQuantity =assign.pmAssQuantity;
