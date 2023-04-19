@@ -11,7 +11,7 @@ var PmTimesheetExt = PmTimesheetExt || (function($) {
 		var url = app.getExternalObjectURL(extobj, param, embedded);
 		console.log("url = " + url);
 		$ui.loadURL($('#recap'),url,null);
-        console.log("PmTimesheetExt")
+        console.log("PmTimesheetExt");
     }        
     return { render: render };
 })(jQuery);
