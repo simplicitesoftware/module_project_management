@@ -1,4 +1,4 @@
-// PmAssignment front side hook
+/* // PmAssignment front side hook
 (function(ui) {
 	if (!ui) return;
 	const app = ui.getAjax();
@@ -25,3 +25,4 @@
 		}
 	};
 })(window.$ui);
+ */

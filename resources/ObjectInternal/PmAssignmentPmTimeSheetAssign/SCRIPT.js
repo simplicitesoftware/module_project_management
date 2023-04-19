@@ -1,4 +1,4 @@
-// PmAssignmentPmTimeSheetAssign front side hook
+/* // PmAssignmentPmTimeSheetAssign front side hook
 (function(ui) {
 	console.log("DEBUG fonction(ui) PmAssignmentPmTimeSheetAssign ------------------------------------");
 	if (!ui) return;
@@ -28,4 +28,4 @@
 			cbk && cbk(); // final callback
 		}
 	};
-})(window.$ui);
+})(window.$ui); */
