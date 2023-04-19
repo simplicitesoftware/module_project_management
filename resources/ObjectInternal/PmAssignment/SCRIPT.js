@@ -5,7 +5,7 @@
 	// Hook called by each object instance
 	console.log("DEBUG in PmAssignment.");
 	Simplicite.UI.hooks.PmAssignment = function(o, cbk) {
-		try {
+		/* try {
 			var p = o.locals.ui;
 			if (p && o.isMainInstance()) {
 				p.form.onload = function(ctn, obj, params) {
@@ -22,6 +22,6 @@
 		} finally {
 			console.log("PmAssignment hooks loaded.");
 			cbk && cbk(); // final callback
-		}
+		} */
 	};
 })(window.$ui);

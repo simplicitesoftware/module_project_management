@@ -3,7 +3,7 @@ var PmTimesheetRecapExt = PmTimesheetRecapExt || (function($) {
 	//CRA
     function render(params) {
         var userid =$ui.grant.getUserID();
-       /*  try {
+        try {
             console.log("DEBUG in PmTimesheetRecapExt")
 			if (typeof Mustache === 'undefined') throw 'Mustache not available';
             $("#timesheet_PmTimeSheetAssign").after("<div id='recap'></div>");
@@ -23,7 +23,7 @@ var PmTimesheetRecapExt = PmTimesheetRecapExt || (function($) {
             else throw 'No id';
         } catch(e) {
 			console.error('Render error: ' + e.message);
-		} */
+		}
     }        
     
     function toDict(list) {
