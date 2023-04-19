@@ -43,7 +43,6 @@ var PmTimesheetRecapExt = PmTimesheetRecapExt || (function($) {
         if (list && list.length){
             data.listNotEmpty = true;
             list.forEach(ass => data.ass.push(function(assign){
-                console.log(Object.getOwnPropertyNames(assign));
                 var objAss = {
                 	pmAssTskName: assign.pmAssPmTaskid__pmTskTitle,
                     pmAssRole: assign.pmAssRole,
