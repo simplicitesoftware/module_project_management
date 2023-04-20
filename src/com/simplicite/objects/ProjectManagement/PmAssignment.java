@@ -79,13 +79,7 @@ public class PmAssignment extends ObjectDB {
             tmpUser.save();
         }
 	}
-	@Override
-	public void preSearch() {
-		if(isMainInstance()){
-			resetFilters();
-		}
-		super.preSearch();
-	}
+
 
 	
 	
