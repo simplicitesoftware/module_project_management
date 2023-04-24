@@ -1,5 +1,4 @@
 var PmTimesheetExt = PmTimesheetExt || (function($) {
-    let app;
 	//CRA
     function render(params) {
         var userid =$ui.grant.getUserID();
