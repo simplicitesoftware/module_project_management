@@ -13,10 +13,10 @@
 				var param = null; 
 				var url = app.getExternalObjectURL(extobj, param, embedded);
 				console.log("url = " + url);
-				let form = $("form",ctn),
-						div = $('<div id="recap"/>')
-							.attr("data-empid", t.ts.id1)
-							.appendTo(form);
+				let form = $("form",ctn);
+				$('<div id="recap"/>')
+					.attr("data-empid", t.ts.id1)
+					.appendTo(form);
 				$ui.loadURL($('#recap'), url, { showNav:false });
 			}
 			
