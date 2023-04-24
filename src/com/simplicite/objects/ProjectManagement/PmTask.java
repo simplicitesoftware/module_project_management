@@ -1,9 +1,6 @@
 package com.simplicite.objects.ProjectManagement;
 
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.*;
-
 import org.json.*;
 import com.simplicite.util.*;
 import com.simplicite.util.exceptions.*;
@@ -14,10 +11,7 @@ import com.simplicite.util.tools.*;
  */
 public class PmTask extends ObjectDB {
 	private static final long serialVersionUID = 1L;
-	
-	
-	
-	
+
 	/*
 		Function for calculat Number of task 
 		(return the first none used number)
