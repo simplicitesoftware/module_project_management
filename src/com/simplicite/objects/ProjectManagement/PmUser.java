@@ -26,6 +26,15 @@ public class PmUser extends SimpleUser {
 	@Override
 	public String postCreate() {
 		
+		
+		try {
+			BusinessObjectTool uot =getTool();
+			setFieldValue("usr_active", 1);
+			setFieldValue("row_module_id", getModuleId());
+			uot.validateAndSave();
+		} catch (ValidateException | SaveException e) {
+			e.printStackTrace();
+		}
 		ObjectDB tmpResp = this.getGrant().getTmpObject("Responsability");
 		synchronized(tmpResp){
 			tmpResp.getLock();
@@ -44,6 +53,7 @@ public class PmUser extends SimpleUser {
 						tmpResp.setFieldValue("rsp_login_id", getRowId());
 						tmpResp.setFieldValue("row_module_id", getModuleId());
 						ot.validateAndSave();
+						
 					}
 					
 				} catch (SearchException|GetException|ValidateException|SaveException e) {

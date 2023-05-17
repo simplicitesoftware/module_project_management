@@ -2,6 +2,8 @@ package com.simplicite.objects.ProjectManagement;
 
 import java.util.*;
 
+import javax.validation.constraints.NotEmpty;
+
 import com.simplicite.util.*;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -11,21 +13,38 @@ import java.time.format.DateTimeFormatter;
  */
 public class PmVersion extends ObjectDB {
 	private static final long serialVersionUID = 1L;
+	static String statusPUBLISHED ="PUBLISHED";
+	static String fieldStatus="pmVrsStatus";
+	static String fieldPrjId="pmVrsPrjId";
 	@Override
 	public void initUpdate(){			
 		HashMap<String, String> filters = new HashMap<>();
-		filters.put("pmVrsPrjId", getFieldValue("pmVrsPrjId"));
-		filters.put("pmVrsStatus", "ALPHA;BETA");
+		filters.put(fieldPrjId, getFieldValue(fieldPrjId));
+		filters.put(fieldStatus, "ALPHA;BETA");
+		filters.put("row_id", getRowId());
 		getGrant().setParameter("PARENT_FILTERS", filters);
 	}
 	@Override
 	public void preSearch(){		
 		if(getInstanceName().equals("ref_ajax_PmVersion") && getGrant().hasParameter("PARENT_FILTERS")){
-			HashMap<String, String> filters = (HashMap<String, String>) getGrant().getObjectParameter("PARENT_FILTERS");			
-			setFieldFilter("pmVrsPrjId", filters.get("pmVrsPrjId"));
-			setFieldFilter("pmVrsStatus", filters.get("pmVrsStatus"));
+			HashMap<String, String> filters = (HashMap<String, String>) getGrant().getObjectParameter("PARENT_FILTERS");
+			String vrsRowId=filters.get("row_id");
+			if(!Tool.isEmpty(vrsRowId)){
+				setSearchSpec(getSearchSpec()+" AND NOT t.row_id="+vrsRowId);
+				getGrant().setParameter("RESET_SEARCH_SPEC", true);
+			}			
+			setFieldFilter(fieldPrjId, filters.get(fieldPrjId));
+			setFieldFilter(fieldStatus, filters.get(fieldStatus));
 			getGrant().removeParameter("PARENT_FILTERS");
 		}
+	}
+	@Override
+	public List<String[]> postSearch(List<String[]> rows) {
+		if(getInstanceName().equals("ref_ajax_PmVersion") && getGrant().hasParameter("RESET_SEARCH_SPEC")){
+			setSearchSpec(getDefaultSearchSpec());
+			getGrant().removeParameter("RESET_SEARCH_SPEC");
+		}
+		return super.postSearch(rows);
 	}
 	@Override
 	public List<String> postValidate() {
@@ -33,7 +52,7 @@ public class PmVersion extends ObjectDB {
 		LocalDate dateObj = LocalDate.now();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         String now = dateObj.format(formatter);
-		if(!getStatus().equals("PUBLISHED") && Tool.compareDate(getFieldValue("pmVrsPublicationDate"), now)<0 && !isBatchInstance()){
+		if(!getStatus().equals(statusPUBLISHED) && Tool.compareDate(getFieldValue("pmVrsPublicationDate"), now)<0 && !isBatchInstance()){
 			msgs.add(Message.formatError("PM_ERR_PUBLICATIONDATE", null, "pmVrsPublicationDate"));
 		}
 		
@@ -43,7 +62,7 @@ public class PmVersion extends ObjectDB {
 	public String preUpdate() {
 		String msg="";
 		// release management
-		if(getStatus().equals("PUBLISHED") && !getOldStatus().equals("PUBLISHED")){
+		if(getStatus().equals(statusPUBLISHED) && !getOldStatus().equals(statusPUBLISHED)){
 			ObjectDB tmpTask= this.getGrant().getTmpObject("PmTask");
 			synchronized(tmpTask){
 				tmpTask.getLock();
@@ -53,7 +72,7 @@ public class PmVersion extends ObjectDB {
 					tmpTask.select(row[0]);
 					String status=tmpTask.getStatus();
 					if(status.equals("TODO") || status.equals("DOING") || status.equals("DONE") || status.equals("DRAFT")){
-							msg=Message.formatError("PM_ERR_PUBLICATION_STATUS", null, "pmVrsStatus");
+							msg=Message.formatError("PM_ERR_PUBLICATION_STATUS", null, fieldStatus);
 							break;
 						}
 				}
@@ -80,7 +99,7 @@ public class PmVersion extends ObjectDB {
 				taskCount+=1;
 				tmpTask.select(row[0]);
 				String status=tmpTask.getStatus();
-				if (status.equals("DRAFT") || status.equals("CLOSED") || status.equals("CANCEL") || status.equals("REJECTED")){
+				if (status.equals("CLOSED") || status.equals("CANCEL") || status.equals("REJECTED")){
 					finishedTaskCount+=1;
 				}
 			}
@@ -95,13 +114,13 @@ public class PmVersion extends ObjectDB {
 		String msg = "";
 		String[] selected= getAction("PM_DEFER_TASK").getConfirmField(getGrant().getLang(), "pmDtVrsVersion").getValue().split(":");
 		if(!selected[0].equals("PmVersion")){
-			msg= Message.formatError("PM_ERR_DEFER_TASK_OBJECT_TYPE", null, "pmVrsStatus");
+			msg= Message.formatError("PM_ERR_DEFER_TASK_OBJECT_TYPE", null, fieldStatus);
 		}else{
 			ObjectDB tmpVrs = this.getGrant().getTmpObject("PmVersion");
 			synchronized(tmpVrs){
 				tmpVrs.getLock();
 				tmpVrs.select(selected[1]);
-				if (tmpVrs.getStatus().equals("PUBLISHED")){
+				if (tmpVrs.getStatus().equals(statusPUBLISHED)){
 					msg= Message.formatError("PM_ERR_TSK_VRS_STATUS", null, null);
 				}else{
 					ObjectDB tmpTask = getGrant().getTmpObject("PmTask");

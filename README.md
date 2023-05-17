@@ -88,7 +88,6 @@ Module de gestion de projet et de gestion de tâche ou de tickets.
 
 | Name                                                         | Type                                     | Required | Updatable | Personal | Description                                                                      |
 |--------------------------------------------------------------|------------------------------------------|----------|-----------|----------|----------------------------------------------------------------------------------|
-| `pmPrjTestCalcul`                                            | text(100)                                |          | yes       |          | -                                                                                |
 | `pmUsrNbTask`                                                | int(100)                                 |          |           |          | -                                                                                |
 | `usr_lang`                                                   | enum(3) using `LANG` list                | yes      | yes       | yes      | Language                                                                         |
 | `usr_active`                                                 | enum(1) using `USER_STATUS` list         |          | yes       |          | -                                                                                |
@@ -425,8 +424,15 @@ Labeling of tasks
 * `PreviousTask`: Selection of the task on which the task depends
 * `NextTask`: Selection of the task which will depend on the task
 * `Labeling`: Reflective creation of all labeling
+* `Labelling`: 
 * `Assignment`: Reflective creation of all assignment
 * `End`: End activity
+
+`PmTaskWAssingExt` external object definition
+---------------------------------------------
+
+Exctern object for display search on unassign display
+
 
 `PmTimesheetExt` external object definition
 -------------------------------------------

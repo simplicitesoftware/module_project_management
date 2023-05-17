@@ -4,7 +4,7 @@ var PmTimesheetRecapExt = PmTimesheetRecapExt || (function($) {
     function render(params) {
         var userid =$ui.grant.getUserID();
         try {
-            console.log("DEBUG in PmTimesheetRecapExt")
+            
 			if (typeof Mustache === 'undefined') throw 'Mustache not available';
             var div=$('#recap')
             var template =$('#pm-ass-template').html();
@@ -13,9 +13,9 @@ var PmTimesheetRecapExt = PmTimesheetRecapExt || (function($) {
                 // Search the client
                 app = $ui.getAjax();
                 var affect = app.getBusinessObject('PmAssignment');
-                
                 affect.search(function(list) {
                     div.html(Mustache.render(template,toDict(list)));
+                    affect.resetFilters();
                 }, {
                     pmAssPmUserid: userid
                 });

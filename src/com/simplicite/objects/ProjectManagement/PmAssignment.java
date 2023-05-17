@@ -1,5 +1,7 @@
 package com.simplicite.objects.ProjectManagement;
 
+import java.util.List;
+
 import com.simplicite.util.*;
 import com.simplicite.util.exceptions.MethodException;
 
@@ -79,7 +81,17 @@ public class PmAssignment extends ObjectDB {
             tmpUser.save();
         }
 	}
+	/* @Override
+	public List<String[]> postSearch(List<String[]> rows) {
+		//AppLog.info("DEBUG filter: "+getFieldFilter("pmAssPmUserid"), getGrant());
+		if(!"%".equals(getFieldFilter("pmAssPmUserid"))){
+			getField("pmAssPmUserid").resetFilter();
+			//AppLog.info("DEBUG resetfilter: "+getFieldFilter("pmAssPmUserid")+ " instance: "+getInstanceName(), getGrant());
 
+		}
+		return super.postSearch(rows);
+	} */
+	
 
 	
 	

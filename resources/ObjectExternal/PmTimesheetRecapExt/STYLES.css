@@ -1,4 +1,4 @@
-:root{
+#recap{
     --base-spacing-unit: 24px;
     --half-spacing-unit: var(--base-spacing-unit) / 2;
     --color-highlight: #ffffff;
