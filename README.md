@@ -41,22 +41,13 @@ Module de gestion de projet et de gestion de tâche ou de tickets.
 | `pmTskDescription`                                           | text(4000)                               |          | yes       |          | -                                                                                |
 | `pmTskStatus`                                                | enum(100) using `PM_TSK_STATUT` list     | yes      | yes       |          | -                                                                                |
 | `pmTskPriority`                                              | enum(100) using `PM_TSK_PRIORITE` list   | yes      | yes       |          | -                                                                                |
-| `pmTskCreation`                                              | date                                     | yes      | yes       |          | -                                                                                |
 | `pmTskClose`                                                 | date                                     | yes      | yes       |          | -                                                                                |
-| `pmTskEffectiveClosingDate`                                  | date                                     |          |           |          | -                                                                                |
-| `pmTskExpectedDuration`                                      | int(100)                                 | yes      |           |          | -                                                                                |
-| `pmTskUsrId` link to **`PmUser`**                            | id                                       |          |           |          | -                                                                                |
-| _Ref. `pmTskUsrId.usr_login`_                                | _regexp(100)_                            |          |           | yes      | _Login_                                                                          |
-| _Ref. `pmTskUsrId.usr_first_name`_                           | _char(50)_                               |          |           | yes      | _First name_                                                                     |
-| _Ref. `pmTskUsrId.usr_last_name`_                            | _char(50)_                               |          |           | yes      | _Last name_                                                                      |
-| `pmTskPrjVirtualId` link to **`PmProject`**                  | id                                       |          | yes       |          | -                                                                                |
 | `pmTskVrsId` link to **`PmVersion`**                         | id                                       | yes*     | yes       |          | -                                                                                |
 | _Ref. `pmTskVrsId.pmVrsVersion`_                             | _char(100)_                              |          |           |          | -                                                                                |
 | _Ref. `pmTskVrsId.pmVrsPrjId`_                               | _id_                                     |          |           |          | -                                                                                |
 | _Ref. `pmVrsPrjId.pmPrjName`_                                | _char(100)_                              |          |           |          | -                                                                                |
-| _Ref. `pmTskVrsId.pmVrsStatus`_                              | _enum(100) using `PM_VRS_STATUS` list_   |          |           |          | -                                                                                |
 | _Ref. `pmTskVrsId.pmVrsName`_                                | _char(200)_                              |          |           |          | _Concatenation of project name and version number_                               |
-| _Ref. `pmTskVrsId.pmVrsPublicationDate`_                     | _date_                                   |          |           |          | -                                                                                |
+| `pmTskType`                                                  | enum(100) using `PM_TSK_TYPE` list       | yes      | yes       |          | -                                                                                |
 
 ### Lists
 
@@ -74,10 +65,10 @@ Module de gestion de projet et de gestion de tâche ou de tickets.
     - `HIGH` Haute
     - `URGENT` Urgent
     - `IMMEDIATE` Immédiat
-* `PM_VRS_STATUS`
-    - `ALPHA` Alpha
-    - `BETA` Beta
-    - `PUBLISHED` Published version
+* `PM_TSK_TYPE`
+    - `BUG` Defect
+    - `MEE` Meeting
+    - `TSK` TASK
 
 `PmUser` business object definition
 -----------------------------------
@@ -180,6 +171,7 @@ Tasks of project
 | `pmTskEffectiveClosingDate`                                  | date                                     |          |           |          | -                                                                                |
 | `pmTskExpectedDuration`                                      | int(100)                                 | yes      |           |          | -                                                                                |
 | `pmTskActualDuration`                                        | int(100)                                 |          |           |          | -                                                                                |
+| `pmTskTimeLeft`                                              | int(100)                                 |          |           |          | -                                                                                |
 | `pmTskUsrId` link to **`PmUser`**                            | id                                       |          |           |          | -                                                                                |
 | _Ref. `pmTskUsrId.usr_login`_                                | _regexp(100)_                            |          |           | yes      | _Login_                                                                          |
 | _Ref. `pmTskUsrId.usr_first_name`_                           | _char(50)_                               |          |           | yes      | _First name_                                                                     |
@@ -192,7 +184,8 @@ Tasks of project
 | _Ref. `pmTskVrsId.pmVrsStatus`_                              | _enum(100) using `PM_VRS_STATUS` list_   |          |           |          | -                                                                                |
 | _Ref. `pmTskVrsId.pmVrsName`_                                | _char(200)_                              |          |           |          | _Concatenation of project name and version number_                               |
 | _Ref. `pmTskVrsId.pmVrsPublicationDate`_                     | _date_                                   |          |           |          | -                                                                                |
-| `pmTskCompletion`                                            | int(100)                                 |          |           |          | -                                                                                |
+| `pmTskCompletion`                                            | int(100)                                 | yes      | yes       |          | -                                                                                |
+| `pmTskType`                                                  | enum(100) using `PM_TSK_TYPE` list       | yes      | yes       |          | -                                                                                |
 
 ### Lists
 
@@ -214,6 +207,10 @@ Tasks of project
     - `ALPHA` Alpha
     - `BETA` Beta
     - `PUBLISHED` Published version
+* `PM_TSK_TYPE`
+    - `BUG` Defect
+    - `MEE` Meeting
+    - `TSK` TASK
 
 ### Custom actions
 
@@ -423,7 +420,6 @@ Labeling of tasks
 * `TaskCreation`: Creation of the task
 * `PreviousTask`: Selection of the task on which the task depends
 * `NextTask`: Selection of the task which will depend on the task
-* `Labeling`: Reflective creation of all labeling
 * `Labelling`: 
 * `Assignment`: Reflective creation of all assignment
 * `End`: End activity

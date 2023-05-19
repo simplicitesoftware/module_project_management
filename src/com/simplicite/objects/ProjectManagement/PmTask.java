@@ -46,11 +46,26 @@ public class PmTask extends ObjectDB {
 
 	@Override
 	public void initRefSelect(ObjectDB parent) {
+		
 		if ("PmArrayOfTask".equals(parent.getName()) && (!Tool.isEmpty(parent.getFieldValue("pmAotPrvTskId"))||!Tool.isEmpty(parent.getFieldValue("pmAotNextTskId"))))
 			setFieldFilter("pmVrsPrjId", (Tool.isEmpty(parent.getFieldValue("pmAotPrvTskId"))?parent.getFieldValue("pmAotNextTskId.pmTskVrsId.pmVrsPrjId"):parent.getFieldValue("pmAotPrvTskId.pmTskVrsId.pmVrsPrjId")));
 		else resetFilters(); 
 	}
 	
+	@Override
+	public void preSearch() {
+		if("bpm_ajax_PmTask".equals(getInstanceName()) && getGrant().hasParameter("NEW_TASK_FILTERS")){
+			HashMap<String, String>  filters=(HashMap<String, String>) getGrant().getObjectParameter("NEW_TASK_FILTERS");
+			setFieldFilter("pmPrjName", filters.get("pmPrjName"));
+			setSearchSpec(getSearchSpec()+" AND NOT t.row_id = "+filters.get("tskID"));
+		}
+		super.preSearch();
+	}
+	@Override
+	public List<String[]> postSearch(List<String[]> rows) {
+		setSearchSpec(getDefaultSearchSpec());
+		return super.postSearch(rows);
+	}
 	@Override
 	public void initCreate() {
 		HashMap<String, String> filters = new HashMap<>();
@@ -68,7 +83,7 @@ public class PmTask extends ObjectDB {
 	@Override
 	public List<String> postValidate() {
 		List<String> msgs = new ArrayList<>();
-		if(getFieldValue("pmTskVrsId.pmVrsStatus").equals("PUBLISHED") && !isBatchInstance()){
+		if(!getStatus().equals("CLOSED") && getFieldValue("pmTskVrsId.pmVrsStatus").equals("PUBLISHED") && !isBatchInstance()){
 			msgs.add(Message.formatError("PM_ERR_TSK_VRS_STATUS",null,"pmTskVrsId.pmVrsStatus"));
 		}
 		if (getFieldValue("pmTskNumber").equals("0")){
@@ -155,19 +170,16 @@ public class PmTask extends ObjectDB {
 		return Tool.diffDate(begin, end);
 	}
 	/*
-		Function for calculated expression of field pmTskCompletion in PmTask
+		Function for calculated expression of field pmTskTimeLeft in PmTask
 	*/ 
-	public int completionDuration(){//used by the calculated field pmTskActualDuraition
-		String  expeted = getFieldValue("pmTskExpectedDuration");
+	public int timeLeft(){//used by the calculated field pmTskActualDuraition
 		switch(getFieldValue("pmTskStatus")){
-			case "DRAFT": 
 			case "CANCEL":
 			case "REJECTED":
-				return 0;
 			case "CLOSED":
-				return 100;
+				return 1000;
 			default:
-				return actualDuration()*100/Integer.parseInt(expeted);
+				return Tool.diffDate(Tool.getCurrentDate(),getFieldValue("pmTskClose"));
 				
 		}
 	}
@@ -259,4 +271,5 @@ public class PmTask extends ObjectDB {
 		}
 		return msgs;
 	}
+	
 }

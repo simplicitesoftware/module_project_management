@@ -465,6 +465,48 @@ components:
         pmTskActualDuration:
           description: Actual duration
           type: integer
+        pmTskVrsId__pmVrsStatus:
+          description: Release Status
+          type: string
+          enum:
+          - ALPHA
+          - BETA
+          - PUBLISHED
+        pmTskExpectedDuration:
+          description: Expected duration
+          type: integer
+        pmTskType:
+          description: Type
+          type: string
+          enum:
+          - BUG
+          - MEE
+          - TSK
+        pmTskUsrId:
+          description: User
+          type: string
+        pmTskEffectiveClosingDate:
+          description: Effective closing date
+          type: string
+          example: yyyy-MM-dd
+        pmTskDescription:
+          description: Description
+          type: string
+        pmTskVrsId__pmVrsPrjId:
+          description: Release Project
+          type: string
+        pmTskVrsId__pmVrsPrjId__pmPrjName:
+          description: Release Project Name
+          type: string
+        pmTskCompletion:
+          description: Completion
+          type: integer
+        pmTskVrsId__pmVrsVersion:
+          description: Version
+          type: string
+        pmTskNumber:
+          description: Number
+          type: string
         pmTskClose:
           description: Closing date
           type: string
@@ -484,50 +526,18 @@ components:
         pmTskUsrId__usr_first_name:
           description: First name
           type: string
-        pmTskVrsId__pmVrsStatus:
-          description: Release Status
-          type: string
-          enum:
-          - ALPHA
-          - BETA
-          - PUBLISHED
         pmTskPrjVirtualId:
           description: Project virtual id
           type: string
-        pmTskExpectedDuration:
-          description: Expected duration
-          type: integer
         pmTskVrsId__pmVrsPublicationDate:
           description: Release Publication date
-          type: string
-          example: yyyy-MM-dd
-        pmTskUsrId:
-          description: User
-          type: string
-        pmTskEffectiveClosingDate:
-          description: Effective closing date
           type: string
           example: yyyy-MM-dd
         pmTskTitle:
           description: Title
           type: string
-        pmTskDescription:
-          description: Description
-          type: string
         pmTskUsrId__usr_last_name:
           description: Last name
-          type: string
-        pmTskVrsId__pmVrsPrjId:
-          description: Release Project
-          type: string
-        pmTskVrsId__pmVrsPrjId__pmPrjName:
-          description: Release Project Name
-          type: string
-        pmTskCompletion:
-          description: Completion
-          type: integer
-        pmTskVrsId__pmVrsVersion:
-          description: Version
           type: string
         pmTskCreation:
           description: Creation date
@@ -547,9 +557,9 @@ components:
           - CLOSED
           - CANCEL
           - REJECTED
-        pmTskNumber:
-          description: Number
-          type: string
+        pmTskTimeLeft:
+          description: Time left
+          type: integer
         pmTskVrsId:
           description: Release
           type: string
@@ -738,48 +748,6 @@ components:
     PmTaskHistoric:
       type: object
       properties:
-        pmTskUsrId__usr_login:
-          description: Login
-          type: string
-        pmTskVrsId__pmVrsStatus:
-          description: Release Status
-          type: string
-          enum:
-          - ALPHA
-          - BETA
-          - PUBLISHED
-        created_dt_hist:
-          description: Created date
-          type: string
-          example: yyyy-MM-dd HH:mm:ss
-        pmTskExpectedDuration:
-          description: Expected duration
-          type: integer
-        pmTskUsrId:
-          description: User
-          type: string
-        row_ref_id:
-          description: Record row ID
-          type: string
-        pmTskEffectiveClosingDate:
-          description: Effective closing date
-          type: string
-          example: yyyy-MM-dd
-        pmTskDescription:
-          description: Description
-          type: string
-        pmTskVrsId__pmVrsPrjId:
-          description: Release Project
-          type: string
-        pmTskVrsId__pmVrsPrjId__pmPrjName:
-          description: Release Project Name
-          type: string
-        pmTskVrsId__pmVrsVersion:
-          description: Release Release
-          type: string
-        pmTskNumber:
-          description: Number
-          type: string
         pmTskClose:
           description: Closing date
           type: string
@@ -796,29 +764,38 @@ components:
           - HIGH
           - URGENT
           - IMMEDIATE
-        pmTskUsrId__usr_first_name:
-          description: First name
+        created_dt_hist:
+          description: Created date
           type: string
-        pmTskPrjVirtualId:
-          description: Project virtual id
+          example: yyyy-MM-dd HH:mm:ss
+        pmTskType:
+          description: Type
           type: string
-        pmTskVrsId__pmVrsPublicationDate:
-          description: Release Publication date
+          enum:
+          - BUG
+          - MEE
+          - TSK
+        row_ref_id:
+          description: Record row ID
           type: string
-          example: yyyy-MM-dd
         row_idx:
           description: History record index
           type: integer
         pmTskTitle:
           description: Title
           type: string
-        pmTskUsrId__usr_last_name:
-          description: Last name
+        pmTskDescription:
+          description: Description
           type: string
-        pmTskCreation:
-          description: Creation date
+        pmTskVrsId__pmVrsPrjId:
+          description: Release Project
           type: string
-          example: yyyy-MM-dd
+        pmTskVrsId__pmVrsPrjId__pmPrjName:
+          description: Release Project Name
+          type: string
+        pmTskVrsId__pmVrsVersion:
+          description: Release Release
+          type: string
         row_id:
           description: Unique technical row ID
           type: string
@@ -835,6 +812,9 @@ components:
           - REJECTED
         created_by_hist:
           description: Created by
+          type: string
+        pmTskNumber:
+          description: Number
           type: string
         pmTskVrsId:
           description: Release
@@ -1027,56 +1007,8 @@ paths:
       - schema:
           type: string
         in: query
-        name: pmTskCreation
-        description: Search filter for Creation date
-        required: false
-      - schema:
-          type: string
-        in: query
         name: pmTskClose
         description: Search filter for Closing date
-        required: false
-      - schema:
-          type: string
-        in: query
-        name: pmTskEffectiveClosingDate
-        description: Search filter for Effective closing date
-        required: false
-      - schema:
-          type: integer
-        in: query
-        name: pmTskExpectedDuration
-        description: Search filter for Expected duration
-        required: false
-      - schema:
-          type: string
-        in: query
-        name: pmTskUsrId
-        description: Search filter for User
-        required: false
-      - schema:
-          type: string
-        in: query
-        name: pmTskUsrId__usr_login
-        description: Search filter for Login
-        required: false
-      - schema:
-          type: string
-        in: query
-        name: pmTskUsrId__usr_first_name
-        description: Search filter for First name
-        required: false
-      - schema:
-          type: string
-        in: query
-        name: pmTskUsrId__usr_last_name
-        description: Search filter for Last name
-        required: false
-      - schema:
-          type: string
-        in: query
-        name: pmTskPrjVirtualId
-        description: Search filter for Project virtual id
         required: false
       - schema:
           type: string
@@ -1104,25 +1036,19 @@ paths:
         required: false
       - schema:
           type: string
-          enum:
-          - ALPHA
-          - BETA
-          - PUBLISHED
-        in: query
-        name: pmTskVrsId__pmVrsStatus
-        description: Search filter for Release Status
-        required: false
-      - schema:
-          type: string
         in: query
         name: pmTskVrsId__pmVrsName
         description: Search filter for Concatenation of project name and version number
         required: false
       - schema:
           type: string
+          enum:
+          - BUG
+          - MEE
+          - TSK
         in: query
-        name: pmTskVrsId__pmVrsPublicationDate
-        description: Search filter for Release Publication date
+        name: pmTskType
+        description: Search filter for Type
         required: false
       tags:
       - PmTaskHistoric
@@ -3418,6 +3344,12 @@ paths:
         description: Search filter for Actual duration
         required: false
       - schema:
+          type: integer
+        in: query
+        name: pmTskTimeLeft
+        description: Search filter for Time left
+        required: false
+      - schema:
           type: string
         in: query
         name: pmTskUsrId
@@ -3498,6 +3430,16 @@ paths:
         in: query
         name: pmTskCompletion
         description: Search filter for Completion
+        required: false
+      - schema:
+          type: string
+          enum:
+          - BUG
+          - MEE
+          - TSK
+        in: query
+        name: pmTskType
+        description: Search filter for Type
         required: false
       tags:
       - PmTask
@@ -5542,7 +5484,7 @@ tags:
 - name: PmTask
   description: Task
 - name: PmTaskHistoric
-  description: task history
+  description: Historic
 - name: PmTskLbl
   description: Labeling
 - name: PmUser
