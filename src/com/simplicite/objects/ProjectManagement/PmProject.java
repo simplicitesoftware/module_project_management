@@ -2,9 +2,13 @@ package com.simplicite.objects.ProjectManagement;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.List;
+
 import org.json.*;
 
 import com.simplicite.util.*;
+import com.simplicite.util.annotations.BusinessObject;
+import com.simplicite.util.exceptions.SearchException;
 import com.simplicite.util.tools.*;
 
 /**
@@ -12,6 +16,32 @@ import com.simplicite.util.tools.*;
  */
 public class PmProject extends ObjectDB {
 	private static final long serialVersionUID = 1L;
+	@Override
+	public boolean isReadOnly() {
+		
+		if(getGrant().hasResponsibility("PM_MANAGER") && !getGrant().hasResponsibility("PM_SUPERADMIN")){
+			ObjectDB o =getGrant().getTmpObject("PmRole");
+			synchronized(o){
+				o.getLock();
+				BusinessObjectTool ot =o.getTool();
+				o.setFieldFilter("pmRolPrjId", getRowId());
+				o.setFieldFilter("pmRolUsrId", getGrant().getUserId());
+				o.setFieldFilter("pmRolRole", "MANAGER");
+				try {
+					List<String[]> res = ot.search();
+					if (res.isEmpty()){
+						return true;
+					}
+					
+				} catch (SearchException e) {
+					AppLog.error(e, getGrant());
+				}
+			}
+				
+			
+		}
+		return super.isReadOnly();
+	}
 	/*
 		fonction for publication in PmProject
 	 */

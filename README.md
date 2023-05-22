@@ -23,6 +23,18 @@ Module de gestion de projet et de gestion de tâche ou de tickets.
 | Name                                                         | Type                                     | Required | Updatable | Personal | Description                                                                      |
 |--------------------------------------------------------------|------------------------------------------|----------|-----------|----------|----------------------------------------------------------------------------------|
 
+`PmResponsability` business object definition
+---------------------------------------------
+
+
+
+### Fields
+
+| Name                                                         | Type                                     | Required | Updatable | Personal | Description                                                                      |
+|--------------------------------------------------------------|------------------------------------------|----------|-----------|----------|----------------------------------------------------------------------------------|
+| `rsp_login_id` link to **`PmUser`**                          | id                                       | yes*     | yes       |          | -                                                                                |
+| `rsp_group_id` link to **`PmGroup`**                         | id                                       | yes*     | yes       |          | -                                                                                |
+
 `PmTaskHistoric` business object definition
 -------------------------------------------
 
@@ -86,7 +98,6 @@ Module de gestion de projet et de gestion de tâche ou de tickets.
 | _Ref. `usr_home_id.viw_name`_                                | _char(100)_                              |          |           |          | -                                                                                |
 | `row_module_id` link to **`Module`**                         | id                                       | yes      | yes       |          | Module                                                                           |
 | _Ref. `row_module_id.mdl_name`_                              | _regexp(100)_                            |          |           |          | _Module name_                                                                    |
-| `pmUsrCurrentGroup`                                          | char(100)                                |          |           |          | -                                                                                |
 
 ### Lists
 
@@ -98,10 +109,6 @@ Module de gestion de projet et de gestion de tâche ou de tickets.
     - `1` Enabled
     - `2` Pending
     - `3` Web services only
-
-### Custom actions
-
-* `PM_USER_GROUP`: 
 
 `PmProject` business object definition
 --------------------------------------

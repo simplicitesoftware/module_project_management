@@ -11,7 +11,67 @@ import com.simplicite.util.tools.*;
  */
 public class PmTask extends ObjectDB {
 	private static final long serialVersionUID = 1L;
+	public boolean isUserOnProject(String id) {
+		ObjectDB o =getGrant().getTmpObject("PmRole");
+			synchronized(o){
+				o.getLock();
+				BusinessObjectTool ot =o.getTool();
+				o.setFieldFilter("pmRolPrjId", id);
+				o.setFieldFilter("pmRolUsrId", getGrant().getUserId());
+				o.setFieldFilter("pmRolRole", "USER");
+				try {
+					List<String[]> res = ot.search();
+					if (!res.isEmpty()){
+						return true;
+					}
+				} catch (SearchException e) {
+					AppLog.error(e, getGrant());
+				}
+			}
+		return false;
 
+	}
+	@Override
+	public boolean isListUpsertable() {
+		ObjectDB parent = getParentObject();
+		AppLog.info("DEBUG parent isListUpsertable: "+parent.getName(), getGrant());
+		if(!Tool.isEmpty(parent) && parent.getName().equals("PmVersion") && isUserOnProject(parent.getFieldValue("pmVrsPrjId"))){
+			AppLog.info("DEBUG is isListUpsertable : "+parent.getName(), getGrant());
+			return true;
+		}
+		return super.isListUpsertable();
+	}
+	@Override
+	public boolean isReadOnly() {
+		
+		if(!isNew() && getGrant().hasResponsibility("PM_USER_GROUP") && !getGrant().hasResponsibility("PM_MANAGER") && !getGrant().hasResponsibility("PM_SUPERADMIN")){
+			ObjectDB o =getGrant().getTmpObject("PmAssignment");
+			synchronized(o){
+				o.getLock();
+				BusinessObjectTool ot =o.getTool();
+				o.setFieldFilter("pmAssPmTaskid", getRowId());
+				o.setFieldFilter("pmAssPmUserid", getGrant().getUserId());
+				try {
+					List<String[]> res = ot.search();
+					if (res.isEmpty()){
+						return true;
+					}
+					
+				} catch (SearchException e) {
+					AppLog.error(e, getGrant());
+				}
+			}
+			
+		}else if(!isNew() && getGrant().hasResponsibility("PM_MANAGER") && !getGrant().hasResponsibility("PM_SUPERADMIN")){
+			ObjectDB o =getGrant().getTmpObject("PmProject");
+			synchronized(o){
+				o.getLock();
+				o.select(getFieldValue("pmVrsPrjId"));
+				if(o.isReadOnly()) return true;
+			}
+		}
+		return super.isReadOnly();
+	}
 	/*
 		Function for calculat Number of task 
 		(return the first none used number)
@@ -79,6 +139,16 @@ public class PmTask extends ObjectDB {
 		filters.put("pmVrsStatus", "ALPHA;BETA");
 		filters.put("pmVrsPrjId", getFieldValue("pmVrsPrjId"));
 		getGrant().setParameter("PARENT_FILTERS", filters);
+	}
+	@Override
+	public List<String> preValidate() {
+		if(getField("pmTskVrsId").hasChanged()){
+			AppLog.info("DEBUG : version has changed", getGrant());
+			setFieldValue("pmTskNumber",0);
+		}else{
+			AppLog.info("DEBUG : version has not changed", getGrant());
+		}
+		return super.preValidate();
 	}
 	@Override
 	public List<String> postValidate() {

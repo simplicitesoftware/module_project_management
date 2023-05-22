@@ -440,9 +440,6 @@ components:
           enum:
           - ENU
           - FRA
-        pmUsrCurrentGroup:
-          description: Current group
-          type: string
         row_id:
           description: Unique technical row ID
           type: string
@@ -699,6 +696,45 @@ components:
         grp_home_id__viw_name:
           description: Home page
           type: string
+    PmResponsability:
+      type: object
+      properties:
+        row_module_id__mdl_name:
+          description: Module name
+          type: string
+        rsp_login_id__usr_login:
+          description: Login
+          type: string
+        rsp_activ:
+          description: Enabled
+          type: boolean
+        rsp_group_id__grp_name:
+          description: Group Name
+          type: string
+        row_module_id:
+          description: Module
+          type: string
+        rsp_group_id:
+          description: Group
+          type: string
+        rsp_start_dt:
+          description: Effective date
+          type: string
+          example: yyyy-MM-dd
+        rsp_end_dt:
+          description: End date
+          type: string
+          example: yyyy-MM-dd
+        row_id:
+          description: Unique technical row ID
+          type: string
+        rsp_login_id:
+          description: User
+          type: string
+    ArrayOfPmResponsability:
+      type: array
+      items:
+        $ref: '#/components/schemas/PmResponsability'
     ActionResult:
       type: object
       properties:
@@ -1164,6 +1200,122 @@ paths:
         required: false
       tags:
       - PmProject
+  /rest/PmResponsability:
+    get:
+      summary: Search PmResponsability business object records or get contextualized
+        metadata
+      security:
+      - bearerAuth: []
+      operationId: obj-pmresponsability-search
+      responses:
+        '200':
+          description: Success in searching business object records (or in getting
+            contextualized business object metadata, documentation, ...)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ArrayOfPmResponsability'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error401'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error500'
+      parameters:
+      - schema:
+          type: boolean
+        in: query
+        name: _metadata
+        description: Metadata?
+        required: false
+      - schema:
+          type: boolean
+        in: query
+        name: _count
+        description: Count?
+        required: false
+      - schema:
+          type: boolean
+        in: query
+        name: _doc
+        description: Documentation?
+        required: false
+      - schema:
+          type: string
+          enum:
+          - RSP
+        in: query
+        name: _crosstab
+        description: Apply pivot table
+        required: false
+      - schema:
+          type: boolean
+        in: query
+        name: _crosstabcubes
+        description: Pivot table data as cubes?
+        required: false
+      - schema:
+          type: string
+        in: query
+        name: rsp_login_id
+        description: Search filter for User
+        required: false
+      - schema:
+          type: string
+        in: query
+        name: rsp_group_id
+        description: Search filter for Group
+        required: false
+      - schema:
+          type: string
+        in: query
+        name: rsp_login_id__usr_login
+        description: Search filter for Login
+        required: false
+      - schema:
+          type: string
+        in: query
+        name: rsp_group_id__grp_name
+        description: Search filter for Group Name
+        required: false
+      - schema:
+          type: string
+        in: query
+        name: rsp_start_dt
+        description: Search filter for Effective date
+        required: false
+      - schema:
+          type: string
+        in: query
+        name: rsp_end_dt
+        description: Search filter for End date
+        required: false
+      - schema:
+          type: boolean
+        in: query
+        name: rsp_activ
+        description: Search filter for Enabled
+        required: false
+      - schema:
+          type: string
+        in: query
+        name: row_module_id
+        description: Search filter for Module
+        required: false
+      - schema:
+          type: string
+        in: query
+        name: row_module_id__mdl_name
+        description: Search filter for Module name
+        required: false
+      tags:
+      - PmResponsability
   /rest/PmDocument:
     get:
       summary: Search PmDocument business object records or get contextualized metadata
@@ -2868,6 +3020,201 @@ paths:
         required: false
       tags:
       - PmGroup
+  /rest/PmResponsability/{row_id}:
+    post:
+      summary: Create a new PmResponsability business object record
+      security:
+      - bearerAuth: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PmResponsability'
+      operationId: obj-pmresponsability-create
+      responses:
+        '200':
+          description: Success in creating a new business object record
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PmResponsability'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error400'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error401'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error500'
+      parameters:
+      - schema:
+          type: string
+        in: path
+        name: row_id
+        description: Row ID (or empty or _ for all row IDs)
+        required: true
+      tags:
+      - PmResponsability
+    get:
+      summary: Get a PmResponsability business object record
+      security:
+      - bearerAuth: []
+      operationId: obj-pmresponsability-get
+      responses:
+        '200':
+          description: Success in getting a single business object record
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PmResponsability'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error401'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error500'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error404'
+      parameters:
+      - schema:
+          type: string
+        in: path
+        name: row_id
+        description: Row ID (or empty or _ for all row IDs)
+        required: true
+      - schema:
+          type: boolean
+        in: query
+        name: _inline_documents
+        description: Inline documents?
+        required: false
+      - schema:
+          type: boolean
+        in: query
+        name: _inline_thumbnails
+        description: Inline documents' thumbnails?
+        required: false
+      - schema:
+          type: boolean
+        in: query
+        name: _inline_objects
+        description: Inline objects?
+        required: false
+      tags:
+      - PmResponsability
+    delete:
+      summary: Delete a PmResponsability business object record
+      security:
+      - bearerAuth: []
+      operationId: obj-pmresponsability-delete
+      responses:
+        '200':
+          description: Success in deleting a business object record
+          content:
+            application/json: {}
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error400'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error401'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error500'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error404'
+      parameters:
+      - schema:
+          type: string
+        in: path
+        name: row_id
+        description: Row ID (or empty or _ for all row IDs)
+        required: true
+      tags:
+      - PmResponsability
+    put:
+      summary: Update a PmResponsability business object record
+      security:
+      - bearerAuth: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PmResponsability'
+      operationId: obj-pmresponsability-update
+      responses:
+        '200':
+          description: Success in updating a business object record
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PmResponsability'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error400'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error401'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error500'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error404'
+      parameters:
+      - schema:
+          type: string
+        in: path
+        name: row_id
+        description: Row ID (or empty or _ for all row IDs)
+        required: true
+      tags:
+      - PmResponsability
   /rest/PmRole:
     get:
       summary: Search PmRole business object records or get contextualized metadata
@@ -3163,53 +3510,6 @@ paths:
                 $ref: '#/components/schemas/Error401'
       tags:
       - session
-  /rest/PmUser/{row_id}/action:PM_USER_GROUP:
-    get:
-      summary: Call a custom action for a PmUser business object record or for all
-        records
-      security:
-      - bearerAuth: []
-      operationId: obj-pmuser-action-pm_user_group
-      responses:
-        '200':
-          description: Success in calling the custom action
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ActionResult'
-        '400':
-          description: Bad request
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error400'
-        '401':
-          description: Unauthorized
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error401'
-        '500':
-          description: Internal server error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error500'
-        '404':
-          description: Not found
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error404'
-      parameters:
-      - schema:
-          type: string
-        in: path
-        name: row_id
-        description: Row ID (or empty or _ for all row IDs)
-        required: true
-      tags:
-      - PmUser
   /rest/PmTask:
     get:
       summary: Search PmTask business object records or get contextualized metadata
@@ -3259,6 +3559,7 @@ paths:
           type: string
           enum:
           - PmTcTask
+          - PmPrjTask
         in: query
         name: _crosstab
         description: Apply pivot table
@@ -4444,12 +4745,6 @@ paths:
         name: row_module_id__mdl_name
         description: Search filter for Module name
         required: false
-      - schema:
-          type: string
-        in: query
-        name: pmUsrCurrentGroup
-        description: Search filter for Current group
-        required: false
       tags:
       - PmUser
   /rest/PmVersion/{row_id}:
@@ -5479,6 +5774,8 @@ tags:
   description: Message
 - name: PmProject
   description: Project
+- name: PmResponsability
+  description: Responsability
 - name: PmRole
   description: Role
 - name: PmTask

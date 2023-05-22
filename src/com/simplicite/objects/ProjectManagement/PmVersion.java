@@ -5,6 +5,9 @@ import java.util.*;
 import javax.validation.constraints.NotEmpty;
 
 import com.simplicite.util.*;
+import com.simplicite.util.exceptions.SearchException;
+import com.simplicite.util.tools.BusinessObjectTool;
+
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
@@ -16,6 +19,39 @@ public class PmVersion extends ObjectDB {
 	static String statusPUBLISHED ="PUBLISHED";
 	static String fieldStatus="pmVrsStatus";
 	static String fieldPrjId="pmVrsPrjId";
+	public boolean isUserOnProject() {
+		ObjectDB o =getGrant().getTmpObject("PmRole");
+			synchronized(o){
+				o.getLock();
+				BusinessObjectTool ot =o.getTool();
+				o.setFieldFilter("pmRolPrjId", getFieldValue("pmVrsPrjId"));
+				o.setFieldFilter("pmRolUsrId", getGrant().getUserId());
+				o.setFieldFilter("pmRolRole", "USER");
+				try {
+					List<String[]> res = ot.search();
+					if (!res.isEmpty()){
+						return true;
+					}
+				} catch (SearchException e) {
+					AppLog.error(e, getGrant());
+				}
+			}
+		return false;
+
+	}
+	@Override
+	public boolean isReadOnly() {
+		if(getGrant().hasResponsibility("PM_MANAGER") && !getGrant().hasResponsibility("PM_SUPERADMIN")){
+			ObjectDB o =getGrant().getTmpObject("PmProject");
+			synchronized(o){
+				o.getLock();
+				o.select(getFieldValue("pmVrsPrjId"));
+				if(o.isReadOnly()) return true;
+			}
+		}
+		return super.isReadOnly();
+	}
+	
 	@Override
 	public void initUpdate(){			
 		HashMap<String, String> filters = new HashMap<>();

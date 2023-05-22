@@ -291,6 +291,104 @@ paths:
         required: false
       tags:
       - PmProject
+  /rest/PmResponsability:
+    get:
+      summary: Search PmResponsability business object records or get contextualized
+        metadata
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-pmresponsability-search
+      responses:
+        '200':
+          schema:
+            $ref: '#/definitions/ArrayOfPmResponsability'
+          description: Success in searching business object records (or in getting
+            contextualized business object metadata, documentation, ...)
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+      parameters:
+      - in: query
+        name: _metadata
+        description: Metadata?
+        type: boolean
+        required: false
+      - in: query
+        name: _count
+        description: Count?
+        type: boolean
+        required: false
+      - in: query
+        name: _doc
+        description: Documentation?
+        type: boolean
+        required: false
+      - in: query
+        name: _crosstab
+        description: Apply pivot table
+        type: string
+        required: false
+        enum:
+        - RSP
+      - in: query
+        name: _crosstabcubes
+        description: Pivot table data as cubes?
+        type: boolean
+        required: false
+      - in: query
+        name: rsp_login_id
+        description: Search filter for User
+        type: string
+        required: false
+      - in: query
+        name: rsp_group_id
+        description: Search filter for Group
+        type: string
+        required: false
+      - in: query
+        name: rsp_login_id__usr_login
+        description: Search filter for Login
+        type: string
+        required: false
+      - in: query
+        name: rsp_group_id__grp_name
+        description: Search filter for Group Name
+        type: string
+        required: false
+      - in: query
+        name: rsp_start_dt
+        description: Search filter for Effective date
+        type: string
+        required: false
+      - in: query
+        name: rsp_end_dt
+        description: Search filter for End date
+        type: string
+        required: false
+      - in: query
+        name: rsp_activ
+        description: Search filter for Enabled
+        type: boolean
+        required: false
+      - in: query
+        name: row_module_id
+        description: Search filter for Module
+        type: string
+        required: false
+      - in: query
+        name: row_module_id__mdl_name
+        description: Search filter for Module name
+        type: string
+        required: false
+      tags:
+      - PmResponsability
   /rest/PmDocument:
     get:
       summary: Search PmDocument business object records or get contextualized metadata
@@ -1711,6 +1809,168 @@ paths:
         required: false
       tags:
       - PmGroup
+  /rest/PmResponsability/{row_id}:
+    post:
+      summary: Create a new PmResponsability business object record
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-pmresponsability-create
+      responses:
+        '200':
+          schema:
+            $ref: '#/definitions/PmResponsability'
+          description: Success in creating a new business object record
+        '400':
+          schema:
+            $ref: '#/definitions/Error400'
+          description: Bad request
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+      parameters:
+      - in: path
+        name: row_id
+        description: Row ID (or empty or _ for all row IDs)
+        type: string
+        required: true
+      - schema:
+          $ref: '#/definitions/PmResponsability'
+        in: body
+        name: body
+      tags:
+      - PmResponsability
+      consumes:
+      - application/json
+    get:
+      summary: Get a PmResponsability business object record
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-pmresponsability-get
+      responses:
+        '200':
+          schema:
+            $ref: '#/definitions/PmResponsability'
+          description: Success in getting a single business object record
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+        '404':
+          schema:
+            $ref: '#/definitions/Error404'
+          description: Not found
+      parameters:
+      - in: path
+        name: row_id
+        description: Row ID (or empty or _ for all row IDs)
+        type: string
+        required: true
+      - in: query
+        name: _inline_documents
+        description: Inline documents?
+        type: boolean
+        required: false
+      - in: query
+        name: _inline_thumbnails
+        description: Inline documents' thumbnails?
+        type: boolean
+        required: false
+      - in: query
+        name: _inline_objects
+        description: Inline objects?
+        type: boolean
+        required: false
+      tags:
+      - PmResponsability
+    delete:
+      summary: Delete a PmResponsability business object record
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-pmresponsability-delete
+      responses:
+        '200':
+          description: Success in deleting a business object record
+        '400':
+          schema:
+            $ref: '#/definitions/Error400'
+          description: Bad request
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+        '404':
+          schema:
+            $ref: '#/definitions/Error404'
+          description: Not found
+      parameters:
+      - in: path
+        name: row_id
+        description: Row ID (or empty or _ for all row IDs)
+        type: string
+        required: true
+      tags:
+      - PmResponsability
+    put:
+      summary: Update a PmResponsability business object record
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-pmresponsability-update
+      responses:
+        '200':
+          schema:
+            $ref: '#/definitions/PmResponsability'
+          description: Success in updating a business object record
+        '400':
+          schema:
+            $ref: '#/definitions/Error400'
+          description: Bad request
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+        '404':
+          schema:
+            $ref: '#/definitions/Error404'
+          description: Not found
+      parameters:
+      - in: path
+        name: row_id
+        description: Row ID (or empty or _ for all row IDs)
+        type: string
+        required: true
+      - schema:
+          $ref: '#/definitions/PmResponsability'
+        in: body
+        name: body
+      tags:
+      - PmResponsability
+      consumes:
+      - application/json
   /rest/PmRole:
     get:
       summary: Search PmRole business object records or get contextualized metadata
@@ -1959,44 +2219,6 @@ paths:
           description: Unauthorized
       tags:
       - session
-  /rest/PmUser/{row_id}/action:PM_USER_GROUP:
-    get:
-      summary: Call a custom action for a PmUser business object record or for all
-        records
-      security:
-      - bearerAuth: []
-      produces:
-      - application/json
-      operationId: obj-pmuser-action-pm_user_group
-      responses:
-        '200':
-          schema:
-            $ref: '#/definitions/ActionResult'
-          description: Success in calling the custom action
-        '400':
-          schema:
-            $ref: '#/definitions/Error400'
-          description: Bad request
-        '401':
-          schema:
-            $ref: '#/definitions/Error401'
-          description: Unauthorized
-        '500':
-          schema:
-            $ref: '#/definitions/Error500'
-          description: Internal server error
-        '404':
-          schema:
-            $ref: '#/definitions/Error404'
-          description: Not found
-      parameters:
-      - in: path
-        name: row_id
-        description: Row ID (or empty or _ for all row IDs)
-        type: string
-        required: true
-      tags:
-      - PmUser
   /rest/PmTask:
     get:
       summary: Search PmTask business object records or get contextualized metadata
@@ -2042,6 +2264,7 @@ paths:
         required: false
         enum:
         - PmTcTask
+        - PmPrjTask
       - in: query
         name: _crosstabcubes
         description: Pivot table data as cubes?
@@ -3036,11 +3259,6 @@ paths:
       - in: query
         name: row_module_id__mdl_name
         description: Search filter for Module name
-        type: string
-        required: false
-      - in: query
-        name: pmUsrCurrentGroup
-        description: Search filter for Current group
         type: string
         required: false
       tags:
@@ -4321,9 +4539,6 @@ definitions:
         enum:
         - ENU
         - FRA
-      pmUsrCurrentGroup:
-        description: Current group
-        type: string
       row_id:
         description: Unique technical row ID
         type: string
@@ -4580,6 +4795,45 @@ definitions:
       grp_home_id__viw_name:
         description: Home page
         type: string
+  PmResponsability:
+    type: object
+    properties:
+      row_module_id__mdl_name:
+        description: Module name
+        type: string
+      rsp_login_id__usr_login:
+        description: Login
+        type: string
+      rsp_activ:
+        description: Enabled
+        type: boolean
+      rsp_group_id__grp_name:
+        description: Group Name
+        type: string
+      row_module_id:
+        description: Module
+        type: string
+      rsp_group_id:
+        description: Group
+        type: string
+      rsp_start_dt:
+        description: Effective date
+        type: string
+        example: yyyy-MM-dd
+      rsp_end_dt:
+        description: End date
+        type: string
+        example: yyyy-MM-dd
+      row_id:
+        description: Unique technical row ID
+        type: string
+      rsp_login_id:
+        description: User
+        type: string
+  ArrayOfPmResponsability:
+    type: array
+    items:
+      $ref: '#/definitions/PmResponsability'
   ActionResult:
     type: object
     properties:
@@ -4729,6 +4983,8 @@ tags:
   description: Message
 - name: PmProject
   description: Project
+- name: PmResponsability
+  description: Responsability
 - name: PmRole
   description: Role
 - name: PmTask
