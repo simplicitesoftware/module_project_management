@@ -109,8 +109,6 @@ public class PmTask extends ObjectDB {
 	
 	@Override
 	public void preSearch() {
-		
-		
 		if("bpm_ajax_PmTask".equals(getInstanceName()) && getGrant().hasParameter("NEW_TASK_FILTERS")){
 			HashMap<String, String>  filters=(HashMap<String, String>) getGrant().getObjectParameter("NEW_TASK_FILTERS");
 			setFieldFilter("pmPrjName", filters.get("pmPrjName"));
