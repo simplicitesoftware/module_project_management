@@ -43,19 +43,27 @@ var PmTimesheetRecapExt = PmTimesheetRecapExt || (function($) {
         }
         if (list && list.length){
             data.listNotEmpty = true;
-            list.forEach(ass => data.ass.push(function(assign){
-                var objAss = {
-                	pmAssTskName: assign.pmAssPmTaskid__pmTskTitle,
-                    pmAssRole: assign.pmAssRole,
-                    pmAssConsumed: assign.pmAssConsumed,
-                    pmAssQuantity:' ',
-                    setProgress:false
-                };
-                if(assign.pmAssQuantity){
-                    objAss.setProgress=true;
-                    objAss.pmAssQuantity =assign.pmAssQuantity;
+            list.forEach(ass => (function(assign){
+                var now = new Date(); 
+                now.setHours(0,0,0,0);
+                var statusList=['DRAFT','TODO', 'DOING', 'DONE']
+                if(statusList.includes(assign.pmAssPmTaskid__pmTskStatus)){
+                    var objAss = {
+                        pmAssTskName: assign.pmAssPmTaskid__pmTskTitle,
+                        pmAssRole: assign.pmAssRole,
+                        pmAssConsumed: assign.pmAssConsumed,
+                        pmAssQuantity:' ',
+                        setProgress:false,
+                        isOutTime: app.parseDateValue(assign.pmAssPmTaskid__pmTskClose) < now
+                    };
+                    if(assign.pmAssQuantity){
+                        objAss.setProgress=true;
+                        objAss.pmAssQuantity =assign.pmAssQuantity;
+                    }
+                    data.ass.push(objAss);
                 }
-                return objAss;
+                return;
+
             }(ass)));
             
         }

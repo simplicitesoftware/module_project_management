@@ -12,12 +12,12 @@
                     <div class="header__item"></div>
                 </div>
                 {{#ass}}
-                    <div class="table-row">	
+                    <div class="{{#isOutTime}}out-time{{/isOutTime}} table-row ">	
                     	<div class="table-data ">{{pmAssTskName}}</div>
                         <div class="table-data ">{{pmAssRole}}</div>
                         <div class="table-data ">{{pmAssQuantity}}</div>
                         <div class="table-data ">{{pmAssConsumed}}</div>
-                        <div class="table-data ">{{#setProgress}}<progress value="{{pmAssConsumed}}" max="{{pmAssQuantity}}"></progress>{{/setProgress}}</div>
+                        <div class="table-data ">{{#setProgress}}<progress  class="{{#isOutTime}}out-time{{/isOutTime}}"  value="{{pmAssConsumed}}" max="{{pmAssQuantity}}"></progress>{{/setProgress}}</div>
                         
                     </div>
                 {{/ass}}

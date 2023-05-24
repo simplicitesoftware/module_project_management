@@ -4,6 +4,7 @@
     --color-highlight: #ffffff;
 	--color-highlight-bis: #e6f0f9;
 	--color-dark:#b1c3d4;
+	--color-red:#9c4040;
 
 }
 *, *:before, *:after {
@@ -38,6 +39,12 @@
 
 
 }
+.out-time{
+	color: var(--color-red);
+	font-weight: bold;
+}
+.out-time::-moz-progress-bar { background: --color-red; }
+.out-time::-webkit-progress-value { background: --color-red; }
 
 .table-row {
 	display:flex;
@@ -72,6 +79,7 @@
 	padding:16px;
 	font-weight:bold;
 }
+
 .box{
 	padding:16px;
 	-moz-box-shadow: 2px 2px 6px #888;  

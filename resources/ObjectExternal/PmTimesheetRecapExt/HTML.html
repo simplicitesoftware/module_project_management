@@ -12,8 +12,8 @@
                     <div class="header__item"></div>
                 </div>
                 {{#ass}}
-                    <div class="table-row">	
-                    	<div class="table-data ">{{pmAssTskName}}</div>
+                    <div class="table-row {{#isOutTime}}out-time{{/isOutTime}}">
+                    	<div class="table-data ">{{pmAssTskName}} {{#isOutTime}}test{{/isOutTime}}</div>
                         <div class="table-data ">{{pmAssRole}}</div>
                         <div class="table-data ">{{pmAssQuantity}}</div>
                         <div class="table-data ">{{pmAssConsumed}}</div>

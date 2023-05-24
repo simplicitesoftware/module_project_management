@@ -15,11 +15,7 @@
 							'pmTskVrsId.pmVrsPrjId.pmPrjName' :o.getFieldValue("pmPrjName"),
 							'pmTskStatus':["DRAFT","TODO", "DOING", "DONE" ]
 						}, options: {ztable: false, zcontrol: false , zgraph: 'pie'} });
-						/* $('#PmProject-Search').html('<div id="search-container"></div>');
-						$ui.displayList($('#PmProject-Search'), "PmTask", {filters: {
-							'pmTskVrsId.pmVrsPrjId.pmPrjName' :o.getFieldValue("pmPrjName"),
-							'pmTskStatus':["DRAFT","TODO", "DOING", "DONE" ]
-						} }); */
+						
 					}
 				};
 			}

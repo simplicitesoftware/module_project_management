@@ -40,7 +40,6 @@ public class PmTaskCreate extends Processus {
 				filters.put("pmPrjName",prjName);
 				filters.put("tskID",tskID);
 				getGrant().setParameter("NEW_TASK_FILTERS", filters);
-				AppLog.info("DEBUG getGrant().setParameter(\"NEW_TASK_FILTERS\", "+prjName+");", getGrant());
 				break;
 			case "PMTC-300":
 				

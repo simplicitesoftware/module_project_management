@@ -431,6 +431,18 @@ Labeling of tasks
 * `Assignment`: Reflective creation of all assignment
 * `End`: End activity
 
+`PmProjectCalendar` external object definition
+----------------------------------------------
+
+
+
+
+`PmProjectUserTask` external object definition
+----------------------------------------------
+
+
+
+
 `PmTaskWAssingExt` external object definition
 ---------------------------------------------
 

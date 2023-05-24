@@ -2,6 +2,7 @@ package com.simplicite.objects.ProjectManagement;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.HashMap;
 import java.util.List;
 
 import org.json.*;
@@ -41,6 +42,11 @@ public class PmProject extends ObjectDB {
 			
 		}
 		return super.isReadOnly();
+	}
+	@Override
+	public void initUpdate() {
+		getGrant().setParameter("PROJECT_ID", getRowId());
+		super.initUpdate();
 	}
 	/*
 		fonction for publication in PmProject

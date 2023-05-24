@@ -4,6 +4,7 @@ import java.util.*;
 
 import javax.validation.constraints.NotEmpty;
 
+import com.simplicite.commons.ProjectManagement.pmRoleTool;
 import com.simplicite.util.*;
 import com.simplicite.util.exceptions.SearchException;
 import com.simplicite.util.tools.BusinessObjectTool;
@@ -19,29 +20,9 @@ public class PmVersion extends ObjectDB {
 	static String statusPUBLISHED ="PUBLISHED";
 	static String fieldStatus="pmVrsStatus";
 	static String fieldPrjId="pmVrsPrjId";
-	public boolean isUserOnProject() {
-		ObjectDB o =getGrant().getTmpObject("PmRole");
-			synchronized(o){
-				o.getLock();
-				BusinessObjectTool ot =o.getTool();
-				o.setFieldFilter("pmRolPrjId", getFieldValue("pmVrsPrjId"));
-				o.setFieldFilter("pmRolUsrId", getGrant().getUserId());
-				o.setFieldFilter("pmRolRole", "USER");
-				try {
-					List<String[]> res = ot.search();
-					if (!res.isEmpty()){
-						return true;
-					}
-				} catch (SearchException e) {
-					AppLog.error(e, getGrant());
-				}
-			}
-		return false;
-
-	}
 	@Override
 	public boolean isReadOnly() {
-		if(getGrant().hasResponsibility("PM_MANAGER") && !getGrant().hasResponsibility("PM_SUPERADMIN")){
+		if(!isNew() && getGrant().hasResponsibility("PM_MANAGER") && !getGrant().hasResponsibility("PM_SUPERADMIN")){
 			ObjectDB o =getGrant().getTmpObject("PmProject");
 			synchronized(o){
 				o.getLock();
@@ -49,9 +30,9 @@ public class PmVersion extends ObjectDB {
 				if(o.isReadOnly()) return true;
 			}
 		}
+		
 		return super.isReadOnly();
 	}
-	
 	@Override
 	public void initUpdate(){			
 		HashMap<String, String> filters = new HashMap<>();
@@ -61,12 +42,12 @@ public class PmVersion extends ObjectDB {
 		getGrant().setParameter("PARENT_FILTERS", filters);
 	}
 	@Override
-	public void preSearch(){		
+	public void preSearch(){	
 		if(getInstanceName().equals("ref_ajax_PmVersion") && getGrant().hasParameter("PARENT_FILTERS")){
 			HashMap<String, String> filters = (HashMap<String, String>) getGrant().getObjectParameter("PARENT_FILTERS");
 			String vrsRowId=filters.get("row_id");
 			if(!Tool.isEmpty(vrsRowId)){
-				setSearchSpec(getSearchSpec()+" AND NOT t.row_id="+vrsRowId);
+				getRowIdField().setAdditionalSearchSpec(" NOT t.row_id="+vrsRowId);
 				getGrant().setParameter("RESET_SEARCH_SPEC", true);
 			}			
 			setFieldFilter(fieldPrjId, filters.get(fieldPrjId));
@@ -77,7 +58,7 @@ public class PmVersion extends ObjectDB {
 	@Override
 	public List<String[]> postSearch(List<String[]> rows) {
 		if(getInstanceName().equals("ref_ajax_PmVersion") && getGrant().hasParameter("RESET_SEARCH_SPEC")){
-			setSearchSpec(getDefaultSearchSpec());
+			getRowIdField().setAdditionalSearchSpec(null);
 			getGrant().removeParameter("RESET_SEARCH_SPEC");
 		}
 		return super.postSearch(rows);

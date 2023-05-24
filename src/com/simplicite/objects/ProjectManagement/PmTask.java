@@ -2,6 +2,8 @@ package com.simplicite.objects.ProjectManagement;
 
 import java.util.*;
 import org.json.*;
+
+import com.simplicite.commons.ProjectManagement.pmRoleTool;
 import com.simplicite.util.*;
 import com.simplicite.util.exceptions.*;
 import com.simplicite.util.tools.*;
@@ -10,33 +12,43 @@ import com.simplicite.util.tools.*;
  * Business object PmTask
  */
 public class PmTask extends ObjectDB {
+	@Override
+	public void initAgenda(Agenda agenda) {
+		AppLog.info("DEBUG Agenda: ", getGrant());
+		super.initAgenda(agenda);
+	}
 	private static final long serialVersionUID = 1L;
-	public boolean isUserOnProject(String id) {
-		ObjectDB o =getGrant().getTmpObject("PmRole");
-			synchronized(o){
-				o.getLock();
-				BusinessObjectTool ot =o.getTool();
-				o.setFieldFilter("pmRolPrjId", id);
-				o.setFieldFilter("pmRolUsrId", getGrant().getUserId());
-				o.setFieldFilter("pmRolRole", "USER");
-				try {
-					List<String[]> res = ot.search();
-					if (!res.isEmpty()){
-						return true;
-					}
-				} catch (SearchException e) {
-					AppLog.error(e, getGrant());
+	/**
+	 * return true if current user is assigne on task.
+	 * @return 
+	 */
+	public boolean isUserAssignOn() {
+		
+		ObjectDB o =getGrant().getTmpObject("PmAssignment");
+		synchronized(o){
+			o.getLock();
+			BusinessObjectTool ot =o.getTool();
+			o.setFieldFilter("pmAssPmTaskid", getRowId());
+			o.setFieldFilter("pmAssPmUserid", getGrant().getUserId());
+			try {
+				List<String[]> res = ot.search();
+				if (!res.isEmpty()){
+					return true;
 				}
+					
+			} catch (SearchException e) {
+				AppLog.error(e, getGrant());
 			}
+		}
 		return false;
-
 	}
 	@Override
 	public boolean isListUpsertable() {
 		ObjectDB parent = getParentObject();
-		AppLog.info("DEBUG parent isListUpsertable: "+parent.getName(), getGrant());
-		if(!Tool.isEmpty(parent) && parent.getName().equals("PmVersion") && isUserOnProject(parent.getFieldValue("pmVrsPrjId"))){
-			AppLog.info("DEBUG is isListUpsertable : "+parent.getName(), getGrant());
+		pmRoleTool rt = new pmRoleTool(getGrant());
+		
+		if(!Tool.isEmpty(parent) && parent.getName().equals("PmVersion") && rt.isRoleOnProject("USER",parent.getFieldValue("pmVrsPrjId"))){
+			
 			return true;
 		}
 		return super.isListUpsertable();
@@ -45,23 +57,7 @@ public class PmTask extends ObjectDB {
 	public boolean isReadOnly() {
 		
 		if(!isNew() && getGrant().hasResponsibility("PM_USER_GROUP") && !getGrant().hasResponsibility("PM_MANAGER") && !getGrant().hasResponsibility("PM_SUPERADMIN")){
-			ObjectDB o =getGrant().getTmpObject("PmAssignment");
-			synchronized(o){
-				o.getLock();
-				BusinessObjectTool ot =o.getTool();
-				o.setFieldFilter("pmAssPmTaskid", getRowId());
-				o.setFieldFilter("pmAssPmUserid", getGrant().getUserId());
-				try {
-					List<String[]> res = ot.search();
-					if (res.isEmpty()){
-						return true;
-					}
-					
-				} catch (SearchException e) {
-					AppLog.error(e, getGrant());
-				}
-			}
-			
+			if(!isUserAssignOn()) return true;
 		}else if(!isNew() && getGrant().hasResponsibility("PM_MANAGER") && !getGrant().hasResponsibility("PM_SUPERADMIN")){
 			ObjectDB o =getGrant().getTmpObject("PmProject");
 			synchronized(o){
@@ -103,7 +99,6 @@ public class PmTask extends ObjectDB {
 		return String.format("%04d", number);
 	}
 	
-
 	@Override
 	public void initRefSelect(ObjectDB parent) {
 		
@@ -114,16 +109,31 @@ public class PmTask extends ObjectDB {
 	
 	@Override
 	public void preSearch() {
+		
+		
 		if("bpm_ajax_PmTask".equals(getInstanceName()) && getGrant().hasParameter("NEW_TASK_FILTERS")){
 			HashMap<String, String>  filters=(HashMap<String, String>) getGrant().getObjectParameter("NEW_TASK_FILTERS");
 			setFieldFilter("pmPrjName", filters.get("pmPrjName"));
-			setSearchSpec(getSearchSpec()+" AND NOT t.row_id = "+filters.get("tskID"));
+			getRowIdField().setAdditionalSearchSpec("NOT t.row_id = "+filters.get("tskID"));
+			
+		}else if(isHomeInstance() && getGrant().hasResponsibility("PM_USER_GROUP") && !getGrant().hasResponsibility("PM_MANAGER") && !getGrant().hasResponsibility("PM_SUPERADMIN")){
+			getRowIdField().setAdditionalSearchSpec("EXISTS (SELECT * FROM pm_assignment WHERE pm_ass_pm_taskid = t.row_id AND pm_ass_pm_userid="+getGrant().getUserId()+")");
+		}else if(isHomeInstance() && getGrant().hasResponsibility("PM_MANAGER") && !getGrant().hasResponsibility("PM_SUPERADMIN")){
+			getField("pmVrsPrjId").setAdditionalSearchSpec("EXISTS (SELECT * FROM pm_role WHERE pm_rol_prj_id = t_pmVrsPrjId.row_id AND pm_rol_usr_id="+getGrant().getUserId()+")");
+		}else if (isHomeInstance() && getGrant().hasParameter("PROJECT_ID")){
+			//AppLog.info("DEBUG filter: "+getInstanceName(),getGrant());
+			getRowIdField().setAdditionalSearchSpec("EXISTS (SELECT * FROM pm_assignment WHERE pm_ass_pm_taskid = t.row_id AND pm_ass_pm_userid="+getGrant().getUserId()+")");
+			setFieldFilter("pmVrsPrjId", getGrant().getParameter("PROJECT_ID"));
 		}
 		super.preSearch();
 	}
 	@Override
 	public List<String[]> postSearch(List<String[]> rows) {
-		setSearchSpec(getDefaultSearchSpec());
+		getRowIdField().setAdditionalSearchSpec(null);
+		getField("pmVrsPrjId").setAdditionalSearchSpec(null);
+		if (isHomeInstance()){
+			getField("pmVrsPrjId").resetFilter();
+			getGrant().removeParameter("PROJECT_ID");}
 		return super.postSearch(rows);
 	}
 	@Override
@@ -143,10 +153,8 @@ public class PmTask extends ObjectDB {
 	@Override
 	public List<String> preValidate() {
 		if(getField("pmTskVrsId").hasChanged()){
-			AppLog.info("DEBUG : version has changed", getGrant());
+			
 			setFieldValue("pmTskNumber",0);
-		}else{
-			AppLog.info("DEBUG : version has not changed", getGrant());
 		}
 		return super.preValidate();
 	}
