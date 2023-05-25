@@ -35,7 +35,7 @@ public class PmUser extends SimpleUser {
 		} catch (ValidateException | SaveException e) {
 			e.printStackTrace();
 		}
-		ObjectDB tmpResp = this.getGrant().getTmpObject("Responsability");
+		ObjectDB tmpResp = this.getGrant().getTmpObject("PmResponsability");
 		synchronized(tmpResp){
 			tmpResp.getLock();
 			BusinessObjectTool ot = tmpResp.getTool();
@@ -85,10 +85,10 @@ public class PmUser extends SimpleUser {
 		Function of action PM_USER_GROUP
 	*/ 
 	
-	public List<String> pmUserGroup(){
+	/* public List<String> pmUserGroup(){
 		List<String> msgs = new ArrayList<>();
 		String[] sltGroup= getAction("PM_USER_GROUP").getConfirmField(getGrant().getLang(), "pmUserGroup").getValue().split(":");
-		ObjectDB tmpResp = this.getGrant().getTmpObject("Responsability");
+		ObjectDB tmpResp = this.getGrant().getTmpObject("PmResponsability");
 		
 		synchronized(tmpResp){
 			BusinessObjectTool ot = tmpResp.getTool();
@@ -120,13 +120,13 @@ public class PmUser extends SimpleUser {
 		}
 				
 		return msgs;
-	}
+	}*/
 	/*
 		Function for calculated expression of field pmUsrCurrentGroup in PmUser
 	*/ 
-	public String pmUsrCurentGroup() {
+	/*public String pmUsrCurentGroup() {
 		String groupDisplay = "No group";
-		ObjectDB tmpResp = this.getGrant().getTmpObject("Responsability");
+		ObjectDB tmpResp = this.getGrant().getTmpObject("PmResponsability");
 		
 		synchronized(tmpResp){
 			tmpResp.getLock();
@@ -160,5 +160,5 @@ public class PmUser extends SimpleUser {
 		}
 		return  groupDisplay;
 		
-	}
+	} */
 }

@@ -222,9 +222,6 @@ components:
     PmDocument:
       type: object
       properties:
-        pmDocTskId__pmTskVrsId__pmVrsVersion:
-          description: Version
-          type: string
         pmDocPrjId__pmPrjName:
           description: Project Name
           type: string
@@ -240,20 +237,36 @@ components:
         pmDocTskId__pmTskTitle:
           description: Task Title
           type: string
+        pmDocType:
+          description: Type
+          type: string
+          enum:
+          - REQ
+          - DOC
+          - SPEC
+        pmDocTskId__pmTskVrsId__pmVrsPrjId:
+          description: Task Release Project
+          type: string
+        pmDocTskId__pmTskNumber:
+          description: Task Number
+          type: string
+        pmDocTskId__pmTskVrsId__pmVrsVersion:
+          description: Version
+          type: string
+        pmDocStatus:
+          description: Status
+          type: string
+          enum:
+          - WFV
+          - V
         pmDocTitle:
           description: Title
           type: string
         pmDocTskId__pmTskVrsId:
           description: Task Release
           type: string
-        pmDocTskId__pmTskVrsId__pmVrsPrjId:
-          description: Task Release Project
-          type: string
         row_id:
           description: Unique technical row ID
-          type: string
-        pmDocTskId__pmTskNumber:
-          description: Task Number
           type: string
         pmDocPrjId:
           description: Project
@@ -1426,6 +1439,25 @@ paths:
         in: query
         name: pmDocPrjId__pmPrjName
         description: Search filter for Project Name
+        required: false
+      - schema:
+          type: string
+          enum:
+          - WFV
+          - V
+        in: query
+        name: pmDocStatus
+        description: Search filter for Status
+        required: false
+      - schema:
+          type: string
+          enum:
+          - REQ
+          - DOC
+          - SPEC
+        in: query
+        name: pmDocType
+        description: Search filter for Type
         required: false
       tags:
       - PmDocument
@@ -5765,7 +5797,7 @@ tags:
 - name: PmAssignmentPmTimeSheetAssign
   description: Assignement timesheet
 - name: PmDocument
-  description: Document
+  description: Deliverable
 - name: PmGroup
   description: Group
 - name: PmLabel

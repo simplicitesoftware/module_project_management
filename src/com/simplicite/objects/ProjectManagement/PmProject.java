@@ -7,9 +7,13 @@ import java.util.List;
 
 import org.json.*;
 
+import com.google.api.services.sheets.v4.model.BubbleChartSpec;
 import com.simplicite.util.*;
 import com.simplicite.util.annotations.BusinessObject;
+import com.simplicite.util.exceptions.CreateException;
+import com.simplicite.util.exceptions.GetException;
 import com.simplicite.util.exceptions.SearchException;
+import com.simplicite.util.exceptions.ValidateException;
 import com.simplicite.util.tools.*;
 
 /**
@@ -17,6 +21,26 @@ import com.simplicite.util.tools.*;
  */
 public class PmProject extends ObjectDB {
 	private static final long serialVersionUID = 1L;
+	@Override
+	public String postCreate() {
+		ObjectDB o = getGrant().getTmpObject("PmDocument");
+		String url ="";
+		synchronized(o){
+			o.getLock();
+			BusinessObjectTool ot = o.getTool();
+			try {
+				ot.getForCreate();
+				o.setFieldValue("pmDocTitle", "Fiche d’expression des besoins");
+				o.setFieldValue("pmDocType", "REQ");
+				o.setFieldValue("pmDocPrjId", getRowId());
+				ot.validateAndCreate();
+				url=o.getDirectURL(true);
+			} catch (GetException|ValidateException|CreateException e) {
+				AppLog.error(e, getGrant());
+			}
+		}
+		return super.postCreate();
+	}
 	@Override
 	public boolean isReadOnly() {
 		

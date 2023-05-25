@@ -34,6 +34,8 @@ Module de gestion de projet et de gestion de tâche ou de tickets.
 |--------------------------------------------------------------|------------------------------------------|----------|-----------|----------|----------------------------------------------------------------------------------|
 | `rsp_login_id` link to **`PmUser`**                          | id                                       | yes*     | yes       |          | -                                                                                |
 | `rsp_group_id` link to **`PmGroup`**                         | id                                       | yes*     | yes       |          | -                                                                                |
+| `row_module_id` link to **`Module`**                         | id                                       | yes      | yes       |          | Module                                                                           |
+| _Ref. `row_module_id.mdl_name`_                              | _regexp(100)_                            |          |           |          | _Module name_                                                                    |
 
 `PmTaskHistoric` business object definition
 -------------------------------------------
@@ -266,6 +268,18 @@ Useful documents for a task or a project
 | _Ref. `pmVrsPrjId.pmPrjName`_                                | _char(100)_                              |          |           |          | -                                                                                |
 | `pmDocPrjId` link to **`PmProject`**                         | id                                       |          | yes       |          | -                                                                                |
 | _Ref. `pmDocPrjId.pmPrjName`_                                | _char(100)_                              |          |           |          | -                                                                                |
+| `pmDocStatus`                                                | enum(100) using `PM_DOC_STATUS` list     | yes      | yes       |          | -                                                                                |
+| `pmDocType`                                                  | enum(100) using `PM_DOC_TYPE` list       | yes      | yes       |          | -                                                                                |
+
+### Lists
+
+* `PM_DOC_STATUS`
+    - `WFV` Waiting for validation
+    - `V` Valid
+* `PM_DOC_TYPE`
+    - `REQ` Required
+    - `DOC` Document
+    - `SPEC` Specification
 
 `PmRole` business object definition
 -----------------------------------
@@ -433,6 +447,12 @@ Labeling of tasks
 
 `PmProjectCalendar` external object definition
 ----------------------------------------------
+
+
+
+
+`PmProjectGantt` external object definition
+-------------------------------------------
 
 
 
