@@ -12,15 +12,11 @@ import com.simplicite.util.tools.*;
  * Business object PmTask
  */
 public class PmTask extends ObjectDB {
-	@Override
-	public void initAgenda(Agenda agenda) {
-		AppLog.info("DEBUG Agenda: ", getGrant());
-		super.initAgenda(agenda);
-	}
+	
 	private static final long serialVersionUID = 1L;
 	/**
-	 * return true if current user is assigne on task.
-	 * @return 
+	 * Check if user is assign on task
+	 * @return true if current user is assign on task.
 	 */
 	public boolean isUserAssignOn() {
 		
@@ -44,6 +40,7 @@ public class PmTask extends ObjectDB {
 	}
 	@Override
 	public boolean isListUpsertable() {
+		//Allow upsert in listpanel in version if user is user on project
 		ObjectDB parent = getParentObject();
 		pmRoleTool rt = new pmRoleTool(getGrant());
 		
@@ -55,7 +52,7 @@ public class PmTask extends ObjectDB {
 	}
 	@Override
 	public boolean isReadOnly() {
-		
+		// set some task readonly for specificprofile
 		if(!isNew() && getGrant().hasResponsibility("PM_USER_GROUP") && !getGrant().hasResponsibility("PM_MANAGER") && !getGrant().hasResponsibility("PM_SUPERADMIN")){
 			if(!isUserAssignOn()) return true;
 		}else if(!isNew() && getGrant().hasResponsibility("PM_MANAGER") && !getGrant().hasResponsibility("PM_SUPERADMIN")){
@@ -68,13 +65,19 @@ public class PmTask extends ObjectDB {
 		}
 		return super.isReadOnly();
 	}
-	/*
-		Function for calculat Number of task 
-		(return the first none used number)
-	*/ 
+
+	/**
+	 * Check if string is an int
+	 * @param str string to check
+	 * @return true if str is an int
+	 */
 	public boolean isInt(String str){
         return str.matches("[-,+]?\\d+");
     }
+	/**
+	 * calculate Number of task 
+	 * @return the first none used number
+	 */
 	public String autoGenNumber(){
 
 		
@@ -101,25 +104,31 @@ public class PmTask extends ObjectDB {
 	
 	@Override
 	public void initRefSelect(ObjectDB parent) {
-		
-		if ("PmArrayOfTask".equals(parent.getName()) && (!Tool.isEmpty(parent.getFieldValue("pmAotPrvTskId"))||!Tool.isEmpty(parent.getFieldValue("pmAotNextTskId"))))
+		// set filter for PmArrayOfTask. display only task of the same project in search.
+		if ("PmArrayOfTask".equals(parent.getName()) && (!Tool.isEmpty(parent.getFieldValue("pmAotPrvTskId"))||!Tool.isEmpty(parent.getFieldValue("pmAotNextTskId")))){
 			setFieldFilter("pmVrsPrjId", (Tool.isEmpty(parent.getFieldValue("pmAotPrvTskId"))?parent.getFieldValue("pmAotNextTskId.pmTskVrsId.pmVrsPrjId"):parent.getFieldValue("pmAotPrvTskId.pmTskVrsId.pmVrsPrjId")));
-		else resetFilters(); 
+	}else resetFilters(); 
 	}
 	
 	@Override
 	public void preSearch() {
-		if("bpm_ajax_PmTask".equals(getInstanceName()) && getGrant().hasParameter("NEW_TASK_FILTERS")){
+		
+		if(isProcessInstance() && getGrant().hasParameter("NEW_TASK_FILTERS")){
+			// if is process create task and project have been selected display only the task of this project
 			HashMap<String, String>  filters=(HashMap<String, String>) getGrant().getObjectParameter("NEW_TASK_FILTERS");
 			setFieldFilter("pmPrjName", filters.get("pmPrjName"));
-			getRowIdField().setAdditionalSearchSpec("NOT t.row_id = "+filters.get("tskID"));
+			//don't display the task creating
+			setFieldFilter("row_id", "!= '"+filters.get("tskID")+"'"); 
+			
 			
 		}else if(isHomeInstance() && getGrant().hasResponsibility("PM_USER_GROUP") && !getGrant().hasResponsibility("PM_MANAGER") && !getGrant().hasResponsibility("PM_SUPERADMIN")){
+			// if user is only user filter the home page display only task assign to the user
 			getRowIdField().setAdditionalSearchSpec("EXISTS (SELECT * FROM pm_assignment WHERE pm_ass_pm_taskid = t.row_id AND pm_ass_pm_userid="+getGrant().getUserId()+")");
 		}else if(isHomeInstance() && getGrant().hasResponsibility("PM_MANAGER") && !getGrant().hasResponsibility("PM_SUPERADMIN")){
+			// if user is manager and not admin display only task of project manage by user
 			getField("pmVrsPrjId").setAdditionalSearchSpec("EXISTS (SELECT * FROM pm_role WHERE pm_rol_prj_id = t_pmVrsPrjId.row_id AND pm_rol_usr_id="+getGrant().getUserId()+")");
 		}else if (isHomeInstance() && getGrant().hasParameter("PROJECT_ID")){
-			//AppLog.info("DEBUG filter: "+getInstanceName(),getGrant());
+			// if is view in project display task assign to user
 			getRowIdField().setAdditionalSearchSpec("EXISTS (SELECT * FROM pm_assignment WHERE pm_ass_pm_taskid = t.row_id AND pm_ass_pm_userid="+getGrant().getUserId()+")");
 			setFieldFilter("pmVrsPrjId", getGrant().getParameter("PROJECT_ID"));
 		}
@@ -127,6 +136,7 @@ public class PmTask extends ObjectDB {
 	}
 	@Override
 	public List<String[]> postSearch(List<String[]> rows) {
+		//reset search spec and filters
 		getRowIdField().setAdditionalSearchSpec(null);
 		getField("pmVrsPrjId").setAdditionalSearchSpec(null);
 		if (isHomeInstance()){

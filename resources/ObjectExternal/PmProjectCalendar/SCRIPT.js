@@ -1,17 +1,25 @@
 var PmProjectCalendar = (function() {
 	function render(params,events=[]) {
-		$('#pmprojectcalendar').append('Hello world!');
+		
 		const style = getComputedStyle(document.body);
-		const orangebg = style.getPropertyValue('--orangebg');
-		console.log("debug: "+orangebg);
 		var calendarEl = document.getElementById('calendar');
 		var calendar = new FullCalendar.Calendar(calendarEl, {
 			initialView: 'dayGridMonth',
 			headerToolbar: { end: 'dayGridMonth,timeGridWeek' },
 			events: events
 		});
-		console.log("render calendar");
 		calendar.render();
+		var div=$("#pmprojectcalendar").parents(".tab-pane");
+		var observer = new MutationObserver(function (event) {
+			if(div.hasClass( "active" )) calendar.render();
+		  })
+		  
+		  observer.observe(div.get(0), {
+			attributes: true, 
+			attributeFilter: ['class'],
+			childList: false, 
+			characterData: false
+		  })
 	}
 
 	return { render: render };

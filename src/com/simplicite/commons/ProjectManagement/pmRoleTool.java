@@ -16,6 +16,12 @@ public class pmRoleTool implements java.io.Serializable {
 	public pmRoleTool(Grant grant){
 		g=grant;
 	}
+	/**
+	 * check if user has a specific role on specific project
+	 * @param role role to check
+	 * @param id id of project
+	 * @return true if user has role
+	 */
 	public boolean isRoleOnProject(String role,String id) {
 		ObjectDB o =g.getTmpObject("PmRole");
 			synchronized(o){

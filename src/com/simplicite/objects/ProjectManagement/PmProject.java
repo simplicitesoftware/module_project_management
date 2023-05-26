@@ -8,6 +8,7 @@ import java.util.List;
 import org.json.*;
 
 import com.google.api.services.sheets.v4.model.BubbleChartSpec;
+import com.simplicite.commons.ProjectManagement.pmRoleTool;
 import com.simplicite.util.*;
 import com.simplicite.util.annotations.BusinessObject;
 import com.simplicite.util.exceptions.CreateException;
@@ -23,6 +24,7 @@ public class PmProject extends ObjectDB {
 	private static final long serialVersionUID = 1L;
 	@Override
 	public String postCreate() {
+		// exemple of creation auto of a required doc
 		ObjectDB o = getGrant().getTmpObject("PmDocument");
 		String url ="";
 		synchronized(o){
@@ -43,37 +45,23 @@ public class PmProject extends ObjectDB {
 	}
 	@Override
 	public boolean isReadOnly() {
-		
+		// set project readonly if manager is not pm_superadmin  and is not Manager on project
 		if(getGrant().hasResponsibility("PM_MANAGER") && !getGrant().hasResponsibility("PM_SUPERADMIN")){
-			ObjectDB o =getGrant().getTmpObject("PmRole");
-			synchronized(o){
-				o.getLock();
-				BusinessObjectTool ot =o.getTool();
-				o.setFieldFilter("pmRolPrjId", getRowId());
-				o.setFieldFilter("pmRolUsrId", getGrant().getUserId());
-				o.setFieldFilter("pmRolRole", "MANAGER");
-				try {
-					List<String[]> res = ot.search();
-					if (res.isEmpty()){
-						return true;
-					}
-					
-				} catch (SearchException e) {
-					AppLog.error(e, getGrant());
-				}
-			}
-				
-			
+			pmRoleTool rt = new pmRoleTool(getGrant());
+			if(!rt.isRoleOnProject("MANAGER",getRowId()))
+				return true;
 		}
-		return super.isReadOnly();
+		return super.isReadOnly(); 
 	}
 	@Override
 	public void initUpdate() {
 		getGrant().setParameter("PROJECT_ID", getRowId());
 		super.initUpdate();
 	}
-	/*
-		fonction for publication in PmProject
+	
+	/**
+	 * Publication of PmProject
+	 * @return html page
 	 */
 	public String pubHtml(){
 		LocalDate dateObj = LocalDate.now();

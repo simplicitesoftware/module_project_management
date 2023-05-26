@@ -14,11 +14,11 @@ public class PmTimesheetRecapExt extends ExternalObject { // or com.simplicite.w
 
 	/**
 	 * Display method (only relevant if extending the base ExternalObject)
+	 * display resume in time sheet
 	 * @param params Request parameters
 	 */
 	@Override
 	public Object display(Parameters params) {
-		AppLog.info("DEBUG in dysplay PmTimesheetRecapExt", getGrant());
 		// ctn is the "div.extern-content" to fill on UI
 		addMustache();
 		return javascript(getName() + ".render(ctn);");

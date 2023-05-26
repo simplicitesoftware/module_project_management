@@ -38,30 +38,21 @@ public class PmVersion extends ObjectDB {
 		HashMap<String, String> filters = new HashMap<>();
 		filters.put(fieldPrjId, getFieldValue(fieldPrjId));
 		filters.put(fieldStatus, "ALPHA;BETA");
-		filters.put("row_id", getRowId());
+		filters.put("row_id", getRowId());// use for deffer task
 		getGrant().setParameter("PARENT_FILTERS", filters);
 	}
 	@Override
-	public void preSearch(){	
-		if(getInstanceName().equals("ref_ajax_PmVersion") && getGrant().hasParameter("PARENT_FILTERS")){
+	public void preSearch(){
+		if(isRefInstance() && getGrant().hasParameter("PARENT_FILTERS")){
 			HashMap<String, String> filters = (HashMap<String, String>) getGrant().getObjectParameter("PARENT_FILTERS");
 			String vrsRowId=filters.get("row_id");
-			if(!Tool.isEmpty(vrsRowId)){
-				getRowIdField().setAdditionalSearchSpec(" NOT t.row_id="+vrsRowId);
-				getGrant().setParameter("RESET_SEARCH_SPEC", true);
+			if(!Tool.isEmpty(vrsRowId)){//dont show curent version when defer task
+				setFieldFilter("row_id", "!= '"+vrsRowId+"'");
 			}			
 			setFieldFilter(fieldPrjId, filters.get(fieldPrjId));
 			setFieldFilter(fieldStatus, filters.get(fieldStatus));
 			getGrant().removeParameter("PARENT_FILTERS");
 		}
-	}
-	@Override
-	public List<String[]> postSearch(List<String[]> rows) {
-		if(getInstanceName().equals("ref_ajax_PmVersion") && getGrant().hasParameter("RESET_SEARCH_SPEC")){
-			getRowIdField().setAdditionalSearchSpec(null);
-			getGrant().removeParameter("RESET_SEARCH_SPEC");
-		}
-		return super.postSearch(rows);
 	}
 	@Override
 	public List<String> postValidate() {

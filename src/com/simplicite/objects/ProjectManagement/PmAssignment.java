@@ -13,6 +13,7 @@ public class PmAssignment extends ObjectDB {
 	@Override
 	public void initUpdate() {
 		if(isProcessInstance()){
+			//specific init for process
 			for(ObjectField field :getFields()){
 				if (Tool.isEmpty(field.getRefObjectName()) && !field.getName().equals("pmAssPmTaskid")||!Tool.isEmpty(field.getRefObjectName()) && field.getRefObjectName().equals("PmUser")){
 					field.setValue("");
@@ -48,10 +49,11 @@ public class PmAssignment extends ObjectDB {
 		}
 		return super.preDelete();
 	}
-	/* 
-		Fonctions for update pmUsrNbTask of PmUser
+	/**
+	 * Fonction for increase pmUsrNbTask of PmUser
+	 * invoke the increase methode of object user
 	 */
-	public void increaseUserNbTask(){// invoke the increase methode of object user
+	public void increaseUserNbTask(){
 		ObjectDB tmpUser = this.getGrant().getTmpObject("PmUser");
         synchronized(tmpUser){
 			tmpUser.getLock();
@@ -66,7 +68,11 @@ public class PmAssignment extends ObjectDB {
             tmpUser.save();
         }
 	}
-	public void decreaseUserNbTask(){// invoke the decrease methode of object user
+	/**
+	 * Fonction for decrease pmUsrNbTask of PmUser
+	 * invoke the decrease methode of object user
+	 */
+	public void decreaseUserNbTask(){
 		ObjectDB tmpUser = this.getGrant().getTmpObject("PmUser");
         synchronized(tmpUser){
 			tmpUser.getLock();
@@ -81,16 +87,6 @@ public class PmAssignment extends ObjectDB {
             tmpUser.save();
         }
 	}
-	/* @Override
-	public List<String[]> postSearch(List<String[]> rows) {
-		//AppLog.info("DEBUG filter: "+getFieldFilter("pmAssPmUserid"), getGrant());
-		if(!"%".equals(getFieldFilter("pmAssPmUserid"))){
-			getField("pmAssPmUserid").resetFilter();
-			//AppLog.info("DEBUG resetfilter: "+getFieldFilter("pmAssPmUserid")+ " instance: "+getInstanceName(), getGrant());
-
-		}
-		return super.postSearch(rows);
-	} */
 	
 
 	

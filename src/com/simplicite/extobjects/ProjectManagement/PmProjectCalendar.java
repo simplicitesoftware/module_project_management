@@ -17,9 +17,10 @@ public class PmProjectCalendar extends ExternalObject { // or com.simplicite.web
 	                                                 // etc.
 	private static final long serialVersionUID = 1L;
 
+	
 	/**
-	 * Display method (only relevant if extending the base ExternalObject)
-	 * @param params Request parameters
+	 * @param color bootstrap bg color
+	 * @return rgb code of color
 	 */
 	public String color(String color) {
 		switch(color){
@@ -43,10 +44,14 @@ public class PmProjectCalendar extends ExternalObject { // or com.simplicite.web
 		}
 		
 	}
+	/**
+	 * Display method (only relevant if extending the base ExternalObject)
+	 * @param params Request parameters
+	 */
 	@Override
 	public Object display(Parameters params) {
+		// Gen the json of events. 
 		try {
-			// ctn is the "div.extern-content" to fill on UI
 			JSONArray events= new JSONArray();
 			ObjectDB o = getGrant().getTmpObject("PmTask");
 			synchronized(o){
@@ -58,10 +63,9 @@ public class PmProjectCalendar extends ExternalObject { // or com.simplicite.web
 				int statusIndex = o.getStatusIndex();
 				BusinessObjectTool ot = o.getTool();
 				o.setFieldFilter("pmVrsPrjId", params.getRowId(null));
+				// All task events
 				for(String[] row : o.search()){
 					ot.get(row[0]);
-					AppLog.info("DEBUG: "+row[titleIndex]+" url: "+o.getDirectURL(true) , getGrant());
-
 					events.put(new JSONObject()
 						.put("id", row[idIndex])
 						.put("title", row[titleIndex])
@@ -75,16 +79,16 @@ public class PmProjectCalendar extends ExternalObject { // or com.simplicite.web
 				}
 			}
 			o = getGrant().getTmpObject("PmVersion");
+			//all version events
 			synchronized(o){
 				o.getLock();
 				o.setFieldFilter("pmVrsPrjId", params.getRowId(null));
 				BusinessObjectTool ot = o.getTool();
 				for(String[] row : o.search()){
-					AppLog.info("Debug: "+row[o.getFieldIndex("pmVrsPublicationDate")], getGrant());
 					ot.get(row[0]);
 					String bgcolor = o.getStatus().equals("PUBLISHED")?"lightseagreen":"#b4a7d6";
 					events.put(new JSONObject()
-						.put("id", row[o.getRowIdFieldIndex()])
+						.put("id", "V#"+row[o.getRowIdFieldIndex()])
 						.put("title", row[o.getFieldIndex("pmVrsName")])
 						.put("start",row[o.getFieldIndex("pmVrsPublicationDate")])
 						.put("extendedProps",new JSONObject()).put("object", "PmVersion")
@@ -95,7 +99,9 @@ public class PmProjectCalendar extends ExternalObject { // or com.simplicite.web
 				}
 				
 			}
+			// add all js and css for fullCalendar in current user lang
 			addFullCalendar(getGrant().getLang());
+			// ctn is the "div.extern-content" to fill on UI
 			return javascript(getName() + ".render(ctn,"+events.toString()+");");
 		} catch (Exception e) {
 			AppLog.error(null, e, getGrant());

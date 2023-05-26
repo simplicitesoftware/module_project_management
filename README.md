@@ -239,14 +239,27 @@ dependency between tasks
 | _Ref. `pmAotPrvTskId.pmTskNumber`_                           | _char(100)_                              |          |           |          | -                                                                                |
 | _Ref. `pmAotPrvTskId.pmTskVrsId`_                            | _id_                                     |          |           |          | -                                                                                |
 | _Ref. `pmTskVrsId.pmVrsVersion`_                             | _char(100)_                              |          |           |          | -                                                                                |
+| _Ref. `pmAotPrvTskId.pmTskStatus`_                           | _enum(100) using `PM_TSK_STATUT` list_   |          |           |          | -                                                                                |
 | _Ref. `pmTskVrsId.pmVrsPrjId`_                               | _id_                                     |          |           |          | -                                                                                |
 | _Ref. `pmVrsPrjId.pmPrjName`_                                | _char(100)_                              |          |           |          | -                                                                                |
 | `pmAotNextTskId` link to **`PmTask`**                        | id                                       | yes*     | yes       |          | -                                                                                |
 | _Ref. `pmAotNextTskId.pmTskNumber`_                          | _char(100)_                              |          |           |          | -                                                                                |
 | _Ref. `pmAotNextTskId.pmTskVrsId`_                           | _id_                                     |          |           |          | -                                                                                |
 | _Ref. `pmTskVrsId.pmVrsVersion`_                             | _char(100)_                              |          |           |          | -                                                                                |
+| _Ref. `pmAotNextTskId.pmTskStatus`_                          | _enum(100) using `PM_TSK_STATUT` list_   |          |           |          | -                                                                                |
 | _Ref. `pmTskVrsId.pmVrsPrjId`_                               | _id_                                     |          |           |          | -                                                                                |
 | _Ref. `pmVrsPrjId.pmPrjName`_                                | _char(100)_                              |          |           |          | -                                                                                |
+
+### Lists
+
+* `PM_TSK_STATUT`
+    - `DRAFT` Draft
+    - `TODO` To do
+    - `DOING` Doing
+    - `DONE` Done
+    - `CLOSED` Closed
+    - `CANCEL` Cancel
+    - `REJECTED` Rejected
 
 `PmDocument` business object definition
 ---------------------------------------

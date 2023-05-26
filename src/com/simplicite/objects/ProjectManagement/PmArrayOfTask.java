@@ -14,6 +14,7 @@ public class PmArrayOfTask extends ObjectDB {
 	@Override
 	public List<String> postValidate() {
 		List<String> msgs = new ArrayList<>();
+		//Display error if tasks are not in same project
 		if (!getFieldValue("pmAotNextTskId.pmTskVrsId.pmVrsPrjId").equals(getFieldValue("pmAotPrvTskId.pmTskVrsId.pmVrsPrjId")))
 			msgs.add(Message.formatInfo("PM_ERR_AOT_DIFF_PRJ", null, "pmAotNextTskId.pmTskVrsId.pmVrsPrjId"));
 		return msgs;

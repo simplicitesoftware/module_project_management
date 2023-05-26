@@ -180,6 +180,17 @@ components:
     PmArrayOfTask:
       type: object
       properties:
+        pmAotNextTskId__pmTskStatus:
+          description: Next task Status
+          type: string
+          enum:
+          - DRAFT
+          - TODO
+          - DOING
+          - DONE
+          - CLOSED
+          - CANCEL
+          - REJECTED
         pmAotNextTskId__pmTskVrsId__pmVrsPrjId:
           description: Next task Release Project
           type: string
@@ -189,6 +200,17 @@ components:
         pmAotNextTskId__pmTskVrsId__pmVrsPrjId__pmPrjName:
           description: Next task Project Name
           type: string
+        pmAotPrvTskId__pmTskStatus:
+          description: Previous task Status
+          type: string
+          enum:
+          - DRAFT
+          - TODO
+          - DOING
+          - DONE
+          - CLOSED
+          - CANCEL
+          - REJECTED
         pmAotNextTskId:
           description: Next task
           type: string
@@ -5040,6 +5062,20 @@ paths:
         required: false
       - schema:
           type: string
+          enum:
+          - DRAFT
+          - TODO
+          - DOING
+          - DONE
+          - CLOSED
+          - CANCEL
+          - REJECTED
+        in: query
+        name: pmAotPrvTskId__pmTskStatus
+        description: Search filter for Previous task Status
+        required: false
+      - schema:
+          type: string
         in: query
         name: pmAotPrvTskId__pmTskVrsId__pmVrsVersion
         description: Search filter for Previous task version
@@ -5073,6 +5109,20 @@ paths:
         in: query
         name: pmAotNextTskId__pmTskVrsId
         description: Search filter for Next task Release
+        required: false
+      - schema:
+          type: string
+          enum:
+          - DRAFT
+          - TODO
+          - DOING
+          - DONE
+          - CLOSED
+          - CANCEL
+          - REJECTED
+        in: query
+        name: pmAotNextTskId__pmTskStatus
+        description: Search filter for Next task Status
         required: false
       - schema:
           type: string
