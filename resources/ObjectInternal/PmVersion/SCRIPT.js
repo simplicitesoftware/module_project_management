@@ -9,7 +9,14 @@
 			const p = o.locals.ui;
 			if (p && o.isMainInstance()) {
 				p.form.onload = function(ctn, obj, params) {
-					//...
+					if(!o.isNew()){
+						$('#chart').html('<div id="chart-container"></div>');
+						 $ui.displayCrosstab($("#chart-container"), "PmTask", "PmPrjTask",{ filters: {
+							'pmTskVrsId.pmVrsVersion' :o.getFieldValue("pmVrsVersion"),
+							'pmTskStatus':["DRAFT","TODO", "DOING", "DONE" ]
+						}, options: {ztable: false, zcontrol: false , zgraph: 'pie'} });
+						
+					}
 				};
 			}
 			//...

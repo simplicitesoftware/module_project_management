@@ -4,9 +4,11 @@ import java.util.*;
 
 import javax.validation.constraints.NotEmpty;
 
+import org.json.JSONObject;
+
 import com.simplicite.commons.ProjectManagement.pmRoleTool;
 import com.simplicite.util.*;
-import com.simplicite.util.exceptions.SearchException;
+import com.simplicite.util.exceptions.*;
 import com.simplicite.util.tools.BusinessObjectTool;
 
 import java.time.LocalDate;
@@ -40,7 +42,9 @@ public class PmVersion extends ObjectDB {
 		filters.put(fieldStatus, "ALPHA;BETA");
 		filters.put("row_id", getRowId());// use for deffer task
 		getGrant().setParameter("PARENT_FILTERS", filters);
+		getGrant().setParameter("VERSION_ID", getRowId());
 	}
+	
 	@Override
 	public void preSearch(){
 		if(isRefInstance() && getGrant().hasParameter("PARENT_FILTERS")){
@@ -153,6 +157,36 @@ public class PmVersion extends ObjectDB {
 		
 		
 		return msg;
+	}
+
+	/**
+	 * For action PM_UPDATE_GANTT use in project gantt view
+	 * @param params {tsk: <JSON of version to update {vrs_id: {end:<date>},...}>}
+	 *  @return list of message throw by get validate and save method.
+	 */
+	public List<String> actionUpdateGantt(Map<String, String> params)  {
+		List<String> msgs = new ArrayList<>();
+		JSONObject tsks = new JSONObject(params.get("tsk").toString());
+		BusinessObjectTool ot = this.getTool();
+		try {
+			for (Iterator iterator = tsks.keys(); iterator.hasNext();) {
+			String rowid = iterator.next().toString();
+			JSONObject data= tsks.getJSONObject(rowid);
+			synchronized(this){
+				getLock();
+				
+					ot.getForUpdate(rowid);
+				
+				if(data.has("end"))
+					setFieldValue("pmVrsPublicationDate", data.get("end"));
+				ot.validateAndSave();
+				
+			}
+		}
+		} catch (GetException | ValidateException | SaveException e) {
+			msgs.addAll(Arrays.asList(e.getMessages(getGrant())));
+		}
+		return msgs;
 	}
 	
 	

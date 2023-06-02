@@ -160,6 +160,7 @@ Project version
 ### Custom actions
 
 * `PM_DEFER_TASK`: 
+* `PM_UPDATE_GANTT`: 
 
 `PmTask` business object definition
 -----------------------------------
@@ -195,6 +196,7 @@ Tasks of project
 | _Ref. `pmTskVrsId.pmVrsPublicationDate`_                     | _date_                                   |          |           |          | -                                                                                |
 | `pmTskCompletion`                                            | int(100)                                 | yes      | yes       |          | -                                                                                |
 | `pmTskType`                                                  | enum(100) using `PM_TSK_TYPE` list       | yes      | yes       |          | -                                                                                |
+| `pmTskLastCron`                                              | datetime                                 |          |           |          | -                                                                                |
 
 ### Lists
 
@@ -225,6 +227,8 @@ Tasks of project
 
 * `PM_ASSIGN`: 
 * `PM_TASK_MSG_DELETION`: 
+* `PM_TASK_NOTIF`: 
+* `PM_UPDATE_GANTT`: 
 
 `PmArrayOfTask` business object definition
 ------------------------------------------

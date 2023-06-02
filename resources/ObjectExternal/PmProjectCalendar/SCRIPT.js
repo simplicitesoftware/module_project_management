@@ -1,11 +1,14 @@
 var PmProjectCalendar = (function() {
-	function render(params,events=[]) {
-		
+	function render(params,events=[],legend="") {
+		console.log(legend);
+		$("#legend").html(legend)
 		const style = getComputedStyle(document.body);
 		var calendarEl = document.getElementById('calendar');
 		var calendar = new FullCalendar.Calendar(calendarEl, {
 			initialView: 'dayGridMonth',
-			headerToolbar: { end: 'dayGridMonth,timeGridWeek' },
+			headerToolbar: { end: 'dayGridMonth',
+							start: 'today prev,next'
+			},
 			events: events
 		});
 		calendar.render();

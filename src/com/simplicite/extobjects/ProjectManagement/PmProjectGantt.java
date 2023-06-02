@@ -1,5 +1,7 @@
 package com.simplicite.extobjects.ProjectManagement;
 
+import static org.mockito.ArgumentMatchers.contains;
+
 import java.util.*;
 
 import org.json.JSONArray;
@@ -44,7 +46,11 @@ public class PmProjectGantt extends ExternalObject { // or com.simplicite.webapp
 						.put("end", oV.getFieldValue("pmVrsPublicationDate"))
 						.put("progress", oV.getFieldValue("pmVrsCompletion"))
 						.put("dependencies", "")
-						.put("custom_popup_html", "null")
+						.put("url",oV.getDirectURL(true))
+						.put("allow_progress_update",false)
+						.put("allow_dragging",Arrays.asList("ALPHA","BETA").contains(oV.getStatus()))
+						.put("custom_class","bar_"+oV.getStatusField().getStyle(oV, rowV[oV.getStatusIndex()])+" bar_vrs")
+						
 					); 
 					ObjectDB o = getGrant().getTmpObject("PmTask");
 					synchronized(o){
@@ -75,6 +81,7 @@ public class PmProjectGantt extends ExternalObject { // or com.simplicite.webapp
 									dep.add(rowDep[oDep.getFieldIndex("pmAotPrvTskId")]);
 								}
 								ot.get(row[idIndex]);
+								
 								tasks.put(new JSONObject()
 									.put("id", row[idIndex])
 									.put("name", row[titleIndex])
@@ -82,8 +89,11 @@ public class PmProjectGantt extends ExternalObject { // or com.simplicite.webapp
 									.put("end", row[endIndex])
 									.put("progress", row[progressIndex])
 									.put("dependencies", String.join(", ", dep))
-									.put("custom_popup_html", "null")
-								);
+									.put("url",o.getDirectURL(true))
+									.put("allow_progress_update",Arrays.asList("TODO","DOING").contains(o.getStatus()))
+									.put("allow_dragging",Arrays.asList("TODO","DOING","DRAFT").contains(o.getStatus()))
+									.put("custom_class","bar_"+o.getStatusField().getStyle(o, row[o.getStatusIndex()]))
+									);
 							}
 							
 						}
@@ -97,4 +107,6 @@ public class PmProjectGantt extends ExternalObject { // or com.simplicite.webapp
 			return e.getMessage();
 		}
 	}
+	
+	
 }

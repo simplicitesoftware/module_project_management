@@ -19,4 +19,29 @@ public class PmArrayOfTask extends ObjectDB {
 			msgs.add(Message.formatInfo("PM_ERR_AOT_DIFF_PRJ", null, "pmAotNextTskId.pmTskVrsId.pmVrsPrjId"));
 		return msgs;
 	}
+	@Override
+	public String getUserKeyLabel(String[] row) {
+		if(isTreeviewInstance()){
+			ObjectDB o = getGrant().getTmpObject("PmTask");
+			synchronized(o){
+				o.getLock();
+				o.select(getFieldValue("pmAotNextTskId"));
+			return o.getFieldValue("pmTskTitle");
+			}
+			
+		}
+		return super.getUserKeyLabel(row);
+	}
+	@Override
+	public String[] getTargetObject(String rowId, String[] row) {
+		AppLog.info("DEBUG| "+getClassName()+": "+getInstanceName()+" Check: "+isPanelInstance(), getGrant());
+		if(!isPanelInstance()){
+			String[] Trigrame = new String[3];
+			Trigrame[0]="PmTask";
+			Trigrame[1]="the_ajax_PmTask";
+			Trigrame[2]=row[getFieldIndex("pmAotNextTskId")];
+			return Trigrame;
+		}
+		return super.getTargetObject(rowId, row);
+	}
 }

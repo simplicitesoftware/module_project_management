@@ -536,6 +536,10 @@ components:
         pmTskVrsId__pmVrsVersion:
           description: Version
           type: string
+        pmTskLastCron:
+          description: last cron
+          type: string
+          example: yyyy-MM-dd HH:mm:ss
         pmTskNumber:
           description: Number
           type: string
@@ -3796,6 +3800,12 @@ paths:
         name: pmTskType
         description: Search filter for Type
         required: false
+      - schema:
+          type: string
+        in: query
+        name: pmTskLastCron
+        description: Search filter for last cron
+        required: false
       tags:
       - PmTask
   /rest/PmTask/{row_id}:
@@ -5633,6 +5643,53 @@ paths:
         required: true
       tags:
       - PmArrayOfTask
+  /rest/PmTask/{row_id}/action:PM_TASK_NOTIF:
+    get:
+      summary: Call a custom action for a PmTask business object record or for all
+        records
+      security:
+      - bearerAuth: []
+      operationId: obj-pmtask-action-pm_task_notif
+      responses:
+        '200':
+          description: Success in calling the custom action
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ActionResult'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error400'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error401'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error500'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error404'
+      parameters:
+      - schema:
+          type: string
+        in: path
+        name: row_id
+        description: Row ID (or empty or _ for all row IDs)
+        required: true
+      tags:
+      - PmTask
   /rest/PmLabel/{row_id}:
     post:
       summary: Create a new PmLabel business object record

@@ -5,6 +5,7 @@ import org.json.*;
 
 import com.simplicite.commons.ProjectManagement.pmRoleTool;
 import com.simplicite.util.*;
+import com.simplicite.util.Notification.NotifReceipent;
 import com.simplicite.util.exceptions.*;
 import com.simplicite.util.tools.*;
 
@@ -131,6 +132,10 @@ public class PmTask extends ObjectDB {
 			// if is view in project display task assign to user
 			getRowIdField().setAdditionalSearchSpec("EXISTS (SELECT * FROM pm_assignment WHERE pm_ass_pm_taskid = t.row_id AND pm_ass_pm_userid="+getGrant().getUserId()+")");
 			setFieldFilter("pmVrsPrjId", getGrant().getParameter("PROJECT_ID"));
+		}else if (isHomeInstance() && getGrant().hasParameter("VERSION_ID")){
+			// if is view in project display task assign to user
+			getRowIdField().setAdditionalSearchSpec("EXISTS (SELECT * FROM pm_assignment WHERE pm_ass_pm_taskid = t.row_id AND pm_ass_pm_userid="+getGrant().getUserId()+")");
+			setFieldFilter("pmTskVrsId", getGrant().getParameter("VERSION_ID"));
 		}
 		super.preSearch();
 	}
@@ -141,7 +146,10 @@ public class PmTask extends ObjectDB {
 		getField("pmVrsPrjId").setAdditionalSearchSpec(null);
 		if (isHomeInstance()){
 			getField("pmVrsPrjId").resetFilter();
-			getGrant().removeParameter("PROJECT_ID");}
+			getGrant().removeParameter("PROJECT_ID");
+			getField("pmTskVrsId").resetFilter();
+			getGrant().removeParameter("VERSION_ID");
+		}
 		return super.postSearch(rows);
 	}
 	@Override
@@ -360,5 +368,66 @@ public class PmTask extends ObjectDB {
 		
 		
 	}
-	
+	public void pmTaskNotify() {
+		//("DEBUG chron", getGrant());
+		getField("pmTskClose").setAdditionalSearchSpec("t.pm_tsk_close < CAST(CURRENT_TIMESTAMP as DATE) and t.pm_tsk_status in ('DRAFT','TODO', 'DOING', 'DONE')");
+		for (String[] row : search()){
+			//AppLog.info("DEBUG chron push notif obj: "+String.join(", ",row)+": "+row[getFieldIndex("pmTskTimeLeft")], getGrant());
+			if(Integer.parseInt(row[getFieldIndex("pmTskTimeLeft")])<0){
+				//AppLog.info("DEBUG notify", getGrant());
+				//Notification noti = new  Notification("1", "ALERT_OUT_OFF_TIME", "5" , "2038","[VALUE:pmTskTimeLeft]<0" );
+				//NotificationTool notit =new NotificationTool(getGrant(),noti);
+				ObjectDB o = getGrant().getTmpObject("PmTask");
+				synchronized(o){
+					o.getLock();
+					BusinessObjectTool ot = o.getTool();
+					try {
+						ot.selectForUpdate(row[0]);
+						o.setFieldValue("pmTskLastCron", Tool.getCurrentDateTime());
+						ot.validateAndSave();
+					} catch (GetException | ValidateException | SaveException e) {
+						AppLog.error(e, getGrant());
+						return;
+					}
+					
+					//notit.pushInternalNotifications(o);
+				
+					//noti.pushNotification(getGrant(), o);
+				}
+			}
+		}
+		getField("pmTskClose").setAdditionalSearchSpec(null);
+	}
+
+	/**
+	 * For action PM_UPDATE_GANTT use in project gantt view
+	 * @param params {tsk: <JSON of task to update {tsk_id: {start:<date>,end:<date>,progress: <%>},...}>}
+	 * @throws GetException
+	 * @throws ValidateException
+	 * @throws SaveException
+	 */
+	public void actionUpdateGantt(Map<String, String> params) throws GetException, ValidateException, SaveException {
+		AppLog.info("DEBUG: "+params.get("tsk").toString()+params.get("tsk"), getGrant());
+		JSONObject tsks = new JSONObject(params.get("tsk").toString());
+		BusinessObjectTool ot = this.getTool();
+		for (Iterator iterator = tsks.keys(); iterator.hasNext();) {
+			String rowid = iterator.next().toString();
+			JSONObject data= tsks.getJSONObject(rowid);
+			synchronized(this){
+				getLock();
+				ot.getForUpdate(rowid);
+				if(data.has("start"))
+					setFieldValue("pmTskCreation", data.get("start"));
+				if(data.has("end"))
+					setFieldValue("pmTskClose", data.get("end"));
+				if(data.has("progress"))
+					setFieldValue("pmTskCompletion", data.get("progress"));
+				ot.validateAndSave();
+				
+			}
+			
+		}
+		
+		
+	}
 }

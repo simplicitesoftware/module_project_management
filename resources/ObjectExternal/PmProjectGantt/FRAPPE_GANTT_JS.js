@@ -1,6 +1,5 @@
 var Gantt = (function () {
     'use strict';
-    const CAN_UPDATE= false;
     const YEAR = 'year';
     const MONTH = 'month';
     const DAY = 'day';
@@ -1118,7 +1117,7 @@ var Gantt = (function () {
                 custom_popup_html: null,
                 language: 'en',
                 allow_dragging: false,
-                allow_progress_update: false
+                allow_progress_update: false,
             };
             this.options = Object.assign({}, default_options, options);
         }
@@ -1297,10 +1296,9 @@ var Gantt = (function () {
         }
 
         bind_events() {
-            if(CAN_UPDATE){
-                this.bind_grid_click();
-                this.bind_bar_events();
-            }
+            this.bind_grid_click();
+            this.bind_bar_events();
+
             
         }
 
@@ -1741,25 +1739,27 @@ var Gantt = (function () {
                         const $bar = bar.$bar;
                         $bar.finaldx = this.get_snap_position(dx);
                         this.hide_popup();
-                        if (is_resizing_left) {
-                            if (parent_bar_id === bar.task.id) {
-                                bar.update_bar_position({
-                                    x: $bar.ox + $bar.finaldx,
-                                    width: $bar.owidth - $bar.finaldx,
-                                });
-                            } else {
-                                bar.update_bar_position({
-                                    x: $bar.ox + $bar.finaldx,
-                                });
+                        if(bar.task.allow_dragging){
+                            if (is_resizing_left) {
+                                if (parent_bar_id === bar.task.id) {
+                                    bar.update_bar_position({
+                                        x: $bar.ox + $bar.finaldx,
+                                        width: $bar.owidth - $bar.finaldx,
+                                    });
+                                } else {
+                                    bar.update_bar_position({
+                                        x: $bar.ox + $bar.finaldx,
+                                    });
+                                }
+                            } else if (is_resizing_right) {
+                                if (parent_bar_id === bar.task.id) {
+                                    bar.update_bar_position({
+                                        width: $bar.owidth + $bar.finaldx,
+                                    });
+                                }
+                            } else if (is_dragging) {
+                                bar.update_bar_position({ x: $bar.ox + $bar.finaldx });
                             }
-                        } else if (is_resizing_right) {
-                            if (parent_bar_id === bar.task.id) {
-                                bar.update_bar_position({
-                                    width: $bar.owidth + $bar.finaldx,
-                                });
-                            }
-                        } else if (is_dragging) {
-                            bar.update_bar_position({ x: $bar.ox + $bar.finaldx });
                         }
                     });
                 });
@@ -1796,7 +1796,7 @@ var Gantt = (function () {
             let bar = null;
             let $bar_progress = null;
             let $bar = null;
-            if (this.allow_progress_update){
+            if (this.options.allow_progress_update){
                 $.on(this.$svg, 'mousedown', '.handle.progress', (e, handle) => {
                     is_resizing = true;
                     x_on_start = e.offsetX;
@@ -1815,8 +1815,12 @@ var Gantt = (function () {
                     $bar_progress.max_dx = $bar.getWidth() - $bar_progress.getWidth();
                 });
 
-                $.on(this.$svg, 'mousemove', (e) => {
+                $.on(this.$svg, 'mousemove','.handle.progress', (e,handle) => {
                     if (!is_resizing) return;
+                    const $bar_wrapper = $.closest('.bar-wrapper', handle);
+                    const id = $bar_wrapper.getAttribute('data-id');
+                    bar = this.get_bar(id);
+                    if (!bar.task.allow_progress_update) return;
                     let dx = e.offsetX - x_on_start;
                     e.offsetY - y_on_start;
 

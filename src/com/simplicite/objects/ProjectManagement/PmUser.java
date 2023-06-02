@@ -30,7 +30,7 @@ public class PmUser extends SimpleUser {
 		try {
 			BusinessObjectTool uot =getTool();
 			setFieldValue("usr_active", 1);
-			setFieldValue("row_module_id", ModuleDB.getModuleId("projectManagment"));
+			setFieldValue("row_module_id", ModuleDB.getModuleId("ProjectManagment"));
 			uot.validateAndSave();
 		} catch (ValidateException | SaveException e) {
 			e.printStackTrace();
