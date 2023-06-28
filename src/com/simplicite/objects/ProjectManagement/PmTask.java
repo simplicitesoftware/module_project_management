@@ -5,7 +5,6 @@ import org.json.*;
 
 import com.simplicite.commons.ProjectManagement.pmRoleTool;
 import com.simplicite.util.*;
-import com.simplicite.util.Notification.NotifReceipent;
 import com.simplicite.util.exceptions.*;
 import com.simplicite.util.tools.*;
 
@@ -15,6 +14,7 @@ import com.simplicite.util.tools.*;
 public class PmTask extends ObjectDB {
 	
 	private static final long serialVersionUID = 1L;
+	private static final String ACT_ASSIGN = "PM_ASSIGN"; 
 	/**
 	 * Check if user is assign on task
 	 * @return true if current user is assign on task.
@@ -42,39 +42,25 @@ public class PmTask extends ObjectDB {
 	@Override
 	public boolean isListUpsertable() {
 		//Allow upsert in listpanel in version if user is user on project
-		ObjectDB parent = getParentObject();
-		pmRoleTool rt = new pmRoleTool(getGrant());
-		
-		if(!Tool.isEmpty(parent) && parent.getName().equals("PmVersion") && rt.isRoleOnProject("USER",parent.getFieldValue("pmVrsPrjId"))){
+		ObjectDB parent = getParentObject();	
+		if(!Tool.isEmpty(parent) && parent.getName().equals("PmVersion") && pmRoleTool.isRoleOnProject("USER",parent.getFieldValue("pmVrsPrjId"),getGrant())){
 			
 			return true;
 		}
 		return super.isListUpsertable();
 	}
 	@Override
-	public boolean isReadOnly() {
+	public boolean isUpdateEnable(String[] row) {
 		// set some task readonly for specificprofile
 		if(!isNew() && getGrant().hasResponsibility("PM_USER_GROUP") && !getGrant().hasResponsibility("PM_MANAGER") && !getGrant().hasResponsibility("PM_SUPERADMIN")){
-			if(!isUserAssignOn()) return true;
+			if(!isUserAssignOn()) return false;
 		}else if(!isNew() && getGrant().hasResponsibility("PM_MANAGER") && !getGrant().hasResponsibility("PM_SUPERADMIN")){
-			ObjectDB o =getGrant().getTmpObject("PmProject");
-			synchronized(o){
-				o.getLock();
-				o.select(getFieldValue("pmVrsPrjId"));
-				if(o.isReadOnly()) return true;
-			}
+			if(!pmRoleTool.isRoleOnProject("MANAGER",row[getFieldIndex("pmVrsPrjId")],getGrant()))
+				return false;
 		}
-		return super.isReadOnly();
+		return super.isUpdateEnable(row);
 	}
 
-	/**
-	 * Check if string is an int
-	 * @param str string to check
-	 * @return true if str is an int
-	 */
-	public boolean isInt(String str){
-        return str.matches("[-,+]?\\d+");
-    }
 	/**
 	 * calculate Number of task 
 	 * @return the first none used number
@@ -90,7 +76,7 @@ public class PmTask extends ObjectDB {
 			tmpTask.resetFilters();
 			tmpTask.setFieldFilter("pmTskVrsId", getFieldValue("pmTskVrsId"));// number is unique per version
 			
-			for(String[] row : tmpTask.search()){// for all assignment invoke increaseUserNbtask methode to update the nbTask of user assigned on task
+			for(String[] row : tmpTask.search()){
 				if(!row[0].equals(getRowId()) ){
 					tmpTask.select(row[0]);
 					listExist.add(Integer.parseInt(tmpTask.getFieldValue("pmTskNumber")));
@@ -168,10 +154,8 @@ public class PmTask extends ObjectDB {
 	}
 	@Override
 	public List<String> preValidate() {
-		if(getField("pmTskVrsId").hasChanged()){
-			
-			setFieldValue("pmTskNumber",0);
-		}
+		if (getFieldValue("pmTskNumber").equals("0") || getField("pmTskVrsId").hasChanged())
+			setFieldValue("pmTskNumber", autoGenNumber());
 		return super.preValidate();
 	}
 	@Override
@@ -180,11 +164,6 @@ public class PmTask extends ObjectDB {
 		if(!getStatus().equals("CLOSED") && getFieldValue("pmTskVrsId.pmVrsStatus").equals("PUBLISHED") && !isBatchInstance()){
 			msgs.add(Message.formatError("PM_ERR_TSK_VRS_STATUS",null,"pmTskVrsId.pmVrsStatus"));
 		}
-		if (getFieldValue("pmTskNumber").equals("0")){
-			setFieldValue("pmTskNumber", autoGenNumber());
-			save();
-		}
-		
 		List<String> msgsSuper =super.postValidate();
 		if (!Tool.isEmpty(msgsSuper)) msgs.addAll(msgsSuper);
 		return msgs;
@@ -321,7 +300,6 @@ public class PmTask extends ObjectDB {
 	/*
 		Function of action PM_ASSIGN
 	*/ 
-	private static final String ACT_ASSIGN = "PM_ASSIGN"; 
 	public List<String> pmTaskAssign(){
 		List<String> sltTsks= getSelectedIds();
 		List<String> msgs = new ArrayList<>();
@@ -369,17 +347,13 @@ public class PmTask extends ObjectDB {
 		
 	}
 	public void pmTaskNotify() {
-		//("DEBUG chron", getGrant());
 		getField("pmTskClose").setAdditionalSearchSpec("t.pm_tsk_close < CAST(CURRENT_TIMESTAMP as DATE) and t.pm_tsk_status in ('DRAFT','TODO', 'DOING', 'DONE')");
 		for (String[] row : search()){
-			//AppLog.info("DEBUG chron push notif obj: "+String.join(", ",row)+": "+row[getFieldIndex("pmTskTimeLeft")], getGrant());
 			if(Integer.parseInt(row[getFieldIndex("pmTskTimeLeft")])<0){
-				//AppLog.info("DEBUG notify", getGrant());
-				//Notification noti = new  Notification("1", "ALERT_OUT_OFF_TIME", "5" , "2038","[VALUE:pmTskTimeLeft]<0" );
-				//NotificationTool notit =new NotificationTool(getGrant(),noti);
 				ObjectDB o = getGrant().getTmpObject("PmTask");
 				synchronized(o){
 					o.getLock();
+					o.select(row[0]);
 					BusinessObjectTool ot = o.getTool();
 					try {
 						ot.selectForUpdate(row[0]);
@@ -389,11 +363,7 @@ public class PmTask extends ObjectDB {
 						AppLog.error(e, getGrant());
 						return;
 					}
-					
-					//notit.pushInternalNotifications(o);
-				
-					//noti.pushNotification(getGrant(), o);
-				}
+				} 
 			}
 		}
 		getField("pmTskClose").setAdditionalSearchSpec(null);

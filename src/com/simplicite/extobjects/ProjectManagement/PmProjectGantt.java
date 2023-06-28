@@ -1,14 +1,8 @@
 package com.simplicite.extobjects.ProjectManagement;
-
-import static org.mockito.ArgumentMatchers.contains;
-
 import java.util.*;
-
 import org.json.JSONArray;
 import org.json.JSONObject;
-
 import com.simplicite.util.*;
-import com.simplicite.util.exceptions.*;
 import com.simplicite.util.tools.*;
 
 /**

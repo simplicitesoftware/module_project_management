@@ -2,18 +2,11 @@ package com.simplicite.objects.ProjectManagement;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.HashMap;
-import java.util.List;
-
 import org.json.*;
-
-import com.google.api.services.sheets.v4.model.BubbleChartSpec;
 import com.simplicite.commons.ProjectManagement.pmRoleTool;
 import com.simplicite.util.*;
-import com.simplicite.util.annotations.BusinessObject;
 import com.simplicite.util.exceptions.CreateException;
 import com.simplicite.util.exceptions.GetException;
-import com.simplicite.util.exceptions.SearchException;
 import com.simplicite.util.exceptions.ValidateException;
 import com.simplicite.util.tools.*;
 
@@ -44,14 +37,13 @@ public class PmProject extends ObjectDB {
 		return super.postCreate();
 	}
 	@Override
-	public boolean isReadOnly() {
+	public boolean isUpdateEnable(String[] row) {
 		// set project readonly if manager is not pm_superadmin  and is not Manager on project
 		if(getGrant().hasResponsibility("PM_MANAGER") && !getGrant().hasResponsibility("PM_SUPERADMIN")){
-			pmRoleTool rt = new pmRoleTool(getGrant());
-			if(!rt.isRoleOnProject("MANAGER",getRowId()))
-				return true;
+			if(!pmRoleTool.isRoleOnProject("MANAGER",row[getRowIdFieldIndex()],getGrant()))
+				return false;
 		}
-		return super.isReadOnly(); 
+		return super.isUpdateEnable(row);
 	}
 	@Override
 	public void initUpdate() {

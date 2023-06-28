@@ -1,11 +1,5 @@
 package com.simplicite.extobjects.ProjectManagement;
 
-import java.util.*;
-
-import com.simplicite.util.*;
-import com.simplicite.util.exceptions.*;
-import com.simplicite.util.tools.*;
-
 /**
  * External object PmTaskWAssingExt
  * Display search PmTaskWAssign

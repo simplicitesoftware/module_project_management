@@ -3,7 +3,6 @@ package com.simplicite.objects.ProjectManagement;
 import java.util.*;
 
 import com.simplicite.util.*;
-import com.simplicite.util.exceptions.*;
 import com.simplicite.util.tools.*;
 
 /**
@@ -14,20 +13,19 @@ public class PmResponsability extends ObjectDB {
 	@Override
 	public void postLoad() {
 		// set default to projectManagement
-		getField("row_module_id").setDefaultValue(ModuleDB.getModuleId("ProjectManagment"));
+		getField("row_module_id").setDefaultValue(ModuleDB.getModuleId("ProjectManagement"));
+		
 		super.postLoad();
 	}
-	
 	@Override
-	public String postCreate() {
-		BusinessObjectTool uot =getTool();
-		try {
-			// force module to projectManagement
-			setFieldValue("row_module_id",ModuleDB.getModuleId("ProjectManagment"));
-			uot.validateAndSave();
-		} catch (Exception e) {
-			AppLog.error(e, getGrant());
-		}
-		return null;
+	public void initCreate() {
+		AppLog.info("DEBUG: initCreate: ", getGrant());
+		setFieldValue("row_module_id",ModuleDB.getModuleId("ProjectManagement"));
+		super.initCreate();
+	}
+	@Override
+	public List<String> preValidate() {
+		setFieldValue("row_module_id",ModuleDB.getModuleId("ProjectManagement"));
+		return super.preValidate();
 	}
 }

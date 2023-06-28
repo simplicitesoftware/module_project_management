@@ -1,7 +1,4 @@
 package com.simplicite.objects.ProjectManagement;
-
-import java.util.List;
-
 import com.simplicite.util.*;
 import com.simplicite.util.exceptions.MethodException;
 
@@ -21,7 +18,7 @@ public class PmAssignment extends ObjectDB {
 			}
 			save();
 		}
-		super.initCreate();
+		super.initUpdate();
 	}
 	@Override
 	public String postCreate() {// if we created assignment we have to update the number of task of user

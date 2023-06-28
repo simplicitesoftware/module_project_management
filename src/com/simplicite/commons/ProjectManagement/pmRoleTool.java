@@ -12,17 +12,15 @@ import com.simplicite.util.tools.*;
  */
 public class pmRoleTool implements java.io.Serializable {
 	private static final long serialVersionUID = 1L;
-	Grant g=new Grant();
-	public pmRoleTool(Grant grant){
-		g=grant;
-	}
+	
 	/**
 	 * check if user has a specific role on specific project
 	 * @param role role to check
 	 * @param id id of project
+	 * @param g grant
 	 * @return true if user has role
 	 */
-	public boolean isRoleOnProject(String role,String id) {
+	public static boolean isRoleOnProject(String role,String id,Grant g) {
 		ObjectDB o =g.getTmpObject("PmRole");
 			synchronized(o){
 				o.getLock();

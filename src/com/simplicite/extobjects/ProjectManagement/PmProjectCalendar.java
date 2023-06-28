@@ -1,12 +1,7 @@
 package com.simplicite.extobjects.ProjectManagement;
-
-import java.util.*;
-
 import org.json.JSONArray;
 import org.json.JSONObject;
-
 import com.simplicite.util.*;
-import com.simplicite.util.exceptions.*;
 import com.simplicite.util.tools.*;
 
 /**
@@ -68,12 +63,8 @@ public class PmProjectCalendar extends ExternalObject { // or com.simplicite.web
 				o.resetFilters();
 				displayTsk=o.getPluralDisplay();
 				for(EnumItem item :o.getStatusField().getList().getAllItems()){
-					//AppLog.info("DEBUG: "+item.getValue()+" "+item.getRendering().getBackgroundColor(), getGrant());
 					JSONObject data = new JSONObject().put("color", item.getRendering().getBackgroundColor()).put("dysplay", item.getValue());
-					
 					legend += MustacheTool.apply(templateTsk, data);
-					
-					//AppLog.info("DEBUG: "+legend, getGrant());
 					nbStatus+=2;
 				}
 				

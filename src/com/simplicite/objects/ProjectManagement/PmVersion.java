@@ -1,16 +1,10 @@
 package com.simplicite.objects.ProjectManagement;
-
 import java.util.*;
-
-import javax.validation.constraints.NotEmpty;
-
 import org.json.JSONObject;
-
 import com.simplicite.commons.ProjectManagement.pmRoleTool;
 import com.simplicite.util.*;
 import com.simplicite.util.exceptions.*;
 import com.simplicite.util.tools.BusinessObjectTool;
-
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
@@ -19,22 +13,18 @@ import java.time.format.DateTimeFormatter;
  */
 public class PmVersion extends ObjectDB {
 	private static final long serialVersionUID = 1L;
-	static String statusPUBLISHED ="PUBLISHED";
-	static String fieldStatus="pmVrsStatus";
-	static String fieldPrjId="pmVrsPrjId";
+	private static String statusPUBLISHED ="PUBLISHED";
+	private static String fieldStatus="pmVrsStatus";
+	private static String fieldPrjId="pmVrsPrjId";
 	@Override
-	public boolean isReadOnly() {
+	public boolean isUpdateEnable(String[] row) {
 		if(!isNew() && getGrant().hasResponsibility("PM_MANAGER") && !getGrant().hasResponsibility("PM_SUPERADMIN")){
-			ObjectDB o =getGrant().getTmpObject("PmProject");
-			synchronized(o){
-				o.getLock();
-				o.select(getFieldValue("pmVrsPrjId"));
-				if(o.isReadOnly()) return true;
-			}
+			if(!pmRoleTool.isRoleOnProject("MANAGER",row[getFieldIndex("pmVrsPrjId")],getGrant()))
+				return false;
 		}
-		
-		return super.isReadOnly();
+		return super.isUpdateEnable(row);
 	}
+
 	@Override
 	public void initUpdate(){			
 		HashMap<String, String> filters = new HashMap<>();
