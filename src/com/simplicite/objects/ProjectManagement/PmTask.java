@@ -61,6 +61,8 @@ public class PmTask extends ObjectDB {
 		return super.isUpdateEnable(row);
 	}
 
+
+	
 	/**
 	 * calculate Number of task 
 	 * @return the first none used number
@@ -76,7 +78,7 @@ public class PmTask extends ObjectDB {
 			tmpTask.resetFilters();
 			tmpTask.setFieldFilter("pmTskVrsId", getFieldValue("pmTskVrsId"));// number is unique per version
 			
-			for(String[] row : tmpTask.search()){
+			for(String[] row : tmpTask.search()){// for all assignment invoke increaseUserNbtask methode to update the nbTask of user assigned on task
 				if(!row[0].equals(getRowId()) ){
 					tmpTask.select(row[0]);
 					listExist.add(Integer.parseInt(tmpTask.getFieldValue("pmTskNumber")));
@@ -150,13 +152,9 @@ public class PmTask extends ObjectDB {
 		HashMap<String, String> filters = new HashMap<>();
 		filters.put("pmVrsStatus", "ALPHA;BETA");
 		filters.put("pmVrsPrjId", getFieldValue("pmVrsPrjId"));
+		setFieldValue("pmTskTimeLeft", timeLeft());
+		setFieldValue("pmTskActualDuration", actualDuration());
 		getGrant().setParameter("PARENT_FILTERS", filters);
-	}
-	@Override
-	public List<String> preValidate() {
-		if (getFieldValue("pmTskNumber").equals("0") || getField("pmTskVrsId").hasChanged())
-			setFieldValue("pmTskNumber", autoGenNumber());
-		return super.preValidate();
 	}
 	@Override
 	public List<String> postValidate() {
@@ -164,12 +162,64 @@ public class PmTask extends ObjectDB {
 		if(!getStatus().equals("CLOSED") && getFieldValue("pmTskVrsId.pmVrsStatus").equals("PUBLISHED") && !isBatchInstance()){
 			msgs.add(Message.formatError("PM_ERR_TSK_VRS_STATUS",null,"pmTskVrsId.pmVrsStatus"));
 		}
+		
 		List<String> msgsSuper =super.postValidate();
 		if (!Tool.isEmpty(msgsSuper)) msgs.addAll(msgsSuper);
 		return msgs;
 	}
 	@Override
+	public String postCreate() {
+		ObjectDB o = getGrant().getTmpObject("PmVersion");
+		synchronized(o){
+			o.getLock();
+			BusinessObjectTool ot = o.getTool();
+			try {
+				ot.selectForUpdate(getFieldValue("pmTskVrsId"));
+				o.invokeMethod("completionVersion", null, null);
+				ot.validateAndUpdate();
+			} catch (GetException | MethodException | UpdateException | ValidateException e) {
+				AppLog.error(e, getGrant());
+			}
+		}
+		return super.postCreate();
+	}
+	@Override
 	public String postUpdate() {
+		List<String> endList = new ArrayList<>(Arrays.asList("CLOSED", "CANCEL", "REJECTED"));
+		ObjectField status = getField("pmTskStatus");
+		if(getField("pmTskVrsId").hasChanged() && !"PM_DEFER_TASK".equals(getInstanceName())|| (status.hasChanged() && ((endList.contains(status.getOldValue()) && !endList.contains(status.getValue()))|| (!endList.contains(status.getOldValue()) && endList.contains(status.getValue()))))){
+			ObjectDB o = getGrant().getTmpObject("PmVersion");
+			synchronized(o){
+				o.getLock();
+				BusinessObjectTool ot = o.getTool();
+				try {
+					ot.selectForUpdate(getFieldValue("pmTskVrsId"));
+					o.setInstanceName("pm_completion_task");
+					o.invokeMethod("completionVersion", null, null);
+					ot.validateAndUpdate();
+				} catch (GetException | MethodException | UpdateException | ValidateException e) {
+					AppLog.error(e, getGrant());
+				}
+			}
+			if(getField("pmTskVrsId").hasChanged()){
+				o = getGrant().getTmpObject("PmVersion");
+				synchronized(o){
+					o.getLock();
+					BusinessObjectTool ot = o.getTool();
+					try {
+						ot.selectForUpdate(getFieldOldValue("pmTskVrsId"));
+						o.setInstanceName("pm_completion_task");
+						o.invokeMethod("completionVersion", null, null);
+						ot.validateAndUpdate();
+					} catch (GetException | MethodException | UpdateException | ValidateException e) {
+						AppLog.error(e, getGrant());
+					}
+				}
+			}
+			
+			
+		}
+		
 		if(getStatus().equals("TODO") && !getOldStatus().equals("DOING")){// If task is toDo status from other status expte Doing we have to inrease the number of task of user
 			ObjectDB tmpAssignment = this.getGrant().getTmpObject("PmAssignment");
 			synchronized(tmpAssignment){
@@ -377,11 +427,10 @@ public class PmTask extends ObjectDB {
 	 * @throws SaveException
 	 */
 	public void actionUpdateGantt(Map<String, String> params) throws GetException, ValidateException, SaveException {
-		AppLog.info("DEBUG: "+params.get("tsk").toString()+params.get("tsk"), getGrant());
 		JSONObject tsks = new JSONObject(params.get("tsk").toString());
 		BusinessObjectTool ot = this.getTool();
-		for (Iterator iterator = tsks.keys(); iterator.hasNext();) {
-			String rowid = iterator.next().toString();
+		for (Iterator<String> iterator = tsks.keys(); iterator.hasNext();) {
+			String rowid = iterator.next();
 			JSONObject data= tsks.getJSONObject(rowid);
 			synchronized(this){
 				getLock();

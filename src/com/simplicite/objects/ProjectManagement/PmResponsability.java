@@ -3,7 +3,7 @@ package com.simplicite.objects.ProjectManagement;
 import java.util.*;
 
 import com.simplicite.util.*;
-import com.simplicite.util.tools.*;
+
 
 /**
  * Business object PmResponsability
@@ -19,7 +19,6 @@ public class PmResponsability extends ObjectDB {
 	}
 	@Override
 	public void initCreate() {
-		AppLog.info("DEBUG: initCreate: ", getGrant());
 		setFieldValue("row_module_id",ModuleDB.getModuleId("ProjectManagement"));
 		super.initCreate();
 	}

@@ -32,7 +32,6 @@ public class PmArrayOfTask extends ObjectDB {
 	}
 	@Override
 	public String[] getTargetObject(String rowId, String[] row) {
-		AppLog.info("DEBUG| "+getClassName()+": "+getInstanceName()+" Check: "+isPanelInstance(), getGrant());
 		if(!isPanelInstance()){
 			String[] Trigrame = new String[3];
 			Trigrame[0]="PmTask";

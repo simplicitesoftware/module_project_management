@@ -49,13 +49,20 @@ public class PmVersion extends ObjectDB {
 		}
 	}
 	@Override
+	public String postCreate() {
+		completionVersion();
+		return super.postCreate();
+	}
+	@Override
 	public List<String> postValidate() {
 		List<String> msgs = new ArrayList<>();
 		LocalDate dateObj = LocalDate.now();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         String now = dateObj.format(formatter);
-		if(!getStatus().equals(statusPUBLISHED) && Tool.compareDate(getFieldValue("pmVrsPublicationDate"), now)<0 && !isBatchInstance()){
+		if(!getStatus().equals(statusPUBLISHED) && Tool.compareDate(getFieldValue("pmVrsPublicationDate"), now)<0 && !isBatchInstance() && !"pm_completion_task".equals(getInstanceName())){
 			msgs.add(Message.formatError("PM_ERR_PUBLICATIONDATE", null, "pmVrsPublicationDate"));
+		}else if("pm_completion_task".equals(getInstanceName())){
+			msgs.add(Message.formatWarning("PM_ERR_PUBLICATIONDATE", null, "pmVrsPublicationDate"));
 		}
 		
 		return msgs;
@@ -106,8 +113,9 @@ public class PmVersion extends ObjectDB {
 				}
 			}
 		}
-		if (taskCount==0)return 100;
-		return (finishedTaskCount*100)/taskCount;
+		int result =  (taskCount==0)?100:(finishedTaskCount*100)/taskCount;
+		setFieldValue("pmVrsCompletion", result);
+		return result;
 	}
 	/*
 		Function of action PM_DEFER_TASK
@@ -134,7 +142,9 @@ public class PmVersion extends ObjectDB {
 							tmpTask.select(row[0]);
 							if(tmpTask.getStatus().equals("DRAFT") || tmpTask.getStatus().equals("TODO") || tmpTask.getStatus().equals("DOING") ){
 								tmpTask.setFieldValue("pmTskVrsId", selected[1]);
+								tmpTask.setInstanceName("PM_DEFER_TASK");
 								tmpTask.save();
+								
 							}
 							
 						}
@@ -142,6 +152,27 @@ public class PmVersion extends ObjectDB {
 				}
 				
 			}
+			
+			try {
+				completionVersion();
+				new BusinessObjectTool(this).validateAndSave();
+				ObjectDB o = getGrant().getTmpObject("PmVersion");
+				synchronized(o){
+					o.getLock();
+					BusinessObjectTool ot = o.getTool();
+					try {
+						ot.selectForUpdate(selected[1]);
+						o.setInstanceName("pm_completion_task");
+						o.invokeMethod("completionVersion", null, null);
+						ot.validateAndUpdate();
+					} catch (GetException | MethodException | UpdateException | ValidateException e) {
+						AppLog.error(e, getGrant());
+					}
+				}
+			} catch (ValidateException| SaveException e) {
+				AppLog.error(e, getGrant());
+			}
+
 		}
 		
 		
@@ -159,8 +190,8 @@ public class PmVersion extends ObjectDB {
 		JSONObject tsks = new JSONObject(params.get("tsk").toString());
 		BusinessObjectTool ot = this.getTool();
 		try {
-			for (Iterator iterator = tsks.keys(); iterator.hasNext();) {
-			String rowid = iterator.next().toString();
+			for (Iterator<String> iterator = tsks.keys(); iterator.hasNext();) {
+			String rowid = iterator.next();
 			JSONObject data= tsks.getJSONObject(rowid);
 			synchronized(this){
 				getLock();

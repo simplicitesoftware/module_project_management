@@ -19,7 +19,6 @@ public class PmProject extends ObjectDB {
 	public String postCreate() {
 		// exemple of creation auto of a required doc
 		ObjectDB o = getGrant().getTmpObject("PmDocument");
-		String url ="";
 		synchronized(o){
 			o.getLock();
 			BusinessObjectTool ot = o.getTool();
@@ -29,7 +28,6 @@ public class PmProject extends ObjectDB {
 				o.setFieldValue("pmDocType", "REQ");
 				o.setFieldValue("pmDocPrjId", getRowId());
 				ot.validateAndCreate();
-				url=o.getDirectURL(true);
 			} catch (GetException|ValidateException|CreateException e) {
 				AppLog.error(e, getGrant());
 			}
