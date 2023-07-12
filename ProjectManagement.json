@@ -81,13 +81,10 @@
       "viw_order": 1,
       "viw_icon": "img/color/projectitem",
       "viw_disp_id__dis_code": null,
-      "viw_scope": "ProjectManagementManagerScope",
+      "viw_scope": null,
       "row_module_id__mdl_name": "ProjectManagement",
-      "viw_theme_id__thm_name": "PmTheme",
-      "viw_lang": [
-       "ENU",
-       "FRA"
-      ]
+      "viw_theme_id__thm_name": null,
+      "viw_lang": null
      }
     },
     {
@@ -595,19 +592,6 @@
     },
     {
      "object": "UserSysParam",
-     "userkey": "PmAdmin~DISPOSITION",
-     "item": {
-      "usp_user_id__usr_login": "PmAdmin",
-      "usp_param_id__sys_code": "DISPOSITION",
-      "usp_value": null,
-      "usp_param_id__sys_type": "LFL",
-      "usp_param_id__sys_value": "default",
-      "usp_param_id__sys_desc": "Webapp disposition, ex: default, myapp, ...",
-      "row_module_id__mdl_name": "ProjectManagement"
-     }
-    },
-    {
-     "object": "UserSysParam",
      "userkey": "PmAdmin~HISTORY PmManagerHome",
      "item": {
       "usp_user_id__usr_login": "PmAdmin",
@@ -686,19 +670,6 @@
     },
     {
      "object": "UserSysParam",
-     "userkey": "PmDevelopeur~DISPOSITION",
-     "item": {
-      "usp_user_id__usr_login": "PmDevelopeur",
-      "usp_param_id__sys_code": "DISPOSITION",
-      "usp_value": null,
-      "usp_param_id__sys_type": "LFL",
-      "usp_param_id__sys_value": "default",
-      "usp_param_id__sys_desc": "Webapp disposition, ex: default, myapp, ...",
-      "row_module_id__mdl_name": "ProjectManagement"
-     }
-    },
-    {
-     "object": "UserSysParam",
      "userkey": "PmDevelopeur~FORCE_CHANGE_PASSWORD",
      "item": {
       "usp_user_id__usr_login": "PmDevelopeur",
@@ -707,19 +678,6 @@
       "usp_param_id__sys_type": "PRV",
       "usp_param_id__sys_value": "empty",
       "usp_param_id__sys_desc": "Force password change (set at user level)",
-      "row_module_id__mdl_name": "ProjectManagement"
-     }
-    },
-    {
-     "object": "UserSysParam",
-     "userkey": "PmManager~DISPOSITION",
-     "item": {
-      "usp_user_id__usr_login": "PmManager",
-      "usp_param_id__sys_code": "DISPOSITION",
-      "usp_value": null,
-      "usp_param_id__sys_type": "LFL",
-      "usp_param_id__sys_value": "default",
-      "usp_param_id__sys_desc": "Webapp disposition, ex: default, myapp, ...",
       "row_module_id__mdl_name": "ProjectManagement"
      }
     },
