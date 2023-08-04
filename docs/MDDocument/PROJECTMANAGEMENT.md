@@ -17,11 +17,18 @@ Business models
 ---------------
 
 ### `ModelProjectManagement` business model
+
 ![Object]([MODEL:ModelProjectManagement])
 
-
 ### `PmWorkflow` business model
+
 ![Object]([MODEL:PmWorkflow])
+
+[OBJECTDOC:PmGroup]
+
+[OBJECTDOC:PmResponsability]
+
+[OBJECTDOC:PmTaskHistoric]
 
 [OBJECTDOC:PmUser]
 
@@ -48,3 +55,40 @@ Business models
 [OBJECTDOC:PmTskLbl]
 
 [PROCESSDOC:PmTaskCreate]
+
+`PmProjectCalendar` external object definition
+----------------------------------------------
+
+External object for display calendar of versions and tasks on project form.
+
+
+`PmProjectGantt` external object definition
+-------------------------------------------
+
+External object for display gantt of versions and tasks on project form.
+
+
+`PmProjectUserTask` external object definition
+----------------------------------------------
+
+External object for display user task on specific project in project form.
+
+
+`PmTaskWAssingExt` external object definition
+---------------------------------------------
+
+External object for display unassigned  task in menu
+
+
+`PmTimesheetExt` external object definition
+-------------------------------------------
+
+External object for display user imputation in menu.
+
+
+`PmTimesheetRecapExt` external object definition
+------------------------------------------------
+
+External object for display details on user imputation view.
+
+
