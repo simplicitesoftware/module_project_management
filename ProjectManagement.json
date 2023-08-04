@@ -6,7 +6,7 @@
   "mdl_prefix": "pm",
   "mdl_version": "0.1",
   "mdl_type": "A",
-  "mdl_url": "{\n\t\"type\": \"git\",\n\t\"origin\": { \n\t\t\"uri\": \"https://github.com/simplicitesoftware/module_project_management.git\",\n\n\t\t\n\t}\n}",
+  "mdl_url": "{\n\t\"type\": \"git\",\n\t\"origin\": { \n\t\t\"uri\": \"https://github.com/simplicitesoftware/module_project_management.git\",\n\t\t\n\t\t\n\t}\n}",
   "mdl_comment": "Project management modules with tickets and tasks management."
  },
  "links": [
@@ -383,7 +383,7 @@
       "usr_menu": true,
       "usr_menu_defcollapsed": false,
       "usr_menu_defdomain_id__obd_name": null,
-      "usr_last_logon": "2023-08-04 10:27:19",
+      "usr_last_logon": "2023-08-04 14:35:06",
       "usr_dateformat": null,
       "usr_numformat": null,
       "usr_lang_pref": "FRA",
@@ -24711,6 +24711,30 @@
    "icon": "img/system/resource",
    "field": "row_module_id",
    "list": [
+    {
+     "object": "Resource",
+     "userkey": "Disposition(default)~ANY~project-management-module",
+     "item": {
+      "res_object": {
+       "item": {"dis_code": "default"},
+       "icon": "img/system/disposition",
+       "label": "Disposition",
+       "userkeylabel": "default",
+       "object": "Disposition"
+      },
+      "res_type": "IMG",
+      "res_lang": "ANY",
+      "res_code": "project-management-module",
+      "res_cached": false,
+      "res_file": null,
+      "res_image": {
+       "path": "resources/Disposition/default/project-management-module.svg",
+       "mime": "image/svg+xml",
+       "name": "demo-module.svg"
+      },
+      "row_module_id__mdl_name": "ProjectManagement"
+     }
+    },
     {
      "object": "Resource",
      "userkey": "ObjectExternal(PmTimesheetExt)~ANY~HTML",
