@@ -16,7 +16,7 @@ Project management modules with tickets and tasks management.
 `PmGroup` business object definition
 ------------------------------------
 
-
+Groups of rights of the module.
 
 ### Fields
 
@@ -26,7 +26,7 @@ Project management modules with tickets and tasks management.
 `PmResponsability` business object definition
 ---------------------------------------------
 
-
+Users’ responsibilities on groups in the module.
 
 ### Fields
 
@@ -40,7 +40,7 @@ Project management modules with tickets and tasks management.
 `PmTaskHistoric` business object definition
 -------------------------------------------
 
-
+Historic of tasks
 
 ### Fields
 
@@ -87,7 +87,7 @@ Project management modules with tickets and tasks management.
 `PmUser` business object definition
 -----------------------------------
 
-
+Users of the module.
 
 ### Fields
 
@@ -465,36 +465,36 @@ Labeling of tasks
 `PmProjectCalendar` external object definition
 ----------------------------------------------
 
-
+External object for display calendar of versions and tasks on project form.
 
 
 `PmProjectGantt` external object definition
 -------------------------------------------
 
-
+External object for display gantt of versions and tasks on project form.
 
 
 `PmProjectUserTask` external object definition
 ----------------------------------------------
 
-
+External object for display user task on specific project in project form.
 
 
 `PmTaskWAssingExt` external object definition
 ---------------------------------------------
 
-Exctern object for display search on unassign display
+External object for display unassigned  task in menu
 
 
 `PmTimesheetExt` external object definition
 -------------------------------------------
 
-
+External object for display user imputation in menu.
 
 
 `PmTimesheetRecapExt` external object definition
 ------------------------------------------------
 
-
+External object for display details on user imputation view.
 
 

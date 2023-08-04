@@ -6,7 +6,7 @@
   "mdl_prefix": "pm",
   "mdl_version": "0.1",
   "mdl_type": "A",
-  "mdl_url": "{\n\t\"type\": \"git\",\n\t\"origin\": { \n\t\t\"uri\": \"https://github.com/simplicitesoftware/module_project_management.git\",\n\t\t\n\t}\n}",
+  "mdl_url": "{\n\t\"type\": \"git\",\n\t\"origin\": { \n\t\t\"uri\": \"https://github.com/simplicitesoftware/module_project_management.git\",\n\n\t\t\n\t}\n}",
   "mdl_comment": "Project management modules with tickets and tasks management."
  },
  "links": [
@@ -6641,7 +6641,7 @@
       "obe_name": "PmProjectCalendar",
       "obe_type": "E",
       "obe_url": null,
-      "obe_comment": null,
+      "obe_comment": "External object for display calendar of versions and tasks on project form.",
       "obe_help": null,
       "obe_class": null,
       "obe_script_id": {
@@ -6660,7 +6660,7 @@
       "obe_name": "PmProjectGantt",
       "obe_type": "E",
       "obe_url": null,
-      "obe_comment": null,
+      "obe_comment": "External object for display gantt of versions and tasks on project form.",
       "obe_help": null,
       "obe_class": null,
       "obe_script_id": {
@@ -6679,7 +6679,7 @@
       "obe_name": "PmProjectUserTask",
       "obe_type": "E",
       "obe_url": null,
-      "obe_comment": null,
+      "obe_comment": "External object for display user task on specific project in project form.",
       "obe_help": null,
       "obe_class": null,
       "obe_script_id": {
@@ -6698,7 +6698,7 @@
       "obe_name": "PmTaskWAssingExt",
       "obe_type": "E",
       "obe_url": null,
-      "obe_comment": "Exctern object for display search on unassign display",
+      "obe_comment": "External object for display unassigned  task in menu",
       "obe_help": null,
       "obe_class": null,
       "obe_script_id": {
@@ -6717,7 +6717,7 @@
       "obe_name": "PmTimesheetExt",
       "obe_type": "E",
       "obe_url": null,
-      "obe_comment": null,
+      "obe_comment": "External object for display user imputation in menu.",
       "obe_help": null,
       "obe_class": null,
       "obe_script_id": {
@@ -6736,7 +6736,7 @@
       "obe_name": "PmTimesheetRecapExt",
       "obe_type": "E",
       "obe_url": null,
-      "obe_comment": null,
+      "obe_comment": "External object for display details on user imputation view.",
       "obe_help": null,
       "obe_class": null,
       "obe_script_id": {
@@ -7099,7 +7099,7 @@
       "obo_script_id": null,
       "obo_usets": "1",
       "obo_nosearch": "1",
-      "obo_comment": null,
+      "obo_comment": "Groups of rights of the module.",
       "obo_type": "O",
       "obo_searchspec": "t_row_module_id.mdl_name = 'ProjectManagement'",
       "obo_delspec": null,
@@ -7413,7 +7413,7 @@
       },
       "obo_usets": "1",
       "obo_nosearch": "1",
-      "obo_comment": null,
+      "obo_comment": "Users\u2019 responsibilities on groups in the module.",
       "obo_type": "O",
       "obo_searchspec": "t_row_module_id.mdl_name = 'ProjectManagement'",
       "obo_delspec": null,
@@ -7648,7 +7648,7 @@
       "obo_script_id": null,
       "obo_usets": "1",
       "obo_nosearch": "0",
-      "obo_comment": null,
+      "obo_comment": "Historic of tasks",
       "obo_type": "O",
       "obo_searchspec": null,
       "obo_delspec": null,
@@ -7812,7 +7812,7 @@
       },
       "obo_usets": "1",
       "obo_nosearch": "1",
-      "obo_comment": null,
+      "obo_comment": "Users of the module.",
       "obo_type": "O",
       "obo_searchspec": "t_row_module_id.mdl_name = 'ProjectManagement'",
       "obo_delspec": null,
