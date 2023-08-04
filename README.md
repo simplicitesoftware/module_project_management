@@ -11,7 +11,7 @@
 `ProjectManagement` module definition
 =====================================
 
-Module de gestion de projet et de gestion de tâche ou de tickets.
+Project management modules with tickets and tasks management.
 
 `PmGroup` business object definition
 ------------------------------------
