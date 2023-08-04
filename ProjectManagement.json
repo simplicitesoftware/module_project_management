@@ -6,7 +6,7 @@
   "mdl_prefix": "pm",
   "mdl_version": "0.1",
   "mdl_type": "A",
-  "mdl_url": "{\n\t\"type\": \"git\",\n\t\"origin\": { \n\t\t\"uri\": \"https://github.com/simplicitesoftware/module_project_management.git\",\n\t\t\n\t\t\n\t}\n}",
+  "mdl_url": "{\n\t\"type\": \"git\",\n\t\"origin\": { \n\t\t\"uri\": \"https://github.com/simplicitesoftware/module_project_management.git\",\n\t\t\n\t}\n}",
   "mdl_comment": "Project management modules with tickets and tasks management."
  },
  "links": [
