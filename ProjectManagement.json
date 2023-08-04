@@ -383,7 +383,7 @@
       "usr_menu": true,
       "usr_menu_defcollapsed": false,
       "usr_menu_defdomain_id__obd_name": null,
-      "usr_last_logon": "2023-06-28 10:30:46",
+      "usr_last_logon": "2023-08-04 10:27:19",
       "usr_dateformat": null,
       "usr_numformat": null,
       "usr_lang_pref": "FRA",
@@ -626,6 +626,19 @@
       "usp_param_id__sys_type": "PRV",
       "usp_param_id__sys_value": "empty",
       "usp_param_id__sys_desc": "Force password change (set at user level)",
+      "row_module_id__mdl_name": "ProjectManagement"
+     }
+    },
+    {
+     "object": "UserSysParam",
+     "userkey": "PmManager~DISPOSITION",
+     "item": {
+      "usp_user_id__usr_login": "PmManager",
+      "usp_param_id__sys_code": "DISPOSITION",
+      "usp_value": null,
+      "usp_param_id__sys_type": "LFL",
+      "usp_param_id__sys_value": "default",
+      "usp_param_id__sys_desc": "Webapp disposition, ex: default, myapp, ...",
       "row_module_id__mdl_name": "ProjectManagement"
      }
     },
@@ -32104,16 +32117,16 @@
    "field": "row_module_id",
    "list": [{
     "object": "Dataset",
-    "userkey": "ProjectManagement~ProjectManagement-data-20230804095614",
+    "userkey": "ProjectManagement~ProjectManagement-data-20230804103343",
     "item": {
      "row_module_id__mdl_name": "ProjectManagement",
-     "dt_name": "ProjectManagement-data-20230804095614",
+     "dt_name": "ProjectManagement-data-20230804103343",
      "dt_file": {
-      "path": "data/ProjectManagement-data-20230804095614.zip",
+      "path": "data/ProjectManagement-data-20230804103343.zip",
       "mime": "application/zip",
-      "name": "ProjectManagement-data-20230804095614.zip"
+      "name": "ProjectManagement-data-20230804103343.zip"
      },
-     "dt_desc": "Created by module's data export on 2023-08-04 09:56:14"
+     "dt_desc": "Created by module's data export on 2023-08-04 10:33:43"
     }
    }]
   },
