@@ -3,7 +3,7 @@
     "name": "ProjectManagement",
     "format": "json",
     "files": ["ProjectManagement.json"],
-    "repository": {},
+    "repository": {"origin": {"uri": "https://github.com/simplicitesoftware/module_project_management.git"}},
     "version": "0.1",
     "platform": "5.3.11-preview"
 }
