@@ -24728,9 +24728,9 @@
       "res_cached": false,
       "res_file": null,
       "res_image": {
-       "path": "resources/Disposition/default/project-management-module.svg",
-       "mime": "image/svg+xml",
-       "name": "demo-module.svg"
+       "path": "resources/Disposition/default/project-management-module.png",
+       "mime": "image/png",
+       "name": "project-management-module.png"
       },
       "row_module_id__mdl_name": "ProjectManagement"
      }
