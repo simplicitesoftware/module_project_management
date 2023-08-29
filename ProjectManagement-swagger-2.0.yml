@@ -453,11 +453,6 @@ paths:
         type: string
         required: false
       - in: query
-        name: pmDocTskId__pmTskTitle
-        description: Search filter for Task Title
-        type: string
-        required: false
-      - in: query
         name: pmDocTskId__pmTskVrsId__pmVrsPrjId
         description: Search filter for Task Release Project
         type: string
@@ -465,6 +460,11 @@ paths:
       - in: query
         name: pmDocTskId__pmTskVrsId__pmVrsVersion
         description: Search filter for Version
+        type: string
+        required: false
+      - in: query
+        name: pmDocTskId__pmTskTitle
+        description: Search filter for Task Title
         type: string
         required: false
       - in: query
@@ -1228,13 +1228,13 @@ paths:
         type: string
         required: false
       - in: query
-        name: pmMsgTskId__pmTskTitle
-        description: Search filter for Task Title
+        name: pmMsgTskId__pmTskVrsId__pmVrsVersion
+        description: Search filter for Task version
         type: string
         required: false
       - in: query
-        name: pmMsgTskId__pmTskVrsId__pmVrsVersion
-        description: Search filter for Task version
+        name: pmMsgTskId__pmTskTitle
+        description: Search filter for Task Title
         type: string
         required: false
       - in: query
@@ -2921,7 +2921,7 @@ paths:
         required: false
       - in: query
         name: pmAssPmUserid__pmUsrNbTask
-        description: Search filter for User Number of current task
+        description: Search filter for User pmUsrNbTask
         type: integer
         required: false
       - in: query
@@ -2945,8 +2945,13 @@ paths:
         type: string
         required: false
       - in: query
-        name: pmAssPmTaskid__pmTskVrsId__pmVrsName
-        description: Search filter for Concatenation of project name and version number
+        name: pmAssPmTaskid__pmTskVrsId__pmVrsVersion
+        description: Search filter for Task Release Release
+        type: string
+        required: false
+      - in: query
+        name: pmAssPmTaskid__pmTskVrsId__pmVrsPrjId
+        description: Search filter for Task Release Project
         type: string
         required: false
       - in: query
@@ -2963,18 +2968,8 @@ paths:
         - CANCEL
         - REJECTED
       - in: query
-        name: pmAssPmTaskid__pmTskVrsId__pmVrsPrjId
-        description: Search filter for Task Release Project
-        type: string
-        required: false
-      - in: query
-        name: pmAssPmTaskid__pmTskVrsId__pmVrsVersion
-        description: Search filter for Task Release Release
-        type: string
-        required: false
-      - in: query
-        name: pmAssPmTaskid__pmTskVrsId__pmVrsPrjId__pmPrjName
-        description: Search filter for Task Release Project Name
+        name: pmAssPmTaskid__pmTskVrsId__pmVrsName
+        description: Search filter for Concatenation of project name and version number
         type: string
         required: false
       - in: query
@@ -2988,6 +2983,11 @@ paths:
         - HIGH
         - URGENT
         - IMMEDIATE
+      - in: query
+        name: pmAssPmTaskid__pmTskVrsId__pmVrsPrjId__pmPrjName
+        description: Search filter for Task Release Project Name
+        type: string
+        required: false
       - in: query
         name: pmAssPmTaskid__pmTskCreation
         description: Search filter for Task creation date
@@ -3212,7 +3212,7 @@ paths:
         required: false
       - in: query
         name: pmUsrNbTask
-        description: Search filter for Number of current task
+        description: Search filter for pmUsrNbTask
         type: integer
         required: false
       - in: query
@@ -3502,6 +3502,11 @@ paths:
         type: string
         required: false
       - in: query
+        name: pmAotPrvTskId__pmTskVrsId__pmVrsVersion
+        description: Search filter for Previous task version
+        type: string
+        required: false
+      - in: query
         name: pmAotPrvTskId__pmTskStatus
         description: Search filter for Previous task Status
         type: string
@@ -3514,11 +3519,6 @@ paths:
         - CLOSED
         - CANCEL
         - REJECTED
-      - in: query
-        name: pmAotPrvTskId__pmTskVrsId__pmVrsVersion
-        description: Search filter for Previous task version
-        type: string
-        required: false
       - in: query
         name: pmAotPrvTskId__pmTskVrsId__pmVrsPrjId
         description: Search filter for Previous task Release Project
@@ -3545,6 +3545,11 @@ paths:
         type: string
         required: false
       - in: query
+        name: pmAotNextTskId__pmTskVrsId__pmVrsVersion
+        description: Search filter for Next task version
+        type: string
+        required: false
+      - in: query
         name: pmAotNextTskId__pmTskStatus
         description: Search filter for Next task Status
         type: string
@@ -3557,11 +3562,6 @@ paths:
         - CLOSED
         - CANCEL
         - REJECTED
-      - in: query
-        name: pmAotNextTskId__pmTskVrsId__pmVrsVersion
-        description: Search filter for Next task version
-        type: string
-        required: false
       - in: query
         name: pmAotNextTskId__pmTskVrsId__pmVrsPrjId
         description: Search filter for Next task Release Project
@@ -4652,7 +4652,7 @@ definitions:
         description: Mobile/cellular phone number
         type: string
       pmUsrNbTask:
-        description: Number of current task
+        description: pmUsrNbTask
         type: integer
       usr_lang:
         description: Language
@@ -4834,7 +4834,7 @@ definitions:
         description: Task Number
         type: string
       pmAssPmUserid__pmUsrNbTask:
-        description: User Number of current task
+        description: User pmUsrNbTask
         type: integer
       pmAssPmUserid__usr_login:
         description: Login

@@ -467,7 +467,7 @@ components:
           description: Mobile/cellular phone number
           type: string
         pmUsrNbTask:
-          description: Number of current task
+          description: pmUsrNbTask
           type: integer
         usr_lang:
           description: Language
@@ -649,7 +649,7 @@ components:
           description: Task Number
           type: string
         pmAssPmUserid__pmUsrNbTask:
-          description: User Number of current task
+          description: User pmUsrNbTask
           type: integer
         pmAssPmUserid__usr_login:
           description: Login
@@ -1433,12 +1433,6 @@ paths:
       - schema:
           type: string
         in: query
-        name: pmDocTskId__pmTskTitle
-        description: Search filter for Task Title
-        required: false
-      - schema:
-          type: string
-        in: query
         name: pmDocTskId__pmTskVrsId__pmVrsPrjId
         description: Search filter for Task Release Project
         required: false
@@ -1447,6 +1441,12 @@ paths:
         in: query
         name: pmDocTskId__pmTskVrsId__pmVrsVersion
         description: Search filter for Version
+        required: false
+      - schema:
+          type: string
+        in: query
+        name: pmDocTskId__pmTskTitle
+        description: Search filter for Task Title
         required: false
       - schema:
           type: string
@@ -2363,14 +2363,14 @@ paths:
       - schema:
           type: string
         in: query
-        name: pmMsgTskId__pmTskTitle
-        description: Search filter for Task Title
+        name: pmMsgTskId__pmTskVrsId__pmVrsVersion
+        description: Search filter for Task version
         required: false
       - schema:
           type: string
         in: query
-        name: pmMsgTskId__pmTskVrsId__pmVrsVersion
-        description: Search filter for Task version
+        name: pmMsgTskId__pmTskTitle
+        description: Search filter for Task Title
         required: false
       - schema:
           type: string
@@ -4381,7 +4381,7 @@ paths:
           type: integer
         in: query
         name: pmAssPmUserid__pmUsrNbTask
-        description: Search filter for User Number of current task
+        description: Search filter for User pmUsrNbTask
         required: false
       - schema:
           type: string
@@ -4410,8 +4410,14 @@ paths:
       - schema:
           type: string
         in: query
-        name: pmAssPmTaskid__pmTskVrsId__pmVrsName
-        description: Search filter for Concatenation of project name and version number
+        name: pmAssPmTaskid__pmTskVrsId__pmVrsVersion
+        description: Search filter for Task Release Release
+        required: false
+      - schema:
+          type: string
+        in: query
+        name: pmAssPmTaskid__pmTskVrsId__pmVrsPrjId
+        description: Search filter for Task Release Project
         required: false
       - schema:
           type: string
@@ -4430,20 +4436,8 @@ paths:
       - schema:
           type: string
         in: query
-        name: pmAssPmTaskid__pmTskVrsId__pmVrsPrjId
-        description: Search filter for Task Release Project
-        required: false
-      - schema:
-          type: string
-        in: query
-        name: pmAssPmTaskid__pmTskVrsId__pmVrsVersion
-        description: Search filter for Task Release Release
-        required: false
-      - schema:
-          type: string
-        in: query
-        name: pmAssPmTaskid__pmTskVrsId__pmVrsPrjId__pmPrjName
-        description: Search filter for Task Release Project Name
+        name: pmAssPmTaskid__pmTskVrsId__pmVrsName
+        description: Search filter for Concatenation of project name and version number
         required: false
       - schema:
           type: string
@@ -4456,6 +4450,12 @@ paths:
         in: query
         name: pmAssPmTaskid__pmTskPriority
         description: Search filter for Task Priority
+        required: false
+      - schema:
+          type: string
+        in: query
+        name: pmAssPmTaskid__pmTskVrsId__pmVrsPrjId__pmPrjName
+        description: Search filter for Task Release Project Name
         required: false
       - schema:
           type: string
@@ -4727,7 +4727,7 @@ paths:
           type: integer
         in: query
         name: pmUsrNbTask
-        description: Search filter for Number of current task
+        description: Search filter for pmUsrNbTask
         required: false
       - schema:
           type: string
@@ -5072,6 +5072,12 @@ paths:
         required: false
       - schema:
           type: string
+        in: query
+        name: pmAotPrvTskId__pmTskVrsId__pmVrsVersion
+        description: Search filter for Previous task version
+        required: false
+      - schema:
+          type: string
           enum:
           - DRAFT
           - TODO
@@ -5083,12 +5089,6 @@ paths:
         in: query
         name: pmAotPrvTskId__pmTskStatus
         description: Search filter for Previous task Status
-        required: false
-      - schema:
-          type: string
-        in: query
-        name: pmAotPrvTskId__pmTskVrsId__pmVrsVersion
-        description: Search filter for Previous task version
         required: false
       - schema:
           type: string
@@ -5122,6 +5122,12 @@ paths:
         required: false
       - schema:
           type: string
+        in: query
+        name: pmAotNextTskId__pmTskVrsId__pmVrsVersion
+        description: Search filter for Next task version
+        required: false
+      - schema:
+          type: string
           enum:
           - DRAFT
           - TODO
@@ -5133,12 +5139,6 @@ paths:
         in: query
         name: pmAotNextTskId__pmTskStatus
         description: Search filter for Next task Status
-        required: false
-      - schema:
-          type: string
-        in: query
-        name: pmAotNextTskId__pmTskVrsId__pmVrsVersion
-        description: Search filter for Next task version
         required: false
       - schema:
           type: string
