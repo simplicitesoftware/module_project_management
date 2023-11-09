@@ -18783,7 +18783,7 @@
      },
      "pcs_max_duration": null,
      "pcs_duration_unit": "D",
-     "pcs_persitant": false,
+     "pcs_persitant": null,
      "pcs_persist_depth": null,
      "pcs_alert_id__alt_name": null,
      "pcs_compensate_id__pcs_name": null,
@@ -19035,25 +19035,6 @@
       "trs_to_id__acy_process_id__pcs_name": "PmTaskCreate",
       "trs_to_id__acy_step": "PMTC-200",
       "trs_to_id__acy_name": "TaskCreation",
-      "trs_name": null,
-      "trs_action_id__act_name": null,
-      "trs_condition": null,
-      "trs_callback": null,
-      "trs_alert_id__alt_name": null,
-      "row_module_id__mdl_name": "ProjectManagement"
-     }
-    },
-    {
-     "object": "BPMTransition",
-     "userkey": "PmTaskCreate~PmTaskCreate~PMTC-200~PmTaskCreate~PMTC-300",
-     "item": {
-      "trs_process_id__pcs_name": "PmTaskCreate",
-      "trs_from_id__acy_process_id__pcs_name": "PmTaskCreate",
-      "trs_from_id__acy_step": "PMTC-200",
-      "trs_from_id__acy_name": "TaskCreation",
-      "trs_to_id__acy_process_id__pcs_name": "PmTaskCreate",
-      "trs_to_id__acy_step": "PMTC-300",
-      "trs_to_id__acy_name": "PreviousTask",
       "trs_name": null,
       "trs_action_id__act_name": null,
       "trs_condition": null,
@@ -19542,6 +19523,22 @@
     },
     {
      "object": "BPMGrantActivity",
+     "userkey": "ADMIN~PmTaskCreate~PMTC-300",
+     "item": {
+      "gta_group_id__grp_name": "ADMIN",
+      "gta_activity_id__acy_process_id__pcs_name": "PmTaskCreate",
+      "gta_activity_id__acy_step": "PMTC-300",
+      "gta_activity_id__acy_name": "PreviousTask",
+      "gta_grant": [
+       "R",
+       "W",
+       "C"
+      ],
+      "row_module_id__mdl_name": "ProjectManagement"
+     }
+    },
+    {
+     "object": "BPMGrantActivity",
      "userkey": "ADMIN~PmTaskCreate~PMTC-400",
      "item": {
       "gta_group_id__grp_name": "ADMIN",
@@ -19628,6 +19625,22 @@
       "gta_activity_id__acy_process_id__pcs_name": "PmTaskCreate",
       "gta_activity_id__acy_step": "PMTC-200",
       "gta_activity_id__acy_name": "TaskCreation",
+      "gta_grant": [
+       "R",
+       "W",
+       "C"
+      ],
+      "row_module_id__mdl_name": "ProjectManagement"
+     }
+    },
+    {
+     "object": "BPMGrantActivity",
+     "userkey": "APP_ADMIN~PmTaskCreate~PMTC-300",
+     "item": {
+      "gta_group_id__grp_name": "APP_ADMIN",
+      "gta_activity_id__acy_process_id__pcs_name": "PmTaskCreate",
+      "gta_activity_id__acy_step": "PMTC-300",
+      "gta_activity_id__acy_name": "PreviousTask",
       "gta_grant": [
        "R",
        "W",
@@ -19802,6 +19815,22 @@
     },
     {
      "object": "BPMGrantActivity",
+     "userkey": "PM_SUPERADMIN~PmTaskCreate~PMTC-300",
+     "item": {
+      "gta_group_id__grp_name": "PM_SUPERADMIN",
+      "gta_activity_id__acy_process_id__pcs_name": "PmTaskCreate",
+      "gta_activity_id__acy_step": "PMTC-300",
+      "gta_activity_id__acy_name": "PreviousTask",
+      "gta_grant": [
+       "R",
+       "W",
+       "C"
+      ],
+      "row_module_id__mdl_name": "ProjectManagement"
+     }
+    },
+    {
+     "object": "BPMGrantActivity",
      "userkey": "PM_SUPERADMIN~PmTaskCreate~PMTC-400",
      "item": {
       "gta_group_id__grp_name": "PM_SUPERADMIN",
@@ -19894,6 +19923,22 @@
       "gta_grant": [
        "R",
        "W"
+      ],
+      "row_module_id__mdl_name": "ProjectManagement"
+     }
+    },
+    {
+     "object": "BPMGrantActivity",
+     "userkey": "PM_USER_GROUP~PmTaskCreate~PMTC-300",
+     "item": {
+      "gta_group_id__grp_name": "PM_USER_GROUP",
+      "gta_activity_id__acy_process_id__pcs_name": "PmTaskCreate",
+      "gta_activity_id__acy_step": "PMTC-300",
+      "gta_activity_id__acy_name": "PreviousTask",
+      "gta_grant": [
+       "R",
+       "W",
+       "C"
       ],
       "row_module_id__mdl_name": "ProjectManagement"
      }

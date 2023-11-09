@@ -1,5 +1,7 @@
 package com.simplicite.workflows.ProjectManagement;
 
+import static org.mockito.ArgumentMatchers.contains;
+
 import java.util.*;
 
 import com.simplicite.bpm.*;
@@ -26,7 +28,11 @@ public class PmTaskCreate extends Processus {
 		getGrant().removeParameter("NEW_TASK_FILTERS");
 		super.postAbandon();
 	}
-	
+	@Override
+	public Message preLock(ActivityFile context) {
+		String name = context.getActivity().getStep();
+		return super.preLock(context);
+	}
 	@Override
 	public void postValidate(ActivityFile context) {
 		
