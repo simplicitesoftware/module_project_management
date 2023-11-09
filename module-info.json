@@ -1,9 +1,13 @@
 {
-    "date": "2023-08-29 11:07:21",
+    "date": "2023-11-09 03:01:12",
     "name": "ProjectManagement",
     "format": "json",
     "files": ["ProjectManagement.json"],
-    "repository": {"origin": {"uri": "https://github.com/simplicitesoftware/module_project_management.git"}},
+    "repository": {"origin": {
+        "password": "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",
+        "uri": "https://github.com/simplicitesoftware/module_project_management.git",
+        "username": "cbimont@simplicite.fr"
+    }},
     "version": "0.1",
-    "platform": "5.3.11"
+    "platform": "5.3.22-preview"
 }

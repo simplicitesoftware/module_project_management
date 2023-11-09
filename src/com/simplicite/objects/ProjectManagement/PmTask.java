@@ -102,6 +102,8 @@ public class PmTask extends ObjectDB {
 	@Override
 	public void preSearch() {
 		
+		//PredefinedSearch predef= getPredefinedSearches().get();
+		AppLog.info("debug: getConfig "+getData(),getGrant());
 		if(isProcessInstance() && getGrant().hasParameter("NEW_TASK_FILTERS")){
 			// if is process create task and project have been selected display only the task of this project
 			HashMap<String, String>  filters=(HashMap<String, String>) getGrant().getObjectParameter("NEW_TASK_FILTERS");
@@ -113,9 +115,22 @@ public class PmTask extends ObjectDB {
 		}else if(isHomeInstance() && getGrant().hasResponsibility("PM_USER_GROUP") && !getGrant().hasResponsibility("PM_MANAGER") && !getGrant().hasResponsibility("PM_SUPERADMIN")){
 			// if user is only user filter the home page display only task assign to the user
 			getRowIdField().setAdditionalSearchSpec("EXISTS (SELECT * FROM pm_assignment WHERE pm_ass_pm_taskid = t.row_id AND pm_ass_pm_userid="+getGrant().getUserId()+")");
+			if (getGrant().hasParameter("PROJECT_ID")){
+					
+				setFieldFilter("pmVrsPrjId", getGrant().getParameter("PROJECT_ID"));
+			}else if (getGrant().hasParameter("VERSION_ID")){
+				setFieldFilter("pmTskVrsId", getGrant().getParameter("VERSION_ID"));
+			}
 		}else if(isHomeInstance() && getGrant().hasResponsibility("PM_MANAGER") && !getGrant().hasResponsibility("PM_SUPERADMIN")){
 			// if user is manager and not admin display only task of project manage by user
+			AppLog.info("debug instance: "+getInstanceName(), getGrant());
 			getField("pmVrsPrjId").setAdditionalSearchSpec("EXISTS (SELECT * FROM pm_role WHERE pm_rol_prj_id = t_pmVrsPrjId.row_id AND pm_rol_usr_id="+getGrant().getUserId()+")");
+			if (getGrant().hasParameter("PROJECT_ID")){
+					
+				setFieldFilter("pmVrsPrjId", getGrant().getParameter("PROJECT_ID"));
+			}else if (getGrant().hasParameter("VERSION_ID")){
+				setFieldFilter("pmTskVrsId", getGrant().getParameter("VERSION_ID"));
+			}
 		}else if (isHomeInstance() && getGrant().hasParameter("PROJECT_ID")){
 			// if is view in project display task assign to user
 			getRowIdField().setAdditionalSearchSpec("EXISTS (SELECT * FROM pm_assignment WHERE pm_ass_pm_taskid = t.row_id AND pm_ass_pm_userid="+getGrant().getUserId()+")");

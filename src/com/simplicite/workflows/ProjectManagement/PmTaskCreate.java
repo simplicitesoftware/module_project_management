@@ -26,6 +26,7 @@ public class PmTaskCreate extends Processus {
 		getGrant().removeParameter("NEW_TASK_FILTERS");
 		super.postAbandon();
 	}
+	
 	@Override
 	public void postValidate(ActivityFile context) {
 		
@@ -33,6 +34,9 @@ public class PmTaskCreate extends Processus {
 		String tskId="";
 		String[] values;
 		switch (step) {
+			case "PMTC-050":
+				getContext(getActivity("PMTC-100")).setDataFile("Search","Spec","t.pm_vrs_date_publication>='"+Tool.getCurrentDate()+"'");
+				break;
 			case "PMTC-200":
 				String prjName = context.getDataValue("Field", "pmTskVrsId.pmVrsPrjId.pmPrjName");
 				String tskID = context.getDataValue("Field", "row_id");

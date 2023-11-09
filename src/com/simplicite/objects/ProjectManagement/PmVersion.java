@@ -32,6 +32,7 @@ public class PmVersion extends ObjectDB {
 		filters.put(fieldStatus, "ALPHA;BETA");
 		filters.put("row_id", getRowId());// use for deffer task
 		getGrant().setParameter("PARENT_FILTERS", filters);
+		AppLog.info("debug version",getGrant());
 		getGrant().setParameter("VERSION_ID", getRowId());
 	}
 	
@@ -42,12 +43,14 @@ public class PmVersion extends ObjectDB {
 			String vrsRowId=filters.get("row_id");
 			if(!Tool.isEmpty(vrsRowId)){//dont show curent version when defer task
 				setFieldFilter("row_id", "!= '"+vrsRowId+"'");
-			}			
+			}
+			
 			setFieldFilter(fieldPrjId, filters.get(fieldPrjId));
 			setFieldFilter(fieldStatus, filters.get(fieldStatus));
 			getGrant().removeParameter("PARENT_FILTERS");
 		}
 	}
+	
 	@Override
 	public String postCreate() {
 		completionVersion();
