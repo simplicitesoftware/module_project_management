@@ -1433,14 +1433,14 @@ paths:
       - schema:
           type: string
         in: query
-        name: pmDocTskId__pmTskVrsId__pmVrsPrjId
-        description: Search filter for Task Release Project
+        name: pmDocTskId__pmTskVrsId__pmVrsVersion
+        description: Search filter for Version
         required: false
       - schema:
           type: string
         in: query
-        name: pmDocTskId__pmTskVrsId__pmVrsVersion
-        description: Search filter for Version
+        name: pmDocTskId__pmTskVrsId__pmVrsPrjId
+        description: Search filter for Task Release Project
         required: false
       - schema:
           type: string
@@ -4410,14 +4410,14 @@ paths:
       - schema:
           type: string
         in: query
-        name: pmAssPmTaskid__pmTskVrsId__pmVrsVersion
-        description: Search filter for Task Release Release
+        name: pmAssPmTaskid__pmTskVrsId__pmVrsPrjId
+        description: Search filter for Task Release Project
         required: false
       - schema:
           type: string
         in: query
-        name: pmAssPmTaskid__pmTskVrsId__pmVrsPrjId
-        description: Search filter for Task Release Project
+        name: pmAssPmTaskid__pmTskVrsId__pmVrsVersion
+        description: Search filter for Task Release Release
         required: false
       - schema:
           type: string
