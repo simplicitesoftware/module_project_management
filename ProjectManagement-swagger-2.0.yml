@@ -2945,8 +2945,8 @@ paths:
         type: string
         required: false
       - in: query
-        name: pmAssPmTaskid__pmTskVrsId__pmVrsPrjId
-        description: Search filter for Task Release Project
+        name: pmAssPmTaskid__pmTskVrsId__pmVrsName
+        description: Search filter for Concatenation of project name and version number
         type: string
         required: false
       - in: query
@@ -2968,8 +2968,8 @@ paths:
         - CANCEL
         - REJECTED
       - in: query
-        name: pmAssPmTaskid__pmTskVrsId__pmVrsName
-        description: Search filter for Concatenation of project name and version number
+        name: pmAssPmTaskid__pmTskVrsId__pmVrsPrjId
+        description: Search filter for Task Release Project
         type: string
         required: false
       - in: query

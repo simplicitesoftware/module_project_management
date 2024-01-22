@@ -4410,8 +4410,8 @@ paths:
       - schema:
           type: string
         in: query
-        name: pmAssPmTaskid__pmTskVrsId__pmVrsPrjId
-        description: Search filter for Task Release Project
+        name: pmAssPmTaskid__pmTskVrsId__pmVrsName
+        description: Search filter for Concatenation of project name and version number
         required: false
       - schema:
           type: string
@@ -4436,8 +4436,8 @@ paths:
       - schema:
           type: string
         in: query
-        name: pmAssPmTaskid__pmTskVrsId__pmVrsName
-        description: Search filter for Concatenation of project name and version number
+        name: pmAssPmTaskid__pmTskVrsId__pmVrsPrjId
+        description: Search filter for Task Release Project
         required: false
       - schema:
           type: string
