@@ -295,7 +295,7 @@
       "usr_last_name": null,
       "usr_first_name": null,
       "usr_email": "demo@simplicite.fr",
-      "usr_home_id__viw_name": "ProjectManagementAdminScope",
+      "usr_home_id__viw_name": "PmManagerHome",
       "usr_work_num": null,
       "usr_home_num": null,
       "usr_cell_num": null,
@@ -309,7 +309,7 @@
       "usr_menu": true,
       "usr_menu_defcollapsed": false,
       "usr_menu_defdomain_id__obd_name": null,
-      "usr_last_logon": "2023-10-24 13:29:04",
+      "usr_last_logon": "2024-01-22 15:14:26",
       "usr_dateformat": null,
       "usr_numformat": null,
       "usr_lang_pref": "ENU",
@@ -442,7 +442,7 @@
      "item": {
       "usp_user_id__usr_login": "PmAdmin",
       "usp_param_id__sys_code": "CLIENT_ID",
-      "usp_value": "[{\n \"dt\": \"2023-10-24 13:29:04\",\n \"ag\": \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/118.0.0.0 Safari/537.36\",\n \"id\": \"xfoxn3esg8e89wab492u2o92sj20yxwptzipm91u5b32us8j6ffyq8eto7g1krsh1698139776018\"\n}]",
+      "usp_value": "[\n {\n  \"dt\": \"2023-10-24 13:29:04\",\n  \"ag\": \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/118.0.0.0 Safari/537.36\",\n  \"id\": \"xfoxn3esg8e89wab492u2o92sj20yxwptzipm91u5b32us8j6ffyq8eto7g1krsh1698139776018\"\n },\n {\n  \"dt\": \"2024-01-22 15:14:26\",\n  \"ag\": \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36\",\n  \"id\": \"iw5711bwx6vthc0bclx3ykc2s5xmjdcclygw28z0fcc7bm9i5w22pbpie2ak043b1700817301993\"\n }\n]",
       "usp_param_id__sys_type": null,
       "usp_param_id__sys_value": "empty",
       "usp_param_id__sys_desc": null,
@@ -507,7 +507,7 @@
      "item": {
       "usp_user_id__usr_login": "PmAdmin",
       "usp_param_id__sys_code": "SCOPE_PREFS",
-      "usp_value": "ProjectManagementAdminScope,PmManagerHome",
+      "usp_value": "PmManagerHome,ProjectManagementAdminScope",
       "usp_param_id__sys_type": "LFL",
       "usp_param_id__sys_value": "empty",
       "usp_param_id__sys_desc": "Technical, do not change/remove, needed in user's parameters",
@@ -795,7 +795,7 @@
       "rsp_group_id__grp_name": "PM_MANAGER",
       "rsp_start_dt": "2023-06-09",
       "rsp_end_dt": null,
-      "rsp_activ": false,
+      "rsp_activ": true,
       "row_module_id__mdl_name": "ProjectManagement"
      }
     },
@@ -807,7 +807,7 @@
       "rsp_group_id__grp_name": "PM_SUPERADMIN",
       "rsp_start_dt": "2023-05-16",
       "rsp_end_dt": null,
-      "rsp_activ": true,
+      "rsp_activ": false,
       "row_module_id__mdl_name": "ProjectManagement"
      }
     },
@@ -2076,23 +2076,23 @@
    "list": [
     {
      "object": "FieldListValue",
-     "userkey": "PM_ASS_ROLE~DEVELOPER~ENU",
-     "item": {
-      "lov_code_id__lov_list_id__lov_name": "PM_ASS_ROLE",
-      "lov_code_id__lov_code": "DEVELOPER",
-      "lov_lang": "ENU",
-      "lov_value": "Developer",
-      "row_module_id__mdl_name": "ProjectManagement"
-     }
-    },
-    {
-     "object": "FieldListValue",
      "userkey": "PM_ASS_ROLE~MANAGER~ENU",
      "item": {
       "lov_code_id__lov_list_id__lov_name": "PM_ASS_ROLE",
       "lov_code_id__lov_code": "MANAGER",
       "lov_lang": "ENU",
       "lov_value": "Manager",
+      "row_module_id__mdl_name": "ProjectManagement"
+     }
+    },
+    {
+     "object": "FieldListValue",
+     "userkey": "PM_ASS_ROLE~DEVELOPER~ENU",
+     "item": {
+      "lov_code_id__lov_list_id__lov_name": "PM_ASS_ROLE",
+      "lov_code_id__lov_code": "DEVELOPER",
+      "lov_lang": "ENU",
+      "lov_value": "Developer",
       "row_module_id__mdl_name": "ProjectManagement"
      }
     },
@@ -2164,6 +2164,17 @@
     },
     {
      "object": "FieldListValue",
+     "userkey": "PM_DOC_TYPE~REQ~ENU",
+     "item": {
+      "lov_code_id__lov_list_id__lov_name": "PM_DOC_TYPE",
+      "lov_code_id__lov_code": "REQ",
+      "lov_lang": "ENU",
+      "lov_value": "Required",
+      "row_module_id__mdl_name": "ProjectManagement"
+     }
+    },
+    {
+     "object": "FieldListValue",
      "userkey": "PM_DOC_TYPE~DOC~ENU",
      "item": {
       "lov_code_id__lov_list_id__lov_name": "PM_DOC_TYPE",
@@ -2181,17 +2192,6 @@
       "lov_code_id__lov_code": "SPEC",
       "lov_lang": "ENU",
       "lov_value": "Specification|Specifications",
-      "row_module_id__mdl_name": "ProjectManagement"
-     }
-    },
-    {
-     "object": "FieldListValue",
-     "userkey": "PM_DOC_TYPE~REQ~ENU",
-     "item": {
-      "lov_code_id__lov_list_id__lov_name": "PM_DOC_TYPE",
-      "lov_code_id__lov_code": "REQ",
-      "lov_lang": "ENU",
-      "lov_value": "Required",
       "row_module_id__mdl_name": "ProjectManagement"
      }
     },
@@ -2307,23 +2307,23 @@
     },
     {
      "object": "FieldListValue",
-     "userkey": "PM_PRJ_SERVICE~SERVICEA~FRA",
-     "item": {
-      "lov_code_id__lov_list_id__lov_name": "PM_PRJ_SERVICE",
-      "lov_code_id__lov_code": "SERVICEA",
-      "lov_lang": "FRA",
-      "lov_value": "Service A",
-      "row_module_id__mdl_name": "ProjectManagement"
-     }
-    },
-    {
-     "object": "FieldListValue",
      "userkey": "PM_PRJ_SERVICE~SERVICEC~FRA",
      "item": {
       "lov_code_id__lov_list_id__lov_name": "PM_PRJ_SERVICE",
       "lov_code_id__lov_code": "SERVICEC",
       "lov_lang": "FRA",
       "lov_value": "Service C",
+      "row_module_id__mdl_name": "ProjectManagement"
+     }
+    },
+    {
+     "object": "FieldListValue",
+     "userkey": "PM_PRJ_SERVICE~SERVICEA~FRA",
+     "item": {
+      "lov_code_id__lov_list_id__lov_name": "PM_PRJ_SERVICE",
+      "lov_code_id__lov_code": "SERVICEA",
+      "lov_lang": "FRA",
+      "lov_value": "Service A",
       "row_module_id__mdl_name": "ProjectManagement"
      }
     },
@@ -2373,17 +2373,6 @@
     },
     {
      "object": "FieldListValue",
-     "userkey": "PM_ROL_ROLE~MANAGER~FRA",
-     "item": {
-      "lov_code_id__lov_list_id__lov_name": "PM_ROL_ROLE",
-      "lov_code_id__lov_code": "MANAGER",
-      "lov_lang": "FRA",
-      "lov_value": "Manager",
-      "row_module_id__mdl_name": "ProjectManagement"
-     }
-    },
-    {
-     "object": "FieldListValue",
      "userkey": "PM_ROL_ROLE~ADMIN~FRA",
      "item": {
       "lov_code_id__lov_list_id__lov_name": "PM_ROL_ROLE",
@@ -2406,12 +2395,12 @@
     },
     {
      "object": "FieldListValue",
-     "userkey": "PM_TSH_DURATION~500~ANY",
+     "userkey": "PM_ROL_ROLE~MANAGER~FRA",
      "item": {
-      "lov_code_id__lov_list_id__lov_name": "PM_TSH_DURATION",
-      "lov_code_id__lov_code": "500",
-      "lov_lang": "ANY",
-      "lov_value": "0.5",
+      "lov_code_id__lov_list_id__lov_name": "PM_ROL_ROLE",
+      "lov_code_id__lov_code": "MANAGER",
+      "lov_lang": "FRA",
+      "lov_value": "Manager",
       "row_module_id__mdl_name": "ProjectManagement"
      }
     },
@@ -2434,6 +2423,17 @@
       "lov_code_id__lov_code": "250",
       "lov_lang": "ANY",
       "lov_value": "0.25",
+      "row_module_id__mdl_name": "ProjectManagement"
+     }
+    },
+    {
+     "object": "FieldListValue",
+     "userkey": "PM_TSH_DURATION~500~ANY",
+     "item": {
+      "lov_code_id__lov_list_id__lov_name": "PM_TSH_DURATION",
+      "lov_code_id__lov_code": "500",
+      "lov_lang": "ANY",
+      "lov_value": "0.5",
       "row_module_id__mdl_name": "ProjectManagement"
      }
     },
@@ -2472,17 +2472,6 @@
     },
     {
      "object": "FieldListValue",
-     "userkey": "PM_TSK_PRIORITE~IMMEDIATE~ENU",
-     "item": {
-      "lov_code_id__lov_list_id__lov_name": "PM_TSK_PRIORITE",
-      "lov_code_id__lov_code": "IMMEDIATE",
-      "lov_lang": "ENU",
-      "lov_value": "Immediate",
-      "row_module_id__mdl_name": "ProjectManagement"
-     }
-    },
-    {
-     "object": "FieldListValue",
      "userkey": "PM_TSK_PRIORITE~HIGH~ENU",
      "item": {
       "lov_code_id__lov_list_id__lov_name": "PM_TSK_PRIORITE",
@@ -2505,45 +2494,23 @@
     },
     {
      "object": "FieldListValue",
+     "userkey": "PM_TSK_PRIORITE~IMMEDIATE~ENU",
+     "item": {
+      "lov_code_id__lov_list_id__lov_name": "PM_TSK_PRIORITE",
+      "lov_code_id__lov_code": "IMMEDIATE",
+      "lov_lang": "ENU",
+      "lov_value": "Immediate",
+      "row_module_id__mdl_name": "ProjectManagement"
+     }
+    },
+    {
+     "object": "FieldListValue",
      "userkey": "PM_TSK_PRIORITE~LOW~FRA",
      "item": {
       "lov_code_id__lov_list_id__lov_name": "PM_TSK_PRIORITE",
       "lov_code_id__lov_code": "LOW",
       "lov_lang": "FRA",
       "lov_value": "Faible",
-      "row_module_id__mdl_name": "ProjectManagement"
-     }
-    },
-    {
-     "object": "FieldListValue",
-     "userkey": "PM_TSK_PRIORITE~HIGH~FRA",
-     "item": {
-      "lov_code_id__lov_list_id__lov_name": "PM_TSK_PRIORITE",
-      "lov_code_id__lov_code": "HIGH",
-      "lov_lang": "FRA",
-      "lov_value": "Haute",
-      "row_module_id__mdl_name": "ProjectManagement"
-     }
-    },
-    {
-     "object": "FieldListValue",
-     "userkey": "PM_TSK_PRIORITE~NORMAL~FRA",
-     "item": {
-      "lov_code_id__lov_list_id__lov_name": "PM_TSK_PRIORITE",
-      "lov_code_id__lov_code": "NORMAL",
-      "lov_lang": "FRA",
-      "lov_value": "Normal",
-      "row_module_id__mdl_name": "ProjectManagement"
-     }
-    },
-    {
-     "object": "FieldListValue",
-     "userkey": "PM_TSK_PRIORITE~IMMEDIATE~FRA",
-     "item": {
-      "lov_code_id__lov_list_id__lov_name": "PM_TSK_PRIORITE",
-      "lov_code_id__lov_code": "IMMEDIATE",
-      "lov_lang": "FRA",
-      "lov_value": "Immédiat",
       "row_module_id__mdl_name": "ProjectManagement"
      }
     },
@@ -2560,12 +2527,34 @@
     },
     {
      "object": "FieldListValue",
-     "userkey": "PM_TSK_STATUT~CLOSED~ENU",
+     "userkey": "PM_TSK_PRIORITE~HIGH~FRA",
      "item": {
-      "lov_code_id__lov_list_id__lov_name": "PM_TSK_STATUT",
-      "lov_code_id__lov_code": "CLOSED",
-      "lov_lang": "ENU",
-      "lov_value": "Closed",
+      "lov_code_id__lov_list_id__lov_name": "PM_TSK_PRIORITE",
+      "lov_code_id__lov_code": "HIGH",
+      "lov_lang": "FRA",
+      "lov_value": "Haute",
+      "row_module_id__mdl_name": "ProjectManagement"
+     }
+    },
+    {
+     "object": "FieldListValue",
+     "userkey": "PM_TSK_PRIORITE~IMMEDIATE~FRA",
+     "item": {
+      "lov_code_id__lov_list_id__lov_name": "PM_TSK_PRIORITE",
+      "lov_code_id__lov_code": "IMMEDIATE",
+      "lov_lang": "FRA",
+      "lov_value": "Immédiat",
+      "row_module_id__mdl_name": "ProjectManagement"
+     }
+    },
+    {
+     "object": "FieldListValue",
+     "userkey": "PM_TSK_PRIORITE~NORMAL~FRA",
+     "item": {
+      "lov_code_id__lov_list_id__lov_name": "PM_TSK_PRIORITE",
+      "lov_code_id__lov_code": "NORMAL",
+      "lov_lang": "FRA",
+      "lov_value": "Normal",
       "row_module_id__mdl_name": "ProjectManagement"
      }
     },
@@ -2582,12 +2571,12 @@
     },
     {
      "object": "FieldListValue",
-     "userkey": "PM_TSK_STATUT~TODO~ENU",
+     "userkey": "PM_TSK_STATUT~CLOSED~ENU",
      "item": {
       "lov_code_id__lov_list_id__lov_name": "PM_TSK_STATUT",
-      "lov_code_id__lov_code": "TODO",
+      "lov_code_id__lov_code": "CLOSED",
       "lov_lang": "ENU",
-      "lov_value": "To do",
+      "lov_value": "Closed",
       "row_module_id__mdl_name": "ProjectManagement"
      }
     },
@@ -2604,23 +2593,23 @@
     },
     {
      "object": "FieldListValue",
-     "userkey": "PM_TSK_STATUT~DONE~ENU",
-     "item": {
-      "lov_code_id__lov_list_id__lov_name": "PM_TSK_STATUT",
-      "lov_code_id__lov_code": "DONE",
-      "lov_lang": "ENU",
-      "lov_value": "Done",
-      "row_module_id__mdl_name": "ProjectManagement"
-     }
-    },
-    {
-     "object": "FieldListValue",
      "userkey": "PM_TSK_STATUT~DRAFT~ENU",
      "item": {
       "lov_code_id__lov_list_id__lov_name": "PM_TSK_STATUT",
       "lov_code_id__lov_code": "DRAFT",
       "lov_lang": "ENU",
       "lov_value": "Draft",
+      "row_module_id__mdl_name": "ProjectManagement"
+     }
+    },
+    {
+     "object": "FieldListValue",
+     "userkey": "PM_TSK_STATUT~TODO~ENU",
+     "item": {
+      "lov_code_id__lov_list_id__lov_name": "PM_TSK_STATUT",
+      "lov_code_id__lov_code": "TODO",
+      "lov_lang": "ENU",
+      "lov_value": "To do",
       "row_module_id__mdl_name": "ProjectManagement"
      }
     },
@@ -2637,12 +2626,12 @@
     },
     {
      "object": "FieldListValue",
-     "userkey": "PM_TSK_STATUT~DRAFT~FRA",
+     "userkey": "PM_TSK_STATUT~DONE~ENU",
      "item": {
       "lov_code_id__lov_list_id__lov_name": "PM_TSK_STATUT",
-      "lov_code_id__lov_code": "DRAFT",
-      "lov_lang": "FRA",
-      "lov_value": "Brouillon",
+      "lov_code_id__lov_code": "DONE",
+      "lov_lang": "ENU",
+      "lov_value": "Done",
       "row_module_id__mdl_name": "ProjectManagement"
      }
     },
@@ -2670,6 +2659,17 @@
     },
     {
      "object": "FieldListValue",
+     "userkey": "PM_TSK_STATUT~DRAFT~FRA",
+     "item": {
+      "lov_code_id__lov_list_id__lov_name": "PM_TSK_STATUT",
+      "lov_code_id__lov_code": "DRAFT",
+      "lov_lang": "FRA",
+      "lov_value": "Brouillon",
+      "row_module_id__mdl_name": "ProjectManagement"
+     }
+    },
+    {
+     "object": "FieldListValue",
      "userkey": "PM_TSK_STATUT~REJECTED~FRA",
      "item": {
       "lov_code_id__lov_list_id__lov_name": "PM_TSK_STATUT",
@@ -2681,23 +2681,23 @@
     },
     {
      "object": "FieldListValue",
-     "userkey": "PM_TSK_STATUT~CANCEL~FRA",
-     "item": {
-      "lov_code_id__lov_list_id__lov_name": "PM_TSK_STATUT",
-      "lov_code_id__lov_code": "CANCEL",
-      "lov_lang": "FRA",
-      "lov_value": "Annulée",
-      "row_module_id__mdl_name": "ProjectManagement"
-     }
-    },
-    {
-     "object": "FieldListValue",
      "userkey": "PM_TSK_STATUT~DONE~FRA",
      "item": {
       "lov_code_id__lov_list_id__lov_name": "PM_TSK_STATUT",
       "lov_code_id__lov_code": "DONE",
       "lov_lang": "FRA",
       "lov_value": "Terminée",
+      "row_module_id__mdl_name": "ProjectManagement"
+     }
+    },
+    {
+     "object": "FieldListValue",
+     "userkey": "PM_TSK_STATUT~CANCEL~FRA",
+     "item": {
+      "lov_code_id__lov_list_id__lov_name": "PM_TSK_STATUT",
+      "lov_code_id__lov_code": "CANCEL",
+      "lov_lang": "FRA",
+      "lov_value": "Annulée",
       "row_module_id__mdl_name": "ProjectManagement"
      }
     },
@@ -2791,23 +2791,23 @@
     },
     {
      "object": "FieldListValue",
-     "userkey": "PM_VRS_STATUS~PUBLISHED~ENU",
-     "item": {
-      "lov_code_id__lov_list_id__lov_name": "PM_VRS_STATUS",
-      "lov_code_id__lov_code": "PUBLISHED",
-      "lov_lang": "ENU",
-      "lov_value": "Published",
-      "row_module_id__mdl_name": "ProjectManagement"
-     }
-    },
-    {
-     "object": "FieldListValue",
      "userkey": "PM_VRS_STATUS~BETA~ENU",
      "item": {
       "lov_code_id__lov_list_id__lov_name": "PM_VRS_STATUS",
       "lov_code_id__lov_code": "BETA",
       "lov_lang": "ENU",
       "lov_value": "Beta",
+      "row_module_id__mdl_name": "ProjectManagement"
+     }
+    },
+    {
+     "object": "FieldListValue",
+     "userkey": "PM_VRS_STATUS~PUBLISHED~ENU",
+     "item": {
+      "lov_code_id__lov_list_id__lov_name": "PM_VRS_STATUS",
+      "lov_code_id__lov_code": "PUBLISHED",
+      "lov_lang": "ENU",
+      "lov_value": "Published",
       "row_module_id__mdl_name": "ProjectManagement"
      }
     },
@@ -7644,42 +7644,6 @@
     },
     {
      "object": "ObjectFieldSystem",
-     "userkey": "PmArrayOfTask~pmTskStatus~130",
-     "item": {
-      "obf_object_id__obo_name": "PmArrayOfTask",
-      "obf_field_id__fld_name": "pmTskStatus",
-      "obf_field_id__fld_type": "7",
-      "obf_order": 130,
-      "obf_group_by": null,
-      "obf_dfault_order": null,
-      "obf_input": null,
-      "obf_ref_field_id__fld_name": "pmAotPrvTskId",
-      "obf_ref_object_id__obo_name": "PmTask",
-      "obf_cascad": null,
-      "obf_card": null,
-      "obf_visible": null,
-      "obf_ref_export": true,
-      "obf_copy": null,
-      "obf_ref_order": null,
-      "obf_fld_visible": null,
-      "obf_fld_required": null,
-      "obf_fld_updatable": null,
-      "obf_fld_research": null,
-      "obf_fld_more": null,
-      "obf_fld_listmore": null,
-      "obf_fld_researchreq": null,
-      "obf_fld_dfault": null,
-      "obf_field_id__fld_dfault": "DRAFT",
-      "obf_fld_exportable": null,
-      "obf_field_id__fld_exportable": true,
-      "obf_fld_uk": null,
-      "obf_area_id__ofa_name": "PmArrayOfTask-2",
-      "obf_area_id__ofa_position": 2,
-      "row_module_id__mdl_name": "ProjectManagement"
-     }
-    },
-    {
-     "object": "ObjectFieldSystem",
      "userkey": "PmArrayOfTask~pmVrsVersion~130",
      "item": {
       "obf_object_id__obo_name": "PmArrayOfTask",
@@ -7706,6 +7670,42 @@
       "obf_fld_researchreq": null,
       "obf_fld_dfault": null,
       "obf_field_id__fld_dfault": null,
+      "obf_fld_exportable": null,
+      "obf_field_id__fld_exportable": true,
+      "obf_fld_uk": null,
+      "obf_area_id__ofa_name": "PmArrayOfTask-2",
+      "obf_area_id__ofa_position": 2,
+      "row_module_id__mdl_name": "ProjectManagement"
+     }
+    },
+    {
+     "object": "ObjectFieldSystem",
+     "userkey": "PmArrayOfTask~pmTskStatus~130",
+     "item": {
+      "obf_object_id__obo_name": "PmArrayOfTask",
+      "obf_field_id__fld_name": "pmTskStatus",
+      "obf_field_id__fld_type": "7",
+      "obf_order": 130,
+      "obf_group_by": null,
+      "obf_dfault_order": null,
+      "obf_input": null,
+      "obf_ref_field_id__fld_name": "pmAotPrvTskId",
+      "obf_ref_object_id__obo_name": "PmTask",
+      "obf_cascad": null,
+      "obf_card": null,
+      "obf_visible": null,
+      "obf_ref_export": true,
+      "obf_copy": null,
+      "obf_ref_order": null,
+      "obf_fld_visible": null,
+      "obf_fld_required": null,
+      "obf_fld_updatable": null,
+      "obf_fld_research": null,
+      "obf_fld_more": null,
+      "obf_fld_listmore": null,
+      "obf_fld_researchreq": null,
+      "obf_fld_dfault": null,
+      "obf_field_id__fld_dfault": "DRAFT",
       "obf_fld_exportable": null,
       "obf_field_id__fld_exportable": true,
       "obf_fld_uk": null,
@@ -7896,42 +7896,6 @@
     },
     {
      "object": "ObjectFieldSystem",
-     "userkey": "PmArrayOfTask~pmTskStatus~230",
-     "item": {
-      "obf_object_id__obo_name": "PmArrayOfTask",
-      "obf_field_id__fld_name": "pmTskStatus",
-      "obf_field_id__fld_type": "7",
-      "obf_order": 230,
-      "obf_group_by": null,
-      "obf_dfault_order": null,
-      "obf_input": null,
-      "obf_ref_field_id__fld_name": "pmAotNextTskId",
-      "obf_ref_object_id__obo_name": "PmTask",
-      "obf_cascad": null,
-      "obf_card": null,
-      "obf_visible": null,
-      "obf_ref_export": true,
-      "obf_copy": null,
-      "obf_ref_order": null,
-      "obf_fld_visible": null,
-      "obf_fld_required": null,
-      "obf_fld_updatable": null,
-      "obf_fld_research": null,
-      "obf_fld_more": null,
-      "obf_fld_listmore": null,
-      "obf_fld_researchreq": null,
-      "obf_fld_dfault": null,
-      "obf_field_id__fld_dfault": "DRAFT",
-      "obf_fld_exportable": null,
-      "obf_field_id__fld_exportable": true,
-      "obf_fld_uk": null,
-      "obf_area_id__ofa_name": "PmArrayOfTask-3",
-      "obf_area_id__ofa_position": 3,
-      "row_module_id__mdl_name": "ProjectManagement"
-     }
-    },
-    {
-     "object": "ObjectFieldSystem",
      "userkey": "PmArrayOfTask~pmVrsVersion~230",
      "item": {
       "obf_object_id__obo_name": "PmArrayOfTask",
@@ -7958,6 +7922,42 @@
       "obf_fld_researchreq": null,
       "obf_fld_dfault": null,
       "obf_field_id__fld_dfault": null,
+      "obf_fld_exportable": null,
+      "obf_field_id__fld_exportable": true,
+      "obf_fld_uk": null,
+      "obf_area_id__ofa_name": "PmArrayOfTask-3",
+      "obf_area_id__ofa_position": 3,
+      "row_module_id__mdl_name": "ProjectManagement"
+     }
+    },
+    {
+     "object": "ObjectFieldSystem",
+     "userkey": "PmArrayOfTask~pmTskStatus~230",
+     "item": {
+      "obf_object_id__obo_name": "PmArrayOfTask",
+      "obf_field_id__fld_name": "pmTskStatus",
+      "obf_field_id__fld_type": "7",
+      "obf_order": 230,
+      "obf_group_by": null,
+      "obf_dfault_order": null,
+      "obf_input": null,
+      "obf_ref_field_id__fld_name": "pmAotNextTskId",
+      "obf_ref_object_id__obo_name": "PmTask",
+      "obf_cascad": null,
+      "obf_card": null,
+      "obf_visible": null,
+      "obf_ref_export": true,
+      "obf_copy": null,
+      "obf_ref_order": null,
+      "obf_fld_visible": null,
+      "obf_fld_required": null,
+      "obf_fld_updatable": null,
+      "obf_fld_research": null,
+      "obf_fld_more": null,
+      "obf_fld_listmore": null,
+      "obf_fld_researchreq": null,
+      "obf_fld_dfault": null,
+      "obf_field_id__fld_dfault": "DRAFT",
       "obf_fld_exportable": null,
       "obf_field_id__fld_exportable": true,
       "obf_fld_uk": null,
@@ -8472,42 +8472,6 @@
     },
     {
      "object": "ObjectFieldSystem",
-     "userkey": "PmAssignment~pmTskPriority~260",
-     "item": {
-      "obf_object_id__obo_name": "PmAssignment",
-      "obf_field_id__fld_name": "pmTskPriority",
-      "obf_field_id__fld_type": "7",
-      "obf_order": 260,
-      "obf_group_by": null,
-      "obf_dfault_order": null,
-      "obf_input": null,
-      "obf_ref_field_id__fld_name": "pmAssPmTaskid",
-      "obf_ref_object_id__obo_name": "PmTask",
-      "obf_cascad": null,
-      "obf_card": null,
-      "obf_visible": null,
-      "obf_ref_export": true,
-      "obf_copy": null,
-      "obf_ref_order": null,
-      "obf_fld_visible": "2",
-      "obf_fld_required": null,
-      "obf_fld_updatable": null,
-      "obf_fld_research": null,
-      "obf_fld_more": null,
-      "obf_fld_listmore": null,
-      "obf_fld_researchreq": null,
-      "obf_fld_dfault": null,
-      "obf_field_id__fld_dfault": "NORMAL",
-      "obf_fld_exportable": null,
-      "obf_field_id__fld_exportable": true,
-      "obf_fld_uk": null,
-      "obf_area_id__ofa_name": "PmAssignment-2",
-      "obf_area_id__ofa_position": 2,
-      "row_module_id__mdl_name": "ProjectManagement"
-     }
-    },
-    {
-     "object": "ObjectFieldSystem",
      "userkey": "PmAssignment~pmPrjName~260",
      "item": {
       "obf_object_id__obo_name": "PmAssignment",
@@ -8539,6 +8503,42 @@
       "obf_fld_uk": null,
       "obf_area_id__ofa_name": "PmAssignment-5",
       "obf_area_id__ofa_position": 5,
+      "row_module_id__mdl_name": "ProjectManagement"
+     }
+    },
+    {
+     "object": "ObjectFieldSystem",
+     "userkey": "PmAssignment~pmTskPriority~260",
+     "item": {
+      "obf_object_id__obo_name": "PmAssignment",
+      "obf_field_id__fld_name": "pmTskPriority",
+      "obf_field_id__fld_type": "7",
+      "obf_order": 260,
+      "obf_group_by": null,
+      "obf_dfault_order": null,
+      "obf_input": null,
+      "obf_ref_field_id__fld_name": "pmAssPmTaskid",
+      "obf_ref_object_id__obo_name": "PmTask",
+      "obf_cascad": null,
+      "obf_card": null,
+      "obf_visible": null,
+      "obf_ref_export": true,
+      "obf_copy": null,
+      "obf_ref_order": null,
+      "obf_fld_visible": "2",
+      "obf_fld_required": null,
+      "obf_fld_updatable": null,
+      "obf_fld_research": null,
+      "obf_fld_more": null,
+      "obf_fld_listmore": null,
+      "obf_fld_researchreq": null,
+      "obf_fld_dfault": null,
+      "obf_field_id__fld_dfault": "NORMAL",
+      "obf_fld_exportable": null,
+      "obf_field_id__fld_exportable": true,
+      "obf_fld_uk": null,
+      "obf_area_id__ofa_name": "PmAssignment-2",
+      "obf_area_id__ofa_position": 2,
       "row_module_id__mdl_name": "ProjectManagement"
      }
     },
@@ -9372,17 +9372,17 @@
     },
     {
      "object": "ObjectFieldSystem",
-     "userkey": "PmDocument~pmTskTitle~230",
+     "userkey": "PmDocument~pmVrsPrjId~230",
      "item": {
       "obf_object_id__obo_name": "PmDocument",
-      "obf_field_id__fld_name": "pmTskTitle",
-      "obf_field_id__fld_type": "3",
+      "obf_field_id__fld_name": "pmVrsPrjId",
+      "obf_field_id__fld_type": "0",
       "obf_order": 230,
       "obf_group_by": null,
       "obf_dfault_order": null,
       "obf_input": null,
-      "obf_ref_field_id__fld_name": "pmDocTskId",
-      "obf_ref_object_id__obo_name": "PmTask",
+      "obf_ref_field_id__fld_name": "pmTskVrsId",
+      "obf_ref_object_id__obo_name": "PmVersion",
       "obf_cascad": null,
       "obf_card": null,
       "obf_visible": null,
@@ -9408,17 +9408,17 @@
     },
     {
      "object": "ObjectFieldSystem",
-     "userkey": "PmDocument~pmVrsPrjId~230",
+     "userkey": "PmDocument~pmTskTitle~230",
      "item": {
       "obf_object_id__obo_name": "PmDocument",
-      "obf_field_id__fld_name": "pmVrsPrjId",
-      "obf_field_id__fld_type": "0",
+      "obf_field_id__fld_name": "pmTskTitle",
+      "obf_field_id__fld_type": "3",
       "obf_order": 230,
       "obf_group_by": null,
       "obf_dfault_order": null,
       "obf_input": null,
-      "obf_ref_field_id__fld_name": "pmTskVrsId",
-      "obf_ref_object_id__obo_name": "PmVersion",
+      "obf_ref_field_id__fld_name": "pmDocTskId",
+      "obf_ref_object_id__obo_name": "PmTask",
       "obf_cascad": null,
       "obf_card": null,
       "obf_visible": null,
@@ -15371,19 +15371,6 @@
    "list": [
     {
      "object": "Function",
-     "userkey": "_PROJECT_MANAGEMENT_SCOPE_V",
-     "item": {
-      "fct_name": "_PROJECT_MANAGEMENT_SCOPE_V",
-      "fct_object_id__obj_type": null,
-      "fct_object_id__obj_name": null,
-      "fct_function": "V",
-      "fct_action_id__act_name": null,
-      "fct_view_id__viw_name": "ProjectManagementAdminScope",
-      "row_module_id__mdl_name": "ProjectManagement"
-     }
-    },
-    {
-     "object": "Function",
      "userkey": "PM_AGENDA_E",
      "item": {
       "fct_name": "PM_AGENDA_E",
@@ -18415,6 +18402,25 @@
     },
     {
      "object": "ConstraintImpact",
+     "userkey": "pmTskConstraint_1~PmTask~1",
+     "item": {
+      "csi_const_id__cst_name": "pmTskConstraint_1",
+      "csi_const_id__cst_object_id__obo_name": "PmTask",
+      "csi_const_id__cst_order": 1,
+      "csi_order": 1,
+      "csi_object_prop": null,
+      "csi_field_prop": "E",
+      "csi_apply": "F",
+      "csi_expr": "[DATE]",
+      "csi_target": null,
+      "csi_objfield_id__obf_object_id__obo_name": "PmTask",
+      "csi_objfield_id__obf_field_id__fld_name": "pmTskEffectiveClosingDate",
+      "csi_objfield_id__obf_order": 75,
+      "row_module_id__mdl_name": "ProjectManagement"
+     }
+    },
+    {
+     "object": "ConstraintImpact",
      "userkey": "TimeAlert~PmTask~1",
      "item": {
       "csi_const_id__cst_name": "TimeAlert",
@@ -18435,25 +18441,6 @@
       "csi_objfield_id__obf_object_id__obo_name": null,
       "csi_objfield_id__obf_field_id__fld_name": null,
       "csi_objfield_id__obf_order": null,
-      "row_module_id__mdl_name": "ProjectManagement"
-     }
-    },
-    {
-     "object": "ConstraintImpact",
-     "userkey": "pmTskConstraint_1~PmTask~1",
-     "item": {
-      "csi_const_id__cst_name": "pmTskConstraint_1",
-      "csi_const_id__cst_object_id__obo_name": "PmTask",
-      "csi_const_id__cst_order": 1,
-      "csi_order": 1,
-      "csi_object_prop": null,
-      "csi_field_prop": "E",
-      "csi_apply": "F",
-      "csi_expr": "[DATE]",
-      "csi_target": null,
-      "csi_objfield_id__obf_object_id__obo_name": "PmTask",
-      "csi_objfield_id__obf_field_id__fld_name": "pmTskEffectiveClosingDate",
-      "csi_objfield_id__obf_order": 75,
       "row_module_id__mdl_name": "ProjectManagement"
      }
     },
@@ -21158,17 +21145,6 @@
     },
     {
      "object": "BPMStateTranGroup",
-     "userkey": "PM_TSK_STATUT-CANCEL-DRAFT~PM_MANAGER~PmAssignment",
-     "item": {
-      "stg_transition_id__stm_name": "PM_TSK_STATUT-CANCEL-DRAFT",
-      "stg_group_id__grp_name": "PM_MANAGER",
-      "stg_activ": true,
-      "stg_object_id__obo_name": "PmAssignment",
-      "row_module_id__mdl_name": "ProjectManagement"
-     }
-    },
-    {
-     "object": "BPMStateTranGroup",
      "userkey": "PM_TSK_STATUT-CANCEL-DRAFT~PM_MANAGER~PmTask",
      "item": {
       "stg_transition_id__stm_name": "PM_TSK_STATUT-CANCEL-DRAFT",
@@ -21180,10 +21156,10 @@
     },
     {
      "object": "BPMStateTranGroup",
-     "userkey": "PM_TSK_STATUT-CANCEL-DRAFT~PM_SUPERADMIN~PmAssignment",
+     "userkey": "PM_TSK_STATUT-CANCEL-DRAFT~PM_MANAGER~PmAssignment",
      "item": {
       "stg_transition_id__stm_name": "PM_TSK_STATUT-CANCEL-DRAFT",
-      "stg_group_id__grp_name": "PM_SUPERADMIN",
+      "stg_group_id__grp_name": "PM_MANAGER",
       "stg_activ": true,
       "stg_object_id__obo_name": "PmAssignment",
       "row_module_id__mdl_name": "ProjectManagement"
@@ -21197,6 +21173,17 @@
       "stg_group_id__grp_name": "PM_SUPERADMIN",
       "stg_activ": true,
       "stg_object_id__obo_name": "PmTask",
+      "row_module_id__mdl_name": "ProjectManagement"
+     }
+    },
+    {
+     "object": "BPMStateTranGroup",
+     "userkey": "PM_TSK_STATUT-CANCEL-DRAFT~PM_SUPERADMIN~PmAssignment",
+     "item": {
+      "stg_transition_id__stm_name": "PM_TSK_STATUT-CANCEL-DRAFT",
+      "stg_group_id__grp_name": "PM_SUPERADMIN",
+      "stg_activ": true,
+      "stg_object_id__obo_name": "PmAssignment",
       "row_module_id__mdl_name": "ProjectManagement"
      }
     },
@@ -21268,17 +21255,6 @@
     },
     {
      "object": "BPMStateTranGroup",
-     "userkey": "PM_TSK_STATUT-CANCEL-TODO~PM_SUPERADMIN~PmAssignment",
-     "item": {
-      "stg_transition_id__stm_name": "PM_TSK_STATUT-CANCEL-TODO",
-      "stg_group_id__grp_name": "PM_SUPERADMIN",
-      "stg_activ": true,
-      "stg_object_id__obo_name": "PmAssignment",
-      "row_module_id__mdl_name": "ProjectManagement"
-     }
-    },
-    {
-     "object": "BPMStateTranGroup",
      "userkey": "PM_TSK_STATUT-CANCEL-TODO~PM_SUPERADMIN~PmTask",
      "item": {
       "stg_transition_id__stm_name": "PM_TSK_STATUT-CANCEL-TODO",
@@ -21290,9 +21266,9 @@
     },
     {
      "object": "BPMStateTranGroup",
-     "userkey": "PM_TSK_STATUT-CLOSED-CANCEL~PM_SUPERADMIN~PmAssignment",
+     "userkey": "PM_TSK_STATUT-CANCEL-TODO~PM_SUPERADMIN~PmAssignment",
      "item": {
-      "stg_transition_id__stm_name": "PM_TSK_STATUT-CLOSED-CANCEL",
+      "stg_transition_id__stm_name": "PM_TSK_STATUT-CANCEL-TODO",
       "stg_group_id__grp_name": "PM_SUPERADMIN",
       "stg_activ": true,
       "stg_object_id__obo_name": "PmAssignment",
@@ -21307,6 +21283,17 @@
       "stg_group_id__grp_name": "PM_SUPERADMIN",
       "stg_activ": true,
       "stg_object_id__obo_name": "PmTask",
+      "row_module_id__mdl_name": "ProjectManagement"
+     }
+    },
+    {
+     "object": "BPMStateTranGroup",
+     "userkey": "PM_TSK_STATUT-CLOSED-CANCEL~PM_SUPERADMIN~PmAssignment",
+     "item": {
+      "stg_transition_id__stm_name": "PM_TSK_STATUT-CLOSED-CANCEL",
+      "stg_group_id__grp_name": "PM_SUPERADMIN",
+      "stg_activ": true,
+      "stg_object_id__obo_name": "PmAssignment",
       "row_module_id__mdl_name": "ProjectManagement"
      }
     },
@@ -21378,23 +21365,23 @@
     },
     {
      "object": "BPMStateTranGroup",
-     "userkey": "PM_TSK_STATUT-CLOSED-REJECTED~PM_SUPERADMIN~PmTask",
-     "item": {
-      "stg_transition_id__stm_name": "PM_TSK_STATUT-CLOSED-REJECTED",
-      "stg_group_id__grp_name": "PM_SUPERADMIN",
-      "stg_activ": true,
-      "stg_object_id__obo_name": "PmTask",
-      "row_module_id__mdl_name": "ProjectManagement"
-     }
-    },
-    {
-     "object": "BPMStateTranGroup",
      "userkey": "PM_TSK_STATUT-CLOSED-REJECTED~PM_SUPERADMIN~PmAssignment",
      "item": {
       "stg_transition_id__stm_name": "PM_TSK_STATUT-CLOSED-REJECTED",
       "stg_group_id__grp_name": "PM_SUPERADMIN",
       "stg_activ": true,
       "stg_object_id__obo_name": "PmAssignment",
+      "row_module_id__mdl_name": "ProjectManagement"
+     }
+    },
+    {
+     "object": "BPMStateTranGroup",
+     "userkey": "PM_TSK_STATUT-CLOSED-REJECTED~PM_SUPERADMIN~PmTask",
+     "item": {
+      "stg_transition_id__stm_name": "PM_TSK_STATUT-CLOSED-REJECTED",
+      "stg_group_id__grp_name": "PM_SUPERADMIN",
+      "stg_activ": true,
+      "stg_object_id__obo_name": "PmTask",
       "row_module_id__mdl_name": "ProjectManagement"
      }
     },
@@ -21422,17 +21409,6 @@
     },
     {
      "object": "BPMStateTranGroup",
-     "userkey": "PM_TSK_STATUT-DOING-CANCEL~PM_MANAGER~PmAssignment",
-     "item": {
-      "stg_transition_id__stm_name": "PM_TSK_STATUT-DOING-CANCEL",
-      "stg_group_id__grp_name": "PM_MANAGER",
-      "stg_activ": true,
-      "stg_object_id__obo_name": "PmAssignment",
-      "row_module_id__mdl_name": "ProjectManagement"
-     }
-    },
-    {
-     "object": "BPMStateTranGroup",
      "userkey": "PM_TSK_STATUT-DOING-CANCEL~PM_MANAGER~PmTask",
      "item": {
       "stg_transition_id__stm_name": "PM_TSK_STATUT-DOING-CANCEL",
@@ -21444,10 +21420,10 @@
     },
     {
      "object": "BPMStateTranGroup",
-     "userkey": "PM_TSK_STATUT-DOING-CANCEL~PM_SUPERADMIN~PmAssignment",
+     "userkey": "PM_TSK_STATUT-DOING-CANCEL~PM_MANAGER~PmAssignment",
      "item": {
       "stg_transition_id__stm_name": "PM_TSK_STATUT-DOING-CANCEL",
-      "stg_group_id__grp_name": "PM_SUPERADMIN",
+      "stg_group_id__grp_name": "PM_MANAGER",
       "stg_activ": true,
       "stg_object_id__obo_name": "PmAssignment",
       "row_module_id__mdl_name": "ProjectManagement"
@@ -21461,6 +21437,17 @@
       "stg_group_id__grp_name": "PM_SUPERADMIN",
       "stg_activ": true,
       "stg_object_id__obo_name": "PmTask",
+      "row_module_id__mdl_name": "ProjectManagement"
+     }
+    },
+    {
+     "object": "BPMStateTranGroup",
+     "userkey": "PM_TSK_STATUT-DOING-CANCEL~PM_SUPERADMIN~PmAssignment",
+     "item": {
+      "stg_transition_id__stm_name": "PM_TSK_STATUT-DOING-CANCEL",
+      "stg_group_id__grp_name": "PM_SUPERADMIN",
+      "stg_activ": true,
+      "stg_object_id__obo_name": "PmAssignment",
       "row_module_id__mdl_name": "ProjectManagement"
      }
     },
@@ -21598,23 +21585,23 @@
     },
     {
      "object": "BPMStateTranGroup",
-     "userkey": "PM_TSK_STATUT-DOING-REJECTED~PM_SUPERADMIN~PmAssignment",
-     "item": {
-      "stg_transition_id__stm_name": "PM_TSK_STATUT-DOING-REJECTED",
-      "stg_group_id__grp_name": "PM_SUPERADMIN",
-      "stg_activ": true,
-      "stg_object_id__obo_name": "PmAssignment",
-      "row_module_id__mdl_name": "ProjectManagement"
-     }
-    },
-    {
-     "object": "BPMStateTranGroup",
      "userkey": "PM_TSK_STATUT-DOING-REJECTED~PM_SUPERADMIN~PmTask",
      "item": {
       "stg_transition_id__stm_name": "PM_TSK_STATUT-DOING-REJECTED",
       "stg_group_id__grp_name": "PM_SUPERADMIN",
       "stg_activ": true,
       "stg_object_id__obo_name": "PmTask",
+      "row_module_id__mdl_name": "ProjectManagement"
+     }
+    },
+    {
+     "object": "BPMStateTranGroup",
+     "userkey": "PM_TSK_STATUT-DOING-REJECTED~PM_SUPERADMIN~PmAssignment",
+     "item": {
+      "stg_transition_id__stm_name": "PM_TSK_STATUT-DOING-REJECTED",
+      "stg_group_id__grp_name": "PM_SUPERADMIN",
+      "stg_activ": true,
+      "stg_object_id__obo_name": "PmAssignment",
       "row_module_id__mdl_name": "ProjectManagement"
      }
     },
@@ -21796,23 +21783,23 @@
     },
     {
      "object": "BPMStateTranGroup",
-     "userkey": "PM_TSK_STATUT-DONE-DOING~PM_MANAGER~PmTask",
-     "item": {
-      "stg_transition_id__stm_name": "PM_TSK_STATUT-DONE-DOING",
-      "stg_group_id__grp_name": "PM_MANAGER",
-      "stg_activ": true,
-      "stg_object_id__obo_name": "PmTask",
-      "row_module_id__mdl_name": "ProjectManagement"
-     }
-    },
-    {
-     "object": "BPMStateTranGroup",
      "userkey": "PM_TSK_STATUT-DONE-DOING~PM_MANAGER~PmAssignment",
      "item": {
       "stg_transition_id__stm_name": "PM_TSK_STATUT-DONE-DOING",
       "stg_group_id__grp_name": "PM_MANAGER",
       "stg_activ": true,
       "stg_object_id__obo_name": "PmAssignment",
+      "row_module_id__mdl_name": "ProjectManagement"
+     }
+    },
+    {
+     "object": "BPMStateTranGroup",
+     "userkey": "PM_TSK_STATUT-DONE-DOING~PM_MANAGER~PmTask",
+     "item": {
+      "stg_transition_id__stm_name": "PM_TSK_STATUT-DONE-DOING",
+      "stg_group_id__grp_name": "PM_MANAGER",
+      "stg_activ": true,
+      "stg_object_id__obo_name": "PmTask",
       "row_module_id__mdl_name": "ProjectManagement"
      }
     },
@@ -21840,23 +21827,23 @@
     },
     {
      "object": "BPMStateTranGroup",
-     "userkey": "PM_TSK_STATUT-DONE-DRAFT~PM_SUPERADMIN~PmTask",
-     "item": {
-      "stg_transition_id__stm_name": "PM_TSK_STATUT-DONE-DRAFT",
-      "stg_group_id__grp_name": "PM_SUPERADMIN",
-      "stg_activ": true,
-      "stg_object_id__obo_name": "PmTask",
-      "row_module_id__mdl_name": "ProjectManagement"
-     }
-    },
-    {
-     "object": "BPMStateTranGroup",
      "userkey": "PM_TSK_STATUT-DONE-DRAFT~PM_SUPERADMIN~PmAssignment",
      "item": {
       "stg_transition_id__stm_name": "PM_TSK_STATUT-DONE-DRAFT",
       "stg_group_id__grp_name": "PM_SUPERADMIN",
       "stg_activ": true,
       "stg_object_id__obo_name": "PmAssignment",
+      "row_module_id__mdl_name": "ProjectManagement"
+     }
+    },
+    {
+     "object": "BPMStateTranGroup",
+     "userkey": "PM_TSK_STATUT-DONE-DRAFT~PM_SUPERADMIN~PmTask",
+     "item": {
+      "stg_transition_id__stm_name": "PM_TSK_STATUT-DONE-DRAFT",
+      "stg_group_id__grp_name": "PM_SUPERADMIN",
+      "stg_activ": true,
+      "stg_object_id__obo_name": "PmTask",
       "row_module_id__mdl_name": "ProjectManagement"
      }
     },
@@ -21928,17 +21915,6 @@
     },
     {
      "object": "BPMStateTranGroup",
-     "userkey": "PM_TSK_STATUT-DRAFT-CANCEL~PM_MANAGER~PmTask",
-     "item": {
-      "stg_transition_id__stm_name": "PM_TSK_STATUT-DRAFT-CANCEL",
-      "stg_group_id__grp_name": "PM_MANAGER",
-      "stg_activ": true,
-      "stg_object_id__obo_name": "PmTask",
-      "row_module_id__mdl_name": "ProjectManagement"
-     }
-    },
-    {
-     "object": "BPMStateTranGroup",
      "userkey": "PM_TSK_STATUT-DRAFT-CANCEL~PM_MANAGER~PmAssignment",
      "item": {
       "stg_transition_id__stm_name": "PM_TSK_STATUT-DRAFT-CANCEL",
@@ -21950,12 +21926,12 @@
     },
     {
      "object": "BPMStateTranGroup",
-     "userkey": "PM_TSK_STATUT-DRAFT-CANCEL~PM_SUPERADMIN~PmAssignment",
+     "userkey": "PM_TSK_STATUT-DRAFT-CANCEL~PM_MANAGER~PmTask",
      "item": {
       "stg_transition_id__stm_name": "PM_TSK_STATUT-DRAFT-CANCEL",
-      "stg_group_id__grp_name": "PM_SUPERADMIN",
+      "stg_group_id__grp_name": "PM_MANAGER",
       "stg_activ": true,
-      "stg_object_id__obo_name": "PmAssignment",
+      "stg_object_id__obo_name": "PmTask",
       "row_module_id__mdl_name": "ProjectManagement"
      }
     },
@@ -21967,6 +21943,17 @@
       "stg_group_id__grp_name": "PM_SUPERADMIN",
       "stg_activ": true,
       "stg_object_id__obo_name": "PmTask",
+      "row_module_id__mdl_name": "ProjectManagement"
+     }
+    },
+    {
+     "object": "BPMStateTranGroup",
+     "userkey": "PM_TSK_STATUT-DRAFT-CANCEL~PM_SUPERADMIN~PmAssignment",
+     "item": {
+      "stg_transition_id__stm_name": "PM_TSK_STATUT-DRAFT-CANCEL",
+      "stg_group_id__grp_name": "PM_SUPERADMIN",
+      "stg_activ": true,
+      "stg_object_id__obo_name": "PmAssignment",
       "row_module_id__mdl_name": "ProjectManagement"
      }
     },
@@ -21994,17 +21981,6 @@
     },
     {
      "object": "BPMStateTranGroup",
-     "userkey": "PM_TSK_STATUT-DRAFT-DOING~PM_SUPERADMIN~PmTask",
-     "item": {
-      "stg_transition_id__stm_name": "PM_TSK_STATUT-DRAFT-DOING",
-      "stg_group_id__grp_name": "PM_SUPERADMIN",
-      "stg_activ": true,
-      "stg_object_id__obo_name": "PmTask",
-      "row_module_id__mdl_name": "ProjectManagement"
-     }
-    },
-    {
-     "object": "BPMStateTranGroup",
      "userkey": "PM_TSK_STATUT-DRAFT-DOING~PM_SUPERADMIN~PmAssignment",
      "item": {
       "stg_transition_id__stm_name": "PM_TSK_STATUT-DRAFT-DOING",
@@ -22016,9 +21992,9 @@
     },
     {
      "object": "BPMStateTranGroup",
-     "userkey": "PM_TSK_STATUT-DRAFT-DONE~PM_SUPERADMIN~PmTask",
+     "userkey": "PM_TSK_STATUT-DRAFT-DOING~PM_SUPERADMIN~PmTask",
      "item": {
-      "stg_transition_id__stm_name": "PM_TSK_STATUT-DRAFT-DONE",
+      "stg_transition_id__stm_name": "PM_TSK_STATUT-DRAFT-DOING",
       "stg_group_id__grp_name": "PM_SUPERADMIN",
       "stg_activ": true,
       "stg_object_id__obo_name": "PmTask",
@@ -22038,10 +22014,10 @@
     },
     {
      "object": "BPMStateTranGroup",
-     "userkey": "PM_TSK_STATUT-DRAFT-REJECTED~PM_MANAGER~PmTask",
+     "userkey": "PM_TSK_STATUT-DRAFT-DONE~PM_SUPERADMIN~PmTask",
      "item": {
-      "stg_transition_id__stm_name": "PM_TSK_STATUT-DRAFT-REJECTED",
-      "stg_group_id__grp_name": "PM_MANAGER",
+      "stg_transition_id__stm_name": "PM_TSK_STATUT-DRAFT-DONE",
+      "stg_group_id__grp_name": "PM_SUPERADMIN",
       "stg_activ": true,
       "stg_object_id__obo_name": "PmTask",
       "row_module_id__mdl_name": "ProjectManagement"
@@ -22060,10 +22036,10 @@
     },
     {
      "object": "BPMStateTranGroup",
-     "userkey": "PM_TSK_STATUT-DRAFT-REJECTED~PM_SUPERADMIN~PmTask",
+     "userkey": "PM_TSK_STATUT-DRAFT-REJECTED~PM_MANAGER~PmTask",
      "item": {
       "stg_transition_id__stm_name": "PM_TSK_STATUT-DRAFT-REJECTED",
-      "stg_group_id__grp_name": "PM_SUPERADMIN",
+      "stg_group_id__grp_name": "PM_MANAGER",
       "stg_activ": true,
       "stg_object_id__obo_name": "PmTask",
       "row_module_id__mdl_name": "ProjectManagement"
@@ -22077,6 +22053,17 @@
       "stg_group_id__grp_name": "PM_SUPERADMIN",
       "stg_activ": true,
       "stg_object_id__obo_name": "PmAssignment",
+      "row_module_id__mdl_name": "ProjectManagement"
+     }
+    },
+    {
+     "object": "BPMStateTranGroup",
+     "userkey": "PM_TSK_STATUT-DRAFT-REJECTED~PM_SUPERADMIN~PmTask",
+     "item": {
+      "stg_transition_id__stm_name": "PM_TSK_STATUT-DRAFT-REJECTED",
+      "stg_group_id__grp_name": "PM_SUPERADMIN",
+      "stg_activ": true,
+      "stg_object_id__obo_name": "PmTask",
       "row_module_id__mdl_name": "ProjectManagement"
      }
     },
@@ -22104,17 +22091,6 @@
     },
     {
      "object": "BPMStateTranGroup",
-     "userkey": "PM_TSK_STATUT-DRAFT-TODO~PM_SUPERADMIN~PmTask",
-     "item": {
-      "stg_transition_id__stm_name": "PM_TSK_STATUT-DRAFT-TODO",
-      "stg_group_id__grp_name": "PM_SUPERADMIN",
-      "stg_activ": true,
-      "stg_object_id__obo_name": "PmTask",
-      "row_module_id__mdl_name": "ProjectManagement"
-     }
-    },
-    {
-     "object": "BPMStateTranGroup",
      "userkey": "PM_TSK_STATUT-DRAFT-TODO~PM_SUPERADMIN~PmAssignment",
      "item": {
       "stg_transition_id__stm_name": "PM_TSK_STATUT-DRAFT-TODO",
@@ -22126,12 +22102,12 @@
     },
     {
      "object": "BPMStateTranGroup",
-     "userkey": "PM_TSK_STATUT-REJECTED-CANCEL~PM_MANAGER~PmAssignment",
+     "userkey": "PM_TSK_STATUT-DRAFT-TODO~PM_SUPERADMIN~PmTask",
      "item": {
-      "stg_transition_id__stm_name": "PM_TSK_STATUT-REJECTED-CANCEL",
-      "stg_group_id__grp_name": "PM_MANAGER",
+      "stg_transition_id__stm_name": "PM_TSK_STATUT-DRAFT-TODO",
+      "stg_group_id__grp_name": "PM_SUPERADMIN",
       "stg_activ": true,
-      "stg_object_id__obo_name": "PmAssignment",
+      "stg_object_id__obo_name": "PmTask",
       "row_module_id__mdl_name": "ProjectManagement"
      }
     },
@@ -22143,6 +22119,17 @@
       "stg_group_id__grp_name": "PM_MANAGER",
       "stg_activ": true,
       "stg_object_id__obo_name": "PmTask",
+      "row_module_id__mdl_name": "ProjectManagement"
+     }
+    },
+    {
+     "object": "BPMStateTranGroup",
+     "userkey": "PM_TSK_STATUT-REJECTED-CANCEL~PM_MANAGER~PmAssignment",
+     "item": {
+      "stg_transition_id__stm_name": "PM_TSK_STATUT-REJECTED-CANCEL",
+      "stg_group_id__grp_name": "PM_MANAGER",
+      "stg_activ": true,
+      "stg_object_id__obo_name": "PmAssignment",
       "row_module_id__mdl_name": "ProjectManagement"
      }
     },
@@ -22170,17 +22157,6 @@
     },
     {
      "object": "BPMStateTranGroup",
-     "userkey": "PM_TSK_STATUT-REJECTED-CLOSED~PM_SUPERADMIN~PmTask",
-     "item": {
-      "stg_transition_id__stm_name": "PM_TSK_STATUT-REJECTED-CLOSED",
-      "stg_group_id__grp_name": "PM_SUPERADMIN",
-      "stg_activ": true,
-      "stg_object_id__obo_name": "PmTask",
-      "row_module_id__mdl_name": "ProjectManagement"
-     }
-    },
-    {
-     "object": "BPMStateTranGroup",
      "userkey": "PM_TSK_STATUT-REJECTED-CLOSED~PM_SUPERADMIN~PmAssignment",
      "item": {
       "stg_transition_id__stm_name": "PM_TSK_STATUT-REJECTED-CLOSED",
@@ -22192,9 +22168,9 @@
     },
     {
      "object": "BPMStateTranGroup",
-     "userkey": "PM_TSK_STATUT-REJECTED-DOING~PM_SUPERADMIN~PmTask",
+     "userkey": "PM_TSK_STATUT-REJECTED-CLOSED~PM_SUPERADMIN~PmTask",
      "item": {
-      "stg_transition_id__stm_name": "PM_TSK_STATUT-REJECTED-DOING",
+      "stg_transition_id__stm_name": "PM_TSK_STATUT-REJECTED-CLOSED",
       "stg_group_id__grp_name": "PM_SUPERADMIN",
       "stg_activ": true,
       "stg_object_id__obo_name": "PmTask",
@@ -22209,6 +22185,17 @@
       "stg_group_id__grp_name": "PM_SUPERADMIN",
       "stg_activ": true,
       "stg_object_id__obo_name": "PmAssignment",
+      "row_module_id__mdl_name": "ProjectManagement"
+     }
+    },
+    {
+     "object": "BPMStateTranGroup",
+     "userkey": "PM_TSK_STATUT-REJECTED-DOING~PM_SUPERADMIN~PmTask",
+     "item": {
+      "stg_transition_id__stm_name": "PM_TSK_STATUT-REJECTED-DOING",
+      "stg_group_id__grp_name": "PM_SUPERADMIN",
+      "stg_activ": true,
+      "stg_object_id__obo_name": "PmTask",
       "row_module_id__mdl_name": "ProjectManagement"
      }
     },
@@ -22280,23 +22267,23 @@
     },
     {
      "object": "BPMStateTranGroup",
-     "userkey": "PM_TSK_STATUT-REJECTED-TODO~PM_MANAGER~PmTask",
-     "item": {
-      "stg_transition_id__stm_name": "PM_TSK_STATUT-REJECTED-TODO",
-      "stg_group_id__grp_name": "PM_MANAGER",
-      "stg_activ": true,
-      "stg_object_id__obo_name": "PmTask",
-      "row_module_id__mdl_name": "ProjectManagement"
-     }
-    },
-    {
-     "object": "BPMStateTranGroup",
      "userkey": "PM_TSK_STATUT-REJECTED-TODO~PM_MANAGER~PmAssignment",
      "item": {
       "stg_transition_id__stm_name": "PM_TSK_STATUT-REJECTED-TODO",
       "stg_group_id__grp_name": "PM_MANAGER",
       "stg_activ": true,
       "stg_object_id__obo_name": "PmAssignment",
+      "row_module_id__mdl_name": "ProjectManagement"
+     }
+    },
+    {
+     "object": "BPMStateTranGroup",
+     "userkey": "PM_TSK_STATUT-REJECTED-TODO~PM_MANAGER~PmTask",
+     "item": {
+      "stg_transition_id__stm_name": "PM_TSK_STATUT-REJECTED-TODO",
+      "stg_group_id__grp_name": "PM_MANAGER",
+      "stg_activ": true,
+      "stg_object_id__obo_name": "PmTask",
       "row_module_id__mdl_name": "ProjectManagement"
      }
     },
@@ -22324,23 +22311,23 @@
     },
     {
      "object": "BPMStateTranGroup",
-     "userkey": "PM_TSK_STATUT-TODO-CANCEL~PM_MANAGER~PmAssignment",
-     "item": {
-      "stg_transition_id__stm_name": "PM_TSK_STATUT-TODO-CANCEL",
-      "stg_group_id__grp_name": "PM_MANAGER",
-      "stg_activ": true,
-      "stg_object_id__obo_name": "PmAssignment",
-      "row_module_id__mdl_name": "ProjectManagement"
-     }
-    },
-    {
-     "object": "BPMStateTranGroup",
      "userkey": "PM_TSK_STATUT-TODO-CANCEL~PM_MANAGER~PmTask",
      "item": {
       "stg_transition_id__stm_name": "PM_TSK_STATUT-TODO-CANCEL",
       "stg_group_id__grp_name": "PM_MANAGER",
       "stg_activ": true,
       "stg_object_id__obo_name": "PmTask",
+      "row_module_id__mdl_name": "ProjectManagement"
+     }
+    },
+    {
+     "object": "BPMStateTranGroup",
+     "userkey": "PM_TSK_STATUT-TODO-CANCEL~PM_MANAGER~PmAssignment",
+     "item": {
+      "stg_transition_id__stm_name": "PM_TSK_STATUT-TODO-CANCEL",
+      "stg_group_id__grp_name": "PM_MANAGER",
+      "stg_activ": true,
+      "stg_object_id__obo_name": "PmAssignment",
       "row_module_id__mdl_name": "ProjectManagement"
      }
     },
@@ -22434,23 +22421,23 @@
     },
     {
      "object": "BPMStateTranGroup",
-     "userkey": "PM_TSK_STATUT-TODO-DOING~PM_USER_GROUP~PmAssignment",
-     "item": {
-      "stg_transition_id__stm_name": "PM_TSK_STATUT-TODO-DOING",
-      "stg_group_id__grp_name": "PM_USER_GROUP",
-      "stg_activ": true,
-      "stg_object_id__obo_name": "PmAssignment",
-      "row_module_id__mdl_name": "ProjectManagement"
-     }
-    },
-    {
-     "object": "BPMStateTranGroup",
      "userkey": "PM_TSK_STATUT-TODO-DOING~PM_USER_GROUP~PmTask",
      "item": {
       "stg_transition_id__stm_name": "PM_TSK_STATUT-TODO-DOING",
       "stg_group_id__grp_name": "PM_USER_GROUP",
       "stg_activ": true,
       "stg_object_id__obo_name": "PmTask",
+      "row_module_id__mdl_name": "ProjectManagement"
+     }
+    },
+    {
+     "object": "BPMStateTranGroup",
+     "userkey": "PM_TSK_STATUT-TODO-DOING~PM_USER_GROUP~PmAssignment",
+     "item": {
+      "stg_transition_id__stm_name": "PM_TSK_STATUT-TODO-DOING",
+      "stg_group_id__grp_name": "PM_USER_GROUP",
+      "stg_activ": true,
+      "stg_object_id__obo_name": "PmAssignment",
       "row_module_id__mdl_name": "ProjectManagement"
      }
     },
@@ -22478,23 +22465,23 @@
     },
     {
      "object": "BPMStateTranGroup",
-     "userkey": "PM_TSK_STATUT-TODO-DRAFT~PM_MANAGER~PmAssignment",
-     "item": {
-      "stg_transition_id__stm_name": "PM_TSK_STATUT-TODO-DRAFT",
-      "stg_group_id__grp_name": "PM_MANAGER",
-      "stg_activ": true,
-      "stg_object_id__obo_name": "PmAssignment",
-      "row_module_id__mdl_name": "ProjectManagement"
-     }
-    },
-    {
-     "object": "BPMStateTranGroup",
      "userkey": "PM_TSK_STATUT-TODO-DRAFT~PM_MANAGER~PmTask",
      "item": {
       "stg_transition_id__stm_name": "PM_TSK_STATUT-TODO-DRAFT",
       "stg_group_id__grp_name": "PM_MANAGER",
       "stg_activ": true,
       "stg_object_id__obo_name": "PmTask",
+      "row_module_id__mdl_name": "ProjectManagement"
+     }
+    },
+    {
+     "object": "BPMStateTranGroup",
+     "userkey": "PM_TSK_STATUT-TODO-DRAFT~PM_MANAGER~PmAssignment",
+     "item": {
+      "stg_transition_id__stm_name": "PM_TSK_STATUT-TODO-DRAFT",
+      "stg_group_id__grp_name": "PM_MANAGER",
+      "stg_activ": true,
+      "stg_object_id__obo_name": "PmAssignment",
       "row_module_id__mdl_name": "ProjectManagement"
      }
     },
@@ -22522,23 +22509,23 @@
     },
     {
      "object": "BPMStateTranGroup",
-     "userkey": "PM_TSK_STATUT-TODO-REJECTED~PM_MANAGER~PmTask",
-     "item": {
-      "stg_transition_id__stm_name": "PM_TSK_STATUT-TODO-REJECTED",
-      "stg_group_id__grp_name": "PM_MANAGER",
-      "stg_activ": true,
-      "stg_object_id__obo_name": "PmTask",
-      "row_module_id__mdl_name": "ProjectManagement"
-     }
-    },
-    {
-     "object": "BPMStateTranGroup",
      "userkey": "PM_TSK_STATUT-TODO-REJECTED~PM_MANAGER~PmAssignment",
      "item": {
       "stg_transition_id__stm_name": "PM_TSK_STATUT-TODO-REJECTED",
       "stg_group_id__grp_name": "PM_MANAGER",
       "stg_activ": true,
       "stg_object_id__obo_name": "PmAssignment",
+      "row_module_id__mdl_name": "ProjectManagement"
+     }
+    },
+    {
+     "object": "BPMStateTranGroup",
+     "userkey": "PM_TSK_STATUT-TODO-REJECTED~PM_MANAGER~PmTask",
+     "item": {
+      "stg_transition_id__stm_name": "PM_TSK_STATUT-TODO-REJECTED",
+      "stg_group_id__grp_name": "PM_MANAGER",
+      "stg_activ": true,
+      "stg_object_id__obo_name": "PmTask",
       "row_module_id__mdl_name": "ProjectManagement"
      }
     },
@@ -22566,23 +22553,23 @@
     },
     {
      "object": "BPMStateTranGroup",
-     "userkey": "PM_VRS_STATUS-ALPHA-BETA~PM_MANAGER~PmTask",
-     "item": {
-      "stg_transition_id__stm_name": "PM_VRS_STATUS-ALPHA-BETA",
-      "stg_group_id__grp_name": "PM_MANAGER",
-      "stg_activ": true,
-      "stg_object_id__obo_name": "PmTask",
-      "row_module_id__mdl_name": "ProjectManagement"
-     }
-    },
-    {
-     "object": "BPMStateTranGroup",
      "userkey": "PM_VRS_STATUS-ALPHA-BETA~PM_MANAGER~PmVersion",
      "item": {
       "stg_transition_id__stm_name": "PM_VRS_STATUS-ALPHA-BETA",
       "stg_group_id__grp_name": "PM_MANAGER",
       "stg_activ": true,
       "stg_object_id__obo_name": "PmVersion",
+      "row_module_id__mdl_name": "ProjectManagement"
+     }
+    },
+    {
+     "object": "BPMStateTranGroup",
+     "userkey": "PM_VRS_STATUS-ALPHA-BETA~PM_MANAGER~PmTask",
+     "item": {
+      "stg_transition_id__stm_name": "PM_VRS_STATUS-ALPHA-BETA",
+      "stg_group_id__grp_name": "PM_MANAGER",
+      "stg_activ": true,
+      "stg_object_id__obo_name": "PmTask",
       "row_module_id__mdl_name": "ProjectManagement"
      }
     },
@@ -22610,23 +22597,23 @@
     },
     {
      "object": "BPMStateTranGroup",
-     "userkey": "PM_VRS_STATUS-ALPHA-PUBLISHED~PM_SUPERADMIN~PmTask",
-     "item": {
-      "stg_transition_id__stm_name": "PM_VRS_STATUS-ALPHA-PUBLISHED",
-      "stg_group_id__grp_name": "PM_SUPERADMIN",
-      "stg_activ": true,
-      "stg_object_id__obo_name": "PmTask",
-      "row_module_id__mdl_name": "ProjectManagement"
-     }
-    },
-    {
-     "object": "BPMStateTranGroup",
      "userkey": "PM_VRS_STATUS-ALPHA-PUBLISHED~PM_SUPERADMIN~PmVersion",
      "item": {
       "stg_transition_id__stm_name": "PM_VRS_STATUS-ALPHA-PUBLISHED",
       "stg_group_id__grp_name": "PM_SUPERADMIN",
       "stg_activ": true,
       "stg_object_id__obo_name": "PmVersion",
+      "row_module_id__mdl_name": "ProjectManagement"
+     }
+    },
+    {
+     "object": "BPMStateTranGroup",
+     "userkey": "PM_VRS_STATUS-ALPHA-PUBLISHED~PM_SUPERADMIN~PmTask",
+     "item": {
+      "stg_transition_id__stm_name": "PM_VRS_STATUS-ALPHA-PUBLISHED",
+      "stg_group_id__grp_name": "PM_SUPERADMIN",
+      "stg_activ": true,
+      "stg_object_id__obo_name": "PmTask",
       "row_module_id__mdl_name": "ProjectManagement"
      }
     },
@@ -22676,23 +22663,23 @@
     },
     {
      "object": "BPMStateTranGroup",
-     "userkey": "PM_VRS_STATUS-BETA-PUBLISHED~PM_MANAGER~PmTask",
-     "item": {
-      "stg_transition_id__stm_name": "PM_VRS_STATUS-BETA-PUBLISHED",
-      "stg_group_id__grp_name": "PM_MANAGER",
-      "stg_activ": true,
-      "stg_object_id__obo_name": "PmTask",
-      "row_module_id__mdl_name": "ProjectManagement"
-     }
-    },
-    {
-     "object": "BPMStateTranGroup",
      "userkey": "PM_VRS_STATUS-BETA-PUBLISHED~PM_MANAGER~PmVersion",
      "item": {
       "stg_transition_id__stm_name": "PM_VRS_STATUS-BETA-PUBLISHED",
       "stg_group_id__grp_name": "PM_MANAGER",
       "stg_activ": true,
       "stg_object_id__obo_name": "PmVersion",
+      "row_module_id__mdl_name": "ProjectManagement"
+     }
+    },
+    {
+     "object": "BPMStateTranGroup",
+     "userkey": "PM_VRS_STATUS-BETA-PUBLISHED~PM_MANAGER~PmTask",
+     "item": {
+      "stg_transition_id__stm_name": "PM_VRS_STATUS-BETA-PUBLISHED",
+      "stg_group_id__grp_name": "PM_MANAGER",
+      "stg_activ": true,
+      "stg_object_id__obo_name": "PmTask",
       "row_module_id__mdl_name": "ProjectManagement"
      }
     },
@@ -22720,23 +22707,23 @@
     },
     {
      "object": "BPMStateTranGroup",
-     "userkey": "PM_VRS_STATUS-PUBLISHED-ALPHA~PM_SUPERADMIN~PmVersion",
-     "item": {
-      "stg_transition_id__stm_name": "PM_VRS_STATUS-PUBLISHED-ALPHA",
-      "stg_group_id__grp_name": "PM_SUPERADMIN",
-      "stg_activ": true,
-      "stg_object_id__obo_name": "PmVersion",
-      "row_module_id__mdl_name": "ProjectManagement"
-     }
-    },
-    {
-     "object": "BPMStateTranGroup",
      "userkey": "PM_VRS_STATUS-PUBLISHED-ALPHA~PM_SUPERADMIN~PmTask",
      "item": {
       "stg_transition_id__stm_name": "PM_VRS_STATUS-PUBLISHED-ALPHA",
       "stg_group_id__grp_name": "PM_SUPERADMIN",
       "stg_activ": true,
       "stg_object_id__obo_name": "PmTask",
+      "row_module_id__mdl_name": "ProjectManagement"
+     }
+    },
+    {
+     "object": "BPMStateTranGroup",
+     "userkey": "PM_VRS_STATUS-PUBLISHED-ALPHA~PM_SUPERADMIN~PmVersion",
+     "item": {
+      "stg_transition_id__stm_name": "PM_VRS_STATUS-PUBLISHED-ALPHA",
+      "stg_group_id__grp_name": "PM_SUPERADMIN",
+      "stg_activ": true,
+      "stg_object_id__obo_name": "PmVersion",
       "row_module_id__mdl_name": "ProjectManagement"
      }
     },
@@ -23210,18 +23197,6 @@
     },
     {
      "object": "Map",
-     "userkey": "PmDomainRef~1010",
-     "item": {
-      "map_domain_id__obd_name": "PmDomainRef",
-      "map_object_id__obj_name": "PmLabel",
-      "map_process_id__pcs_name": null,
-      "map_order": 1010,
-      "map_ext": false,
-      "row_module_id__mdl_name": "ProjectManagement"
-     }
-    },
-    {
-     "object": "Map",
      "userkey": "PmUserDomain~1010",
      "item": {
       "map_domain_id__obd_name": "PmUserDomain",
@@ -23234,12 +23209,12 @@
     },
     {
      "object": "Map",
-     "userkey": "PmDomainRef~1020",
+     "userkey": "PmDomainRef~1010",
      "item": {
       "map_domain_id__obd_name": "PmDomainRef",
-      "map_object_id__obj_name": "PmTskLbl",
+      "map_object_id__obj_name": "PmLabel",
       "map_process_id__pcs_name": null,
-      "map_order": 1020,
+      "map_order": 1010,
       "map_ext": false,
       "row_module_id__mdl_name": "ProjectManagement"
      }
@@ -23250,6 +23225,18 @@
      "item": {
       "map_domain_id__obd_name": "PmUserDomain",
       "map_object_id__obj_name": "PmTask",
+      "map_process_id__pcs_name": null,
+      "map_order": 1020,
+      "map_ext": false,
+      "row_module_id__mdl_name": "ProjectManagement"
+     }
+    },
+    {
+     "object": "Map",
+     "userkey": "PmDomainRef~1020",
+     "item": {
+      "map_domain_id__obd_name": "PmDomainRef",
+      "map_object_id__obj_name": "PmTskLbl",
       "map_process_id__pcs_name": null,
       "map_order": 1020,
       "map_ext": false,
@@ -23294,10 +23281,10 @@
     },
     {
      "object": "Map",
-     "userkey": "PmDomainRef~1030",
+     "userkey": "PmUserDomain~1030",
      "item": {
-      "map_domain_id__obd_name": "PmDomainRef",
-      "map_object_id__obj_name": "PmUser",
+      "map_domain_id__obd_name": "PmUserDomain",
+      "map_object_id__obj_name": "PmDocument",
       "map_process_id__pcs_name": null,
       "map_order": 1030,
       "map_ext": false,
@@ -23306,10 +23293,10 @@
     },
     {
      "object": "Map",
-     "userkey": "PmUserDomain~1030",
+     "userkey": "PmDomainRef~1030",
      "item": {
-      "map_domain_id__obd_name": "PmUserDomain",
-      "map_object_id__obj_name": "PmDocument",
+      "map_domain_id__obd_name": "PmDomainRef",
+      "map_object_id__obj_name": "PmUser",
       "map_process_id__pcs_name": null,
       "map_order": 1030,
       "map_ext": false,
@@ -24305,78 +24292,6 @@
     },
     {
      "object": "Resource",
-     "userkey": "ObjectExternal(PmTimesheetRecapExt)~ANY~STYLES",
-     "item": {
-      "res_object": {
-       "item": {"obe_name": "PmTimesheetRecapExt"},
-       "icon": "img/system/external_object",
-       "label": "External object",
-       "userkeylabel": "PmTimesheetRecapExt",
-       "object": "ObjectExternal"
-      },
-      "res_type": "CSS",
-      "res_lang": "ANY",
-      "res_code": "STYLES",
-      "res_cached": false,
-      "res_file": {
-       "path": "resources/ObjectExternal/PmTimesheetRecapExt/STYLES.css",
-       "mime": "text/css",
-       "name": "STYLES.css"
-      },
-      "res_image": null,
-      "row_module_id__mdl_name": "ProjectManagement"
-     }
-    },
-    {
-     "object": "Resource",
-     "userkey": "ObjectExternal(PmTimesheetRecapExt)~ANY~HTML",
-     "item": {
-      "res_object": {
-       "item": {"obe_name": "PmTimesheetRecapExt"},
-       "icon": "img/system/external_object",
-       "label": "External object",
-       "userkeylabel": "PmTimesheetRecapExt",
-       "object": "ObjectExternal"
-      },
-      "res_type": "HTML",
-      "res_lang": "ANY",
-      "res_code": "HTML",
-      "res_cached": false,
-      "res_file": {
-       "path": "resources/ObjectExternal/PmTimesheetRecapExt/HTML.html",
-       "mime": "text/html",
-       "name": "HTML.html"
-      },
-      "res_image": null,
-      "row_module_id__mdl_name": "ProjectManagement"
-     }
-    },
-    {
-     "object": "Resource",
-     "userkey": "ObjectExternal(PmTimesheetRecapExt)~ANY~SCRIPT",
-     "item": {
-      "res_object": {
-       "item": {"obe_name": "PmTimesheetRecapExt"},
-       "icon": "img/system/external_object",
-       "label": "External object",
-       "userkeylabel": "PmTimesheetRecapExt",
-       "object": "ObjectExternal"
-      },
-      "res_type": "JS",
-      "res_lang": "ANY",
-      "res_code": "SCRIPT",
-      "res_cached": false,
-      "res_file": {
-       "path": "resources/ObjectExternal/PmTimesheetRecapExt/SCRIPT.js",
-       "mime": "text/javascript",
-       "name": "SCRIPT.js"
-      },
-      "res_image": null,
-      "row_module_id__mdl_name": "ProjectManagement"
-     }
-    },
-    {
-     "object": "Resource",
      "userkey": "ObjectExternal(PmProjectGantt)~ANY~FRAPPE_GANTT_CSS",
      "item": {
       "res_object": {
@@ -24497,13 +24412,13 @@
     },
     {
      "object": "Resource",
-     "userkey": "ObjectExternal(PmTimesheetExt)~ANY~HTML",
+     "userkey": "ObjectExternal(PmTaskWAssingExt)~ANY~HTML",
      "item": {
       "res_object": {
-       "item": {"obe_name": "PmTimesheetExt"},
+       "item": {"obe_name": "PmTaskWAssingExt"},
        "icon": "img/system/external_object",
        "label": "External object",
-       "userkeylabel": "PmTimesheetExt",
+       "userkeylabel": "PmTaskWAssingExt",
        "object": "ObjectExternal"
       },
       "res_type": "HTML",
@@ -24511,7 +24426,7 @@
       "res_code": "HTML",
       "res_cached": false,
       "res_file": {
-       "path": "resources/ObjectExternal/PmTimesheetExt/HTML.html",
+       "path": "resources/ObjectExternal/PmTaskWAssingExt/HTML.html",
        "mime": "text/html",
        "name": "HTML.html"
       },
@@ -24521,13 +24436,13 @@
     },
     {
      "object": "Resource",
-     "userkey": "ObjectExternal(PmTimesheetExt)~ANY~SCRIPT",
+     "userkey": "ObjectExternal(PmTaskWAssingExt)~ANY~SCRIPT",
      "item": {
       "res_object": {
-       "item": {"obe_name": "PmTimesheetExt"},
+       "item": {"obe_name": "PmTaskWAssingExt"},
        "icon": "img/system/external_object",
        "label": "External object",
-       "userkeylabel": "PmTimesheetExt",
+       "userkeylabel": "PmTaskWAssingExt",
        "object": "ObjectExternal"
       },
       "res_type": "JS",
@@ -24535,7 +24450,7 @@
       "res_code": "SCRIPT",
       "res_cached": false,
       "res_file": {
-       "path": "resources/ObjectExternal/PmTimesheetExt/SCRIPT.js",
+       "path": "resources/ObjectExternal/PmTaskWAssingExt/SCRIPT.js",
        "mime": "text/javascript",
        "name": "SCRIPT.js"
       },
@@ -24593,13 +24508,13 @@
     },
     {
      "object": "Resource",
-     "userkey": "ObjectExternal(PmTaskWAssingExt)~ANY~HTML",
+     "userkey": "ObjectExternal(PmTimesheetExt)~ANY~HTML",
      "item": {
       "res_object": {
-       "item": {"obe_name": "PmTaskWAssingExt"},
+       "item": {"obe_name": "PmTimesheetExt"},
        "icon": "img/system/external_object",
        "label": "External object",
-       "userkeylabel": "PmTaskWAssingExt",
+       "userkeylabel": "PmTimesheetExt",
        "object": "ObjectExternal"
       },
       "res_type": "HTML",
@@ -24607,7 +24522,7 @@
       "res_code": "HTML",
       "res_cached": false,
       "res_file": {
-       "path": "resources/ObjectExternal/PmTaskWAssingExt/HTML.html",
+       "path": "resources/ObjectExternal/PmTimesheetExt/HTML.html",
        "mime": "text/html",
        "name": "HTML.html"
       },
@@ -24617,13 +24532,13 @@
     },
     {
      "object": "Resource",
-     "userkey": "ObjectExternal(PmTaskWAssingExt)~ANY~SCRIPT",
+     "userkey": "ObjectExternal(PmTimesheetExt)~ANY~SCRIPT",
      "item": {
       "res_object": {
-       "item": {"obe_name": "PmTaskWAssingExt"},
+       "item": {"obe_name": "PmTimesheetExt"},
        "icon": "img/system/external_object",
        "label": "External object",
-       "userkeylabel": "PmTaskWAssingExt",
+       "userkeylabel": "PmTimesheetExt",
        "object": "ObjectExternal"
       },
       "res_type": "JS",
@@ -24631,7 +24546,79 @@
       "res_code": "SCRIPT",
       "res_cached": false,
       "res_file": {
-       "path": "resources/ObjectExternal/PmTaskWAssingExt/SCRIPT.js",
+       "path": "resources/ObjectExternal/PmTimesheetExt/SCRIPT.js",
+       "mime": "text/javascript",
+       "name": "SCRIPT.js"
+      },
+      "res_image": null,
+      "row_module_id__mdl_name": "ProjectManagement"
+     }
+    },
+    {
+     "object": "Resource",
+     "userkey": "ObjectExternal(PmTimesheetRecapExt)~ANY~STYLES",
+     "item": {
+      "res_object": {
+       "item": {"obe_name": "PmTimesheetRecapExt"},
+       "icon": "img/system/external_object",
+       "label": "External object",
+       "userkeylabel": "PmTimesheetRecapExt",
+       "object": "ObjectExternal"
+      },
+      "res_type": "CSS",
+      "res_lang": "ANY",
+      "res_code": "STYLES",
+      "res_cached": false,
+      "res_file": {
+       "path": "resources/ObjectExternal/PmTimesheetRecapExt/STYLES.css",
+       "mime": "text/css",
+       "name": "STYLES.css"
+      },
+      "res_image": null,
+      "row_module_id__mdl_name": "ProjectManagement"
+     }
+    },
+    {
+     "object": "Resource",
+     "userkey": "ObjectExternal(PmTimesheetRecapExt)~ANY~HTML",
+     "item": {
+      "res_object": {
+       "item": {"obe_name": "PmTimesheetRecapExt"},
+       "icon": "img/system/external_object",
+       "label": "External object",
+       "userkeylabel": "PmTimesheetRecapExt",
+       "object": "ObjectExternal"
+      },
+      "res_type": "HTML",
+      "res_lang": "ANY",
+      "res_code": "HTML",
+      "res_cached": false,
+      "res_file": {
+       "path": "resources/ObjectExternal/PmTimesheetRecapExt/HTML.html",
+       "mime": "text/html",
+       "name": "HTML.html"
+      },
+      "res_image": null,
+      "row_module_id__mdl_name": "ProjectManagement"
+     }
+    },
+    {
+     "object": "Resource",
+     "userkey": "ObjectExternal(PmTimesheetRecapExt)~ANY~SCRIPT",
+     "item": {
+      "res_object": {
+       "item": {"obe_name": "PmTimesheetRecapExt"},
+       "icon": "img/system/external_object",
+       "label": "External object",
+       "userkeylabel": "PmTimesheetRecapExt",
+       "object": "ObjectExternal"
+      },
+      "res_type": "JS",
+      "res_lang": "ANY",
+      "res_code": "SCRIPT",
+      "res_cached": false,
+      "res_file": {
+       "path": "resources/ObjectExternal/PmTimesheetRecapExt/SCRIPT.js",
        "mime": "text/javascript",
        "name": "SCRIPT.js"
       },
@@ -24789,13 +24776,13 @@
    "list": [
     {
      "object": "ScriptUsage",
-     "userkey": "ObjectInternal(PmTask)~pmRoleTool",
+     "userkey": "ObjectInternal(PmProject)~pmRoleTool",
      "item": {
       "scu_object": {
-       "item": {"obo_name": "PmTask"},
+       "item": {"obo_name": "PmProject"},
        "icon": "img/system/business_object",
        "label": "Business object",
-       "userkeylabel": "PmTask",
+       "userkeylabel": "PmProject",
        "object": "ObjectInternal"
       },
       "scu_script_id__scr_code": "pmRoleTool",
@@ -24804,13 +24791,13 @@
     },
     {
      "object": "ScriptUsage",
-     "userkey": "ObjectInternal(PmProject)~pmRoleTool",
+     "userkey": "ObjectInternal(PmTask)~pmRoleTool",
      "item": {
       "scu_object": {
-       "item": {"obo_name": "PmProject"},
+       "item": {"obo_name": "PmTask"},
        "icon": "img/system/business_object",
        "label": "Business object",
-       "userkeylabel": "PmProject",
+       "userkeylabel": "PmTask",
        "object": "ObjectInternal"
       },
       "scu_script_id__scr_code": "pmRoleTool",
